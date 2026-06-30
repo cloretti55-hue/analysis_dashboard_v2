@@ -1770,8 +1770,13 @@
         .core-layout,
         .satellite-layout,
         .allocation,
+        .tech-main {
+          grid-template-columns: 1fr;
+        }
 
-        .controls {
+        .controls,
+        .core-detail,
+        .satellite-detail {
           position: static;
         }
 
@@ -1784,12 +1789,61 @@
       }
 
       @media (max-width: 720px) {
+        body {
+          overflow-x: hidden;
+        }
+
         .app {
-          padding: 16px;
+          padding: 12px;
         }
 
         .topbar {
           grid-template-columns: 1fr;
+          gap: 14px;
+          padding: 12px 0 14px;
+        }
+
+        .view-tabs {
+          flex-wrap: nowrap;
+          gap: 7px;
+          margin: 0 -12px 12px;
+          padding: 0 12px 8px;
+          overflow-x: auto;
+          scrollbar-width: thin;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        .view-tab {
+          flex: 0 0 auto;
+          min-height: 32px;
+          padding: 7px 10px;
+          font-size: 11px;
+          white-space: nowrap;
+        }
+
+        h1 {
+          font-size: 34px;
+          line-height: 1.05;
+        }
+
+        .lead {
+          margin-top: 10px;
+          font-size: 15px;
+          line-height: 1.45;
+        }
+
+        .header-side {
+          grid-template-columns: 1fr;
+        }
+
+        .theme-switch,
+        .market-stamp {
+          min-width: 0;
+          width: 100%;
+        }
+
+        .market-stamp strong {
+          font-size: 25px;
         }
 
         .kpis,
@@ -1801,21 +1855,224 @@
           grid-template-columns: 1fr;
         }
 
+        .kpi {
+          min-height: 0;
+          padding: 14px;
+        }
+
+        .kpi strong {
+          font-size: 28px;
+        }
+
+        .controls,
+        .panel,
+        .core-detail,
+        .satellite-detail {
+          border-radius: 8px;
+        }
+
+        .controls {
+          padding: 12px;
+        }
+
+        .segmented {
+          grid-template-columns: 1fr;
+        }
+
+        .main-grid,
+        .equity-grid,
+        .core-layout,
+        .satellite-layout,
+        .allocation,
+        .tech-main {
+          gap: 12px;
+        }
+
+        .section-head {
+          flex-direction: column;
+          gap: 8px;
+          padding: 14px 14px 0;
+        }
+
+        .section-head h2 {
+          font-size: 19px;
+          line-height: 1.15;
+        }
+
         .core-function,
         .satellite-card {
           grid-template-columns: 1fr;
+        }
+
+        .core-function-grid,
+        .satellite-grid,
+        .satellite-filters,
+        .equity-cards,
+        .diagnosis,
+        .benefits {
+          padding-left: 12px;
+          padding-right: 12px;
+        }
+
+        .core-function {
+          align-items: start;
+        }
+
+        .core-legend-row {
+          display: grid;
+          gap: 10px;
+          margin: 14px 12px 12px;
+        }
+
+        .ucits-toggle {
+          justify-self: start;
+        }
+
+        .etf-token {
+          min-width: 58px;
+          min-height: 34px;
+          padding: 7px 9px;
+          font-size: 12px;
+        }
+
+        .filter-row {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 7px;
+        }
+
+        .filter-label {
+          min-width: 0;
+        }
+
+        .risk-legend {
+          gap: 6px;
+        }
+
+        .risk-legend span {
+          width: 100%;
+        }
+
+        .satellite-detail h2 {
+          font-size: 22px;
+        }
+
+        .detail-box {
+          padding: 10px;
         }
 
         .satellite-tags {
           justify-content: start;
         }
 
-        .section-head {
-          flex-direction: column;
+        .chart-wrap,
+        .cycle-table-wrap,
+        .mega-table-wrap,
+        .table-shell {
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
         }
 
         .chart {
-          min-height: 320px;
+          min-width: 640px;
+          min-height: 330px;
+        }
+
+        .chart-wrap {
+          padding-bottom: 16px;
+        }
+
+        .axis-label,
+        .tick {
+          font-size: 18px;
+        }
+
+        .point-value-label {
+          font-size: 17px;
+        }
+
+        .spread-row {
+          grid-template-columns: 64px minmax(0, 1fr) 58px;
+          gap: 8px;
+        }
+
+        .timeline {
+          grid-template-columns: 1fr;
+        }
+
+        .timeline-step {
+          min-height: 0;
+        }
+
+        .ai-stack {
+          display: grid;
+          overflow-x: visible;
+        }
+
+        .stack-layer {
+          min-width: 0;
+        }
+
+        .stack-arrow {
+          height: 18px;
+        }
+
+        .mega-table,
+        .cycle-table,
+        .policy-table {
+          min-width: 760px;
+        }
+
+        .mini-country-row {
+          grid-template-columns: 72px minmax(0, 1fr) 44px;
+          gap: 8px;
+        }
+      }
+
+      @media (max-width: 460px) {
+        .app {
+          padding: 10px;
+        }
+
+        .view-tabs {
+          margin-left: -10px;
+          margin-right: -10px;
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+
+        h1 {
+          font-size: 30px;
+        }
+
+        .lead {
+          font-size: 14px;
+        }
+
+        .chart {
+          min-width: 600px;
+        }
+
+        .satellite-card,
+        .core-function,
+        .diag-item,
+        .equity-card {
+          padding: 12px;
+        }
+
+        .satellite-title-row {
+          align-items: flex-start;
+        }
+
+        .satellite-icon {
+          width: 28px;
+          height: 28px;
+          flex-basis: 28px;
+        }
+
+        .satellite-icon svg {
+          width: 18px;
+          height: 18px;
         }
       }
     </style>
