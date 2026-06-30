@@ -1,0 +1,4448 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Arquitetura de Mercado | Curvas EUA</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #071324;
+        --surface: #0f2037;
+        --surface-2: #142b48;
+        --ink: #f3f8ff;
+        --muted: #aab8ca;
+        --line: rgba(222, 233, 247, 0.16);
+        --nominal: #48d6e9;
+        --real: #c49bff;
+        --inflation: #ffae6b;
+        --positive: #7ee6a5;
+        --negative: #ff8b86;
+        --focus: #48d6e9;
+        --nominal-soft: rgba(72, 214, 233, 0.16);
+        --real-soft: rgba(196, 155, 255, 0.16);
+        --inflation-soft: rgba(255, 174, 107, 0.16);
+        --focus-soft: rgba(72, 214, 233, 0.14);
+        --shadow: 0 18px 50px rgba(0, 0, 0, 0.26);
+      }
+
+      body.theme-light {
+        color-scheme: light;
+        --bg: #f4f7fb;
+        --surface: #ffffff;
+        --surface-2: #eef4fb;
+        --ink: #102033;
+        --muted: #607188;
+        --line: rgba(32, 57, 84, 0.15);
+        --nominal: #047a94;
+        --real: #7357c8;
+        --inflation: #b96a20;
+        --positive: #167a49;
+        --negative: #c74a44;
+        --focus: #047a94;
+        --nominal-soft: rgba(4, 122, 148, 0.11);
+        --real-soft: rgba(115, 87, 200, 0.12);
+        --inflation-soft: rgba(185, 106, 32, 0.12);
+        --focus-soft: rgba(4, 122, 148, 0.1);
+        --shadow: 0 16px 40px rgba(37, 58, 84, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          linear-gradient(180deg, rgba(7, 19, 36, 0.96), rgba(6, 15, 29, 0.98)),
+          radial-gradient(circle at top left, rgba(72, 214, 233, 0.14), transparent 34%),
+          radial-gradient(circle at bottom right, rgba(255, 174, 107, 0.1), transparent 30%),
+          var(--bg);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+      }
+
+      body.theme-light {
+        background:
+          linear-gradient(180deg, rgba(244, 247, 251, 0.96), rgba(237, 243, 250, 0.98)),
+          radial-gradient(circle at top left, rgba(4, 122, 148, 0.1), transparent 34%),
+          radial-gradient(circle at bottom right, rgba(185, 106, 32, 0.08), transparent 30%),
+          var(--bg);
+      }
+
+      button,
+      input,
+      select {
+        font: inherit;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      .app {
+        width: min(1480px, 100%);
+        margin: 0 auto;
+        padding: 24px;
+      }
+
+      .topbar {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 22px;
+        align-items: end;
+        padding: 22px 0 18px;
+      }
+
+      .view-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 0 0 12px;
+      }
+
+      .view-tab {
+        min-height: 34px;
+        border: 1px solid rgba(72, 214, 233, 0.42);
+        border-radius: 8px;
+        padding: 7px 12px;
+        background: var(--nominal-soft);
+        color: var(--focus);
+        font-size: 12px;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
+      .view-tab[aria-current="page"] {
+        box-shadow: inset 0 -2px 0 var(--focus);
+      }
+
+      .theme-switch {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        min-width: 260px;
+        padding: 10px 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(15, 32, 55, 0.72);
+        box-shadow: var(--shadow);
+      }
+
+      body.theme-light .theme-switch {
+        background: rgba(255, 255, 255, 0.86);
+      }
+
+      .theme-switch button {
+        display: inline-flex;
+        align-items: center;
+        min-height: 30px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 5px 10px;
+        background: var(--focus-soft);
+        color: var(--focus);
+        font-size: 12px;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        max-width: 980px;
+        margin: 0;
+        font-size: clamp(30px, 4.1vw, 58px);
+        line-height: 1;
+        letter-spacing: 0;
+      }
+
+      .lead {
+        max-width: 920px;
+        margin: 16px 0 0;
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.55;
+      }
+
+      .market-stamp {
+        display: grid;
+        gap: 8px;
+        min-width: 260px;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(15, 32, 55, 0.88);
+        box-shadow: var(--shadow);
+      }
+
+      .header-side {
+        display: grid;
+        gap: 10px;
+      }
+
+      .market-stamp span {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .market-stamp strong {
+        font-size: 30px;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 300px minmax(0, 1fr);
+        gap: 18px;
+      }
+
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(15, 32, 55, 0.88);
+        box-shadow: var(--shadow);
+      }
+
+      body.theme-light .panel,
+      body.theme-light .market-stamp {
+        background: rgba(255, 255, 255, 0.88);
+      }
+
+      .controls {
+        position: sticky;
+        top: 16px;
+        display: grid;
+        gap: 18px;
+        align-self: start;
+        padding: 16px;
+      }
+
+      .control-block {
+        display: grid;
+        gap: 10px;
+      }
+
+      .control-title,
+      .mini-label {
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 700;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .segmented,
+      .check-grid {
+        display: grid;
+        gap: 7px;
+      }
+
+      .segmented button,
+      .maturity-toggle,
+      .ghost-btn {
+        min-height: 38px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+        color: var(--ink);
+        font-weight: 750;
+      }
+
+      .segmented button[aria-pressed="true"] {
+        border-color: var(--active-color);
+        background: var(--active-soft);
+        color: var(--active-color);
+      }
+
+      .maturity-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 10px;
+      }
+
+      .maturity-toggle input {
+        width: 18px;
+        height: 18px;
+        accent-color: var(--focus);
+      }
+
+      .range-pair {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      .range-pair label {
+        display: grid;
+        gap: 6px;
+      }
+
+      .range-pair input,
+      select {
+        width: 100%;
+        min-height: 38px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 7px 9px;
+        background: var(--surface);
+        color: var(--ink);
+      }
+
+      .ghost-btn {
+        width: 100%;
+      }
+
+      .content {
+        display: grid;
+        gap: 18px;
+      }
+
+      .kpis {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .kpi {
+        min-height: 142px;
+        padding: 16px;
+      }
+
+      .kpi span {
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .kpi strong {
+        display: block;
+        margin-top: 13px;
+        font-size: clamp(24px, 2.2vw, 34px);
+        line-height: 1;
+      }
+
+      .kpi p {
+        margin: 12px 0 0;
+        color: var(--muted);
+        line-height: 1.4;
+      }
+
+      .kpi-probs {
+        display: grid;
+        gap: 6px;
+        margin-top: 12px;
+      }
+
+      .kpi-probs div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 750;
+      }
+
+      .kpi-probs b {
+        color: var(--ink);
+        font-size: 15px;
+      }
+
+      .main-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.42fr) minmax(330px, 0.78fr);
+        gap: 18px;
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: start;
+        padding: 16px 16px 0;
+      }
+
+      .section-head h2 {
+        margin: 4px 0 0;
+        font-size: 22px;
+      }
+
+      .chart-wrap {
+        padding: 8px 10px 12px;
+      }
+
+      .chart {
+        width: 100%;
+        min-height: 390px;
+        overflow: visible;
+      }
+
+      .axis-label,
+      .tick {
+        fill: var(--muted);
+        font-size: 21px;
+        font-weight: 700;
+      }
+
+      .point-value-label {
+        font-size: 19px;
+        font-weight: 900;
+        paint-order: stroke;
+        pointer-events: none;
+        stroke: var(--bg);
+        stroke-linejoin: round;
+        stroke-width: 5px;
+      }
+
+      .grid-line {
+        stroke: rgba(222, 233, 247, 0.16);
+        stroke-width: 1;
+      }
+
+      .curve-line {
+        fill: none;
+        stroke-width: 3.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .point {
+        stroke: var(--surface);
+        stroke-width: 3;
+        transition: r 140ms ease, opacity 140ms ease;
+      }
+
+      .point-hotspot {
+        fill: transparent;
+        pointer-events: none;
+      }
+
+      .legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 0 16px 16px;
+      }
+
+      .legend button {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        min-height: 34px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+        color: var(--ink);
+        font-weight: 700;
+        opacity: 0.55;
+      }
+
+      .legend button[aria-pressed="true"] {
+        opacity: 1;
+      }
+
+      .swatch {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--swatch);
+      }
+
+      .reading {
+        display: grid;
+        gap: 12px;
+        padding: 16px;
+      }
+
+      .reading-item {
+        border-left: 4px solid var(--tone);
+        padding: 12px 12px 12px 14px;
+        background: var(--soft);
+      }
+
+      .reading-item h3 {
+        margin: 0 0 6px;
+        font-size: 15px;
+      }
+
+      .reading-item p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .reading-item ul {
+        display: grid;
+        gap: 7px;
+        margin: 0;
+        padding-left: 18px;
+        color: var(--muted);
+        line-height: 1.35;
+      }
+
+      .reading-item li::marker {
+        color: var(--tone);
+      }
+
+      .tables-grid {
+        display: none;
+      }
+
+      .spread-list {
+        display: grid;
+        gap: 10px;
+        padding: 28px 16px 16px;
+      }
+
+      .spread-row {
+        display: grid;
+        grid-template-columns: 94px 1fr auto;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .spread-track {
+        height: 10px;
+        border-radius: 999px;
+        background: rgba(222, 233, 247, 0.14);
+        overflow: hidden;
+      }
+
+      .spread-fill {
+        width: var(--w);
+        height: 100%;
+        border-radius: inherit;
+        background: var(--tone);
+      }
+
+      .spread-value {
+        font-weight: 800;
+        color: var(--tone);
+      }
+
+      .diagnosis {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        padding: 16px;
+      }
+
+      .diag-item {
+        min-height: 156px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 14px;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .diag-item h3 {
+        margin: 0 0 8px;
+        font-size: 16px;
+      }
+
+      .diag-item p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .allocation {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(360px, 0.75fr);
+        gap: 18px;
+      }
+
+      .benefits {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        padding: 16px;
+      }
+
+      .benefit {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        min-height: 56px;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(126, 230, 165, 0.08);
+      }
+
+      .benefit b {
+        color: var(--positive);
+      }
+
+      .callout {
+        margin: 16px;
+        padding: 16px;
+        border: 1px solid rgba(72, 214, 233, 0.32);
+        border-radius: 8px;
+        background: var(--focus-soft);
+      }
+
+      .callout h3 {
+        margin: 0 0 8px;
+      }
+
+      .callout p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .content > .panel,
+      .content > .allocation {
+        display: none;
+      }
+
+      .allocation-diagnostic {
+        display: grid;
+        gap: 12px;
+        padding: 16px;
+      }
+
+      .allocation-diagnostic .diagnosis,
+      .allocation-diagnostic .benefits {
+        padding: 0;
+      }
+
+      .allocation-diagnostic .diagnosis {
+        grid-template-columns: 1fr;
+      }
+
+      .allocation-diagnostic .diag-item {
+        min-height: 0;
+      }
+
+      .allocation-diagnostic .benefits {
+        grid-template-columns: 1fr;
+      }
+
+      .selected-excerpt {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 14px;
+        background: rgba(126, 230, 165, 0.08);
+      }
+
+      .selected-excerpt h3 {
+        margin: 0 0 10px;
+        font-size: 16px;
+      }
+
+      .selected-excerpt ul {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding-left: 18px;
+        color: var(--muted);
+        line-height: 1.35;
+      }
+
+      .selected-excerpt li::marker {
+        color: var(--positive);
+      }
+
+      .equity-layout {
+        display: grid;
+        gap: 18px;
+      }
+
+      .equity-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.35fr) minmax(330px, 0.8fr);
+        gap: 18px;
+      }
+
+      .equity-chart-card {
+        overflow: hidden;
+      }
+
+      .equity-chart-image {
+        display: block;
+        width: 100%;
+        border: 0;
+        background: #fff;
+      }
+
+      .equity-chart-image {
+        height: auto;
+      }
+
+      .source-card {
+        display: grid;
+        align-content: start;
+        gap: 12px;
+        min-height: 190px;
+        padding: 16px;
+      }
+
+      .source-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .source-link {
+        width: fit-content;
+        border: 1px solid rgba(72, 214, 233, 0.42);
+        border-radius: 8px;
+        padding: 9px 12px;
+        background: rgba(19, 119, 133, 0.18);
+        color: var(--focus);
+        font-size: 12px;
+        font-weight: 850;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .equity-filter {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .equity-filter .segmented {
+        display: flex;
+        flex-wrap: nowrap;
+      }
+
+      .equity-filter .segmented button {
+        white-space: nowrap;
+      }
+
+      .mega-table-card {
+        overflow: hidden;
+      }
+
+      .mega-table-wrap {
+        overflow-x: auto;
+      }
+
+      .mega-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 1120px;
+      }
+
+      .mega-table th,
+      .mega-table td {
+        border-top: 1px solid var(--line);
+        padding: 13px 14px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .mega-table th {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
+      .mega-table td {
+        color: var(--ink);
+        line-height: 1.35;
+      }
+
+      .mega-table td:nth-child(2) {
+        white-space: nowrap;
+        font-weight: 850;
+      }
+
+      .mega-table tr.benchmark-row td {
+        background: rgba(72, 214, 233, 0.1);
+        color: var(--focus);
+        font-weight: 850;
+      }
+
+      .tech-layout {
+        display: grid;
+        gap: 18px;
+      }
+
+      .tech-main {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+      }
+
+      .thesis-line {
+        margin: 0;
+        color: var(--ink);
+        font-size: 21px;
+        font-weight: 850;
+        line-height: 1.25;
+      }
+
+      .cycle-table-wrap {
+        overflow-x: auto;
+      }
+
+      .cycle-table {
+        width: 100%;
+        min-width: 860px;
+        border-collapse: collapse;
+      }
+
+      .cycle-table th,
+      .cycle-table td {
+        border-top: 1px solid var(--line);
+        padding: 17px 12px;
+        text-align: left;
+        vertical-align: middle;
+      }
+
+      .cycle-table th {
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
+      .cycle-table td:first-child {
+        font-weight: 850;
+        white-space: nowrap;
+      }
+
+      .cycle-table tbody tr {
+        cursor: pointer;
+      }
+
+      .cycle-table tbody tr.is-selected td {
+        background: rgba(72, 214, 233, 0.055);
+      }
+
+      .cycle-detail {
+        display: grid;
+        gap: 12px;
+        margin: 16px 0 0;
+        border: 1px solid rgba(222, 233, 247, 0.11);
+        border-radius: 8px;
+        padding: 14px;
+        background: rgba(255, 255, 255, 0.024);
+      }
+
+      .cycle-detail h3 {
+        margin: 0;
+        font-size: 20px;
+      }
+
+      .cycle-detail p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .cycle-lesson {
+        border-left: 3px solid var(--focus);
+        padding-left: 12px;
+        color: var(--ink);
+        font-weight: 850;
+      }
+
+      .intensity {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 44px;
+        border-radius: 8px;
+        padding: 8px;
+        color: var(--ink);
+        font-size: 12px;
+        font-weight: 850;
+      }
+
+      .capex-high,
+      .capex-very {
+        background: rgba(72, 214, 233, 0.18);
+        color: #82ebff;
+      }
+
+      .risk-mid {
+        background: rgba(255, 174, 107, 0.18);
+        color: #ffc18f;
+      }
+
+      .risk-high,
+      .risk-very {
+        background: rgba(255, 123, 107, 0.2);
+        color: #ff9b8f;
+      }
+
+      .winner-high,
+      .winner-very {
+        background: rgba(126, 230, 165, 0.18);
+        color: #9df0ba;
+      }
+
+      .unknown {
+        background: rgba(170, 184, 202, 0.14);
+        color: #c8d3e1;
+      }
+
+      body.theme-light .capex-high,
+      body.theme-light .capex-very {
+        background: rgba(4, 122, 148, 0.18);
+        color: #035d73;
+      }
+
+      body.theme-light .risk-mid {
+        background: rgba(185, 106, 32, 0.2);
+        color: #86470f;
+      }
+
+      body.theme-light .risk-high,
+      body.theme-light .risk-very {
+        background: rgba(199, 74, 68, 0.2);
+        color: #98322d;
+      }
+
+      body.theme-light .winner-high,
+      body.theme-light .winner-very {
+        background: rgba(22, 122, 73, 0.18);
+        color: #0f653b;
+      }
+
+      body.theme-light .unknown {
+        background: rgba(96, 113, 136, 0.18);
+        color: #45576c;
+      }
+
+      .lesson-cell {
+        color: var(--muted);
+        line-height: 1.35;
+      }
+
+      .ai-stack {
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+      }
+
+      .stack-frame {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+        padding: 16px;
+      }
+
+      .stack-arrow {
+        height: 22px;
+        width: 100%;
+        background: linear-gradient(90deg, rgba(72, 214, 233, 0.18), rgba(72, 214, 233, 0.92));
+        clip-path: polygon(0 35%, 92% 35%, 92% 0, 100% 50%, 92% 100%, 92% 65%, 0 65%);
+        filter: drop-shadow(0 0 14px rgba(72, 214, 233, 0.18));
+      }
+
+      .stack-layer {
+        min-width: 190px;
+        flex: 1 0 190px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .stack-layer.money-now {
+        border-color: rgba(126, 230, 165, 0.42);
+        background: rgba(126, 230, 165, 0.1);
+      }
+
+      .stack-layer.money-flow {
+        border-color: rgba(72, 214, 233, 0.4);
+        background: rgba(72, 214, 233, 0.1);
+      }
+
+      .stack-layer.money-forming {
+        border-color: rgba(255, 174, 107, 0.38);
+        background: rgba(255, 174, 107, 0.09);
+      }
+
+      .stack-layer.money-future {
+        border-color: rgba(170, 184, 202, 0.24);
+        background: rgba(170, 184, 202, 0.08);
+      }
+
+      .stack-layer strong {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .stack-layer span {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
+      .money-tag {
+        display: inline-flex;
+        margin-top: 8px;
+        border-radius: 999px;
+        padding: 4px 8px;
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--ink);
+        font-size: 10px;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
+      .timeline {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 10px;
+        padding: 16px;
+        position: relative;
+      }
+
+      .timeline-step {
+        position: relative;
+        min-height: 82px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .timeline-step[aria-current="step"] {
+        border-color: var(--focus);
+        background: var(--focus-soft);
+      }
+
+      .timeline-step.current-zone {
+        border-color: rgba(255, 174, 107, 0.52);
+        background: rgba(255, 174, 107, 0.09);
+      }
+
+      .timeline-marker {
+        align-self: center;
+        justify-self: center;
+        width: 100%;
+        border: 1px solid rgba(255, 174, 107, 0.5);
+        border-radius: 999px;
+        padding: 8px 10px;
+        background: rgba(255, 174, 107, 0.12);
+        color: #ffc18f;
+        font-size: 11px;
+        font-weight: 850;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      .timeline-note {
+        margin: 0;
+        padding: 0 16px 16px;
+        color: var(--muted);
+        line-height: 1.4;
+      }
+
+      .timeline-step span {
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
+      .timeline-step strong {
+        display: block;
+        margin-top: 6px;
+      }
+
+      .policy-table {
+        width: 100%;
+        min-width: 860px;
+        border-collapse: collapse;
+      }
+
+      .policy-table th,
+      .policy-table td {
+        border-top: 1px solid var(--line);
+        padding: 13px 14px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .policy-table th {
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
+      .policy-table td:first-child {
+        color: var(--focus);
+        font-weight: 850;
+        white-space: nowrap;
+      }
+
+      .policy-table td {
+        color: var(--muted);
+        line-height: 1.35;
+      }
+
+      .core-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.45fr) minmax(340px, 0.75fr);
+        gap: 18px;
+        align-items: start;
+      }
+
+      .core-function-grid {
+        display: grid;
+        gap: 10px;
+        padding: 16px;
+      }
+
+      .core-function {
+        display: grid;
+        grid-template-columns: minmax(160px, 0.8fr) minmax(0, 1.2fr);
+        gap: 12px;
+        align-items: center;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.035);
+      }
+
+      .core-function h3 {
+        margin: 0 0 5px;
+        font-size: 15px;
+      }
+
+      .core-function p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.35;
+      }
+
+      .etf-token-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .etf-token {
+        min-width: 64px;
+        min-height: 38px;
+        border: 1px solid rgba(72, 214, 233, 0.28);
+        border-radius: 999px;
+        padding: 8px 11px;
+        background: rgba(72, 214, 233, 0.08);
+        color: var(--ink);
+        font-weight: 850;
+      }
+
+      .etf-token.is-muted {
+        opacity: 0.28;
+        filter: grayscale(0.35);
+      }
+
+      .etf-token:disabled {
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+
+      .etf-token.is-ucits-highlight {
+        border-color: rgba(255, 255, 255, 0.9);
+        background: rgba(255, 255, 255, 0.92);
+        color: #061528;
+        box-shadow: 0 10px 24px rgba(255, 255, 255, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+      }
+
+      .etf-token.etf-us {
+        border-color: rgba(68, 143, 255, 0.48);
+        background: rgba(68, 143, 255, 0.14);
+        color: #b8d6ff;
+      }
+
+      .etf-token.etf-developed {
+        border-color: rgba(69, 206, 238, 0.48);
+        background: rgba(69, 206, 238, 0.12);
+        color: #a9efff;
+      }
+
+      .etf-token.etf-global {
+        border-color: rgba(98, 178, 255, 0.5);
+        background: rgba(98, 178, 255, 0.12);
+        color: #b7ddff;
+      }
+
+      .etf-token.etf-emerging {
+        border-color: rgba(111, 132, 255, 0.52);
+        background: rgba(111, 132, 255, 0.14);
+        color: #c4ccff;
+      }
+
+      .etf-token.etf-fixed {
+        border-color: rgba(58, 166, 163, 0.48);
+        background: rgba(58, 166, 163, 0.12);
+        color: #ace5e2;
+      }
+
+      .etf-token.etf-other {
+        border-color: rgba(224, 184, 93, 0.42);
+        background: rgba(224, 184, 93, 0.1);
+        color: #f1d58d;
+      }
+
+      .etf-token.is-ucits-highlight {
+        border-color: rgba(255, 255, 255, 0.9);
+        background: rgba(255, 255, 255, 0.92);
+        color: #061528;
+        box-shadow: 0 10px 24px rgba(255, 255, 255, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+      }
+
+      .etf-token[aria-pressed="true"] {
+        border-color: rgba(255, 118, 118, 0.62);
+        background: rgba(255, 118, 118, 0.13);
+        color: #ffb5b5;
+        box-shadow: inset 0 0 0 1px rgba(255, 118, 118, 0.26);
+      }
+
+      .etf-token.is-ucits-highlight[aria-pressed="true"] {
+        border-color: rgba(255, 118, 118, 0.62);
+        background: rgba(255, 118, 118, 0.13);
+        color: #ffb5b5;
+        box-shadow: inset 0 0 0 1px rgba(255, 118, 118, 0.26);
+      }
+
+      body.theme-light .etf-token.etf-us {
+        border-color: rgba(35, 104, 210, 0.46);
+        background: rgba(35, 104, 210, 0.18);
+        color: #184f9f;
+      }
+
+      body.theme-light .etf-token.etf-developed {
+        border-color: rgba(4, 122, 148, 0.42);
+        background: rgba(4, 122, 148, 0.16);
+        color: #035d73;
+      }
+
+      body.theme-light .etf-token.etf-global {
+        border-color: rgba(56, 128, 205, 0.42);
+        background: rgba(56, 128, 205, 0.16);
+        color: #255f9f;
+      }
+
+      body.theme-light .etf-token.etf-emerging {
+        border-color: rgba(88, 99, 202, 0.42);
+        background: rgba(88, 99, 202, 0.17);
+        color: #444ba8;
+      }
+
+      body.theme-light .etf-token.etf-fixed {
+        border-color: rgba(32, 132, 129, 0.42);
+        background: rgba(32, 132, 129, 0.17);
+        color: #146765;
+      }
+
+      body.theme-light .etf-token.etf-other {
+        border-color: rgba(173, 126, 29, 0.4);
+        background: rgba(173, 126, 29, 0.17);
+        color: #7a5611;
+      }
+
+      body.theme-light .etf-token[aria-pressed="true"] {
+        border-color: rgba(192, 67, 67, 0.52);
+        background: rgba(192, 67, 67, 0.16);
+        color: #98322d;
+        box-shadow: inset 0 0 0 1px rgba(192, 67, 67, 0.18);
+      }
+
+      body.theme-light .etf-token.is-ucits-highlight[aria-pressed="true"] {
+        border-color: rgba(192, 67, 67, 0.52);
+        background: rgba(192, 67, 67, 0.16);
+        color: #98322d;
+        box-shadow: inset 0 0 0 1px rgba(192, 67, 67, 0.18);
+      }
+
+      body.theme-light .etf-token.is-muted {
+        opacity: 0.34;
+        filter: grayscale(0.3);
+      }
+
+      body.theme-light .etf-token.is-ucits-highlight {
+        border-color: rgba(15, 23, 42, 0.2);
+        background: #ffffff;
+        color: #0f172a;
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08), inset 0 0 0 1px rgba(15, 23, 42, 0.06);
+      }
+
+      .core-legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 16px 16px 14px;
+      }
+
+      .core-legend-row {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 14px;
+        margin: 16px 16px 14px;
+      }
+
+      .core-legend-row .core-legend {
+        margin: 0;
+        flex: 1;
+      }
+
+      .core-legend .etf-token {
+        min-height: 28px;
+        min-width: 0;
+        padding: 6px 10px;
+        font-size: 11px;
+        pointer-events: none;
+      }
+
+      .ucits-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        flex: 0 0 auto;
+        padding: 4px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .ucits-toggle button {
+        min-height: 28px;
+        border: 0;
+        border-radius: 999px;
+        padding: 5px 11px;
+        background: transparent;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 850;
+      }
+
+      .ucits-toggle button[aria-pressed="true"] {
+        background: rgba(255, 255, 255, 0.92);
+        color: #061528;
+      }
+
+      body.theme-light .ucits-toggle {
+        background: rgba(15, 23, 42, 0.04);
+      }
+
+      body.theme-light .ucits-toggle button[aria-pressed="true"] {
+        background: rgba(255, 255, 255, 0.92);
+        color: #061528;
+      }
+
+      .core-detail {
+        position: sticky;
+        top: 16px;
+        display: grid;
+        gap: 8px;
+        padding: 14px;
+        align-content: start;
+      }
+
+      .core-detail h2 {
+        margin: 0;
+        font-size: 28px;
+      }
+
+      .detail-role {
+        color: var(--focus);
+        font-size: 12px;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
+      .core-detail p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .core-detail-list {
+        display: grid;
+        gap: 6px;
+        margin: 0;
+        padding-left: 18px;
+        color: var(--muted);
+        line-height: 1.3;
+      }
+
+      .mini-country-chart {
+        display: grid;
+        gap: 9px;
+        margin: 8px 0 2px;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.024);
+      }
+
+      body.theme-light .mini-country-chart {
+        background: rgba(4, 122, 148, 0.045);
+      }
+
+      .mini-country-chart h3 {
+        margin: 0;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
+      .mini-country-row {
+        display: grid;
+        grid-template-columns: 78px minmax(0, 1fr) 46px;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .mini-country-row span {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .mini-country-track {
+        height: 9px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.055);
+        overflow: hidden;
+      }
+
+      body.theme-light .mini-country-track {
+        background: rgba(32, 57, 84, 0.09);
+      }
+
+      .mini-country-bar {
+        height: 100%;
+        border-radius: inherit;
+        background: var(--focus);
+      }
+
+      .satellite-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.35fr) minmax(330px, 0.8fr);
+        gap: 22px;
+        align-items: start;
+      }
+
+      .satellite-filters {
+        display: grid;
+        gap: 10px;
+        padding: 28px 16px 26px;
+      }
+
+      .filter-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .filter-label {
+        min-width: 92px;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
+      .filter-chip {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 7px 12px;
+        background: rgba(255, 255, 255, 0.025);
+        color: var(--muted);
+        font-weight: 800;
+      }
+
+      .filter-chip[aria-pressed="true"] {
+        border-color: rgba(72, 214, 233, 0.48);
+        background: rgba(72, 214, 233, 0.1);
+        color: var(--muted);
+      }
+
+      .risk-legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding-top: 10px;
+      }
+
+      .risk-legend span {
+        border-left: 3px solid var(--zone);
+        border-radius: 8px;
+        padding: 6px 10px;
+        background: rgba(255, 255, 255, 0.025);
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 850;
+      }
+
+      .satellite-grid {
+        display: grid;
+        gap: 16px;
+        padding: 0 16px 20px;
+      }
+
+      .satellite-card {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 12px;
+        align-items: center;
+        border: 1px solid rgba(222, 233, 247, 0.11);
+        border-left: 3px solid var(--zone);
+        border-radius: 8px;
+        padding: 14px;
+        background: rgba(255, 255, 255, 0.022);
+        text-align: left;
+      }
+
+      .satellite-card[aria-pressed="true"] {
+        border-color: rgba(72, 214, 233, 0.32);
+        border-left-color: var(--zone);
+        background: rgba(72, 214, 233, 0.045);
+      }
+
+      body.theme-light .satellite-card[aria-pressed="true"] {
+        border-color: rgba(4, 122, 148, 0.34);
+        border-left-color: var(--zone);
+        background: rgba(4, 122, 148, 0.085);
+      }
+
+      .satellite-card h3 {
+        margin: 0 0 4px;
+        font-size: 16px;
+        color: var(--ink);
+      }
+
+      .satellite-title-row {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 4px;
+      }
+
+      .satellite-title-row h3 {
+        margin: 0;
+      }
+
+      .satellite-icon {
+        width: 32px;
+        height: 32px;
+        flex: 0 0 32px;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(222, 233, 247, 0.12);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.025);
+        color: var(--zone);
+      }
+
+      .satellite-icon svg {
+        width: 21px;
+        height: 21px;
+        stroke: currentColor;
+      }
+
+      .satellite-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .satellite-tags {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: end;
+        gap: 6px;
+      }
+
+      .satellite-tag {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 999px;
+        padding: 5px 9px;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 800;
+        background: rgba(255, 255, 255, 0.018);
+      }
+
+      .sat-risk-high {
+        --zone: #4f7dff;
+      }
+
+      .sat-risk-medium {
+        --zone: #5bbcff;
+      }
+
+      .sat-risk-defensive {
+        --zone: #e0b85d;
+      }
+
+      .satellite-detail {
+        position: sticky;
+        top: 16px;
+        display: grid;
+        gap: 14px;
+        padding: 16px;
+      }
+
+      .satellite-detail h2 {
+        margin: 0;
+        font-size: 26px;
+      }
+
+      .satellite-detail-head {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .satellite-detail-head .satellite-icon {
+        width: 42px;
+        height: 42px;
+        flex-basis: 42px;
+      }
+
+      .satellite-detail-head .satellite-icon svg {
+        width: 25px;
+        height: 25px;
+      }
+
+      .detail-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .detail-box {
+        border: 1px solid rgba(222, 233, 247, 0.11);
+        border-radius: 8px;
+        padding: 11px;
+        background: rgba(255, 255, 255, 0.024);
+      }
+
+      .proxy-box {
+        margin-top: 10px;
+      }
+
+      .proxy-box .satellite-list {
+        margin-top: 12px;
+      }
+
+      .detail-box span {
+        display: block;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
+      .detail-box strong {
+        display: block;
+        margin-top: 4px;
+        color: var(--ink);
+      }
+
+      .data-note {
+        margin: 10px 0 0;
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.45;
+      }
+
+      .satellite-list {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding-left: 18px;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .core-cards {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .core-card {
+        border-left: 4px solid var(--tone);
+        border-radius: 8px;
+        padding: 14px;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .core-card h3 {
+        margin: 0 0 8px;
+      }
+
+      .core-card p,
+      .core-card li {
+        color: var(--muted);
+        line-height: 1.35;
+      }
+
+      .core-card ul {
+        display: grid;
+        gap: 6px;
+        margin: 0;
+        padding-left: 18px;
+      }
+
+      .equity-cards {
+        display: grid;
+        gap: 12px;
+        padding: 16px;
+      }
+
+      .equity-card {
+        border-left: 4px solid var(--tone);
+        border-radius: 8px;
+        padding: 12px 14px;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .equity-card h3 {
+        margin: 0 0 8px;
+        font-size: 16px;
+      }
+
+      .equity-card ul {
+        display: grid;
+        gap: 6px;
+        margin: 0 0 10px;
+        padding-left: 18px;
+        color: var(--muted);
+        line-height: 1.35;
+      }
+
+      .equity-card p {
+        margin: 0;
+        color: var(--ink);
+        font-weight: 750;
+        line-height: 1.35;
+      }
+
+      .equity-kpis {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .equity-summary {
+        padding: 16px;
+      }
+
+      .equity-summary h2 {
+        margin: 0 0 10px;
+      }
+
+      .equity-summary p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      footer {
+        padding: 10px 0 4px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      @media (max-width: 1120px) {
+        .layout,
+        .main-grid,
+        .equity-grid,
+        .core-layout,
+        .satellite-layout,
+        .allocation,
+
+        .controls {
+          position: static;
+        }
+
+        .kpis,
+        .equity-kpis,
+        .core-cards,
+        .diagnosis {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 720px) {
+        .app {
+          padding: 16px;
+        }
+
+        .topbar {
+          grid-template-columns: 1fr;
+        }
+
+        .kpis,
+        .equity-kpis,
+        .core-cards,
+        .detail-grid,
+        .diagnosis,
+        .benefits {
+          grid-template-columns: 1fr;
+        }
+
+        .core-function,
+        .satellite-card {
+          grid-template-columns: 1fr;
+        }
+
+        .satellite-tags {
+          justify-content: start;
+        }
+
+        .section-head {
+          flex-direction: column;
+        }
+
+        .chart {
+          min-height: 320px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      const { useEffect, useState } = React;
+
+      const MATURITIES = [
+        { key: "2Y", years: 2 },
+        { key: "5Y", years: 5 },
+        { key: "7Y", years: 7 },
+        { key: "10Y", years: 10 },
+        { key: "30Y", years: 30 },
+      ];
+
+      const CURVES = {
+        nominal: {
+          label: "Curva Nominal",
+          short: "Nominal",
+          color: "#48d6e9",
+          unit: "%",
+          values: { "2Y": 4.23, "5Y": 4.28, "7Y": 4.38, "10Y": 4.51, "30Y": 4.95 },
+          reading:
+            "A curva voltou a apresentar inclinação positiva, mas a maior parte do movimento está concentrada na ponta longa. O mercado exige prêmio crescente para financiar o governo americano em horizontes mais extensos.",
+        },
+        real: {
+          label: "Curva Real - TIPS",
+          short: "Real",
+          color: "#c49bff",
+          unit: "%",
+          values: { "2Y": 1.82, "5Y": 1.96, "7Y": 2.07, "10Y": 2.21, "30Y": 2.7 },
+          reading:
+            "A principal fonte de inclinação da curva americana está nos juros reais. O investidor volta a receber remuneração real significativa sem necessidade de assumir risco corporativo.",
+        },
+        inflation: {
+          label: "Inflação Implícita",
+          short: "Implícita",
+          color: "#ffae6b",
+          unit: "%",
+          values: { "2Y": 2.37, "5Y": 2.28, "7Y": 2.27, "10Y": 2.25, "30Y": 2.19 },
+          reading:
+            "As expectativas de inflação permanecem bem ancoradas. A inflação implícita cai gradualmente ao longo da curva, sugerindo confiança na convergência para níveis próximos da meta do Federal Reserve.",
+        },
+      };
+
+      const LIGHT_CHART_COLORS = {
+        nominal: "#026f88",
+        real: "#6548b8",
+        inflation: "#a85d19",
+      };
+
+      const READING_BULLETS = {
+        nominal: [
+          "Curva voltou a inclinar.",
+          "Ponta longa lidera o movimento.",
+          "Prêmio de prazo voltou a importar.",
+        ],
+        real: [
+          "Juro real explica a inclinação.",
+          "Carry real voltou a ser relevante.",
+          "Menos necessidade de risco corporativo.",
+        ],
+        inflation: [
+          "Expectativas seguem ancoradas.",
+          "Implícita cai ao longo da curva.",
+          "Sem sinal de desancoragem.",
+        ],
+      };
+
+      const SPREADS = [
+        { label: "5s2s", from: "2Y", to: "5Y" },
+        { label: "10s2s", from: "2Y", to: "10Y" },
+        { label: "30s10s", from: "10Y", to: "30Y" },
+      ];
+
+      const DIAGNOSIS = [
+        {
+          title: "O problema não é inflação",
+          text: "A inflação implícita permanece concentrada entre 2,19% e 2,37%, sem sinais de desancoragem de longo prazo.",
+        },
+        {
+          title: "Juros reais elevados",
+          text: "O aumento dos yields nominais é explicado principalmente pela elevação dos juros reais e do prêmio de prazo.",
+        },
+        {
+          title: "Duration exige convicção",
+          text: "A maior parte da inclinação está entre 10 e 30 anos, exatamente onde o risco de duration é mais elevado.",
+        },
+      ];
+
+      const BENEFITS = [
+        "Proteção contra inflação realizada.",
+        "Juros reais positivos.",
+        "Duration reduzida, em torno de 2,3 anos.",
+        "Menor volatilidade.",
+        "Menor dependência do timing dos cortes do Federal Reserve.",
+        "Adaptação natural para investidores acostumados a carrego.",
+      ];
+
+      const ALLOCATION_DIAGNOSIS = [
+        { title: "Inflação ancorada", text: "A curva não aponta desancoragem." },
+        { title: "Juro real elevado", text: "O carry real remunera a espera." },
+        { title: "Duration seletiva", text: "A ponta longa exige convicção." },
+      ];
+
+      const ALLOCATION_BENEFITS = [
+        "Proteção contra inflação realizada.",
+        "Juro real positivo no carrego.",
+        "Duration moderada (2.3y).",
+        "Menor dependência do timing do Fed.",
+      ];
+
+      function pct(value) {
+        return `${value.toFixed(2).replace(".", ",")}%`;
+      }
+
+      function bps(value) {
+        const rounded = Math.round(value * 100);
+        return `${rounded > 0 ? "+" : ""}${rounded} bps`;
+      }
+
+      function curveRows(activeCurves, maturities) {
+        return maturities.map((maturity) => {
+          const row = { maturity: maturity.key };
+          activeCurves.forEach((curveKey) => {
+            row[curveKey] = CURVES[curveKey].values[maturity.key];
+          });
+          return row;
+        });
+      }
+
+      function spreadValue(curveKey, spread) {
+        return CURVES[curveKey].values[spread.to] - CURVES[curveKey].values[spread.from];
+      }
+
+      function Chart({ activeCurves, filteredMaturities, mode, theme }) {
+        const width = 920;
+        const height = 470;
+        const margin = { top: 46, right: 138, bottom: 68, left: 78 };
+        const plotW = width - margin.left - margin.right;
+        const plotH = height - margin.top - margin.bottom;
+
+        const allValues = activeCurves.flatMap((curveKey) =>
+          filteredMaturities.map((m) => CURVES[curveKey].values[m.key])
+        );
+        const min = Math.min(...allValues, 0);
+        const max = Math.max(...allValues, 1);
+        const pad = Math.max(0.15, (max - min) * 0.12);
+        const yMin = 1.5;
+        const yMax = max + pad;
+
+        const x = (index) =>
+          filteredMaturities.length === 1
+            ? margin.left + plotW / 2
+            : margin.left + (index / (filteredMaturities.length - 1)) * plotW;
+        const y = (value) => margin.top + (1 - (value - yMin) / (yMax - yMin)) * plotH;
+        const yTicks = Array.from({ length: 5 }, (_, index) => yMin + ((yMax - yMin) / 4) * index);
+
+        return React.createElement(
+          "svg",
+          { className: "chart", viewBox: `0 0 ${width} ${height}`, role: "img" },
+          yTicks.map((tick) =>
+            React.createElement(
+              "g",
+              { key: tick },
+              React.createElement("line", {
+                className: "grid-line",
+                x1: margin.left,
+                x2: width - margin.right,
+                y1: y(tick),
+                y2: y(tick),
+              })
+            )
+          ),
+          filteredMaturities.map((maturity, index) =>
+            React.createElement(
+              "text",
+              {
+                key: maturity.key,
+                className: "tick",
+                x: x(index),
+                y: height - 30,
+                textAnchor: "middle",
+                fontWeight: 700,
+              },
+              maturity.key
+            )
+          ),
+          activeCurves.map((curveKey) => {
+            const curveColor = theme === "light" ? LIGHT_CHART_COLORS[curveKey] : CURVES[curveKey].color;
+            const points = filteredMaturities.map((m, index) => ({
+              maturity: m.key,
+              value: CURVES[curveKey].values[m.key],
+              x: x(index),
+              y: y(CURVES[curveKey].values[m.key]),
+            }));
+            const labelOffset = curveKey === "real" ? 26 : -18;
+            const d = points.map((p, index) => `${index ? "L" : "M"} ${p.x} ${p.y}`).join(" ");
+            return React.createElement(
+              "g",
+              { key: curveKey },
+              React.createElement("path", {
+                className: "curve-line",
+                d,
+                stroke: curveColor,
+                opacity: 1,
+              }),
+              points.map((point) =>
+                React.createElement(
+                  "g",
+                  { key: `${curveKey}-${point.maturity}` },
+                  React.createElement("circle", {
+                    className: "point",
+                    cx: point.x,
+                    cy: point.y,
+                    r: 6,
+                    fill: curveColor,
+                    opacity: 1,
+                  }),
+                  React.createElement(
+                    "text",
+                    {
+                      className: "point-value-label",
+                      x: point.x,
+                      y: point.y + labelOffset,
+                      fill: curveColor,
+                      opacity: 1,
+                      textAnchor: "middle",
+                    },
+                    pct(point.value)
+                  ),
+                  React.createElement("circle", {
+                    className: "point-hotspot",
+                    cx: point.x,
+                    cy: point.y,
+                    r: 18,
+                  })
+                )
+              )
+            );
+          })
+        );
+      }
+
+      const EQUITY_PE = [
+        { name: "Magnificent 7", value: "24,4x", note: "Principal fonte do prêmio." },
+        { name: "S&P 500 LargeCap", value: "20,5x", note: "Benchmark do índice cheio." },
+        { name: "S&P 400 MidCap", value: "16,4x", note: "Valuation mais moderado." },
+        { name: "S&P 600 SmallCap", value: "16,0x", note: "Desconto com maior ciclicidade." },
+      ];
+
+      const EQUITY_CARDS = [
+        {
+          title: "Magnificent 7",
+          tone: "#4f7cff",
+          bullets: ["Concentra o prêmio do índice.", "Entrega crescimento e margem superiores.", "Carrega expectativa elevada."],
+          message: "O prêmio exige execução quase perfeita.",
+        },
+        {
+          title: "Índice cheio",
+          tone: "#48d6e9",
+          bullets: ["O múltiplo agregado mistura empresas muito diferentes.", "A Magnificent 7 puxa a leitura para cima."],
+          message: "Comprar S&P 500 hoje também é aceitar concentração.",
+        },
+        {
+          title: "Mid e small caps",
+          tone: "#ffae6b",
+          bullets: ["Negociam a múltiplos mais baixos.", "São mais sensíveis a juros, crédito e ciclo."],
+          message: "O desconto existe, mas tem motivo.",
+        },
+      ];
+
+      const MAGNIFICENT_ROWS = [
+        {
+          company: "S&P 500",
+          pe: "20,5x",
+          recent: "Lucro Q1 2026 entre ~27%-29% YoY.",
+          outlook: "Goldman vê EPS 2026 +24%; Wells Fargo e UBS elevaram projeções.",
+          read: "Benchmark: lucro forte, mas parte relevante vem de IA, semis, energia e megacaps.",
+          benchmark: true,
+        },
+        {
+          company: "Nvidia",
+          pe: "~20x-25x",
+          recent: "Receita Q4 FY26 +73% YoY; lucro líquido +94% YoY.",
+          outlook: "Guidance Q1 FY27 de US$ 78 bi em receita.",
+          read: "Motor mais explosivo do grupo; principal beneficiária direta do CAPEX de IA.",
+        },
+        {
+          company: "Meta",
+          pe: "~22x-26x",
+          recent: "Q1 2026: receita US$ 56,3 bi; EPS +62% YoY.",
+          outlook: "CAPEX 2026 elevado para US$ 125-145 bi.",
+          read: "Monetização de IA via ads é forte, mas o CAPEX virou ponto de cobrança.",
+        },
+        {
+          company: "Amazon",
+          pe: "~30x-40x",
+          recent: "Q1 2026: receita +16,6%; lucro líquido +76,7%; AWS +28%.",
+          outlook: "CAPEX pode chegar perto de US$ 200 bi em 2026.",
+          read: "Lucro cresce bem, mas o mercado cobra retorno em AWS, IA e free cash flow.",
+        },
+        {
+          company: "Alphabet",
+          pe: "~22x-26x",
+          recent: "Receita Q1 2026 +22%; Google Cloud +63%.",
+          outlook: "Search, Cloud e Gemini sustentam a tese, apesar de CAPEX alto.",
+          read: "Deixa de ser só advertising e ganha perfil de infraestrutura/plataforma de IA.",
+        },
+        {
+          company: "Microsoft",
+          pe: "~20x-25x",
+          recent: "Receita trimestre mar/2026 +18%; Microsoft Cloud +29%.",
+          outlook: "Foco do mercado é se o CAPEX de IA vira margem sustentável.",
+          read: "Um dos melhores perfis: cloud, software recorrente e IA corporativa.",
+        },
+        {
+          company: "Apple",
+          pe: "~28x-32x",
+          recent: "Receita fiscal Q2 2026 +17% YoY; EPS cerca de +22% YoY.",
+          outlook: "Depende mais de iPhone, serviços e China do que de AI infra puro.",
+          read: "Forte, mas menos ligada ao CAPEX de IA do que o restante do grupo.",
+        },
+        {
+          company: "Tesla",
+          pe: ">100x / distorcido",
+          recent: "Q1 2026: receita +16%; lucro líquido +17%.",
+          outlook: "Narrativa depende de robotaxi, Optimus, IA e CAPEX estimado em US$ 25 bi.",
+          read: "O mais especulativo: lucro atual não sustenta sozinho a narrativa.",
+        },
+      ];
+
+      function EquityValuationModule() {
+        const [equityView, setEquityView] = useState("broad");
+
+        const filter = React.createElement(
+          "section",
+          { className: "equity-filter" },
+          React.createElement(
+            "div",
+            { className: "segmented", "aria-label": "Visão do módulo Equity Valuation" },
+            React.createElement(
+              "button",
+              {
+                type: "button",
+                "aria-pressed": equityView === "broad",
+                onClick: () => setEquityView("broad"),
+              },
+              "Amplo"
+            ),
+            React.createElement(
+              "button",
+              {
+                type: "button",
+                "aria-pressed": equityView === "mega",
+                onClick: () => setEquityView("mega"),
+              },
+              "Magnificent 7"
+            )
+          )
+        );
+
+        const broadView = React.createElement(
+          React.Fragment,
+          null,
+          React.createElement(
+            "section",
+            { className: "equity-grid" },
+            React.createElement(
+              "article",
+              { className: "panel source-card" },
+              React.createElement(
+                "div",
+                { className: "section-head" },
+                React.createElement(
+                  "div",
+                  null,
+                  React.createElement("span", { className: "control-title" }, "Valuation relativo")
+                )
+              ),
+              React.createElement("img", {
+                className: "equity-chart-image",
+                src: "./forward-pe-capitalization.png",
+                alt: "Forward P/E by capitalization",
+              })
+            ),
+            React.createElement(
+              "article",
+              { className: "panel" },
+              React.createElement(
+                "div",
+                { className: "section-head" },
+                React.createElement(
+                  "div",
+                  null,
+                  React.createElement("span", { className: "control-title" }, "Diagnóstico"),
+                  React.createElement("h2", null, "Onde está o excesso?")
+                )
+              ),
+              React.createElement(
+                "div",
+                { className: "equity-cards" },
+                EQUITY_CARDS.map((card) =>
+                  React.createElement(
+                    "article",
+                    { className: "equity-card", key: card.title, style: { "--tone": card.tone } },
+                    React.createElement("h3", null, card.title),
+                    React.createElement(
+                      "ul",
+                      null,
+                      card.bullets.map((bullet) => React.createElement("li", { key: bullet }, bullet))
+                    ),
+                    React.createElement("p", null, card.message)
+                  )
+                )
+              )
+            )
+          ),
+          React.createElement(
+            "section",
+            { className: "equity-kpis" },
+            EQUITY_PE.map((item) =>
+              React.createElement(
+                "article",
+                { className: "kpi panel", key: item.name },
+                React.createElement("span", null, item.name),
+                React.createElement("strong", null, item.value),
+                React.createElement("p", null, item.note)
+              )
+            )
+          ),
+          React.createElement(
+            "section",
+            { className: "panel source-card" },
+            React.createElement(
+              "div",
+              { className: "section-head" },
+              React.createElement(
+                "div",
+                null,
+                React.createElement("span", { className: "control-title" }, "Gráfico de apoio"),
+                React.createElement("h2", null, "Tech vs benchmark")
+              )
+            ),
+            React.createElement(
+              "p",
+              null,
+              "Ajuda a separar prêmio justificado por crescimento de concentração excessiva em tecnologia."
+            ),
+            React.createElement(
+              "a",
+              { className: "source-link", href: "./tech-vs-bench.pdf", target: "_blank", rel: "noopener" },
+              "Abrir PDF"
+            ),
+            React.createElement("p", { className: "data-note" }, "Base: Yardeni Research, 22/06/26.")
+          )
+        );
+
+        const megaView = React.createElement(
+          React.Fragment,
+          null,
+          React.createElement(
+            "section",
+            { className: "panel mega-table-card" },
+            React.createElement(
+              "div",
+              { className: "section-head" },
+              React.createElement(
+                "div",
+                null,
+                React.createElement("span", { className: "control-title" }, "Magnificent 7"),
+                React.createElement("h2", null, "Múltiplo vs crescimento")
+              )
+            ),
+            React.createElement(
+              "div",
+              { className: "mega-table-wrap" },
+              React.createElement(
+                "table",
+                { className: "mega-table" },
+                React.createElement(
+                  "thead",
+                  null,
+                  React.createElement(
+                    "tr",
+                    null,
+                    React.createElement("th", null, "Empresa"),
+                    React.createElement("th", null, "Forward P/E"),
+                    React.createElement("th", null, "Realizado recente"),
+                    React.createElement("th", null, "Perspectiva"),
+                    React.createElement("th", null, "Leitura")
+                  )
+                ),
+                React.createElement(
+                  "tbody",
+                  null,
+                  MAGNIFICENT_ROWS.map((row) =>
+                    React.createElement(
+                      "tr",
+                      { key: row.company, className: row.benchmark ? "benchmark-row" : undefined },
+                      React.createElement("td", null, row.company),
+                      React.createElement("td", null, row.pe),
+                      React.createElement("td", null, row.recent),
+                      React.createElement("td", null, row.outlook),
+                      React.createElement("td", null, row.read)
+                    )
+                  )
+                )
+              )
+            ),
+            React.createElement("p", { className: "data-note" }, "Base: estimativas públicas recentes. Múltiplos e crescimento devem ser comparados na mesma metodologia: NTM P/E e EPS growth 2026E.")
+          ),
+          React.createElement(
+            "section",
+            { className: "panel equity-summary" },
+            React.createElement("h2", null, "O prêmio vem com crescimento, mas exige seleção."),
+            React.createElement(
+              "p",
+              null,
+              "FactSet/IBD reportou +63,2% YoY de lucro no 1T para a Magnificent 7, contra +17,4% para o restante do S&P 500. Goldman ainda vê crescimento superior nas mega caps, mas a dispersão dentro do grupo importa."
+            )
+          ),
+          React.createElement(
+            "section",
+            { className: "panel equity-summary" },
+            React.createElement("h2", null, "Nifty Fifty: analogia útil, mas imperfeita."),
+            React.createElement(
+              "p",
+              null,
+              "Nos anos 70, IBM, Coca-Cola, McDonald's, Xerox e Polaroid eram vistas como empresas excepcionais, capazes de crescer por muito tempo. A tese era parecida: qualidade tão alta que valuation parecia secundário."
+            ),
+            React.createElement(
+              "p",
+              null,
+              "A Magnificent 7 atual tem escala global, software, cloud, efeitos de rede, IA e geração de caixa em outro patamar. O risco não é que todas virem uma Polaroid; é pagar múltiplos que já embutem crescimento perfeito."
+            ),
+            React.createElement("p", null, "Empresas melhores não tornam qualquer preço aceitável.")
+          )
+        );
+
+        return React.createElement(
+          "main",
+          { className: "equity-layout" },
+          filter,
+          equityView === "broad" ? broadView : megaView
+        );
+      }
+
+      const MODULE_COPY = {
+        curve: {
+          title: "O retorno livre de risco voltou a competir por capital",
+          lead: "Curvas de Treasuries, TIPS e inflação implícita para separar inflação, juro real e prêmio de prazo.",
+          thesis: "Carry",
+          subtitle: "Duration moderada (2.3y)",
+        },
+        equity: {
+          title: "Valuation do mercado americano",
+          lead: "O S&P 500 negocia caro, mas o prêmio está concentrado principalmente na Magnificent 7.",
+          thesis: "Concentração",
+          subtitle: "Prêmio na Magnificent 7",
+        },
+        tech: {
+          title: "Todo grande ciclo tecnológico começa com excesso de capital",
+          lead: "Ferrovias, eletrificação, internet e IA seguem uma lógica comum: CAPEX agressivo, excesso, seleção e concentração dos ganhos.",
+          thesis: "IA é CAPEX",
+          subtitle: "Narrativa, excesso e seleção",
+        },
+        core: {
+          title: "O veículo define a exposição real da carteira",
+          lead: "Em carteiras globais, ETF não é só custo: define liquidez, fiscalidade, acumulação, hedge, concentração e eficiência operacional.",
+          thesis: "Implementação",
+          subtitle: "Exposição, veículo e função",
+        },
+      };
+
+      MODULE_COPY.satellites = {
+        title: "Satélites devem combinar convexidade, veículo correto e tamanho de risco",
+        lead: "A alocação satélite não é lista de temas: cada tese precisa casar motor econômico, instrumento e risco de implementação.",
+        thesis: "Convexidade",
+        subtitle: "ETF vs cesta",
+      };
+
+      MODULE_COPY.europe = {
+        title: "Na Europa, o core compra o continente — a cesta compra a tese",
+        lead: "A exposição ampla diversifica. As melhores teses exigem seleção: defesa, luxo, pharma, soberania digital e industriais.",
+        thesis: "Seleção",
+        subtitle: "Europa estratégica",
+      };
+
+      MODULE_COPY.china = {
+        title: "China continua relevante — mas o canal de exposição importa mais",
+        lead: "A economia chinesa segue central para consumo, manufatura, commodities e cadeias globais. Isso não significa que a melhor forma de capturar China seja comprar ações chinesas diretamente.",
+        thesis: "Canal",
+        subtitle: "Direta, indireta ou China+1",
+      };
+
+      MODULE_COPY.hedges = {
+        title: "Estratégias líquidas de hedge",
+        lead: "Quando Treasuries, TIPS, caixa e ouro já estão cobertos em outras camadas, hedge vira engenharia de payoff, beta e volatilidade.",
+        thesis: "Payoff",
+        subtitle: "Opções, beta e volatilidade",
+      };
+
+      const TECH_CYCLES = [
+        {
+          cycle: "Ferrovias",
+          capex: ["Muito alto", "capex-very"],
+          excess: ["Alto", "risk-high"],
+          destruction: ["Muito alta", "risk-very"],
+          winners: ["Alto", "winner-high"],
+          lesson: "Infraestrutura real; capital destruído.",
+        },
+        {
+          cycle: "Eletrificação",
+          capex: ["Alto", "capex-high"],
+          excess: ["Médio", "risk-mid"],
+          destruction: ["Média", "risk-mid"],
+          winners: ["Alto", "winner-high"],
+          lesson: "Escala captura valor.",
+        },
+        {
+          cycle: "Dotcom",
+          capex: ["Muito alto", "capex-very"],
+          excess: ["Muito alto", "risk-very"],
+          destruction: ["Muito alta", "risk-very"],
+          winners: ["Muito alto", "winner-very"],
+          lesson: "Tese certa; preço errado.",
+        },
+        {
+          cycle: "IA atual",
+          capex: ["Muito alto", "capex-very"],
+          excess: ["Em formação", "unknown"],
+          destruction: ["Ainda incompleta", "unknown"],
+          winners: ["Indefinido", "unknown"],
+          lesson: "Vencedores ainda em seleção.",
+        },
+      ];
+
+      const CYCLE_DETAILS = {
+        Ferrovias: {
+          anatomy:
+            "O investimento era real: trilhos, terras, pontes, locomotivas e concessões. Nos EUA, o excesso de linhas, a dívida ferroviária e projetos antes da demanda alimentaram crises como 1873 e 1893. A infraestrutura ficou; muitos acionistas e credores quebraram. O valor migrou para redes consolidadas, rotas críticas e operadores com escala logística.",
+          lesson: "Infraestrutura real não garante retorno para todo investidor.",
+        },
+        "Eletrificação": {
+          anatomy:
+            "O CAPEX criou usinas, redes de transmissão, distribuição urbana, motores elétricos e equipamentos industriais. A disputa entre padrões, utilities locais e fabricantes eliminou operadores sem escala. O domínio ficou com quem controlou equipamentos, rede e distribuição: General Electric, Westinghouse e grandes utilities reguladas.",
+          lesson: "Valor não vem só da infraestrutura; vem quando ela vira uso recorrente e escala econômica.",
+        },
+        Dotcom: {
+          anatomy:
+            "A tese da internet estava certa, mas o capital entrou cedo demais e caro demais. Entre 1999 e 2002 houve excesso de fibra, telecom, servidores, portais e e-commerce sem lucro. WorldCom e Global Crossing simbolizaram a destruição em infraestrutura; Amazon, Google, Microsoft e Apple sobreviveram, escalaram e monetizaram.",
+          lesson: "Tese certa pode destruir capital quando preço, timing e monetização estão errados.",
+        },
+        "IA atual": {
+          anatomy:
+            "O CAPEX é real: GPUs, HBM, networking, data centers, energia, cooling, cloud e modelos fundacionais. A captura inicial aparece em Nvidia, TSMC, ASML, Broadcom, hyperscalers, equipamentos elétricos e data centers. O risco não é a IA ser falsa; é pagar por sucesso perfeito antes da monetização final em aplicações.",
+          lesson: "O ciclo é real, mas os vencedores finais ainda estão sendo escolhidos.",
+        },
+      };
+
+      const AI_STACK = [
+        ["Energia / Grid", "Demanda física: utilities, transmissão e equipamentos.", "money-now", "fluxo de CAPEX visível"],
+        ["Data centers / Cooling", "Infraestrutura crítica: Vertiv, Eaton, Schneider, Equinix.", "money-now", "fluxo de CAPEX visível"],
+        ["Chips / HBM / Networking", "Gargalo tecnológico: Nvidia, TSMC, Broadcom, ASML.", "money-flow", "captura acelerada"],
+        ["Cloud / Hyperscalers", "Escala e distribuição: Microsoft, Amazon, Google, Oracle.", "money-forming", "monetização em formação"],
+        ["Aplicações", "Monetização final: software, agentes e vertical apps.", "money-future", "prova ainda incompleta"],
+      ];
+
+      const TECH_TIMELINE = [
+        ["1", "Narrativa", ""],
+        ["2", "CAPEX", "current-zone"],
+        ["3", "Excesso", "current-zone"],
+        ["4", "Quebra / seleção", ""],
+        ["5", "Concentração dos ganhos", ""],
+      ];
+
+      const GOVERNMENT_STACK = [
+        ["Semicondutores", "CHIPS Act / Intel", "Reindustrialização e soberania de chips."],
+        ["Quantum / supercomputação", "IBM, National Quantum Initiative, DOE labs", "Próxima fronteira de computação, criptografia e defesa."],
+        ["Data centers / energia", "FERC, DOE, terrenos federais, grid", "IA precisa de eletricidade, conexão e licenciamento."],
+        ["Defesa / segurança nacional", "Pentagon, cloud, IA militar, ciber", "Demanda estatal para tecnologias dual-use."],
+        ["Pesquisa básica", "NSF, DARPA, DOE, universidades", "Estado financia a base científica antes da monetização privada."],
+      ];
+
+      function TechCycleModule() {
+        const [selectedCycle, setSelectedCycle] = useState("Ferrovias");
+        const cycleDetail = CYCLE_DETAILS[selectedCycle] || CYCLE_DETAILS.Ferrovias;
+        const intensity = (entry) =>
+          React.createElement("span", { className: `intensity ${entry[1]}` }, entry[0]);
+
+        return React.createElement(
+          "main",
+          { className: "tech-layout" },
+          React.createElement(
+            "section",
+            { className: "tech-main" },
+            React.createElement(
+              "article",
+              { className: "panel source-card" },
+              React.createElement(
+                "div",
+                { className: "section-head" },
+                React.createElement(
+                  "div",
+                  null,
+                  React.createElement("span", { className: "control-title" }, "Matriz de ciclos"),
+                  React.createElement("h2", null, "Inovação real não impede destruição de capital")
+                )
+              ),
+              React.createElement(
+                "div",
+                { className: "cycle-table-wrap" },
+                React.createElement(
+                  "table",
+                  { className: "cycle-table" },
+                  React.createElement(
+                    "thead",
+                    null,
+                    React.createElement(
+                      "tr",
+                      null,
+                      React.createElement("th", null, "Ciclo"),
+                      React.createElement("th", null, "CAPEX inicial"),
+                      React.createElement("th", null, "Excesso / bolha"),
+                      React.createElement("th", null, "Destruição de capital"),
+                      React.createElement("th", null, "Vencedores finais"),
+                      React.createElement("th", null, "Lição para IA")
+                    )
+                  ),
+                  React.createElement(
+                    "tbody",
+                    null,
+                    TECH_CYCLES.map((row) =>
+                      React.createElement(
+                        "tr",
+                        { key: row.cycle, className: selectedCycle === row.cycle ? "is-selected" : undefined, onClick: () => setSelectedCycle(row.cycle) },
+                        React.createElement("td", null, row.cycle),
+                        React.createElement("td", null, intensity(row.capex)),
+                        React.createElement("td", null, intensity(row.excess)),
+                        React.createElement("td", null, intensity(row.destruction)),
+                        React.createElement("td", null, intensity(row.winners)),
+                        React.createElement("td", { className: "lesson-cell" }, row.lesson)
+                      )
+                    )
+                  )
+                )
+              ),
+              React.createElement(
+                "div",
+                { className: "cycle-detail" },
+                React.createElement("span", { className: "control-title" }, "Anatomia do ciclo"),
+                React.createElement("h3", null, selectedCycle),
+                React.createElement("p", null, cycleDetail.anatomy),
+                React.createElement("p", { className: "cycle-lesson" }, `Lição para IA: ${cycleDetail.lesson}`)
+              )
+            ),
+            React.createElement(
+              "article",
+              { className: "panel source-card" },
+              React.createElement(
+                "div",
+                { className: "section-head" },
+                React.createElement(
+                  "div",
+                  null,
+                  React.createElement("span", { className: "control-title" }, "Fluxo econômico"),
+                  React.createElement("h2", null, "O capital entra pela infraestrutura antes de aparecer na monetização final")
+                )
+              ),
+              React.createElement(
+                "div",
+                { className: "stack-frame" },
+                React.createElement(
+                  "div",
+                  { className: "stack-arrow", "aria-label": "Ler da infraestrutura para a monetização" }
+                ),
+                React.createElement(
+                  "div",
+                  { className: "ai-stack" },
+                  AI_STACK.map((layer) =>
+                    React.createElement(
+                      "div",
+                      { className: `stack-layer ${layer[2]}`, key: layer[0] },
+                      React.createElement("strong", null, layer[0]),
+                      React.createElement("span", null, layer[1]),
+                      React.createElement("div", { className: "money-tag" }, layer[3])
+                    )
+                  )
+                )
+              )
+            )
+          ),
+          React.createElement(
+            "section",
+            { className: "panel source-card" },
+            React.createElement(
+              "div",
+              { className: "section-head" },
+              React.createElement(
+                "div",
+                null,
+                React.createElement("span", { className: "control-title" }, "Linha do tempo"),
+                React.createElement("h2", null, "Onde estamos na IA?")
+              )
+            ),
+            React.createElement(
+              "div",
+              { className: "timeline" },
+              TECH_TIMELINE.map((step) =>
+                React.createElement(
+                  "div",
+                  {
+                    className: `timeline-step ${step[2]}`,
+                    key: step[0],
+                    "aria-current": step[2] ? "step" : undefined,
+                  },
+                  React.createElement("span", null, step[0]),
+                  React.createElement("strong", null, step[1])
+                )
+              )
+            ),
+            React.createElement(
+              "p",
+              { className: "timeline-note" },
+              "IA está na zona entre CAPEX acelerado e formação de excesso, antes da seleção completa dos vencedores."
+            )
+          ),
+          React.createElement(
+            "section",
+            { className: "panel source-card" },
+            React.createElement(
+              "div",
+              { className: "section-head" },
+              React.createElement(
+                "div",
+                null,
+                React.createElement("span", { className: "control-title" }, "Estado Estratégico"),
+                React.createElement("h2", null, "Onde o governo aparece")
+              )
+            ),
+            React.createElement(
+              "div",
+              { className: "cycle-table-wrap" },
+              React.createElement(
+                "table",
+                { className: "policy-table" },
+                React.createElement(
+                  "thead",
+                  null,
+                  React.createElement(
+                    "tr",
+                    null,
+                    React.createElement("th", null, "Onde aparece"),
+                    React.createElement("th", null, "Exemplo"),
+                    React.createElement("th", null, "Por que importa")
+                  )
+                ),
+                React.createElement(
+                  "tbody",
+                  null,
+                  GOVERNMENT_STACK.map((row) =>
+                    React.createElement(
+                      "tr",
+                      { key: row[0] },
+                      React.createElement("td", null, row[0]),
+                      React.createElement("td", null, row[1]),
+                      React.createElement("td", null, row[2])
+                    )
+                  )
+                )
+              )
+            )
+          )
+        );
+      }
+
+      const CORE_FUNCTIONS = [
+        { fn: "Beta estrutural EUA", why: "Baixo custo, replicação eficiente e longo prazo.", tickers: ["VOO", "CSPX", "VUAA"], note: "Preferir UCITS Acc para offshore não-US quando fiscalmente adequado." },
+        { fn: "Execução / hedge EUA", why: "Liquidez, opções e profundidade de mercado.", tickers: ["SPY"], note: "Melhor para puts, collars, overlays e rebalanceamento tático." },
+        { fn: "Growth estrutural", why: "Nasdaq-100 com menor custo ou versão UCITS.", tickers: ["QQQM", "CNDX", "EQQQ"], note: "QQQ executa melhor; QQQM/UCITS carregam melhor." },
+        { fn: "Growth tático / hedge", why: "Opções profundas e liquidez superior.", tickers: ["QQQ"], note: "Instrumento de trading, não necessariamente melhor veículo fiscal." },
+        { fn: "Redução de concentração", why: "Reduz dominância das mega caps.", tickers: ["RSP"], note: "Aumenta exposição a cíclicas e risco de juros." },
+        { fn: "Core global desenvolvido", why: "MSCI World com peso relevante em EUA.", tickers: ["IWDA", "SWDA"], note: "Serve para simplificar core global, não para reduzir EUA." },
+        { fn: "Core developed ex-US", why: "Diversificação desenvolvida fora dos EUA.", tickers: ["VEA", "IEFA"], note: "VEA inclui Canadá; IEFA segue EAFE e exclui EUA/Canadá." },
+        { fn: "Core Europa", why: "Exposição regional.", tickers: ["VGK", "IEUR", "FEZ", "IMEU"], note: "ETF amplo não captura bem defesa, luxo e soberania digital." },
+        { fn: "Emergentes amplos", why: "Beta EM diversificado.", tickers: ["VWO", "IEMG", "EIMI"], note: "China pode dominar demais o risco." },
+        { fn: "Emergentes ex-China", why: "Reduz risco China.", tickers: ["EMXC", "EXCH"], note: "Útil para China+1 e diversificação geopolítica." },
+        { fn: "Treasuries USD Acc", why: "Escada de títulos do Tesouro americano por duration.", tickers: ["IB01", "IBTA", "CBU7", "IBTM", "DTLA"], note: "Do caixa remunerado à posição direcional em queda de juros." },
+        { fn: "Inflação USD Acc", why: "TIPS com diferentes perfis de duration.", tickers: ["TIP5", "ITPS", "ITPE"], note: "Separa proteção inflacionária curta de inflação ampla." },
+        { fn: "Crédito e core bond", why: "Spread corporativo e diversificação global em bonds.", tickers: ["LQDA", "IHYA", "AGGU"], note: "IG, high yield e agregado global cumprem funções distintas." },
+        { fn: "Hedge macro", why: "Proteção de regime, moeda forte e reserva de valor.", tickers: ["GLD", "IAU", "FXF / CHF"], note: "Ouro físico e franco suíço como diversificadores macro." },
+      ];
+
+      const CORE_TOKEN_GROUPS = {
+        VOO: "etf-us",
+        CSPX: "etf-us",
+        VUAA: "etf-us",
+        SPY: "etf-us",
+        QQQM: "etf-us",
+        CNDX: "etf-us",
+        EQQQ: "etf-us",
+        QQQ: "etf-us",
+        RSP: "etf-us",
+        VEA: "etf-developed",
+        IEFA: "etf-developed",
+        IWDA: "etf-global",
+        SWDA: "etf-global",
+        VGK: "etf-developed",
+        IEUR: "etf-developed",
+        FEZ: "etf-developed",
+        IMEU: "etf-developed",
+        VWO: "etf-emerging",
+        IEMG: "etf-emerging",
+        EIMI: "etf-emerging",
+        EMXC: "etf-emerging",
+        EXCH: "etf-emerging",
+        IB01: "etf-fixed",
+        IBTA: "etf-fixed",
+        CBU7: "etf-fixed",
+        IBTM: "etf-fixed",
+        DTLA: "etf-fixed",
+        TIP5: "etf-fixed",
+        ITPS: "etf-fixed",
+        ITPE: "etf-fixed",
+        LQDA: "etf-fixed",
+        IHYA: "etf-fixed",
+        AGGU: "etf-fixed",
+        GLD: "etf-other",
+        IAU: "etf-other",
+        "FXF / CHF": "etf-other",
+      };
+
+      const UCITS_TICKERS = new Set([
+        "CSPX",
+        "VUAA",
+        "CNDX",
+        "EQQQ",
+        "IWDA",
+        "SWDA",
+        "IMEU",
+        "EIMI",
+        "EXCH",
+        "IB01",
+        "IBTA",
+        "CBU7",
+        "IBTM",
+        "DTLA",
+        "TIP5",
+        "ITPS",
+        "ITPE",
+        "LQDA",
+        "IHYA",
+        "AGGU",
+      ]);
+
+      const coreTokenClass = (ticker, ucitsView) => {
+        const classes = ["etf-token", CORE_TOKEN_GROUPS[ticker] || "etf-other"];
+        if (ucitsView === "ucits") {
+          classes.push(UCITS_TICKERS.has(ticker) ? "is-ucits-highlight" : "is-muted");
+        }
+        return classes.join(" ");
+      };
+
+      const CORE_COUNTRY_WEIGHTS = {
+        VEA: [
+          ["Japão", 21.0],
+          ["Reino Unido", 12.0],
+          ["Canadá", 9.0],
+          ["França", 8.0],
+          ["Suíça", 7.5],
+          ["Alemanha", 7.0],
+        ],
+        IEFA: [
+          ["Japão", 25.7],
+          ["Reino Unido", 13.9],
+          ["França", 9.0],
+          ["Suíça", 8.7],
+          ["Alemanha", 8.0],
+          ["Austrália", 7.1],
+        ],
+        IWDA: [
+          ["EUA", 72.0],
+          ["Japão", 5.5],
+          ["Reino Unido", 3.5],
+          ["Canadá", 3.0],
+          ["França", 2.8],
+          ["Suíça", 2.6],
+        ],
+        SWDA: [
+          ["EUA", 72.0],
+          ["Japão", 5.5],
+          ["Reino Unido", 3.5],
+          ["Canadá", 3.0],
+          ["França", 2.8],
+          ["Suíça", 2.6],
+        ],
+        VGK: [
+          ["Reino Unido", 23.0],
+          ["França", 17.0],
+          ["Suíça", 15.0],
+          ["Alemanha", 13.0],
+          ["Holanda", 7.0],
+          ["Suécia", 6.0],
+        ],
+        IEUR: [
+          ["Reino Unido", 21.5],
+          ["França", 18.2],
+          ["Suíça", 16.5],
+          ["Alemanha", 13.6],
+          ["Holanda", 7.3],
+          ["Dinamarca", 5.4],
+        ],
+        FEZ: [
+          ["França", 34.0],
+          ["Alemanha", 31.0],
+          ["Holanda", 14.0],
+          ["Espanha", 8.0],
+          ["Itália", 7.0],
+          ["Bélgica", 3.0],
+        ],
+        IMEU: [
+          ["Reino Unido", 22.0],
+          ["França", 18.0],
+          ["Suíça", 16.2],
+          ["Alemanha", 13.8],
+          ["Holanda", 7.2],
+          ["Dinamarca", 5.1],
+        ],
+        VWO: [
+          ["Taiwan", 29.0],
+          ["China", 29.0],
+          ["Índia", 19.0],
+          ["Brasil", 4.0],
+          ["Arábia Saudita", 3.0],
+          ["África do Sul", 3.0],
+        ],
+        IEMG: [
+          ["Taiwan", 28.1],
+          ["Coreia do Sul", 21.7],
+          ["China", 17.9],
+          ["Índia", 12.2],
+          ["Brasil", 3.7],
+          ["África do Sul", 3.0],
+        ],
+        EIMI: [
+          ["Taiwan", 28.0],
+          ["Coreia do Sul", 21.5],
+          ["China", 18.0],
+          ["Índia", 12.0],
+          ["Brasil", 3.7],
+          ["África do Sul", 3.0],
+        ],
+        EMXC: [
+          ["Taiwan", 34.6],
+          ["Coreia do Sul", 28.2],
+          ["Índia", 13.6],
+          ["Brasil", 4.6],
+          ["África do Sul", 3.6],
+          ["Arábia Saudita", 3.0],
+        ],
+        EXCH: [
+          ["Taiwan", 34.5],
+          ["Coreia do Sul", 28.0],
+          ["Índia", 13.5],
+          ["Brasil", 4.5],
+          ["África do Sul", 3.5],
+          ["Arábia Saudita", 3.0],
+        ],
+      };
+
+      const CORE_DETAILS = {
+        VOO: ["Beta estrutural EUA", "Carregar S&P 500 com baixo custo.", "Não é o melhor instrumento para hedge com opções.", ["Veículo eficiente para buy and hold.", "Boa escolha quando fiscalidade US-listed é aceitável.", "Menos vocacionado a overlays táticos do que SPY."]],
+        CSPX: ["Beta estrutural EUA", "S&P 500 UCITS acumulador.", "Menos útil para execução tática e opções.", ["Apropriado para muitas carteiras offshore não-US.", "Accumulating reduz distribuição de caixa.", "Veículo de carregamento, não de trading."]],
+        VUAA: ["Beta estrutural EUA", "S&P 500 UCITS Acc com custo competitivo.", "Menor profundidade tática que SPY.", ["Bom para reinvestimento automático.", "Útil quando domicílio UCITS importa.", "Função principal: core estrutural."]],
+        SPY: ["Execução / hedge EUA", "Liquidez, opções e execução tática.", "Pode não ser o veículo mais eficiente para carregar patrimônio offshore.", ["Excelente para puts, collars e overlays.", "Profundidade de mercado reduz fricção.", "Instrumento de operação, não necessariamente de carregamento fiscal."]],
+        QQQ: ["Growth tático / hedge", "Execução e opções em Nasdaq-100.", "Buy and hold pode pedir outro veículo.", ["Alta liquidez intradiária.", "Opções profundas.", "Concentração em growth e tecnologia é parte da tese."]],
+        QQQM: ["Growth estrutural", "Carregar Nasdaq-100 com custo menor.", "Menos ideal para trading pesado que QQQ.", ["Melhor vocação para posição estrutural.", "Mantém exposição growth concentrada.", "Diferença de veículo importa no horizonte longo."]],
+        CNDX: ["Growth estrutural", "Nasdaq-100 UCITS Acc.", "Não substitui QQQ em liquidez/opções.", ["Útil para offshore não-US.", "Acumulação facilita reinvestimento.", "Exposição growth com wrapper UCITS."]],
+        EQQQ: ["Growth estrutural", "Nasdaq-100 em formato UCITS.", "Verificar distribuição, custo e moeda de negociação.", ["Alternativa europeia para Nasdaq-100.", "Boa para separar exposição de veículo.", "Comparar com CNDX conforme domicílio e política de distribuição."]],
+        RSP: ["Redução de concentração", "Equal weight no S&P 500.", "Não é automaticamente melhor; muda fatores de risco.", ["Reduz peso da Magnificent 7.", "Aumenta sensibilidade a mid/large cíclicas.", "Pode sofrer mais com juros e ciclo doméstico."]],
+        VEA: ["Core developed ex-US", "Mercados desenvolvidos fora dos EUA.", "Pode diluir qualidade/crescimento versus EUA.", ["Diversificação geográfica ampla.", "Exposição a Europa, Japão e Pacífico.", "Ver overlap com ETFs regionais."]],
+        IEFA: ["Core developed ex-US", "Developed ex-US amplo.", "Não resolve sozinho a composição setorial desejada.", ["Alternativa ampla para mercados desenvolvidos.", "Boa peça de core internacional.", "Checar tracking, custo e domicílio."]],
+        IWDA: ["Core global desenvolvido", "MSCI World UCITS.", "Inclui EUA; pode sobrepor com S&P 500.", ["Veículo UCITS amplo.", "Útil para simplificar core global.", "Checar overlap com VOO/CSPX/VUAA."]],
+        SWDA: ["Core global desenvolvido", "MSCI World UCITS Acc.", "Não é ex-US; EUA domina o índice.", ["Acumulação e ampla diversificação.", "Bom para carteira offshore simples.", "Requer controle de concentração EUA."]],
+        VGK: ["Core Europa", "Beta europeu amplo.", "Europa ampla pode esconder teses setoriais distintas.", ["Exposição regional direta.", "Útil para rebalancear geografia.", "Não captura perfeitamente luxo, defesa e soberania digital."]],
+        IEUR: ["Core Europa", "Europa ampla com veículo iShares.", "Avaliar custo, domicílio e liquidez.", ["Peça regional para developed markets.", "Pode complementar core global.", "Checar sobreposição com VEA/IEFA."]],
+        FEZ: ["Core Europa", "Euro Stoxx 50.", "Mais concentrado que Europa ampla.", ["Exposição blue chips da zona do euro.", "Mais concentrado em grandes nomes.", "Não substitui Europa ampla."]],
+        IMEU: ["Core Europa", "Europa via UCITS.", "Checar benchmark e política de distribuição.", ["Ferramenta regional para offshore.", "Útil para controle de domicílio.", "Comparar com VGK/IEUR/FEZ."]],
+        VWO: ["Emergentes amplos", "Beta emergente diversificado.", "China pode dominar o risco.", ["Exposição ampla a EM.", "Custo competitivo.", "Risco geopolítico e China precisam ser conscientes."]],
+        IEMG: ["Emergentes amplos", "EM amplo com grande liquidez.", "Não neutraliza China por si só.", ["Inclui large, mid e small em EM.", "Boa peça de beta emergente.", "Avaliar composição regional."]],
+        EIMI: ["Emergentes amplos", "EM UCITS amplo.", "Risco China e tracking devem ser monitorados.", ["Útil para offshore UCITS.", "Diversificação EM ampla.", "Checar Acc/Dist e moeda."]],
+        EMXC: ["Emergentes ex-China", "Tese China+1 e redução de risco China.", "Não representa o beta EM tradicional completo.", ["Remove o principal risco geopolítico do EM amplo.", "Aumenta peso relativo de Índia, Taiwan e outros.", "Útil como complemento."]],
+        EXCH: ["Emergentes ex-China", "EM ex-China em wrapper UCITS.", "Checar liquidez e tracking.", ["Separação geopolítica do beta EM.", "Útil para carteiras offshore.", "Complementa VWO/IEMG/EIMI."]],
+        IB01: ["Liquidez USD", "iShares $ Treasury Bond 0-1yr UCITS ETF USD Acc.", "Caixa remunerado em dólar, não aposta de duration.", ["Serve como liquidez remunerada.", "Baixa volatilidade e baixa sensibilidade a juros.", "Bom veículo Acc quando o objetivo é reinvestimento offshore."]],
+        IBTA: ["Duration curta", "iShares $ Treasury Bond 1-3yr UCITS ETF USD Acc.", "Baixa sensibilidade a juros.", ["Adiciona um pouco mais de duration que caixa.", "Útil para carregar yield sem alongar demais.", "Funciona como primeiro degrau depois de liquidez."]],
+        CBU7: ["Duration média curta", "iShares $ Treasury Bond 3-7yr UCITS ETF USD Acc.", "Miolo curto da curva.", ["Equilibra carrego e risco de duration.", "Pode capturar cortes moderados sem ir para a ponta longa.", "Boa peça intermediária em escada de Treasuries."]],
+        IBTM: ["Duration média", "iShares $ Treasury Bond 7-10yr UCITS ETF USD Acc.", "Hedge parcial contra queda de juros.", ["Mais sensível ao ciclo de política monetária.", "Pode ajudar quando a tese pede queda de juros.", "Exige mais convicção do que os vértices curtos."]],
+        DTLA: ["Duration longa", "iShares $ Treasury Bond 20+yr UCITS ETF USD Acc.", "Posição direcional em queda de juros.", ["Alta sensibilidade a juros longos.", "Potencial de ganho maior se yields comprimirem.", "Volatilidade relevante; não é simples caixa remunerado."]],
+        TIP5: ["Inflação curta", "iShares $ TIPS 0-5 UCITS ETF USD Acc.", "Proteção inflacionária com duration menor.", ["Combina juro real positivo com menor duration.", "Mais alinhado a carrego real do que a aposta em juros longos.", "Evita misturar inflação com duration excessiva."]],
+        ITPS: ["Inflação ampla", "iShares $ TIPS UCITS ETF Acc.", "Inflação americana com mais duration.", ["Protege contra inflação realizada em uma cesta mais ampla.", "Traz mais sensibilidade a juros reais.", "Útil quando a carteira aceita mais duration."]],
+        ITPE: ["Inflação ampla", "iShares $ TIPS UCITS ETF Acc.", "Inflação americana com mais duration.", ["Alternativa para exposição ampla a TIPS.", "A escolha final depende da bolsa/listagem e política operacional.", "Comparar custo, tracking e moeda de negociação."]],
+        LQDA: ["Crédito IG USD", "iShares $ Corp Bond UCITS ETF USD Acc.", "Spread corporativo investment grade.", ["Adiciona prêmio de crédito com qualidade maior.", "Não substitui Treasury como hedge de crise.", "Sensível a spread, duration e ciclo corporativo."]],
+        IHYA: ["High Yield USD", "iShares $ High Yield Corp Bond UCITS ETF USD Acc.", "Crédito mais arriscado e yield maior.", ["Carrega mais spread e mais risco de default.", "Funciona melhor quando crédito e ciclo estão construtivos.", "Não deve ser tratado como renda fixa defensiva."]],
+        AGGU: ["Core bond global", "iShares Core Global Aggregate Bond UCITS ETF USD Acc.", "Diversificação global em bonds.", ["Combina governos e crédito global.", "Útil como peça ampla de renda fixa.", "Checar hedge cambial, duration e composição antes de usar como core."]],
+        GLD: ["Hedge macro", "SPDR Gold Shares.", "ETF de ouro físico com alta liquidez.", ["Funciona como ativo real/monetário.", "Ajuda em choques de confiança e regimes adversos.", "Mais usado quando liquidez e profundidade importam."]],
+        IAU: ["Hedge macro", "iShares Gold Trust.", "ETF de ouro físico com custo competitivo.", ["Alternativa eficiente para carregar exposição a ouro.", "Útil como diversificador macro de longo prazo.", "Menor foco em trading pesado do que GLD."]],
+        "FXF / CHF": ["Hedge macro", "Invesco CurrencyShares Swiss Franc Trust.", "Exposição ao franco suíço contra o dólar.", ["Refúgio histórico em choques de confiança.", "Baixo carrego, liquidez menor que grandes ETFs e risco de intervenção do SNB.", "Dólar é o hedge natural contra Brasil. Franco suíço é hedge de qualidade monetária. Ouro é hedge de regime."]],
+      };
+
+      const SATELLITE_FILTERS = {
+        zone: [
+          ["all", "Todos"],
+          ["resolve", "ETF resolve"],
+          ["partial", "ETF parcial"],
+          ["basket", "Precisa cesta"],
+        ],
+        aggression: [
+          ["all", "Todos"],
+          ["high", "Alta convexidade"],
+          ["medium", "Convexidade média"],
+          ["defensive", "Defensivo"],
+        ],
+        motor: [
+          ["all", "Todos"],
+          ["ai", "IA hardware"],
+          ["energy", "Energia & grid"],
+          ["defense", "Defesa"],
+          ["cyber", "Cyber"],
+          ["industry", "Reindustrialização"],
+          ["housing", "Moradia"],
+          ["demography", "Demografia"],
+        ],
+        vehicle: [
+          ["all", "Todos"],
+          ["etf", "ETF"],
+          ["hybrid", "ETF + cesta"],
+          ["basket", "Cesta"],
+        ],
+      };
+
+      const SATELLITES = [
+        {
+          theme: "Semicondutores / IA hardware",
+          icon: "chip",
+          zone: "resolve",
+          aggression: "high",
+          motor: "ai",
+          vehicle: "hybrid",
+          etfs: "SMH / SOXX",
+          quality: "Alta",
+          implementation: "ETF + cesta",
+          reading: "Captura o gargalo central da IA, mas carrega alta sensibilidade ao ciclo de CAPEX.",
+          names: ["Nvidia", "TSMC", "Broadcom", "ASML", "AMD"],
+          extraTitle: "Empresas estratégicas fora do ETF",
+          extraCompanies: [
+            "Samsung Electronics: memória HBM, DRAM e NAND.",
+            "SK Hynix: líder em HBM para IA.",
+            "Tokyo Electron: equipamentos para fabricação de chips.",
+            "Advantest: testes de chips avançados.",
+          ],
+          points: ["ETF captura bem a cadeia de valor.", "Valuation e ciclo de semicondutores precisam ser monitorados.", "Boa primeira camada para exposição à infraestrutura de IA."],
+        },
+        {
+          theme: "Defesa EUA",
+          icon: "shield",
+          zone: "resolve",
+          aggression: "medium",
+          motor: "defense",
+          vehicle: "etf",
+          etfs: "ITA / PPA",
+          quality: "Alta",
+          implementation: "ETF",
+          reading: "Geopolítica, orçamento público e tecnologia dual-use sustentam demanda estrutural.",
+          names: ["Lockheed Martin", "RTX", "Northrop Grumman", "General Dynamics"],
+          points: ["ETF representa bem as grandes contratadas americanas.", "Demanda estatal reduz dependência do consumidor.", "Mistura defesa tradicional, ciber e tecnologia militar."],
+        },
+        {
+          theme: "Cybersecurity",
+          icon: "network",
+          zone: "resolve",
+          aggression: "medium",
+          motor: "cyber",
+          vehicle: "etf",
+          etfs: "CIBR / HACK",
+          quality: "Média/alta",
+          implementation: "ETF",
+          reading: "Demanda estrutural, recorrente e menos dependente de CAPEX físico.",
+          names: ["Palo Alto", "CrowdStrike", "Fortinet", "Zscaler"],
+          points: ["ETF funciona, mas a composição deve ser monitorada.", "Tema recorrente dentro de segurança digital.", "Menos binário do que quantum ou data centers físicos."],
+        },
+        {
+          theme: "Robotics / automação",
+          icon: "robotics",
+          zone: "partial",
+          aggression: "high",
+          motor: "industry",
+          vehicle: "hybrid",
+          etfs: "BOTZ / ROBO",
+          quality: "Média",
+          implementation: "ETF + cesta",
+          reading: "Tema forte, mas os ETFs misturam empresas com motores econômicos diferentes.",
+          names: ["Rockwell", "ABB", "Fanuc", "Teradyne"],
+          points: ["ETF ajuda como camada inicial.", "Cesta melhora precisão da tese.", "Automação industrial é subtema relevante de reindustrialização."],
+        },
+        {
+          theme: "Energia / grid",
+          icon: "energy",
+          zone: "partial",
+          aggression: "medium",
+          motor: "energy",
+          vehicle: "hybrid",
+          etfs: "XLE / GRID / PAVE / XLU",
+          quality: "Parcial",
+          implementation: "ETF + cesta",
+          reading: "A tese é eletrificação, transmissão e equipamentos, não apenas energia tradicional.",
+          names: ["Eaton", "Hubbell", "Quanta Services", "Constellation", "NextEra"],
+          points: ["ETF amplo dilui o motor econômico.", "Cesta separa utilities, equipamentos e engenharia.", "Data centers tornam o grid uma restrição estratégica."],
+        },
+        {
+          theme: "Infrastructure / utilities",
+          icon: "grid",
+          zone: "partial",
+          aggression: "defensive",
+          motor: "energy",
+          vehicle: "hybrid",
+          etfs: "XLU / PAVE / GRID",
+          quality: "Média",
+          implementation: "ETF + cesta",
+          reading: "Exposição mais defensiva, ligada a CAPEX físico, regulação e demanda elétrica.",
+          names: ["Duke Energy", "Southern Company", "NextEra", "Quanta Services"],
+          points: ["Pode estabilizar a carteira.", "Risco de duration precisa ser monitorado.", "ETF amplo mistura perfil defensivo com sensibilidade a juros."],
+        },
+        {
+          theme: "Construção residencial",
+          icon: "home",
+          zone: "resolve",
+          aggression: "medium",
+          motor: "housing",
+          vehicle: "etf",
+          etfs: "ITB / XHB",
+          quality: "Alta",
+          implementation: "ETF",
+          reading: "Escassez estrutural de moradias, terrenos e capacidade de construção.",
+          names: ["D.R. Horton", "Lennar", "PulteGroup", "NVR"],
+          points: ["Demanda habitacional é estrutural, mas sensível a juros.", "ETF ajuda a capturar o ciclo de homebuilders.", "A tese melhora quando a oferta nova segue restrita."],
+        },
+        {
+          theme: "Materiais e infraestrutura da construção",
+          icon: "factory",
+          zone: "resolve",
+          aggression: "medium",
+          motor: "housing",
+          vehicle: "etf",
+          etfs: "PKB",
+          quality: "Média/alta",
+          implementation: "ETF",
+          reading: "Fornecedores críticos da cadeia habitacional e de infraestrutura.",
+          names: ["Builders FirstSource", "Vulcan Materials", "Martin Marietta", "Masco"],
+          points: ["Captura a cadeia de construção além dos homebuilders.", "Mistura moradia, infraestrutura e materiais.", "Sensível a ciclo, mas apoiada por necessidade física."],
+        },
+        {
+          theme: "Cuidados com idosos",
+          icon: "home",
+          zone: "basket",
+          aggression: "defensive",
+          motor: "demography",
+          vehicle: "basket",
+          etfs: "Sem ETF puro",
+          quality: "Baixa",
+          implementation: "Cesta",
+          reading: "Envelhecimento aumenta demanda por residências assistidas, enfermagem e serviços de longo prazo.",
+          names: ["Brookdale Senior Living", "The Ensign Group", "Option Care Health"],
+          points: ["Demografia cria vento estrutural.", "Oferta cresce devagar por mão de obra e regulação.", "Cesta pequena evita ETF genérico demais."],
+        },
+        {
+          theme: "Distribuição farmacêutica",
+          icon: "pulse",
+          zone: "basket",
+          aggression: "defensive",
+          motor: "demography",
+          vehicle: "basket",
+          etfs: "Sem ETF limpo",
+          quality: "Baixa",
+          implementation: "Cesta de ações",
+          reading: "Mercado altamente concentrado, responsável pela distribuição da maior parte dos medicamentos nos Estados Unidos.",
+          names: ["McKesson", "Cencora", "Cardinal Health"],
+          points: ["Receitas recorrentes, escala operacional elevada e barreiras logísticas.", "Demanda estrutural impulsionada por envelhecimento populacional e maior consumo de medicamentos.", "Riscos: margens reduzidas, pressão regulatória, mudanças no sistema de reembolso e concentração de clientes."],
+        },
+        {
+          theme: "Data centers físicos",
+          icon: "server",
+          zone: "basket",
+          aggression: "high",
+          motor: "ai",
+          vehicle: "basket",
+          etfs: "SRVR / VPN / proxies",
+          quality: "Baixa",
+          implementation: "Cesta",
+          reading: "ETFs ainda capturam mal energia, cooling, equipamentos e networking.",
+          names: ["Vertiv", "Eaton", "Schneider", "Equinix", "Digital Realty", "Arista", "Broadcom"],
+          points: ["Tema físico e fragmentado.", "REITs e proxies não capturam a cadeia completa.", "Aqui a cesta vira necessidade de implementação."],
+        },
+        {
+          theme: "Onshoring / reindustrialização",
+          icon: "factory",
+          zone: "basket",
+          aggression: "medium",
+          motor: "industry",
+          vehicle: "basket",
+          etfs: "XLI / AIRR",
+          quality: "Parcial",
+          implementation: "Cesta",
+          reading: "ETF industrial amplo dilui a tese de reindustrialização.",
+          names: ["Rockwell", "Emerson", "Honeywell", "Caterpillar", "Nucor", "Union Pacific"],
+          points: ["Exige separar automação, transporte, aço e bens de capital.", "ETF amplo tende a olhar indústria passada, não necessariamente CAPEX futuro.", "Cesta melhora aderência à tese."],
+        },
+        {
+          theme: "Quantum / frontier computing",
+          icon: "atom",
+          zone: "basket",
+          aggression: "high",
+          motor: "ai",
+          vehicle: "basket",
+          etfs: "QTUM / cestas",
+          quality: "Baixa/média",
+          implementation: "Cesta pequena",
+          reading: "Opcionalidade alta, baixa previsibilidade e dispersão extrema de resultados.",
+          names: ["IBM", "IonQ", "Rigetti", "D-Wave", "Microsoft"],
+          points: ["Tamanho inicial deve ser controlado.", "O tema ainda está escolhendo vencedores.", "ETF pode misturar empresas pouco expostas ao motor real."],
+        },
+      ];
+
+      function SatelliteIcon({ type }) {
+        const iconProps = { viewBox: "0 0 24 24", fill: "none", strokeWidth: 1.8, strokeLinecap: "round", strokeLinejoin: "round", "aria-hidden": "true" };
+        const path = (d) => React.createElement("path", { d, key: d });
+        const line = (x1, y1, x2, y2) => React.createElement("line", { x1, y1, x2, y2, key: `${x1}-${y1}-${x2}-${y2}` });
+        const circle = (cx, cy, r) => React.createElement("circle", { cx, cy, r, key: `${cx}-${cy}-${r}` });
+        const rect = (x, y, width, height, rx = 2) => React.createElement("rect", { x, y, width, height, rx, key: `${x}-${y}-${width}-${height}` });
+
+        const shapes = {
+          chip: [
+            rect(7, 7, 10, 10, 2),
+            line(4, 9, 7, 9),
+            line(4, 15, 7, 15),
+            line(17, 9, 20, 9),
+            line(17, 15, 20, 15),
+            line(9, 4, 9, 7),
+            line(15, 4, 15, 7),
+            line(9, 17, 9, 20),
+            line(15, 17, 15, 20),
+          ],
+          shield: [path("M12 3l7 3v5c0 4.5-2.8 8-7 10-4.2-2-7-5.5-7-10V6l7-3z"), path("M9 12l2 2 4-5")],
+          network: [circle(7, 8, 2), circle(17, 8, 2), circle(12, 17, 2), line(9, 9, 15, 9), line(8, 10, 11, 15), line(16, 10, 13, 15)],
+          robotics: [path("M5 18h8"), path("M8 18v-5l4-4 3 3-4 4"), circle(16, 7, 2), path("M14 19l4-4"), path("M18 15l2 2")],
+          energy: [path("M13 2L5 14h6l-1 8 8-12h-6l1-8z")],
+          grid: [path("M12 3l7 18H5l7-18z"), line(8, 13, 16, 13), line(9.5, 17, 14.5, 17), line(12, 3, 12, 21)],
+          server: [rect(5, 5, 14, 5, 1), rect(5, 14, 14, 5, 1), circle(8, 7.5, 0.7), circle(8, 16.5, 0.7), line(11, 7.5, 16, 7.5), line(11, 16.5, 16, 16.5)],
+          factory: [path("M4 20V9l5 3V9l5 3V5h6v15H4z"), line(7, 16, 7, 16), line(11, 16, 11, 16), line(15, 16, 15, 16)],
+          home: [path("M4 11l8-7 8 7"), path("M6 10v10h12V10"), path("M10 20v-6h4v6")],
+          book: [path("M5 5.5A3.5 3.5 0 018.5 2H20v17H8.5A3.5 3.5 0 005 22V5.5z"), path("M5 5.5A3.5 3.5 0 018.5 9H20")],
+          diamond: [path("M6 4h12l3 5-9 11L3 9l3-5z"), path("M3 9h18"), path("M8 4l4 16 4-16")],
+          pulse: [path("M20 12h-4l-2 5-4-10-2 5H4"), path("M12 21C7 17.5 4 14.5 4 10a4 4 0 017-2.6A4 4 0 0118 10c0 4.5-3 7.5-6 11z")],
+          atom: [circle(12, 12, 1.5), React.createElement("ellipse", { cx: 12, cy: 12, rx: 8, ry: 3.2, key: "e1" }), React.createElement("ellipse", { cx: 12, cy: 12, rx: 8, ry: 3.2, transform: "rotate(60 12 12)", key: "e2" }), React.createElement("ellipse", { cx: 12, cy: 12, rx: 8, ry: 3.2, transform: "rotate(120 12 12)", key: "e3" })],
+        };
+
+        return React.createElement("span", { className: "satellite-icon" }, React.createElement("svg", iconProps, shapes[type] || shapes.chip));
+      }
+
+      function SatelliteModule() {
+        const riskOrder = { high: 0, medium: 1, defensive: 2 };
+        const [filters, setFilters] = useState({ aggression: "all", motor: "all" });
+        const [selectedTheme, setSelectedTheme] = useState("Semicondutores / IA hardware");
+        const filtered = SATELLITES.filter((item) =>
+          Object.entries(filters).every(([key, value]) => value === "all" || item[key] === value)
+        ).sort((a, b) => riskOrder[a.aggression] - riskOrder[b.aggression] || a.theme.localeCompare(b.theme, "pt-BR"));
+        const active = filtered.find((item) => item.theme === selectedTheme) || filtered[0] || SATELLITES[0];
+
+        const filterRow = (key, label) =>
+          React.createElement(
+            "div",
+            { className: "filter-row", key },
+            React.createElement("span", { className: "filter-label" }, label),
+            SATELLITE_FILTERS[key].map(([value, text]) =>
+              React.createElement(
+                "button",
+                {
+                  className: "filter-chip",
+                  type: "button",
+                  key: value,
+                  "aria-pressed": filters[key] === value,
+                  onClick: () => setFilters({ ...filters, [key]: value }),
+                },
+                text
+              )
+            )
+          );
+
+        return React.createElement(
+          "main",
+          { className: "satellite-layout" },
+          React.createElement(
+            "article",
+            { className: "panel" },
+            React.createElement("div", { className: "section-head" }, React.createElement("div", null, React.createElement("span", { className: "control-title" }, "Satélites temáticos"))),
+            React.createElement(
+              "div",
+              { className: "satellite-filters" },
+              filterRow("aggression", "Convexidade"),
+              filterRow("motor", "Motor"),
+              React.createElement(
+                "div",
+                { className: "risk-legend" },
+                React.createElement("span", { className: "sat-risk-high" }, "Alta convexidade"),
+                React.createElement("span", { className: "sat-risk-medium" }, "Convexidade média"),
+                React.createElement("span", { className: "sat-risk-defensive" }, "Defensivo")
+              )
+            ),
+            React.createElement(
+              "div",
+              { className: "satellite-grid" },
+              filtered.map((item) =>
+                React.createElement(
+                  "button",
+                  { className: `satellite-card sat-risk-${item.aggression}`, type: "button", key: item.theme, "aria-pressed": active.theme === item.theme, onClick: () => setSelectedTheme(item.theme) },
+                  React.createElement(
+                    "div",
+                    null,
+                    React.createElement("div", { className: "satellite-title-row" }, React.createElement(SatelliteIcon, { type: item.icon }), React.createElement("h3", null, item.theme)),
+                    React.createElement("p", null, item.reading)
+                  )
+                )
+              )
+            )
+          ),
+          React.createElement(
+            "aside",
+            { className: "panel satellite-detail" },
+            React.createElement("span", { className: "detail-role" }, "Tema selecionado"),
+            React.createElement("div", { className: `satellite-detail-head sat-risk-${active.aggression}` }, React.createElement(SatelliteIcon, { type: active.icon }), React.createElement("h2", null, active.theme)),
+            React.createElement(
+              "div",
+              { className: "detail-grid" },
+              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "ETF possível"), React.createElement("strong", null, active.etfs)),
+              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Implementação"), React.createElement("strong", null, active.implementation)),
+              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Qualidade do ETF"), React.createElement("strong", null, active.quality))
+            ),
+            React.createElement("p", null, active.reading),
+            React.createElement("ul", { className: "satellite-list" }, active.points.map((point) => React.createElement("li", { key: point }, point))),
+            active.extraCompanies
+              ? React.createElement(
+                  "div",
+                  { className: "detail-box proxy-box" },
+                  React.createElement("span", null, active.extraTitle),
+                  React.createElement("ul", { className: "satellite-list" }, active.extraCompanies.map((point) => React.createElement("li", { key: point }, point)))
+                )
+              : null,
+            React.createElement("div", { className: "detail-box proxy-box" }, React.createElement("span", null, "Nomes / proxies"), React.createElement("strong", null, active.names.join(" · "))),
+            React.createElement("p", { className: "data-note" }, "Base: exemplos e proxies setoriais, junho/2026. Cestas não são exaustivas.")
+          )
+        );
+      }
+      const EUROPE_THEMES = [
+        {
+          theme: "Defesa europeia",
+          icon: "shield",
+          status: "Não",
+          quality: "Cesta superior",
+          tone: "sat-risk-high",
+          implementation: "Cesta",
+          etfs: "ETF amplo europeu dilui a tese",
+          tag: "Sem ETF limpo",
+          why: "Rearmamento, OTAN e soberania militar.",
+          thesis: "Novo ciclo de gasto militar europeu. A exposição é fragmentada por países e campeões nacionais.",
+          names: ["Rheinmetall", "BAE Systems", "Leonardo", "Saab", "Thales", "Dassault Aviation", "Airbus", "Safran", "Rolls-Royce", "Hensoldt", "Kongsberg", "Indra"],
+          points: ["Gasto militar virou prioridade.", "ETF amplo dilui defesa.", "Cesta captura campeões nacionais."],
+        },
+        {
+          theme: "Soberania digital",
+          icon: "network",
+          status: "Não",
+          quality: "Cesta superior",
+          tone: "sat-risk-high",
+          implementation: "Cesta",
+          etfs: "Sem ETF limpo para a tese",
+          tag: "Sem ETF limpo",
+          why: "Cloud local, telecom, software, cyber e dados.",
+          thesis: "A Europa não tem um hyperscaler dominante. A tese é uma arquitetura regulada de infraestrutura, software e segurança.",
+          names: ["SAP", "OVHcloud", "Deutsche Telekom", "Orange", "Telefónica", "Capgemini", "Dassault Systèmes", "Sopra Steria", "Thales", "Schneider", "Siemens", "Legrand"],
+          points: ["Mais controle de dados do que crescimento explosivo.", "Regulação sustenta demanda.", "Cesta evita depender de um único nome."],
+        },
+        {
+          theme: "Luxo / China indireta",
+          icon: "diamond",
+          status: "Parcial",
+          quality: "ETF parcial",
+          tone: "sat-risk-medium",
+          implementation: "Cesta",
+          etfs: "LUXU / GLUX (UCITS) como exposição simples; LUXY como alternativa US-listed",
+          tag: "LUXU / GLUX",
+          why: "Pricing power e consumidor asiático indireto.",
+          thesis: "Luxo europeu combina marca, escassez e margem global. ETF existe, mas a tese fica mais limpa em marcas específicas.",
+          names: ["LVMH", "Hermès", "Ferrari", "Richemont", "Moncler", "Prada", "Kering", "L’Oréal", "EssilorLuxottica", "Pernod Ricard"],
+          points: ["LUXU/GLUX dão exposição simples.", "ETF compra o setor; cesta compra marcas escassas.", "Cesta separa líderes de marcas frágeis."],
+        },
+        {
+          theme: "Pharma / healthcare",
+          icon: "pulse",
+          status: "Parcial",
+          quality: "ETF parcial",
+          tone: "sat-risk-defensive",
+          implementation: "Cesta ou ETF setorial",
+          etfs: "EXV4 / XDWH / healthcare global como primeira camada; cesta melhora precisão",
+          tag: "EXV4 / XDWH",
+          why: "Defensividade, inovação e receita global.",
+          thesis: "Pharma europeia combina pesquisa, escala global e menor dependência do ciclo econômico.",
+          names: ["Novo Nordisk", "Roche", "Novartis", "AstraZeneca", "Sanofi", "GSK", "Merck KGaA", "Lonza", "Genmab", "UCB"],
+          points: ["Receita global.", "Menor ciclicidade.", "Qualidade defensiva."],
+        },
+        {
+          theme: "Eletrificação / industriais",
+          icon: "energy",
+          status: "Parcial",
+          quality: "ETF parcial",
+          tone: "sat-risk-high",
+          implementation: "Cesta",
+          etfs: "GRID / PAVE / ETF industrial europeu como primeira camada",
+          tag: "GRID / PAVE",
+          why: "Grid, automação e equipamentos elétricos.",
+          thesis: "A Europa tem líderes em equipamentos elétricos, automação e componentes críticos para infraestrutura, IA e data centers.",
+          names: ["Schneider Electric", "Siemens", "ABB", "Legrand", "Prysmian", "Assa Abloy", "Atlas Copco", "Sandvik", "Infineon", "STMicroelectronics", "ASML"],
+          points: ["Conversa com IA, energia e data centers.", "ETF industrial amplo dilui qualidade.", "Cesta captura melhor equipamentos e automação."],
+        },
+        {
+          theme: "Semis europeus",
+          icon: "chip",
+          status: "Parcial",
+          quality: "ETF parcial",
+          tone: "sat-risk-high",
+          implementation: "Cesta",
+          etfs: "SMH / SOXX como proxy global; cesta para Europa pura",
+          tag: "SMH / SOXX",
+          why: "ASML, power semis e equipment crítico.",
+          thesis: "A Europa não domina toda a cadeia, mas controla peças críticas em equipment, analog e power semis.",
+          names: ["ASML", "Infineon", "STMicroelectronics", "ASM International", "BE Semiconductor", "Soitec"],
+          points: ["ASML é difícil de replicar.", "Exposição concentrada em poucos nomes.", "Cesta evita diluição."],
+        },
+      ];
+
+      function EuropeModule() {
+        const legendOrder = { "sat-risk-high": 0, "sat-risk-defensive": 1, "sat-risk-medium": 2 };
+        const sortedThemes = [...EUROPE_THEMES].sort((a, b) => legendOrder[a.tone] - legendOrder[b.tone] || a.theme.localeCompare(b.theme, "pt-BR"));
+        const [selectedTheme, setSelectedTheme] = useState("Defesa europeia");
+        const active = EUROPE_THEMES.find((item) => item.theme === selectedTheme) || EUROPE_THEMES[0];
+
+        return React.createElement(
+          "main",
+          { className: "satellite-layout" },
+          React.createElement(
+            "article",
+            { className: "panel" },
+            React.createElement("div", { className: "section-head" }, React.createElement("div", null, React.createElement("span", { className: "control-title" }, "Bolsões estratégicos"))),
+            React.createElement(
+              "div",
+              { className: "risk-legend", style: { padding: "14px 16px 0" } },
+              React.createElement("span", { className: "sat-risk-high" }, "Estratégia de crescimento local"),
+              React.createElement("span", { className: "sat-risk-defensive" }, "Tema defensivo"),
+              React.createElement("span", { className: "sat-risk-medium" }, "Exposição à China")
+            ),
+            React.createElement(
+              "div",
+              { className: "satellite-grid", style: { paddingTop: 16 } },
+              sortedThemes.map((item) =>
+                React.createElement(
+                  "button",
+                  { className: `satellite-card ${item.tone}`, type: "button", key: item.theme, "aria-pressed": active.theme === item.theme, onClick: () => setSelectedTheme(item.theme) },
+                  React.createElement(
+                    "div",
+                    null,
+                    React.createElement("div", { className: "satellite-title-row" }, React.createElement(SatelliteIcon, { type: item.icon }), React.createElement("h3", null, item.theme)),
+                    React.createElement("p", null, item.why)
+                  )
+                )
+              )
+            )
+          ),
+          React.createElement(
+            "aside",
+            { className: "panel satellite-detail" },
+            React.createElement("span", { className: "detail-role" }, "Tema selecionado"),
+            React.createElement("div", { className: `satellite-detail-head ${active.tone}` }, React.createElement(SatelliteIcon, { type: active.icon }), React.createElement("h2", null, active.theme)),
+            React.createElement(
+              "div",
+              { className: "detail-grid" },
+              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "ETF amplo"), React.createElement("strong", null, active.status)),
+              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Implementação"), React.createElement("strong", null, active.implementation)),
+              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Leitura do veículo"), React.createElement("strong", null, active.quality)),
+              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Primeira camada"), React.createElement("strong", null, active.etfs))
+            ),
+            React.createElement("p", null, active.thesis),
+            React.createElement("ul", { className: "satellite-list" }, active.points.map((point) => React.createElement("li", { key: point }, point))),
+            React.createElement("div", { className: "detail-box proxy-box" }, React.createElement("span", null, "Cesta possível"), React.createElement("strong", null, active.names.join(" · "))),
+            React.createElement("p", { className: "data-note" }, "Base: exemplos de ETFs/proxies e cestas estratégicas, junho/2026. Lista não exaustiva.")
+          )
+        );
+      }
+
+      const CHINA_FILTERS = {
+        channel: [
+          ["all", "Todos"],
+          ["direct", "China direta"],
+          ["indirect", "China indireta"],
+          ["china1", "China+1"],
+        ],
+        motor: [
+          ["all", "Todos"],
+          ["market", "Mercado"],
+          ["consumer", "Consumo"],
+          ["physical", "Demanda física"],
+          ["technology", "Tecnologia"],
+          ["chain", "Cadeia"],
+        ],
+      };
+
+      const CHINA_CHANNELS = [
+        {
+          theme: "China direta",
+          icon: "network",
+          channel: "direct",
+          motor: "market",
+          tone: "sat-risk-high",
+          instruments: "MCHI, FXI, KWEB, ASHR, KBA",
+          captures: "Mercado acionário chinês, consumo local, internet e A-shares.",
+          risk: "Governança, intervenção estatal, geopolítica, VIEs e deflação.",
+          reading: "Exposição pura, mas risco alto. Comprar China exige escolher qual China.",
+          points: ["MCHI compra China ampla.", "FXI concentra large caps/Hong Kong.", "KWEB compra internet chinesa.", "ASHR/KBA compram A-shares onshore."],
+          names: ["Alibaba", "Tencent", "PDD", "Baidu", "A-shares", "large caps Hong Kong"],
+        },
+        {
+          theme: "China indireta — luxo",
+          icon: "diamond",
+          channel: "indirect",
+          motor: "consumer",
+          tone: "sat-risk-medium",
+          instruments: "LVMH, Hermès, Ferrari, Richemont, Moncler, Prada, L'Oréal",
+          captures: "Consumidor chinês premium e demanda asiática sem comprar bolsa chinesa diretamente.",
+          risk: "Ciclo de consumo chinês, turismo, confiança e desaceleração de renda.",
+          reading: "Mais qualidade e menor risco político direto, mas ainda dependente do consumidor asiático.",
+          points: ["Marcas globais, margens altas e pricing power.", "Menor risco jurídico/político direto.", "ETF de luxo existe, mas cesta costuma ser mais limpa."],
+          names: ["LVMH", "Hermès", "Ferrari", "Richemont", "Moncler", "Prada", "L'Oréal", "EssilorLuxottica"],
+        },
+        {
+          theme: "China indireta — commodities",
+          icon: "energy",
+          channel: "indirect",
+          motor: "physical",
+          tone: "sat-risk-medium",
+          instruments: "BHP, Rio Tinto, Freeport, Glencore, Vale, COPX, PICK",
+          captures: "Demanda chinesa por cobre, minério, energia e infraestrutura.",
+          risk: "Ciclo industrial, construção, estímulo estatal e preço de commodities.",
+          reading: "Aqui a China aparece como comprador físico, não como mercado acionário.",
+          points: ["Exposição mais ligada a recursos reais.", "Mais cíclica e sensível a estímulo.", "Boa para separar China física de China listada."],
+          names: ["BHP", "Rio Tinto", "Freeport-McMoRan", "Glencore", "Vale", "COPX", "PICK"],
+        },
+        {
+          theme: "China indireta — tecnologia",
+          icon: "chip",
+          channel: "indirect",
+          motor: "technology",
+          tone: "sat-risk-high",
+          instruments: "ASML, TSMC, Applied Materials, Lam, KLA, Nvidia, Broadcom",
+          captures: "Cadeia tecnológica global com demanda chinesa e gargalos estratégicos.",
+          risk: "Sanções, restrições de exportação, Taiwan e competição geopolítica.",
+          reading: "Exposição estratégica, mas com geopolítica no centro da tese.",
+          points: ["Captura gargalos de semicondutores e equipment.", "Não depende apenas do consumidor chinês.", "Export controls podem mudar a tese rapidamente."],
+          names: ["ASML", "TSMC", "Applied Materials", "Lam Research", "KLA", "Nvidia", "Broadcom"],
+        },
+        {
+          theme: "China+1",
+          icon: "factory",
+          channel: "china1",
+          motor: "chain",
+          tone: "sat-risk-defensive",
+          instruments: "INDA, FLIN, EWW, VNM, EWT, EWY",
+          captures: "Diversificação de cadeia, nearshoring e manufatura alternativa.",
+          risk: "Valuation, execução local, infraestrutura e capacidade institucional.",
+          reading: "Não é abandonar China. É comprar seguro contra concentração em uma única cadeia.",
+          points: ["Índia combina mercado doméstico, serviços e escala demográfica.", "México captura nearshoring para os EUA.", "Vietnã e Sudeste Asiático capturam manufatura alternativa."],
+          names: ["Índia", "México", "Vietnã", "Indonésia", "Taiwan", "Coreia"],
+        },
+        {
+          theme: "EM ex-China",
+          icon: "grid",
+          channel: "china1",
+          motor: "chain",
+          tone: "sat-risk-defensive",
+          instruments: "EMXC / EXCH",
+          captures: "Emergentes sem peso dominante da China.",
+          risk: "Perde eventual recuperação chinesa e pode diluir teses específicas.",
+          reading: "Solução estrutural para reduzir risco China sem abandonar emergentes.",
+          points: ["Remove o risco dominante chinês do bloco emergente.", "Ajuda na construção de core EM mais neutro geopoliticamente.", "Menos tático; mais arquitetura de carteira."],
+          names: ["Índia", "Taiwan", "Coreia", "Brasil", "México", "Sudeste Asiático"],
+        },
+      ];
+
+      function ChinaModule() {
+        const [filters, setFilters] = useState({ channel: "all", motor: "all" });
+        const [selectedTheme, setSelectedTheme] = useState("China direta");
+        const order = { direct: 0, indirect: 1, china1: 2 };
+        const filtered = CHINA_CHANNELS.filter((item) =>
+          Object.entries(filters).every(([key, value]) => value === "all" || item[key] === value)
+        ).sort((a, b) => order[a.channel] - order[b.channel] || a.theme.localeCompare(b.theme, "pt-BR"));
+        const active = filtered.find((item) => item.theme === selectedTheme) || filtered[0] || CHINA_CHANNELS[0];
+
+        const filterRow = (key, label) =>
+          React.createElement(
+            "div",
+            { className: "filter-row", key },
+            React.createElement("span", { className: "filter-label" }, label),
+            CHINA_FILTERS[key].map(([value, text]) =>
+              React.createElement(
+                "button",
+                {
+                  className: "filter-chip",
+                  type: "button",
+                  key: value,
+                  "aria-pressed": filters[key] === value,
+                  onClick: () => setFilters({ ...filters, [key]: value }),
+                },
+                text
+              )
+            )
+          );
+
+        return React.createElement(
+          "main",
+          { className: "satellite-layout" },
+          React.createElement(
+            "article",
+            { className: "panel" },
+            React.createElement(
+              "div",
+              { className: "section-head" },
+              React.createElement("div", null, React.createElement("span", { className: "control-title" }, "Matriz de exposição"), React.createElement("h2", null, "Direta, indireta ou substituição parcial"))
+            ),
+            React.createElement(
+              "div",
+              { className: "satellite-filters" },
+              filterRow("channel", "Canal"),
+              filterRow("motor", "Motor"),
+              React.createElement(
+                "div",
+                { className: "risk-legend" },
+                React.createElement("span", { className: "sat-risk-high" }, "Risco geopolítico direto"),
+                React.createElement("span", { className: "sat-risk-medium" }, "Demanda chinesa indireta"),
+                React.createElement("span", { className: "sat-risk-defensive" }, "China+1 / redução de dependência")
+              )
+            ),
+            React.createElement(
+              "div",
+              { className: "satellite-grid" },
+              filtered.map((item) =>
+                React.createElement(
+                  "button",
+                  { className: `satellite-card ${item.tone}`, type: "button", key: item.theme, "aria-pressed": active.theme === item.theme, onClick: () => setSelectedTheme(item.theme) },
+                  React.createElement(
+                    "div",
+                    null,
+                    React.createElement("div", { className: "satellite-title-row" }, React.createElement(SatelliteIcon, { type: item.icon }), React.createElement("h3", null, item.theme))
+                  )
+                )
+              )
+            )
+          ),
+          React.createElement(
+            "aside",
+            { className: "panel satellite-detail" },
+            React.createElement("span", { className: "detail-role" }, "Canal selecionado"),
+            React.createElement("div", { className: `satellite-detail-head ${active.tone}` }, React.createElement(SatelliteIcon, { type: active.icon }), React.createElement("h2", null, active.theme)),
+            React.createElement(
+              "div",
+              { className: "detail-grid" },
+              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Instrumentos"), React.createElement("strong", null, active.instruments)),
+              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Captura"), React.createElement("strong", null, active.captures)),
+              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Risco principal"), React.createElement("strong", null, active.risk))
+            ),
+            React.createElement("p", null, active.reading),
+            React.createElement("ul", { className: "satellite-list" }, active.points.map((point) => React.createElement("li", { key: point }, point))),
+            React.createElement("div", { className: "detail-box proxy-box" }, React.createElement("span", null, "Exemplos"), React.createElement("strong", null, active.names.join(" · "))),
+            React.createElement("p", { className: "data-note" }, "Base: exemplos de canais e instrumentos, junho/2026. Pesos e composição devem ser checados no provedor antes da execução.")
+          )
+        );
+      }
+
+      const HEDGE_FILTERS = {
+        objective: [
+          ["all", "Todos"],
+          ["income", "Renda"],
+          ["beta", "Beta"],
+          ["stress", "Stress"],
+          ["payoff", "Payoff"],
+        ],
+      };
+
+      const HEDGE_STRATEGIES = [
+        {
+          theme: "Income de opções",
+          icon: "network",
+          objective: "income",
+          tone: "sat-risk-medium",
+          instruments: "JEPI, JEPQ, XYLD, QYLD",
+          does: "Vende calls para transformar parte da alta esperada em renda corrente.",
+          use: "Mercado lateral ou carteira que prioriza income.",
+          limit: "Continua sendo equity e fica para trás em alta forte.",
+          reading: "Renda hoje em troca de menos upside amanhã.",
+          examples: ["JEPI: equity defensivo + opções", "JEPQ: Nasdaq/growth + opções", "XYLD: S&P 500 covered call", "QYLD: Nasdaq 100 covered call"],
+        },
+        {
+          theme: "Equity defensivo / min-vol",
+          icon: "shield",
+          objective: "beta",
+          tone: "sat-risk-defensive",
+          instruments: "USMV, SPLV, MVOL / Min Vol UCITS",
+          does: "Troca bolsa agressiva por uma cesta historicamente menos volátil.",
+          use: "Reduzir beta sem sair de equity.",
+          limit: "Ainda cai em crise e pode perder em bull market concentrado.",
+          reading: "Menos beta, não menos mercado.",
+          examples: ["USMV: min-vol EUA", "SPLV: baixa volatilidade no S&P 500", "MVOL / UCITS: versões globais ou regionais"],
+        },
+        {
+          theme: "Volatilidade / VIX",
+          icon: "pulse",
+          objective: "stress",
+          tone: "sat-risk-high",
+          instruments: "VIXY, VXX, UVXY, VIX futures UCITS",
+          does: "Ganha quando a volatilidade implícita dispara.",
+          use: "Stress curto, evento específico ou proteção tática.",
+          limit: "Decay e rolagem tornam o carregamento caro.",
+          reading: "Funciona melhor como proteção de emergência.",
+          examples: ["VIXY: futuros curtos de VIX", "VXX: ETN de futuros curtos", "UVXY: alavancado", "UCITS: alternativa offshore"],
+        },
+        {
+          theme: "Hedge tático direcional",
+          icon: "shield",
+          objective: "stress",
+          tone: "sat-risk-high",
+          instruments: "SH, PSQ, RWM, EUM, SDS, QID, SQQQ, SPXU",
+          does: "Sobe quando o índice cai, geralmente em base diária.",
+          use: "Hedge curto sem vender a posição original.",
+          limit: "Compounding e decay punem carregamento longo.",
+          reading: "Direcional, curto prazo e disciplinado.",
+          examples: ["SH: -1x S&P 500", "PSQ: -1x Nasdaq-100", "RWM: -1x small caps", "EUM: -1x emergentes", "SDS / QID / SQQQ / SPXU: alavancados"],
+        },
+        {
+          theme: "Buffered / defined outcome",
+          icon: "server",
+          objective: "payoff",
+          tone: "sat-risk-medium",
+          instruments: "Innovator Buffer ETFs, FT Vest Buffer ETFs, AllianzIM Buffered Outcome ETFs",
+          does: "Cria buffer de queda em troca de teto de alta.",
+          use: "Cliente que aceita cap para reduzir perda moderada.",
+          limit: "Depende da janela, do buffer e do cap vigentes.",
+          reading: "Proteção parcial, não seguro total.",
+          examples: ["Innovator Buffer ETFs: séries como BJAN/BJUN/BJUL", "FT Vest Buffer ETFs: famílias como FJAN/FJUN/FJUL", "AllianzIM Buffered Outcome ETFs: buffer e cap definidos", "Collars/put spreads: estruturas, não ETFs prontos"],
+        },
+        {
+          theme: "Desconcentração",
+          icon: "grid",
+          objective: "beta",
+          tone: "sat-risk-defensive",
+          instruments: "RSP, QQEW, USMV",
+          does: "Reduz dependência de mega caps e liderança estreita.",
+          use: "Quando o risco principal é concentração em poucos nomes.",
+          limit: "Não protege queda geral do mercado.",
+          reading: "Hedge de concentração, não de crash.",
+          examples: ["RSP: S&P 500 equal weight", "QQEW: Nasdaq 100 equal weight", "USMV: min-vol com viés defensivo"],
+        },
+        {
+          theme: "Opções diretas sobre índice",
+          icon: "shield",
+          objective: "payoff",
+          tone: "sat-risk-high",
+          instruments: "SPY puts, QQQ puts, put spreads, collars",
+          does: "Define piso, custo, prazo e participação na alta.",
+          use: "Proteção sob medida em SPY, QQQ ou índices líquidos.",
+          limit: "Custa prêmio, vende upside ou limita a proteção.",
+          reading: "Mais precisão, mais trade-off.",
+          examples: ["Protective put: seguro direto", "Put spread: proteção parcial", "Collar: put + call vendida", "Put spread financiado por call: custo menor, alta limitada"],
+        },
+      ];
+
+      function HedgeModule() {
+        const [filters, setFilters] = useState({ objective: "all" });
+        const [selectedTheme, setSelectedTheme] = useState("Income de opções");
+        const toneOrder = { "sat-risk-high": 0, "sat-risk-medium": 1, "sat-risk-defensive": 2 };
+        const filtered = HEDGE_STRATEGIES.filter((item) =>
+          Object.entries(filters).every(([key, value]) => value === "all" || item[key] === value)
+        ).sort((a, b) => toneOrder[a.tone] - toneOrder[b.tone] || a.theme.localeCompare(b.theme, "pt-BR"));
+        const active = filtered.find((item) => item.theme === selectedTheme) || filtered[0] || HEDGE_STRATEGIES[0];
+
+        const filterRow = (key, label) =>
+          React.createElement(
+            "div",
+            { className: "filter-row", key },
+            React.createElement("span", { className: "filter-label" }, label),
+            HEDGE_FILTERS[key].map(([value, text]) =>
+              React.createElement(
+                "button",
+                {
+                  className: "filter-chip",
+                  type: "button",
+                  key: value,
+                  "aria-pressed": filters[key] === value,
+                  onClick: () => setFilters({ ...filters, [key]: value }),
+                },
+                text
+              )
+            )
+          );
+
+        return React.createElement(
+          "main",
+          { className: "satellite-layout" },
+          React.createElement(
+            "article",
+            { className: "panel" },
+            React.createElement(
+              "div",
+              { className: "section-head" },
+              React.createElement("div", null, React.createElement("span", { className: "control-title" }, "Estratégias de hedge"), React.createElement("h2", null, "Payoff, beta, volatilidade e moeda"))
+            ),
+            React.createElement(
+              "div",
+              { className: "satellite-filters" },
+              filterRow("objective", "Objetivo"),
+              React.createElement(
+                "div",
+                { className: "risk-legend" },
+                React.createElement("span", { className: "sat-risk-high" }, "Tático / alto custo de carregamento"),
+                React.createElement("span", { className: "sat-risk-medium" }, "Payoff / income"),
+                React.createElement("span", { className: "sat-risk-defensive" }, "Redução de beta")
+              )
+            ),
+            React.createElement(
+              "div",
+              { className: "satellite-grid" },
+              filtered.map((item) =>
+                React.createElement(
+                  "button",
+                  { className: `satellite-card ${item.tone}`, type: "button", key: item.theme, "aria-pressed": active.theme === item.theme, onClick: () => setSelectedTheme(item.theme) },
+                  React.createElement(
+                    "div",
+                    null,
+                    React.createElement("div", { className: "satellite-title-row" }, React.createElement(SatelliteIcon, { type: item.icon }), React.createElement("h3", null, item.theme)),
+                    React.createElement("p", null, item.reading)
+                  )
+                )
+              )
+            )
+          ),
+          React.createElement(
+            "aside",
+            { className: "panel satellite-detail" },
+            React.createElement("span", { className: "detail-role" }, "Hedge selecionado"),
+            React.createElement("div", { className: `satellite-detail-head ${active.tone}` }, React.createElement(SatelliteIcon, { type: active.icon }), React.createElement("h2", null, active.theme)),
+            React.createElement(
+              "div",
+              { className: "detail-grid" },
+              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Instrumentos"), React.createElement("strong", null, active.instruments)),
+              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "O que faz"), React.createElement("strong", null, active.does)),
+              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Uso correto"), React.createElement("strong", null, active.use)),
+              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Limitação"), React.createElement("strong", null, active.limit))
+            ),
+            React.createElement("p", null, active.reading),
+            React.createElement("ul", { className: "satellite-list" }, active.examples.map((point) => React.createElement("li", { key: point }, point))),
+            React.createElement("p", { className: "data-note" }, "Base: instrumentos líquidos e estruturas comuns, junho/2026. Produtos táticos exigem checagem de prazo, liquidez, custo e regra diária.")
+          )
+        );
+      }
+
+      function CoreModule() {
+        const [selectedEtf, setSelectedEtf] = useState("VOO");
+        const [ucitsView, setUcitsView] = useState("all");
+        const setCoreUcitsView = (nextView) => {
+          setUcitsView(nextView);
+          if (nextView === "ucits" && !UCITS_TICKERS.has(selectedEtf)) {
+            setSelectedEtf("CSPX");
+          }
+        };
+        const detail = CORE_DETAILS[selectedEtf] || CORE_DETAILS.VOO;
+        const countryWeights = CORE_COUNTRY_WEIGHTS[selectedEtf];
+        const maxCountryWeight = countryWeights ? Math.max(...countryWeights.map((row) => row[1])) : 0;
+
+        return React.createElement(
+          "main",
+          { className: "tech-layout" },
+          React.createElement(
+            "section",
+            { className: "core-layout" },
+            React.createElement(
+              "article",
+              { className: "panel" },
+              React.createElement("div", { className: "section-head" }, React.createElement("div", null, React.createElement("span", { className: "control-title" }, "Matriz de implementação"), React.createElement("h2", null, "Função antes do ticker"))),
+              React.createElement(
+                "div",
+                { className: "core-legend-row" },
+                React.createElement(
+                  "div",
+                  { className: "core-legend" },
+                  React.createElement("span", { className: "etf-token etf-us" }, "EUA"),
+                  React.createElement("span", { className: "etf-token etf-global" }, "Global desenvolvido"),
+                  React.createElement("span", { className: "etf-token etf-developed" }, "Developed ex-US"),
+                  React.createElement("span", { className: "etf-token etf-emerging" }, "Emergentes"),
+                  React.createElement("span", { className: "etf-token etf-fixed" }, "Treasuries / Bonds"),
+                  React.createElement("span", { className: "etf-token etf-other" }, "Hedge macro")
+                ),
+                React.createElement(
+                  "div",
+                  { className: "ucits-toggle", "aria-label": "Destaque UCITS" },
+                  React.createElement("button", { type: "button", "aria-pressed": ucitsView === "all", onClick: () => setCoreUcitsView("all") }, "Todos"),
+                  React.createElement("button", { type: "button", "aria-pressed": ucitsView === "ucits", onClick: () => setCoreUcitsView("ucits") }, "UCITS")
+                )
+              ),
+              React.createElement(
+                "div",
+                { className: "core-function-grid" },
+                CORE_FUNCTIONS.map((row) =>
+                  React.createElement(
+                    "div",
+                    { className: "core-function", key: row.fn },
+                    React.createElement("div", null, React.createElement("h3", null, row.fn), React.createElement("p", null, row.why), React.createElement("p", null, row.note)),
+                    React.createElement(
+                      "div",
+                      { className: "etf-token-grid" },
+                      row.tickers.map((ticker) =>
+                        React.createElement("button", { className: coreTokenClass(ticker, ucitsView), type: "button", key: `${row.fn}-${ticker}`, "aria-pressed": selectedEtf === ticker, disabled: ucitsView === "ucits" && !UCITS_TICKERS.has(ticker), onClick: () => setSelectedEtf(ticker) }, ticker)
+                      )
+                    )
+                  )
+                )
+              )
+            ),
+            React.createElement(
+              "aside",
+              { className: "panel core-detail" },
+              React.createElement("h2", null, selectedEtf),
+              React.createElement("span", { className: "detail-role" }, detail[0]),
+              React.createElement("p", null, detail[1]),
+              React.createElement("p", null, detail[2]),
+              countryWeights
+                ? React.createElement(
+                    "div",
+                    { className: "mini-country-chart" },
+                    React.createElement("h3", null, "Composição geográfica aprox."),
+                    countryWeights.map(([country, weight]) =>
+                      React.createElement(
+                        "div",
+                        { className: "mini-country-row", key: `${selectedEtf}-${country}` },
+                        React.createElement("span", null, country),
+                        React.createElement("div", { className: "mini-country-track" }, React.createElement("div", { className: "mini-country-bar", style: { width: `${(weight / maxCountryWeight) * 100}%` } })),
+                        React.createElement("span", null, `${weight.toFixed(1).replace(".", ",")}%`)
+                      )
+                    ),
+                    React.createElement("p", { className: "data-note" }, "Pesos aproximados por país. Base: lâminas dos provedores e benchmarks, junho/2026.")
+                  )
+                : null,
+              React.createElement("ul", { className: "core-detail-list" }, detail[3].map((point) => React.createElement("li", { key: point }, point)))
+            )
+          )
+        );
+      }
+
+      function App() {
+        const [activeModule, setActiveModule] = useState("curve");
+        const [theme, setTheme] = useState("dark");
+        const [mode, setMode] = useState("nominal");
+        const [diagnosticMode, setDiagnosticMode] = useState("curve");
+
+        useEffect(() => {
+          document.body.classList.toggle("theme-light", theme === "light");
+          return () => document.body.classList.remove("theme-light");
+        }, [theme]);
+
+        const activeCurves = [mode];
+        const kpiCurveKey = mode;
+        const kpiCurve = CURVES[kpiCurveKey];
+        const filteredMaturities = MATURITIES;
+
+        const nominalLongPremium = spreadValue("nominal", SPREADS[2]);
+        const realLongPremium = spreadValue("real", SPREADS[2]);
+        const selected = null;
+        const selectedRows = [];
+        const setSelected = () => {};
+        const moduleCopy = MODULE_COPY[activeModule];
+
+        return React.createElement(
+          "div",
+          { className: "app" },
+          React.createElement(
+            "header",
+            { className: "topbar" },
+            React.createElement(
+              "section",
+              null,
+              React.createElement(
+                "nav",
+                { className: "view-tabs", "aria-label": "Módulos do dashboard" },
+                React.createElement(
+                  "button",
+                  {
+                    className: "view-tab",
+                    type: "button",
+                    "aria-current": activeModule === "curve" ? "page" : undefined,
+                    onClick: () => setActiveModule("curve"),
+                  },
+                  "Curve Yield"
+                ),
+                React.createElement(
+                  "button",
+                  {
+                    className: "view-tab",
+                    type: "button",
+                    "aria-current": activeModule === "equity" ? "page" : undefined,
+                    onClick: () => setActiveModule("equity"),
+                  },
+                  "Equity Valuation"
+                ),
+                React.createElement(
+                  "button",
+                  {
+                    className: "view-tab",
+                    type: "button",
+                    "aria-current": activeModule === "tech" ? "page" : undefined,
+                    onClick: () => setActiveModule("tech"),
+                  },
+                  "Matriz de Ciclos Tecnológicos"
+                ),
+                React.createElement(
+                  "button",
+                  {
+                    className: "view-tab",
+                    type: "button",
+                    "aria-current": activeModule === "core" ? "page" : undefined,
+                    onClick: () => setActiveModule("core"),
+                  },
+                  "Core"
+                ),
+                React.createElement(
+                  "button",
+                  {
+                    className: "view-tab",
+                    type: "button",
+                    "aria-current": activeModule === "satellites" ? "page" : undefined,
+                    onClick: () => setActiveModule("satellites"),
+                  },
+                  "Satélites EUA"
+                ),
+                React.createElement(
+                  "button",
+                  {
+                    className: "view-tab",
+                    type: "button",
+                    "aria-current": activeModule === "europe" ? "page" : undefined,
+                    onClick: () => setActiveModule("europe"),
+                  },
+                  "Europa Estratégica"
+                ),
+                React.createElement(
+                  "button",
+                  {
+                    className: "view-tab",
+                    type: "button",
+                    "aria-current": activeModule === "china" ? "page" : undefined,
+                    onClick: () => setActiveModule("china"),
+                  },
+                  "China / China+1"
+                ),
+                React.createElement(
+                  "button",
+                  {
+                    className: "view-tab",
+                    type: "button",
+                    "aria-current": activeModule === "hedges" ? "page" : undefined,
+                    onClick: () => setActiveModule("hedges"),
+                  },
+                  "Hedge"
+                )
+              ),
+              React.createElement("h1", null, moduleCopy.title),
+              React.createElement("p", { className: "lead" }, moduleCopy.lead)
+            ),
+            React.createElement(
+              "aside",
+              { className: "header-side" },
+              React.createElement(
+                "div",
+                { className: "theme-switch" },
+                React.createElement("span", null, "Tema"),
+                React.createElement(
+                  "button",
+                  {
+                    type: "button",
+                    onClick: () => setTheme(theme === "dark" ? "light" : "dark"),
+                  },
+                  theme === "dark" ? "Claro" : "Escuro"
+                )
+              ),
+              React.createElement(
+                "div",
+                { className: "market-stamp" },
+                React.createElement("span", null, "Tese central"),
+                React.createElement("strong", null, moduleCopy.thesis)
+              )
+            )
+          ),
+          activeModule === "curve"
+            ? React.createElement(
+            "main",
+            { className: "layout" },
+            React.createElement(
+              "aside",
+              { className: "controls panel" },
+              React.createElement(
+                "div",
+                { className: "control-block" },
+                React.createElement("div", { className: "control-title" }, "Visão"),
+                React.createElement(
+                  "div",
+                  {
+                    className: "segmented",
+                    style: {
+                      "--active-color": CURVES[mode].color,
+                      "--active-soft":
+                        mode === "nominal"
+                            ? "var(--nominal-soft)"
+                            : mode === "real"
+                              ? "var(--real-soft)"
+                              : "var(--inflation-soft)",
+                    },
+                  },
+                  ["nominal", "real", "inflation"].map((key) =>
+                    React.createElement(
+                      "button",
+                      {
+                        key,
+                        type: "button",
+                        "aria-pressed": mode === key,
+                        onClick: () => setMode(key),
+                      },
+                      key === "inflation" ? "Inflação Implícita" : CURVES[key].short
+                    )
+                  )
+                )
+              ),
+              React.createElement(
+                "div",
+                { className: "control-block" },
+                React.createElement("div", { className: "control-title" }, "Diagnóstico"),
+                React.createElement(
+                  "div",
+                  {
+                    className: "segmented",
+                    style: {
+                      "--active-color": "var(--focus)",
+                      "--active-soft": "var(--focus-soft)",
+                    },
+                  },
+                  [
+                    { key: "curve", label: "Por curva" },
+                    { key: "allocation", label: "Alocação" },
+                  ].map((item) =>
+                    React.createElement(
+                      "button",
+                      {
+                        key: item.key,
+                        type: "button",
+                        "aria-pressed": diagnosticMode === item.key,
+                        onClick: () => setDiagnosticMode(item.key),
+                      },
+                      item.label
+                    )
+                  )
+                )
+              )
+            ),
+            React.createElement(
+              "section",
+              { className: "content" },
+              React.createElement(
+                "section",
+                { className: "kpis" },
+                React.createElement(
+                  "article",
+                  { className: "kpi panel" },
+                  React.createElement("span", null, `${kpiCurve.short} 5s2s`),
+                  React.createElement("strong", null, bps(spreadValue(kpiCurveKey, SPREADS[0]))),
+                  React.createElement("p", null, "Trecho curto da curva.")
+                ),
+                React.createElement(
+                  "article",
+                  { className: "kpi panel" },
+                  React.createElement("span", null, `${kpiCurve.short} 10s2s`),
+                  React.createElement("strong", null, bps(spreadValue(kpiCurveKey, SPREADS[1]))),
+                  React.createElement("p", null, "Inclinação contra o 2Y.")
+                ),
+                React.createElement(
+                  "article",
+                  { className: "kpi panel" },
+                  React.createElement("span", null, `${kpiCurve.short} 30s10s`),
+                  React.createElement("strong", null, bps(spreadValue(kpiCurveKey, SPREADS[2]))),
+                  React.createElement("p", null, "Prêmio concentrado na ponta longa.")
+                ),
+                React.createElement(
+                  "article",
+                  { className: "kpi panel" },
+                  React.createElement("span", null, "Fed Funds (até 16/09/26)"),
+                  React.createElement("strong", null, "3,50%–3,75%"),
+                  React.createElement(
+                    "div",
+                    { className: "kpi-probs" },
+                    React.createElement("div", null, React.createElement("span", null, "Rate hike"), React.createElement("b", null, "76,7%")),
+                    React.createElement("div", null, React.createElement("span", null, "Steady"), React.createElement("b", null, "20,8%")),
+                    React.createElement("div", null, React.createElement("span", null, "Rate cut"), React.createElement("b", null, "2,5%"))
+                  )
+                )
+              ),
+              React.createElement(
+                "section",
+                { className: "main-grid" },
+                React.createElement(
+                  "article",
+                  { className: "panel" },
+                  React.createElement(
+                    "div",
+                    { className: "section-head" },
+                    React.createElement(
+                      "div",
+                      null,
+                      React.createElement("span", { className: "control-title" }, "O que o mercado está dizendo?"),
+                      React.createElement("h2", null, CURVES[mode].label)
+                    ),
+                    React.createElement("span", { className: "mini-label" }, `${filteredMaturities.length} vértices no gráfico`)
+                  ),
+                  React.createElement(
+                    "div",
+                    { className: "chart-wrap" },
+                    React.createElement(Chart, {
+                      activeCurves,
+                      filteredMaturities,
+                      mode,
+                      theme,
+                    })
+                  ),
+                  React.createElement("p", { className: "data-note" }, "Base: Atlanta Fed, 22/06/26.")
+                ),
+                React.createElement(
+                  "article",
+                  { className: "panel" },
+                  React.createElement(
+                    "div",
+                    { className: "section-head" },
+                    React.createElement(
+                      "div",
+                      null,
+                      React.createElement("span", { className: "control-title" }, "Diagnóstico"),
+                      React.createElement("h2", null, diagnosticMode === "curve" ? "Por curva" : "Alocação")
+                    )
+                  ),
+                  diagnosticMode === "curve"
+                    ? React.createElement(
+                        "div",
+                        { className: "reading" },
+                        activeCurves.map((key) =>
+                          React.createElement(
+                            "article",
+                            {
+                              className: "reading-item",
+                              key,
+                              style: {
+                                "--tone": CURVES[key].color,
+                                "--soft":
+                                  key === "nominal"
+                                    ? "var(--nominal-soft)"
+                                    : key === "real"
+                                      ? "var(--real-soft)"
+                                      : "var(--inflation-soft)",
+                              },
+                            },
+                            React.createElement("h3", null, CURVES[key].label),
+                            React.createElement(
+                              "ul",
+                              null,
+                              READING_BULLETS[key].map((item) => React.createElement("li", { key: item }, item))
+                            )
+                          )
+                        )
+                      )
+                    : React.createElement(
+                        "div",
+                        { className: "allocation-diagnostic" },
+                        React.createElement(
+                          "div",
+                          { className: "diagnosis" },
+                          ALLOCATION_DIAGNOSIS.map((item) =>
+                            React.createElement(
+                              "article",
+                              { className: "diag-item", key: item.title },
+                              React.createElement("h3", null, item.title),
+                              React.createElement("p", null, item.text)
+                            )
+                          )
+                        ),
+                        React.createElement(
+                          "article",
+                          { className: "selected-excerpt" },
+                          React.createElement("h3", null, "Trecho selecionado (0-5y)"),
+                          React.createElement(
+                            "ul",
+                            null,
+                            ALLOCATION_BENEFITS.map((benefit) => React.createElement("li", { key: benefit }, benefit))
+                          )
+                        )
+                      )
+                )
+              ),
+              React.createElement(
+                "section",
+                { className: "tables-grid" },
+                React.createElement(
+                  "article",
+                  { className: "panel" },
+                  React.createElement(
+                    "div",
+                    { className: "section-head" },
+                    React.createElement(
+                      "div",
+                      null,
+                      React.createElement("span", { className: "control-title" }, "Tabela conectada"),
+                      React.createElement("h2", null, selected ? `Vértice selecionado: ${selected}` : "Todos os vértices")
+                    )
+                  ),
+                  React.createElement(
+                    "div",
+                    { className: "table-shell" },
+                    React.createElement(
+                      "table",
+                      null,
+                      React.createElement(
+                        "thead",
+                        null,
+                        React.createElement(
+                          "tr",
+                          null,
+                          React.createElement("th", null, "Prazo"),
+                          activeCurves.map((key) => React.createElement("th", { key }, CURVES[key].label))
+                        )
+                      ),
+                      React.createElement(
+                        "tbody",
+                        null,
+                        selectedRows.map((row) =>
+                          React.createElement(
+                            "tr",
+                            {
+                              key: row.maturity,
+                              className: selected === row.maturity ? "is-selected" : "",
+                              onClick: () => setSelected(selected === row.maturity ? null : row.maturity),
+                            },
+                            React.createElement("td", null, row.maturity),
+                            activeCurves.map((key) => React.createElement("td", { key }, pct(row[key])))
+                          )
+                        )
+                      )
+                    )
+                  )
+                ),
+                React.createElement(
+                  "article",
+                  { className: "panel" },
+                  React.createElement(
+                    "div",
+                    { className: "section-head" },
+                    React.createElement(
+                      "div",
+                      null,
+                      React.createElement("span", { className: "control-title" }, "Inclinações"),
+                      React.createElement("h2", null, "Spreads em bps")
+                    )
+                  ),
+                  React.createElement(
+                    "div",
+                    { className: "spread-list" },
+                    activeCurves.flatMap((curveKey) =>
+                      SPREADS.map((spread) => {
+                        const value = spreadValue(curveKey, spread);
+                        const maxAbs = 0.55;
+                        return React.createElement(
+                          "div",
+                          { className: "spread-row", key: `${curveKey}-${spread.label}` },
+                          React.createElement("strong", null, `${CURVES[curveKey].short} ${spread.label}`),
+                          React.createElement(
+                            "div",
+                            { className: "spread-track" },
+                            React.createElement("div", {
+                              className: "spread-fill",
+                              style: {
+                                "--w": `${Math.min(100, Math.abs(value / maxAbs) * 100)}%`,
+                                "--tone": value >= 0 ? "var(--positive)" : "var(--negative)",
+                              },
+                            })
+                          ),
+                          React.createElement(
+                            "span",
+                            {
+                              className: "spread-value",
+                              style: { "--tone": value >= 0 ? "var(--positive)" : "var(--negative)" },
+                            },
+                            bps(value)
+                          )
+                        );
+                      })
+                    )
+                  )
+                )
+              ),
+              React.createElement(
+                "section",
+                { className: "panel" },
+                React.createElement(
+                  "div",
+                  { className: "section-head" },
+                  React.createElement(
+                    "div",
+                    null,
+                    React.createElement("span", { className: "control-title" }, "Diagnóstico"),
+                    React.createElement("h2", null, "Implicações para alocação")
+                  )
+                ),
+                React.createElement(
+                  "div",
+                  { className: "diagnosis" },
+                  DIAGNOSIS.map((item) =>
+                    React.createElement(
+                      "article",
+                      { className: "diag-item", key: item.title },
+                      React.createElement("h3", null, item.title),
+                      React.createElement("p", null, item.text)
+                    )
+                  )
+                )
+              ),
+              React.createElement(
+                "section",
+                { className: "allocation" },
+                React.createElement(
+                  "article",
+                  { className: "panel" },
+                  React.createElement(
+                    "div",
+                    { className: "section-head" },
+                    React.createElement(
+                      "div",
+                      null,
+                      React.createElement("span", { className: "control-title" }, "Conclusão"),
+                      React.createElement("h2", null, "TIPS de curta duração, 0-5 anos")
+                    )
+                  ),
+                  React.createElement(
+                    "div",
+                    { className: "benefits" },
+                    BENEFITS.map((benefit) =>
+                      React.createElement(
+                        "div",
+                        { className: "benefit", key: benefit },
+                        React.createElement("b", null, "✓"),
+                        React.createElement("span", null, benefit)
+                      )
+                    )
+                  )
+                ),
+                React.createElement(
+                  "article",
+                  { className: "panel" },
+                  React.createElement(
+                    "div",
+                    { className: "callout" },
+                    React.createElement("h3", null, "iShares $ TIPS 0-5 UCITS ETF"),
+                    React.createElement(
+                      "p",
+                      null,
+                      "Exemplo ilustrativo. Não constitui recomendação de investimento."
+                    )
+                  ),
+                  React.createElement(
+                    "div",
+                    { className: "callout" },
+                    React.createElement("h3", null, "Por que não duration longa?"),
+                    React.createElement(
+                      "p",
+                      null,
+                      `Treasuries e TIPS longos dependem de compressão relevante dos juros reais. Hoje, o spread 30s10s nominal está em ${bps(nominalLongPremium)} e o real em ${bps(realLongPremium)}, evidenciando prêmio concentrado na ponta longa.`
+                    )
+                  )
+                )
+              )
+            )
+          )
+            : activeModule === "equity"
+              ? React.createElement(EquityValuationModule)
+              : activeModule === "tech"
+                ? React.createElement(TechCycleModule)
+                : activeModule === "core"
+                  ? React.createElement(CoreModule)
+                  : activeModule === "satellites"
+                    ? React.createElement(SatelliteModule)
+                    : activeModule === "europe"
+                      ? React.createElement(EuropeModule)
+                      : activeModule === "china"
+                        ? React.createElement(ChinaModule)
+                        : React.createElement(HedgeModule)
+        );
+      }
+
+      ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(App));
+    </script>
+  </body>
+</html>
+
