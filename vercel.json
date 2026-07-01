@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "analysis-dashboard-v2.vercel.app"
+        }
+      ],
+      "destination": "https://dashboard.generalchannels.co/$1",
+      "permanent": true
+    }
+  ]
+}
