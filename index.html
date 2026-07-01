@@ -2874,15 +2874,12 @@
           ),
           React.createElement(
             "section",
-            { className: "equity-kpis" },
-            EQUITY_PE.map((item) =>
-              React.createElement(
-                "article",
-                { className: "kpi panel", key: item.name },
-                React.createElement("span", null, item.name),
-                React.createElement("strong", null, formatMultiple(item.value)),
-                React.createElement("p", null, item.note)
-              )
+            { className: "panel equity-summary" },
+            React.createElement("h2", null, "Leitura"),
+            React.createElement(
+              "p",
+              null,
+              "O prêmio não está distribuído de forma homogênea: a Magnificent 7 negocia acima do S&P 500 e também acima do próprio setor de tecnologia do índice."
             )
           )
         );
