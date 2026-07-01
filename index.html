@@ -742,7 +742,7 @@
 
       .pe-premium-grid {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 10px;
       }
 
@@ -2648,6 +2648,7 @@
 
       const EQUITY_PE = [
         { name: "Magnificent 7", value: 24.4, tone: "#4f7cff", note: "Principal fonte do prêmio." },
+        { name: "S&P 500 Information Technology", value: 22.2, tone: "#5bbcff", note: "Setor de tecnologia do S&P 500." },
         { name: "S&P 500", value: 20.5, tone: "#48d6e9", note: "Benchmark do índice cheio." },
         { name: "S&P 400 MidCap", value: 16.4, tone: "#ffae6b", note: "Valuation mais moderado." },
         { name: "S&P 600 SmallCap", value: 16.0, tone: "#ffae6b", note: "Desconto com maior ciclicidade." },
@@ -2660,9 +2661,10 @@
       function EquityPeChart() {
         const maxPe = Math.max(...EQUITY_PE.map((item) => item.value));
         const mag7 = EQUITY_PE[0].value;
-        const sp500 = EQUITY_PE[1].value;
-        const midcap = EQUITY_PE[2].value;
-        const smallcap = EQUITY_PE[3].value;
+        const tech = EQUITY_PE[1].value;
+        const sp500 = EQUITY_PE[2].value;
+        const midcap = EQUITY_PE[3].value;
+        const smallcap = EQUITY_PE[4].value;
         const premium = (base) => Math.round(((mag7 / base) - 1) * 100);
 
         return React.createElement(
@@ -2691,6 +2693,7 @@
             "div",
             { className: "pe-premium-grid" },
             [
+              ["Prêmio vs Tecnologia", `+${premium(tech)}%`, "#5bbcff"],
               ["Prêmio vs S&P 500", `+${premium(sp500)}%`, "#48d6e9"],
               ["Prêmio vs MidCap", `+${premium(midcap)}%`, "#ffae6b"],
               ["Prêmio vs SmallCap", `+${premium(smallcap)}%`, "#ffae6b"],
