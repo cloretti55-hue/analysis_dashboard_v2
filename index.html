@@ -679,6 +679,99 @@
         height: auto;
       }
 
+      .equity-pe-chart {
+        display: grid;
+        gap: 18px;
+      }
+
+      .equity-pe-chart h2 {
+        margin: 0;
+        font-size: 25px;
+      }
+
+      .equity-pe-chart .chart-subtitle {
+        margin: -10px 0 2px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.4;
+      }
+
+      .pe-bars {
+        display: grid;
+        gap: 14px;
+      }
+
+      .pe-bar-row {
+        display: grid;
+        grid-template-columns: 170px minmax(0, 1fr) 62px;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .pe-bar-row span {
+        color: var(--ink);
+        font-size: 14px;
+        font-weight: 850;
+      }
+
+      .pe-bar-track {
+        min-height: 34px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 4px;
+        background: rgba(255, 255, 255, 0.028);
+      }
+
+      body.theme-light .pe-bar-track {
+        background: rgba(23, 48, 77, 0.055);
+      }
+
+      .pe-bar-fill {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 24px;
+        min-width: 36px;
+        border-radius: 6px;
+        padding: 0 8px;
+        background: linear-gradient(90deg, color-mix(in srgb, var(--tone) 62%, transparent), var(--tone));
+        color: #071324;
+        font-size: 12px;
+        font-weight: 950;
+      }
+
+      .pe-premium-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .pe-premium {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 11px;
+        background: rgba(255, 255, 255, 0.026);
+      }
+
+      body.theme-light .pe-premium {
+        background: rgba(23, 48, 77, 0.05);
+      }
+
+      .pe-premium span {
+        display: block;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
+      .pe-premium strong {
+        display: block;
+        margin-top: 5px;
+        color: var(--tone);
+        font-size: 22px;
+      }
+
       .source-card {
         display: grid;
         align-content: start;
@@ -2244,6 +2337,19 @@
           min-width: 760px;
         }
 
+        .pe-bar-row {
+          grid-template-columns: 1fr;
+          gap: 6px;
+        }
+
+        .pe-bar-row > span:last-child {
+          display: none;
+        }
+
+        .pe-premium-grid {
+          grid-template-columns: 1fr;
+        }
+
         .mini-country-row {
           grid-template-columns: 72px minmax(0, 1fr) 44px;
           gap: 8px;
@@ -2541,11 +2647,65 @@
       }
 
       const EQUITY_PE = [
-        { name: "Magnificent 7", value: "24,4x", note: "Principal fonte do prêmio." },
-        { name: "S&P 500 LargeCap", value: "20,5x", note: "Benchmark do índice cheio." },
-        { name: "S&P 400 MidCap", value: "16,4x", note: "Valuation mais moderado." },
-        { name: "S&P 600 SmallCap", value: "16,0x", note: "Desconto com maior ciclicidade." },
+        { name: "Magnificent 7", value: 24.4, tone: "#4f7cff", note: "Principal fonte do prêmio." },
+        { name: "S&P 500", value: 20.5, tone: "#48d6e9", note: "Benchmark do índice cheio." },
+        { name: "S&P 400 MidCap", value: 16.4, tone: "#ffae6b", note: "Valuation mais moderado." },
+        { name: "S&P 600 SmallCap", value: 16.0, tone: "#ffae6b", note: "Desconto com maior ciclicidade." },
       ];
+
+      function formatMultiple(value) {
+        return `${value.toFixed(1).replace(".", ",")}x`;
+      }
+
+      function EquityPeChart() {
+        const maxPe = Math.max(...EQUITY_PE.map((item) => item.value));
+        const mag7 = EQUITY_PE[0].value;
+        const sp500 = EQUITY_PE[1].value;
+        const midcap = EQUITY_PE[2].value;
+        const smallcap = EQUITY_PE[3].value;
+        const premium = (base) => Math.round(((mag7 / base) - 1) * 100);
+
+        return React.createElement(
+          "div",
+          { className: "equity-pe-chart" },
+          React.createElement("h2", null, "Forward P/E aproximado por bloco"),
+          React.createElement("p", { className: "chart-subtitle" }, "A leitura agregada do S&P 500 esconde uma dispersão relevante entre mega caps, índice cheio e mercado por baixo."),
+          React.createElement(
+            "div",
+            { className: "pe-bars" },
+            EQUITY_PE.map((item) =>
+              React.createElement(
+                "div",
+                { className: "pe-bar-row", key: item.name, style: { "--tone": item.tone } },
+                React.createElement("span", null, item.name),
+                React.createElement(
+                  "div",
+                  { className: "pe-bar-track" },
+                  React.createElement("div", { className: "pe-bar-fill", style: { width: `${(item.value / maxPe) * 100}%` } }, formatMultiple(item.value))
+                ),
+                React.createElement("span", null, formatMultiple(item.value))
+              )
+            )
+          ),
+          React.createElement(
+            "div",
+            { className: "pe-premium-grid" },
+            [
+              ["Prêmio vs S&P 500", `+${premium(sp500)}%`, "#48d6e9"],
+              ["Prêmio vs MidCap", `+${premium(midcap)}%`, "#ffae6b"],
+              ["Prêmio vs SmallCap", `+${premium(smallcap)}%`, "#ffae6b"],
+            ].map(([label, value, tone]) =>
+              React.createElement(
+                "div",
+                { className: "pe-premium", key: label, style: { "--tone": tone } },
+                React.createElement("span", null, label),
+                React.createElement("strong", null, value)
+              )
+            )
+          ),
+          React.createElement("p", { className: "data-note" }, "Base: Yardeni Research, LSEG Datastream e S&P, 22/06/26. Valores aproximados; gráfico próprio.")
+        );
+      }
 
       const EQUITY_CARDS = [
         {
@@ -2676,11 +2836,7 @@
                   React.createElement("span", { className: "control-title" }, "Valuation relativo")
                 )
               ),
-              React.createElement("img", {
-                className: "equity-chart-image",
-                src: "./forward-pe-capitalization.png",
-                alt: "Forward P/E by capitalization",
-              })
+              React.createElement(EquityPeChart)
             ),
             React.createElement(
               "article",
@@ -2722,7 +2878,7 @@
                 "article",
                 { className: "kpi panel", key: item.name },
                 React.createElement("span", null, item.name),
-                React.createElement("strong", null, item.value),
+                React.createElement("strong", null, formatMultiple(item.value)),
                 React.createElement("p", null, item.note)
               )
             )
