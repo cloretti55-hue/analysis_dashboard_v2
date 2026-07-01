@@ -703,7 +703,7 @@
 
       .pe-bar-row {
         display: grid;
-        grid-template-columns: 170px minmax(0, 1fr) 62px;
+        grid-template-columns: 220px minmax(0, 1fr);
         gap: 12px;
         align-items: center;
       }
@@ -2684,8 +2684,7 @@
                   "div",
                   { className: "pe-bar-track" },
                   React.createElement("div", { className: "pe-bar-fill", style: { width: `${(item.value / maxPe) * 100}%` } }, formatMultiple(item.value))
-                ),
-                React.createElement("span", null, formatMultiple(item.value))
+                )
               )
             )
           ),
