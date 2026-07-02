@@ -1859,7 +1859,7 @@
       .mobile-shell {
         min-height: 100vh;
         padding: 12px;
-        max-width: 430px;
+        max-width: 390px;
         margin: 0 auto;
       }
 
@@ -2162,6 +2162,15 @@
         .market-stamp {
           min-width: 0;
           width: 100%;
+        }
+
+        .mobile-shell .panel,
+        .mobile-shell .mobile-module-card,
+        .mobile-shell .mobile-hero,
+        .mobile-shell .mobile-module-head {
+          width: min(100%, 366px);
+          margin-left: auto;
+          margin-right: auto;
         }
 
         .market-stamp strong {
