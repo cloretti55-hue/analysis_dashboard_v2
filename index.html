@@ -2200,11 +2200,16 @@
         }
 
         .mobile-curve .curve-view-segmented {
-          grid-template-columns: repeat(3, 46px);
+          display: flex;
+          width: max-content;
+          grid-template-columns: none;
           justify-content: start;
+          gap: 6px;
         }
 
         .mobile-curve .curve-view-segmented button {
+          width: 52px;
+          max-width: 52px;
           min-height: 34px;
           padding: 3px 2px;
           font-size: 9.5px;
