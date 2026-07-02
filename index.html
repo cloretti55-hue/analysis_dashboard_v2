@@ -1972,13 +1972,14 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        min-width: 62px;
+        min-width: 54px;
         min-height: 34px;
         border: 1px solid var(--mobile-accent);
         border-radius: 999px;
-        background: color-mix(in srgb, var(--mobile-accent) 16%, transparent);
+        padding: 0 8px;
+        background: color-mix(in srgb, var(--mobile-accent) 14%, transparent);
         color: var(--mobile-accent);
-        font-size: 11px;
+        font-size: 10px;
         font-weight: 900;
         text-transform: uppercase;
       }
@@ -2200,6 +2201,19 @@
         .allocation,
         .tech-main {
           gap: 12px;
+        }
+
+        .core-layout {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .core-layout > .panel:first-child {
+          order: 2;
+        }
+
+        .core-layout > .core-detail {
+          order: 1;
         }
 
         .section-head {
