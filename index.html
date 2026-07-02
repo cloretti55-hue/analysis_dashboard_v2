@@ -2037,12 +2037,13 @@
 
       .mobile-curve-stats {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 96px));
+        justify-content: start;
         gap: 8px;
       }
 
-      .mobile-curve .segmented {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+      .mobile-curve .curve-view-segmented {
+        grid-template-columns: repeat(3, minmax(0, 104px));
       }
 
       .mobile-curve .segmented button {
@@ -2055,6 +2056,7 @@
         display: grid;
         gap: 5px;
         min-height: 78px;
+        max-width: 96px;
         padding: 11px;
         border: 1px solid var(--line);
         border-radius: 8px;
@@ -4934,7 +4936,7 @@
                 React.createElement(
                   "div",
                   {
-                    className: "segmented",
+                    className: "segmented curve-view-segmented",
                     style: {
                       "--active-color": CURVES[mode].color,
                       "--active-soft":
@@ -4965,8 +4967,8 @@
                 React.createElement("div", { className: "control-title" }, "Diagnóstico"),
                 React.createElement(
                   "div",
-                  {
-                    className: "segmented",
+              {
+                className: "segmented curve-view-segmented",
                     style: {
                       "--active-color": "var(--focus)",
                       "--active-soft": "var(--focus-soft)",
