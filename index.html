@@ -2208,13 +2208,22 @@
         }
 
         .mobile-curve .curve-view-segmented button {
-          width: 52px;
-          max-width: 52px;
+          width: auto;
+          min-width: 58px;
+          max-width: none;
           min-height: 34px;
-          padding: 3px 2px;
-          font-size: 9.5px;
-          line-height: 1.05;
-          white-space: normal;
+          padding: 4px 8px;
+          font-size: 11px;
+          line-height: 1.1;
+          white-space: nowrap;
+        }
+
+        .mobile-curve .curve-view-segmented button:nth-child(2) {
+          min-width: 46px;
+        }
+
+        .mobile-curve .curve-view-segmented button:nth-child(3) {
+          min-width: 66px;
         }
 
         .main-grid,
@@ -4624,7 +4633,7 @@
                     "aria-pressed": mode === key,
                     onClick: () => setMode(key),
                   },
-                  key === "inflation" ? "Inflação Implícita" : CURVES[key].short
+                  key === "inflation" ? "Implícita" : CURVES[key].short
                 )
               )
             )
