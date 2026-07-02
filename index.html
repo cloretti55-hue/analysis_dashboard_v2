@@ -2269,6 +2269,10 @@
           gap: 7px;
         }
 
+        .satellite-mobile-hide {
+          display: none;
+        }
+
         .filter-label {
           min-width: 0;
         }
@@ -3818,10 +3822,10 @@
         ).sort((a, b) => riskOrder[a.aggression] - riskOrder[b.aggression] || a.theme.localeCompare(b.theme, "pt-BR"));
         const active = filtered.find((item) => item.theme === selectedTheme) || filtered[0] || SATELLITES[0];
 
-        const filterRow = (key, label) =>
+        const filterRow = (key, label, extraClass = "") =>
           React.createElement(
             "div",
-            { className: "filter-row", key },
+            { className: `filter-row ${extraClass}`.trim(), key },
             React.createElement("span", { className: "filter-label" }, label),
             SATELLITE_FILTERS[key].map(([value, text]) =>
               React.createElement(
@@ -3849,7 +3853,7 @@
               "div",
               { className: "satellite-filters" },
               filterRow("aggression", "Convexidade"),
-              filterRow("motor", "Motor"),
+              filterRow("motor", "Motor", "satellite-mobile-hide"),
               React.createElement(
                 "div",
                 { className: "risk-legend" },
@@ -4154,10 +4158,10 @@
         ).sort((a, b) => order[a.channel] - order[b.channel] || a.theme.localeCompare(b.theme, "pt-BR"));
         const active = filtered.find((item) => item.theme === selectedTheme) || filtered[0] || CHINA_CHANNELS[0];
 
-        const filterRow = (key, label) =>
+        const filterRow = (key, label, extraClass = "") =>
           React.createElement(
             "div",
-            { className: "filter-row", key },
+            { className: `filter-row ${extraClass}`.trim(), key },
             React.createElement("span", { className: "filter-label" }, label),
             CHINA_FILTERS[key].map(([value, text]) =>
               React.createElement(
@@ -4189,7 +4193,7 @@
               "div",
               { className: "satellite-filters" },
               filterRow("channel", "Canal"),
-              filterRow("motor", "Motor"),
+              filterRow("motor", "Motor", "satellite-mobile-hide"),
               React.createElement(
                 "div",
                 { className: "risk-legend" },
@@ -4427,7 +4431,7 @@
           setSelectedEtf(ticker);
           if (window.matchMedia("(max-width: 720px)").matches) {
             window.requestAnimationFrame(() => {
-              document.querySelector(".core-detail")?.scrollIntoView({ behavior: "smooth", block: "start" });
+              document.querySelector(".core-detail h2")?.scrollIntoView({ behavior: "smooth", block: "start" });
             });
           }
         };
