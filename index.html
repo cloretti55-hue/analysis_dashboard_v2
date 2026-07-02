@@ -2216,6 +2216,10 @@
           order: 1;
         }
 
+        .core-detail h2 {
+          scroll-margin-top: 78px;
+        }
+
         .section-head {
           flex-direction: column;
           gap: 8px;
@@ -2287,6 +2291,7 @@
 
         .satellite-detail h2 {
           font-size: 22px;
+          scroll-margin-top: 78px;
         }
 
         .detail-box {
@@ -2553,6 +2558,16 @@
 
       function spreadValue(curveKey, spread) {
         return CURVES[curveKey].values[spread.to] - CURVES[curveKey].values[spread.from];
+      }
+
+      function scrollToMobileDetail(selector) {
+        if (!window.matchMedia("(max-width: 720px)").matches) return;
+        window.setTimeout(() => {
+          const title = document.querySelector(selector);
+          if (!title) return;
+          const top = title.getBoundingClientRect().top + window.scrollY - 78;
+          window.scrollTo({ top, behavior: "smooth" });
+        }, 60);
       }
 
       function Chart({ activeCurves, filteredMaturities, mode, theme }) {
@@ -3868,7 +3883,7 @@
               filtered.map((item) =>
                 React.createElement(
                   "button",
-                  { className: `satellite-card sat-risk-${item.aggression}`, type: "button", key: item.theme, "aria-pressed": active.theme === item.theme, onClick: () => setSelectedTheme(item.theme) },
+                  { className: `satellite-card sat-risk-${item.aggression}`, type: "button", key: item.theme, "aria-pressed": active.theme === item.theme, onClick: () => { setSelectedTheme(item.theme); scrollToMobileDetail(".satellite-detail h2"); } },
                   React.createElement(
                     "div",
                     null,
@@ -4019,7 +4034,7 @@
               sortedThemes.map((item) =>
                 React.createElement(
                   "button",
-                  { className: `satellite-card ${item.tone}`, type: "button", key: item.theme, "aria-pressed": active.theme === item.theme, onClick: () => setSelectedTheme(item.theme) },
+                  { className: `satellite-card ${item.tone}`, type: "button", key: item.theme, "aria-pressed": active.theme === item.theme, onClick: () => { setSelectedTheme(item.theme); scrollToMobileDetail(".satellite-detail h2"); } },
                   React.createElement(
                     "div",
                     null,
@@ -4208,7 +4223,7 @@
               filtered.map((item) =>
                 React.createElement(
                   "button",
-                  { className: `satellite-card ${item.tone}`, type: "button", key: item.theme, "aria-pressed": active.theme === item.theme, onClick: () => setSelectedTheme(item.theme) },
+                  { className: `satellite-card ${item.tone}`, type: "button", key: item.theme, "aria-pressed": active.theme === item.theme, onClick: () => { setSelectedTheme(item.theme); scrollToMobileDetail(".satellite-detail h2"); } },
                   React.createElement(
                     "div",
                     null,
@@ -4393,7 +4408,7 @@
               filtered.map((item) =>
                 React.createElement(
                   "button",
-                  { className: `satellite-card ${item.tone}`, type: "button", key: item.theme, "aria-pressed": active.theme === item.theme, onClick: () => setSelectedTheme(item.theme) },
+                  { className: `satellite-card ${item.tone}`, type: "button", key: item.theme, "aria-pressed": active.theme === item.theme, onClick: () => { setSelectedTheme(item.theme); scrollToMobileDetail(".satellite-detail h2"); } },
                   React.createElement(
                     "div",
                     null,
@@ -4430,9 +4445,12 @@
         const selectCoreEtf = (ticker) => {
           setSelectedEtf(ticker);
           if (window.matchMedia("(max-width: 720px)").matches) {
-            window.requestAnimationFrame(() => {
-              document.querySelector(".core-detail h2")?.scrollIntoView({ behavior: "smooth", block: "start" });
-            });
+            window.setTimeout(() => {
+              const title = document.querySelector(".core-detail h2");
+              if (!title) return;
+              const top = title.getBoundingClientRect().top + window.scrollY - 78;
+              window.scrollTo({ top, behavior: "smooth" });
+            }, 60);
           }
         };
         const setCoreUcitsView = (nextView) => {
