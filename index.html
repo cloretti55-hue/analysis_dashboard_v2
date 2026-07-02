@@ -4423,6 +4423,14 @@
       function CoreModule() {
         const [selectedEtf, setSelectedEtf] = useState("VOO");
         const [ucitsView, setUcitsView] = useState("all");
+        const selectCoreEtf = (ticker) => {
+          setSelectedEtf(ticker);
+          if (window.matchMedia("(max-width: 720px)").matches) {
+            window.requestAnimationFrame(() => {
+              document.querySelector(".core-detail")?.scrollIntoView({ behavior: "smooth", block: "start" });
+            });
+          }
+        };
         const setCoreUcitsView = (nextView) => {
           setUcitsView(nextView);
           if (nextView === "ucits" && !UCITS_TICKERS.has(selectedEtf)) {
@@ -4475,7 +4483,7 @@
                       "div",
                       { className: "etf-token-grid" },
                       row.tickers.map((ticker) =>
-                        React.createElement("button", { className: coreTokenClass(ticker, ucitsView), type: "button", key: `${row.fn}-${ticker}`, "aria-pressed": selectedEtf === ticker, disabled: ucitsView === "ucits" && !UCITS_TICKERS.has(ticker), onClick: () => setSelectedEtf(ticker) }, ticker)
+                        React.createElement("button", { className: coreTokenClass(ticker, ucitsView), type: "button", key: `${row.fn}-${ticker}`, "aria-pressed": selectedEtf === ticker, disabled: ucitsView === "ucits" && !UCITS_TICKERS.has(ticker), onClick: () => selectCoreEtf(ticker) }, ticker)
                       )
                     )
                   )
