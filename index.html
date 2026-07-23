@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Arquitetura de Mercado | Curvas EUA</title>
+    <title>Arquitetura de Mercado | Yield Curves</title>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <style>
@@ -122,6 +122,190 @@
         box-shadow: inset 0 -2px 0 var(--focus);
       }
 
+      .country-subtabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 14px;
+      }
+
+      .country-subtabs button {
+        min-height: 34px;
+        border: 1px solid rgba(72, 214, 233, 0.34);
+        border-radius: 8px;
+        padding: 7px 12px;
+        background: rgba(72, 214, 233, 0.07);
+        color: var(--muted);
+        font-weight: 850;
+      }
+
+      .country-subtabs button[aria-pressed="true"] {
+        background: var(--focus-soft);
+        color: var(--ink);
+        border-color: var(--focus);
+        box-shadow: inset 0 -2px 0 var(--focus);
+      }
+
+      .etf-shell {
+        display: grid;
+        gap: 16px;
+      }
+
+      .home-layout {
+        display: grid;
+        gap: 18px;
+      }
+
+      .home-hero {
+        padding: 24px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 18px;
+        align-items: end;
+      }
+
+      .home-hero h2 {
+        margin: 0;
+        font-size: clamp(32px, 4vw, 58px);
+        line-height: 0.98;
+      }
+
+      .home-hero p {
+        margin: 10px 0 0;
+        max-width: 780px;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .home-stamp {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 12px 14px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 850;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .home-grid {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .home-card {
+        min-height: 220px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 18px;
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--ink);
+        text-align: left;
+        display: grid;
+        align-content: space-between;
+        gap: 20px;
+      }
+
+      body.theme-light .home-card {
+        background: rgba(10, 32, 55, 0.04);
+      }
+
+      .home-card:hover {
+        border-color: var(--home-accent, var(--focus));
+        box-shadow: inset 0 -3px 0 var(--home-accent, var(--focus));
+      }
+
+      .home-card span,
+      .home-card small {
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
+      .home-card h3 {
+        margin: 0;
+        font-size: 24px;
+      }
+
+      .home-card p {
+        margin: 8px 0 0;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .home-notes {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .home-note {
+        padding: 16px;
+      }
+
+      .home-note h3 {
+        margin: 0 0 8px;
+        font-size: 16px;
+      }
+
+      .home-note p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      @media (max-width: 1180px) {
+        .home-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .home-notes {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .home-hero {
+          grid-template-columns: 1fr;
+        }
+
+        .home-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .etf-subtabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 10px;
+      }
+
+      .etf-subtabs button {
+        min-height: 34px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 7px 12px;
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
+      body.theme-light .etf-subtabs button {
+        background: rgba(10, 32, 55, 0.04);
+      }
+
+      .etf-subtabs button[aria-pressed="true"] {
+        border-color: var(--focus);
+        background: var(--focus-soft);
+        color: var(--focus);
+        box-shadow: inset 0 -2px 0 var(--focus);
+      }
+
       .theme-switch {
         display: flex;
         align-items: center;
@@ -212,6 +396,371 @@
       body.theme-light .panel,
       body.theme-light .market-stamp {
         background: rgba(255, 255, 255, 0.88);
+      }
+
+      .data-lab-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(380px, 1.05fr);
+        gap: 18px;
+        align-items: start;
+      }
+
+      .data-lab-list,
+      .data-lab-metrics,
+      .data-lab-active {
+        padding: 18px;
+      }
+
+      .data-lab-list {
+        display: grid;
+        align-content: start;
+        gap: 14px;
+      }
+
+      .data-lab-filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .data-lab-filter {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 8px 11px;
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
+      body.theme-light .data-lab-filter {
+        background: rgba(10, 32, 55, 0.04);
+      }
+
+      .data-lab-filter[aria-pressed="true"] {
+        border-color: var(--focus);
+        background: var(--focus-soft);
+        color: var(--ink);
+      }
+
+      .data-lab-instruments {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 10px;
+      }
+
+      .data-lab-chip {
+        min-height: 78px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--ink);
+        text-align: left;
+      }
+
+      body.theme-light .data-lab-chip {
+        background: rgba(10, 32, 55, 0.04);
+      }
+
+      .data-lab-chip[aria-pressed="true"] {
+        border-color: var(--focus);
+        background: var(--focus-soft);
+        box-shadow: inset 0 -2px 0 var(--focus);
+      }
+
+      .data-lab-chip strong {
+        display: block;
+        font-size: 18px;
+        line-height: 1.1;
+      }
+
+      .data-lab-chip span {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 750;
+        text-transform: uppercase;
+      }
+
+      .data-lab-active {
+        display: grid;
+        gap: 18px;
+        align-self: start;
+      }
+
+      .data-lab-active h2 {
+        margin: 0;
+        font-size: clamp(28px, 3vw, 48px);
+        line-height: 1;
+      }
+
+      .data-lab-active p {
+        margin: 8px 0 0;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .data-lab-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .data-lab-badges span {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 7px 10px;
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 850;
+        text-transform: uppercase;
+        display: inline-flex;
+        align-items: baseline;
+        gap: 6px;
+      }
+
+      body.theme-light .data-lab-badges span {
+        background: rgba(10, 32, 55, 0.05);
+      }
+
+      .data-lab-badges b {
+        color: var(--ink);
+        font-size: 12px;
+      }
+
+      .data-lab-metrics {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .data-lab-metric {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 13px;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      body.theme-light .data-lab-metric {
+        background: rgba(10, 32, 55, 0.04);
+      }
+
+      .data-lab-metric span {
+        display: block;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
+      .data-lab-metric strong {
+        display: block;
+        margin-top: 7px;
+        font-size: 24px;
+      }
+
+      .data-lab-active-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .data-lab-active-table th,
+      .data-lab-active-table td {
+        border-bottom: 1px solid var(--line);
+        padding: 10px 0;
+        text-align: left;
+      }
+
+      .data-lab-active-table td:last-child,
+      .data-lab-active-table th:last-child {
+        text-align: right;
+      }
+
+      .data-lab-charts {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 12px;
+      }
+
+      .data-lab-chart {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 14px;
+        background: rgba(255, 255, 255, 0.035);
+      }
+
+      body.theme-light .data-lab-chart {
+        background: rgba(10, 32, 55, 0.04);
+      }
+
+      .data-lab-chart h3 {
+        margin: 0 0 12px;
+        font-size: 15px;
+      }
+
+      .data-lab-bars {
+        display: grid;
+        gap: 10px;
+      }
+
+      .data-lab-bar-row {
+        display: grid;
+        grid-template-columns: 82px minmax(0, 1fr) 62px;
+        gap: 9px;
+        align-items: center;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .data-lab-track {
+        position: relative;
+        height: 10px;
+        overflow: hidden;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      body.theme-light .data-lab-track {
+        background: rgba(10, 32, 55, 0.1);
+      }
+
+      .data-lab-bar {
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: var(--w);
+        border-radius: inherit;
+        background: var(--tone, var(--focus));
+      }
+
+      .data-lab-bar.is-negative {
+        right: 0;
+        left: auto;
+        background: var(--negative);
+      }
+
+      .data-lab-line-card {
+        display: grid;
+        gap: 12px;
+      }
+
+      .data-lab-chart-head {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .data-lab-legend,
+      .data-lab-chart-summary {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .data-lab-legend span,
+      .data-lab-chart-summary span,
+      .data-lab-chart-summary strong {
+        display: inline-flex;
+        align-items: center;
+        min-height: 24px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 4px 8px;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
+      .data-lab-legend span::before {
+        content: "";
+        width: 18px;
+        height: 3px;
+        margin-right: 7px;
+        border-radius: 999px;
+        background: currentColor;
+      }
+
+      .data-lab-legend .is-etf,
+      .data-lab-chart-summary strong:first-of-type {
+        color: var(--focus);
+      }
+
+      .data-lab-legend .is-spy,
+      .data-lab-chart-summary strong:last-of-type {
+        color: var(--inflation);
+      }
+
+      .data-lab-line-chart {
+        width: 100%;
+        height: auto;
+        min-height: 280px;
+      }
+
+      .chart-grid {
+        stroke: var(--line);
+        stroke-width: 1;
+      }
+
+      .data-lab-line {
+        fill: none;
+        stroke-width: 4;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .data-lab-line.is-etf {
+        stroke: var(--focus);
+      }
+
+      .data-lab-line.is-spy {
+        stroke: var(--inflation);
+        opacity: 0.9;
+      }
+
+      .data-lab-dot.is-etf {
+        fill: var(--focus);
+      }
+
+      .data-lab-dot.is-spy {
+        fill: var(--inflation);
+      }
+
+      .data-lab-axis-label,
+      .data-lab-date-label {
+        fill: var(--muted);
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      .data-lab-date-label.is-end {
+        text-anchor: end;
+      }
+
+      .data-lab-result-card {
+        fill: color-mix(in srgb, var(--surface) 92%, transparent);
+        stroke: var(--line);
+        stroke-width: 1;
+      }
+
+      body.theme-light .data-lab-result-card {
+        fill: rgba(255, 255, 255, 0.92);
+      }
+
+      .data-lab-end-label {
+        fill: var(--muted);
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      .data-lab-end-label.is-end {
+        text-anchor: end;
       }
 
       .controls {
@@ -310,6 +859,10 @@
         gap: 12px;
       }
 
+      .kpis.curve-fed-kpis {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
       .kpi {
         min-height: 142px;
         padding: 16px;
@@ -362,6 +915,10 @@
         gap: 18px;
       }
 
+      .main-grid.curve-main-grid {
+        grid-template-columns: minmax(0, 1.48fr) minmax(280px, 0.52fr);
+      }
+
       .section-head {
         display: flex;
         justify-content: space-between;
@@ -381,7 +938,7 @@
 
       .chart {
         width: 100%;
-        min-height: 390px;
+        min-height: 300px;
         overflow: visible;
       }
 
@@ -412,6 +969,32 @@
         stroke-width: 3.5;
         stroke-linecap: round;
         stroke-linejoin: round;
+      }
+
+      .comparison-legend {
+        display: grid;
+        gap: 7px;
+        justify-content: start;
+        padding: 0 16px 14px;
+      }
+
+      .comparison-legend span {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
+      .comparison-legend span::before {
+        content: "";
+        width: 22px;
+        height: 3px;
+        border-radius: 999px;
+        background: currentColor;
+        opacity: var(--line-opacity, 1);
       }
 
       .point {
@@ -526,6 +1109,64 @@
       .spread-value {
         font-weight: 800;
         color: var(--tone);
+      }
+
+      .side-divider {
+        height: 1px;
+        margin: 4px 16px 0;
+        background: var(--line);
+      }
+
+      .delta-bars {
+        display: grid;
+        gap: 10px;
+        padding: 18px 16px 16px;
+      }
+
+      .delta-row {
+        display: grid;
+        grid-template-columns: 42px 1fr 58px;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .delta-row strong {
+        color: var(--ink);
+        font-size: 13px;
+      }
+
+      .delta-track {
+        position: relative;
+        height: 12px;
+        border-radius: 999px;
+        background: rgba(222, 233, 247, 0.12);
+        overflow: hidden;
+      }
+
+      .delta-track::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 1px;
+        background: rgba(222, 233, 247, 0.34);
+      }
+
+      .delta-fill {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: var(--left);
+        width: var(--w);
+        border-radius: inherit;
+        background: var(--tone);
+      }
+
+      .delta-value {
+        color: var(--tone);
+        font-weight: 850;
+        text-align: right;
       }
 
       .diagnosis {
@@ -1218,6 +1859,15 @@
         line-height: 1.35;
       }
 
+      .sector-function {
+        border-left: 4px solid var(--zone);
+        grid-template-columns: minmax(0, 1.4fr) auto;
+      }
+
+      .sector-function-grid {
+        gap: 12px;
+      }
+
       .etf-token-grid {
         display: flex;
         flex-wrap: wrap;
@@ -1300,6 +1950,22 @@
         background: rgba(255, 118, 118, 0.13);
         color: #ffb5b5;
         box-shadow: inset 0 0 0 1px rgba(255, 118, 118, 0.26);
+      }
+
+      .sector-token {
+        border-color: color-mix(in srgb, var(--zone) 58%, transparent);
+        background: color-mix(in srgb, var(--zone) 14%, transparent);
+        color: var(--ink);
+      }
+
+      .sector-token[aria-pressed="true"] {
+        border-color: rgba(255, 118, 118, 0.62);
+        background: rgba(255, 118, 118, 0.13);
+        color: #ffb5b5;
+      }
+
+      .sector-token-wrap {
+        justify-content: flex-end;
       }
 
       .etf-token.is-ucits-highlight[aria-pressed="true"] {
@@ -1591,7 +2257,7 @@
 
       .satellite-card {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-columns: minmax(0, 1fr);
         gap: 12px;
         align-items: center;
         border: 1px solid rgba(222, 233, 247, 0.11);
@@ -2106,7 +2772,8 @@
         .core-layout,
         .satellite-layout,
         .allocation,
-        .tech-main {
+        .tech-main,
+        .data-lab-layout {
           grid-template-columns: 1fr;
         }
 
@@ -2153,6 +2820,22 @@
           flex: 0 0 auto;
           min-height: 32px;
           padding: 7px 10px;
+          font-size: 11px;
+          white-space: nowrap;
+        }
+
+        .etf-subtabs {
+          flex-wrap: nowrap;
+          margin: 0 auto;
+          overflow-x: auto;
+          scrollbar-width: thin;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        .etf-subtabs button {
+          flex: 0 0 auto;
+          min-height: 32px;
+          padding: 6px 10px;
           font-size: 11px;
           white-space: nowrap;
         }
@@ -2239,7 +2922,7 @@
           max-width: none;
           min-height: 34px;
           padding: 4px 8px;
-          font-size: 11px;
+          font-size: 13px;
           line-height: 1.1;
           white-space: nowrap;
         }
@@ -2257,8 +2940,45 @@
         .core-layout,
         .satellite-layout,
         .allocation,
-        .tech-main {
+        .tech-main,
+        .data-lab-layout {
           gap: 12px;
+        }
+
+        .data-lab-list,
+        .data-lab-active {
+          padding: 14px;
+        }
+
+        .data-lab-instruments {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .data-lab-chip {
+          min-height: 68px;
+          padding: 10px;
+        }
+
+        .data-lab-chip strong {
+          font-size: 16px;
+        }
+
+        .data-lab-metrics {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          padding: 0;
+        }
+
+        .data-lab-metric strong {
+          font-size: 20px;
+        }
+
+        .data-lab-charts {
+          grid-template-columns: 1fr;
+        }
+
+        .data-lab-bar-row {
+          grid-template-columns: 72px minmax(0, 1fr) 58px;
+          gap: 7px;
         }
 
         .core-layout {
@@ -2535,6 +3255,89 @@
         inflation: "#a85d19",
       };
 
+      const DEFAULT_CURVE_META = {
+        source: "Atlanta Fed",
+        asOf: "2026-06-22",
+      };
+
+      const COMPARISON_PERIODS = [
+        { key: "current", label: "Atual", opacity: 1, dash: "", width: 3.8, color: null, lightColor: null },
+        { key: "1m", label: "1 mês atrás", opacity: 1, dash: "2 6", width: 4, color: "#ffcf6b", lightColor: "#b45309" },
+      ];
+
+      const DELTA_PERIODS = [
+        { key: "1m", label: "1 mês" },
+        { key: "3m", label: "3 meses" },
+        { key: "1y", label: "1 ano" },
+      ];
+
+      function formatDatePtBr(dateText) {
+        if (!dateText) return "";
+        const [year, month, day] = dateText.split("-");
+        return year && month && day ? `${day}/${month}/${year}` : dateText;
+      }
+
+      function curveSourceText(meta) {
+        return `Base: ${meta.source || DEFAULT_CURVE_META.source}, ${formatDatePtBr(meta.asOf || DEFAULT_CURVE_META.asOf)}.`;
+      }
+
+      const DEFAULT_FED_POLICY = {
+        source: "Atlanta Fed",
+        targetRange: {
+          label: "3,50%–3,75%",
+          asOf: "2026-06-22",
+        },
+        marketProbability: {
+          label: "até 16/09/26",
+          hike: 76.7,
+          steady: 20.8,
+          cut: 2.5,
+          asOf: "2026-06-22",
+        },
+      };
+
+      function pctOne(value) {
+        return `${Number(value).toFixed(1).replace(".", ",")}%`;
+      }
+
+      function defaultCurveComparisons() {
+        const currentCurves = Object.fromEntries(Object.entries(CURVES).map(([key, curve]) => [key, { ...curve.values }]));
+        return {
+          current: {
+            label: "Atual",
+            asOf: "2026-07-17",
+            curves: currentCurves,
+          },
+          "1m": {
+            label: "1 mês atrás",
+            asOf: "2026-06-17",
+            curves: {
+              nominal: { "2Y": 4.2, "5Y": 4.27, "7Y": 4.37, "10Y": 4.49, "30Y": 4.93 },
+              real: { "2Y": 1.84, "5Y": 1.96, "7Y": 2.09, "10Y": 2.23, "30Y": 2.73 },
+              inflation: { "2Y": 2.31, "5Y": 2.27, "7Y": 2.23, "10Y": 2.21, "30Y": 2.14 },
+            },
+          },
+          "3m": {
+            label: "3 meses atrás",
+            asOf: "2026-04-17",
+            curves: {
+              nominal: { "2Y": 3.71, "5Y": 3.84, "7Y": 4.04, "10Y": 4.26, "30Y": 4.88 },
+              real: { "2Y": 0.88, "5Y": 1.28, "7Y": 1.61, "10Y": 1.9, "30Y": 2.65 },
+              inflation: { "2Y": 2.81, "5Y": 2.53, "7Y": 2.39, "10Y": 2.32, "30Y": 2.17 },
+            },
+          },
+          "1y": {
+            label: "1 ano atrás",
+            asOf: "2025-07-17",
+            curves: {
+              nominal: { "2Y": 3.91, "5Y": 4.01, "7Y": 4.22, "10Y": 4.47, "30Y": 5.01 },
+              real: { "2Y": 1.08, "5Y": 1.48, "7Y": 1.77, "10Y": 2.04, "30Y": 2.64 },
+              inflation: { "2Y": 2.8, "5Y": 2.49, "7Y": 2.41, "10Y": 2.38, "30Y": 2.31 },
+            },
+          },
+        };
+      }
+
       const READING_BULLETS = {
         nominal: [
           "Curva voltou a inclinar.",
@@ -2555,6 +3358,7 @@
 
       const SPREADS = [
         { label: "5s2s", from: "2Y", to: "5Y" },
+        { label: "7s2s", from: "2Y", to: "7Y" },
         { label: "10s2s", from: "2Y", to: "10Y" },
         { label: "30s10s", from: "10Y", to: "30Y" },
       ];
@@ -2619,6 +3423,36 @@
         return CURVES[curveKey].values[spread.to] - CURVES[curveKey].values[spread.from];
       }
 
+      function curveDeltaBps(curveComparisons, periodKey, curveKey, maturityKey) {
+        const current = curveComparisons.current?.curves?.[curveKey]?.[maturityKey] ?? CURVES[curveKey].values[maturityKey];
+        const previous = curveComparisons[periodKey]?.curves?.[curveKey]?.[maturityKey];
+        return typeof previous === "number" ? Math.round((current - previous) * 100) : 0;
+      }
+
+      function deltaBarStyle(value, maxAbs) {
+        const width = Math.min(50, Math.abs(value / maxAbs) * 50);
+        return {
+          "--left": value >= 0 ? "50%" : `${50 - width}%`,
+          "--w": `${width}%`,
+          "--tone": value >= 0 ? "var(--positive)" : "var(--negative)",
+        };
+      }
+
+      function pointLabelOffset(point, curveKey, periodKey, comparisonPeriods, curveComparisons) {
+        if (periodKey !== "current") return 0;
+        if (!comparisonPeriods.length) return curveKey === "real" ? 26 : -18;
+        const historicalValues = comparisonPeriods
+          .map((key) => curveComparisons[key]?.curves?.[curveKey]?.[point.maturity])
+          .filter((value) => typeof value === "number");
+        if (!historicalValues.length) return curveKey === "real" ? 26 : -22;
+        const current = point.value;
+        const hasHistoricalAbove = historicalValues.some((value) => value > current);
+        const hasHistoricalBelow = historicalValues.some((value) => value < current);
+        if (hasHistoricalAbove && !hasHistoricalBelow) return 26;
+        if (hasHistoricalBelow && !hasHistoricalAbove) return -22;
+        return curveKey === "real" ? 30 : -26;
+      }
+
       function scrollToMobileDetail(selector) {
         if (!window.matchMedia("(max-width: 720px)").matches) return;
         window.setTimeout(() => {
@@ -2629,20 +3463,28 @@
         }, 60);
       }
 
-      function Chart({ activeCurves, filteredMaturities, mode, theme }) {
+      function Chart({ activeCurves, filteredMaturities, mode, theme, comparisonPeriods = [], curveComparisons = defaultCurveComparisons() }) {
         const width = 920;
-        const height = 470;
-        const margin = { top: 46, right: 138, bottom: 68, left: 78 };
+        const height = 360;
+        const margin = { top: 22, right: 126, bottom: 42, left: 54 };
         const plotW = width - margin.left - margin.right;
         const plotH = height - margin.top - margin.bottom;
+        const selectedPeriods = [
+          COMPARISON_PERIODS.find((period) => period.key === "current"),
+          ...COMPARISON_PERIODS.filter((period) => period.key !== "current" && comparisonPeriods.includes(period.key)),
+        ].filter(Boolean);
 
-        const allValues = activeCurves.flatMap((curveKey) =>
-          filteredMaturities.map((m) => CURVES[curveKey].values[m.key])
+        const allValues = selectedPeriods.flatMap((period) =>
+          activeCurves.flatMap((curveKey) =>
+            filteredMaturities.map((m) => curveComparisons[period.key]?.curves?.[curveKey]?.[m.key] ?? CURVES[curveKey].values[m.key])
+          )
         );
         const min = Math.min(...allValues, 0);
         const max = Math.max(...allValues, 1);
-        const pad = Math.max(0.15, (max - min) * 0.12);
-        const yMin = 1.5;
+        const visibleRange = Math.max(0.01, max - min);
+        const hasHistoricalComparison = selectedPeriods.some((period) => period.key !== "current");
+        const pad = Math.max(0.04, visibleRange * (hasHistoricalComparison ? 0.06 : 0.12));
+        const yMin = hasHistoricalComparison ? min - pad : Math.min(1.5, min - pad);
         const yMax = max + pad;
 
         const x = (index) =>
@@ -2675,56 +3517,61 @@
                 key: maturity.key,
                 className: "tick",
                 x: x(index),
-                y: height - 30,
+                y: height - 24,
                 textAnchor: "middle",
                 fontWeight: 700,
               },
               maturity.key
             )
           ),
-          activeCurves.map((curveKey) => {
-            const curveColor = theme === "light" ? LIGHT_CHART_COLORS[curveKey] : CURVES[curveKey].color;
+          selectedPeriods.flatMap((period) =>
+            activeCurves.map((curveKey) => {
+            const baseCurveColor = theme === "light" ? LIGHT_CHART_COLORS[curveKey] : CURVES[curveKey].color;
+            const curveColor = period.key === "current" ? baseCurveColor : (theme === "light" ? period.lightColor : period.color);
             const points = filteredMaturities.map((m, index) => ({
               maturity: m.key,
-              value: CURVES[curveKey].values[m.key],
+              value: curveComparisons[period.key]?.curves?.[curveKey]?.[m.key] ?? CURVES[curveKey].values[m.key],
               x: x(index),
-              y: y(CURVES[curveKey].values[m.key]),
+              y: y(curveComparisons[period.key]?.curves?.[curveKey]?.[m.key] ?? CURVES[curveKey].values[m.key]),
             }));
-            const labelOffset = curveKey === "real" ? 26 : -18;
             const d = points.map((p, index) => `${index ? "L" : "M"} ${p.x} ${p.y}`).join(" ");
             return React.createElement(
               "g",
-              { key: curveKey },
+              { key: `${period.key}-${curveKey}` },
               React.createElement("path", {
                 className: "curve-line",
                 d,
                 stroke: curveColor,
-                opacity: 1,
+                opacity: period.opacity,
+                strokeDasharray: period.dash,
+                strokeWidth: period.width,
               }),
               points.map((point) =>
                 React.createElement(
                   "g",
-                  { key: `${curveKey}-${point.maturity}` },
+                  { key: `${period.key}-${curveKey}-${point.maturity}` },
                   React.createElement("circle", {
                     className: "point",
                     cx: point.x,
                     cy: point.y,
-                    r: 6,
+                    r: period.key === "current" ? 6 : 5.5,
                     fill: curveColor,
-                    opacity: 1,
+                    opacity: period.opacity,
                   }),
-                  React.createElement(
-                    "text",
-                    {
-                      className: "point-value-label",
-                      x: point.x,
-                      y: point.y + labelOffset,
-                      fill: curveColor,
-                      opacity: 1,
-                      textAnchor: "middle",
-                    },
-                    pct(point.value)
-                  ),
+                  period.key === "current"
+                    ? React.createElement(
+                        "text",
+                        {
+                          className: "point-value-label",
+                          x: point.x,
+                          y: point.y + pointLabelOffset(point, curveKey, period.key, comparisonPeriods, curveComparisons),
+                          fill: curveColor,
+                          opacity: 1,
+                          textAnchor: "middle",
+                        },
+                        pct(point.value)
+                      )
+                    : null,
                   React.createElement("circle", {
                     className: "point-hotspot",
                     cx: point.x,
@@ -2734,7 +3581,8 @@
                 )
               )
             );
-          })
+            })
+          )
         );
       }
 
@@ -2942,7 +3790,7 @@
                   "div",
                   null,
                   React.createElement("span", { className: "control-title" }, "Diagnóstico"),
-                  React.createElement("h2", null, "Onde está o excesso?")
+                  React.createElement("h2", null, "Onde está o excesso")
                 )
               ),
               React.createElement(
@@ -3067,9 +3915,15 @@
       }
 
       const MODULE_COPY = {
+        home: {
+          title: "General Channels Dashboard",
+          lead: "Camadas de leitura para macro, valuation, temas, ETFs e dados.",
+          thesis: "Dashboard",
+          subtitle: "Macro, valuation, temas e dados",
+        },
         curve: {
-          title: "O retorno livre de risco voltou a competir por capital",
-          lead: "Curvas de Treasuries, TIPS e inflação implícita para separar inflação, juro real e prêmio de prazo.",
+          title: "Yield Curves",
+          lead: "",
           thesis: "Carry",
           subtitle: "Duration moderada (2.3y)",
         },
@@ -3120,6 +3974,363 @@
         thesis: "Payoff",
         subtitle: "Opções, beta e volatilidade",
       };
+
+      MODULE_COPY.etfs = {
+        title: "Arquitetura de ETFs",
+        lead: "",
+        thesis: "Implementacao",
+        subtitle: "Core, satelites e hedge",
+      };
+
+      MODULE_COPY.dataLab = {
+        title: "Data Lab",
+        lead: "",
+        thesis: "Dados",
+        subtitle: "Retorno, risco e benchmark",
+      };
+
+      const HOME_CARDS = [
+        ["curve", "Macro", "Yield Curves", "Curvas nominais, reais, inflação implícita, Fed Funds e inclinações.", "#48d6e9"],
+        ["equity", "Valuation", "Equity Valuation", "Múltiplos, Magnificent 7, dispersão e prêmio relativo do mercado americano.", "#6ee7b7"],
+        ["tech", "Temas", "Matriz de Ciclos", "Ciclos tecnológicos, CAPEX, gargalos econômicos e papel do Estado.", "#ffae6b"],
+        ["etfs", "Veículos", "ETFs", "Core equities, renda fixa, setoriais, satélites, China, Europa e hedge.", "#8db7ff"],
+        ["dataLab", "Dados", "Data Lab", "Retorno, volatilidade, drawdown, beta, correlação e benchmark dos ETFs.", "#6ee7b7"],
+      ];
+
+      const MAIN_NAV = [
+        ["home", "Home"],
+        ["curve", "Macro"],
+        ["equity", "Valuation"],
+        ["tech", "Temas"],
+        ["etfs", "ETFs"],
+        ["dataLab", "Data Lab"],
+      ];
+
+      const DATA_LAB_METRICS = [
+        ["valuation.peRatio", "P/E"],
+        ["returnYtdPct", "YTD"],
+        ["return1yPct", "1 ano"],
+        ["return3yAnnPct", "3 anos anual."],
+        ["return5yAnnPct", "5 anos anual."],
+        ["vol1yAnnPct", "Vol. 1 ano"],
+        ["maxDrawdown1yPct", "Max Drawdown 1 ano"],
+        ["beta1yVsSp500", "Beta 1 ano"],
+      ];
+
+      const DATA_LAB_GROUPS = ["Core Equities", "Fixed Income", "Setoriais", "Satélites EUA", "Europa Estratégica", "China / China+1", "Hedge"];
+
+      const dataLabGroupFor = (item) => {
+        const category = (item?.category || "").toLowerCase();
+        if (category.includes("gics sector")) return "Setoriais";
+        if (category.includes("covered call") || category.includes("minimum volatility") || category.includes("vix") || category.includes("inverse") || category.includes("concentration hedge") || category.includes("gold") || category.includes("swiss franc")) return "Hedge";
+        if (category.includes("treasuries") || category.includes("treasury bills") || category.includes("inflation usd") || category.includes("credit") || category.includes("high yield") || category.includes("core bond")) return "Fixed Income";
+        if (category.includes("china") || category.includes("em ex-china") || category.includes("china+1") || category.includes("asia technology")) return "China / China+1";
+        if (category.includes("luxury") || category.includes("europe healthcare")) return "Europa Estratégica";
+        if (category.startsWith("core") || category.includes("s&p 500 benchmark") || category.includes("us growth") || category.includes("nasdaq-100")) return "Core Equities";
+        return "Satélites EUA";
+      };
+
+      const dataLabMetricsFor = (item) => {
+        const assetClass = item?.assetClass || "";
+        const category = (item?.category || "").toLowerCase();
+        const isMacro = ["commodity", "currency", "volatility", "inverse_equity"].includes(assetClass);
+        const isFixedIncome = assetClass === "fixed_income";
+        const isHedge = dataLabGroupFor(item) === "Hedge";
+        const baseMetrics = DATA_LAB_METRICS.filter(([key]) => key !== "beta1yVsSp500" && key !== "valuation.peRatio");
+        if (isFixedIncome || isMacro || isHedge || category.includes("gold") || category.includes("swiss franc")) {
+          return [...baseMetrics, ["correlation1yVsSp500", "Correlação vs S&P 500"]];
+        }
+        return DATA_LAB_METRICS;
+      };
+
+      const dataLabBenchmarkLabel = (item) => {
+        if (item?.assetClass === "fixed_income") return "US Treasury 0-1y Index";
+        if (["commodity", "currency", "volatility", "inverse_equity"].includes(item?.assetClass)) return "S&P 500";
+        return "S&P 500";
+      };
+
+      const dataLabReferenceLabel = (item) => {
+        if (item?.assetClass === "fixed_income") return "Fed Funds";
+        if (["commodity", "currency", "volatility", "inverse_equity"].includes(item?.assetClass)) return "Correlação";
+        return "Beta";
+      };
+
+      const fmtMetric = (value, suffix = "%") =>
+        typeof value === "number" && Number.isFinite(value) ? `${value.toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 2 })}${suffix}` : "n/d";
+
+      const fmtDataLabMetric = (key, value) =>
+        key === "beta1yVsSp500"
+          ? typeof value === "number" && Number.isFinite(value)
+            ? value.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+            : "n/d"
+          : key === "correlation1yVsSp500"
+          ? typeof value === "number" && Number.isFinite(value)
+            ? value.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+            : "n/d"
+          : key.toLowerCase().includes("pe")
+            ? typeof value === "number" && Number.isFinite(value)
+              ? `${value.toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 2 })}x`
+              : "n/d"
+          : fmtMetric(value);
+
+      const valueAtPath = (object, path) =>
+        path.split(".").reduce((acc, key) => (acc && acc[key] !== undefined ? acc[key] : undefined), object);
+
+      function DataLabLineChart({ active }) {
+        const points = active?.performanceChart?.points || [];
+        const hasBenchmark = active?.assetClass !== "fixed_income" && points.some((point) => typeof point.sp500 === "number");
+        const values = points.flatMap((point) => [point.etf, hasBenchmark ? point.sp500 : null]).filter((value) => typeof value === "number" && Number.isFinite(value));
+        const minValue = Math.floor(Math.min(...values, 95) / 5) * 5;
+        const maxValue = Math.ceil(Math.max(...values, 105) / 5) * 5;
+        const width = 720;
+        const height = 310;
+        const pad = { top: 22, right: 24, bottom: 34, left: 44 };
+        const plotW = width - pad.left - pad.right;
+        const plotH = height - pad.top - pad.bottom;
+        const x = (index) => pad.left + (points.length <= 1 ? 0 : (index / (points.length - 1)) * plotW);
+        const y = (value) => pad.top + ((maxValue - value) / Math.max(1, maxValue - minValue)) * plotH;
+        const pathFor = (key) =>
+          points
+            .map((point, index) => {
+              const value = point[key];
+              if (typeof value !== "number" || !Number.isFinite(value)) return "";
+              return `${index === 0 ? "M" : "L"} ${x(index).toFixed(1)} ${y(value).toFixed(1)}`;
+            })
+            .filter(Boolean)
+            .join(" ");
+        const endPoint = points[points.length - 1];
+        const yStep = Math.max(5, Math.ceil((maxValue - minValue) / 6 / 5) * 5);
+        const yTicks = [];
+        for (let tick = minValue; tick <= maxValue; tick += yStep) yTicks.push(tick);
+        if (!yTicks.includes(100)) yTicks.push(100);
+        yTicks.sort((a, b) => a - b);
+        const xTickCount = Math.min(5, points.length);
+        const xTicks = Array.from({ length: xTickCount }, (_, index) => Math.round((index / Math.max(1, xTickCount - 1)) * (points.length - 1)));
+        const shortDate = (value) => {
+          if (!value) return "";
+          const [year, month] = value.split("-");
+          return `${month}/${year.slice(2)}`;
+        };
+        const excessValue = hasBenchmark && endPoint ? endPoint.etf - endPoint.sp500 : null;
+        const excessText = typeof excessValue === "number" && Number.isFinite(excessValue) ? `Excesso: ${fmtMetric(excessValue)} vs S&P 500` : null;
+
+        return React.createElement(
+          "article",
+          { className: "data-lab-chart data-lab-line-card" },
+          React.createElement(
+            "div",
+            { className: "data-lab-chart-head" },
+            React.createElement("h3", null, hasBenchmark ? `Evolução: ${active.ticker || "ETF"} vs S&P 500` : `Evolução: ${active.ticker || "ETF"}`),
+            React.createElement(
+              "div",
+              { className: "data-lab-legend" },
+              React.createElement("span", { className: "is-etf" }, active.ticker || "ETF"),
+              hasBenchmark ? React.createElement("span", { className: "is-spy" }, "S&P 500") : null
+            )
+          ),
+          points.length > 1
+            ? React.createElement(
+                "svg",
+                { className: "data-lab-line-chart", viewBox: `0 0 ${width} ${height}`, role: "img", "aria-label": `Grafico de ${active.ticker || "ETF"} contra S&P 500` },
+                yTicks.map((tick) =>
+                  React.createElement(
+                    "g",
+                    { key: `y-${tick}` },
+                    React.createElement("line", { x1: pad.left, x2: width - pad.right, y1: y(tick), y2: y(tick), className: "chart-grid" }),
+                    React.createElement("text", { x: 8, y: y(tick) + 4, className: "data-lab-axis-label" }, tick)
+                  )
+                ),
+                xTicks.map((index) =>
+                  React.createElement(
+                    "g",
+                    { key: `x-${index}` },
+                    React.createElement("line", { x1: x(index), x2: x(index), y1: pad.top, y2: height - pad.bottom, className: "chart-grid" }),
+                    React.createElement("text", { x: x(index), y: height - 8, className: `data-lab-date-label ${index === points.length - 1 ? "is-end" : ""}` }, shortDate(points[index].date))
+                  )
+                ),
+                React.createElement("path", { d: pathFor("etf"), className: "data-lab-line is-etf" }),
+                hasBenchmark ? React.createElement("path", { d: pathFor("sp500"), className: "data-lab-line is-spy" }) : null,
+                endPoint ? React.createElement("circle", { cx: x(points.length - 1), cy: y(endPoint.etf), r: 4.5, className: "data-lab-dot is-etf" }) : null,
+                hasBenchmark && endPoint.sp500 ? React.createElement("circle", { cx: x(points.length - 1), cy: y(endPoint.sp500), r: 4.5, className: "data-lab-dot is-spy" }) : null,
+                endPoint
+                  ? React.createElement(
+                      "g",
+                      { transform: `translate(${pad.left + 8} ${pad.top + 8})` },
+                      React.createElement("rect", { className: "data-lab-result-card", width: 184, height: hasBenchmark ? 78 : 48, rx: 8 }),
+                      React.createElement("text", { x: 12, y: 22, className: "data-lab-end-label" }, `${active.ticker}: ${fmtMetric(endPoint.etf - 100)}`),
+                      hasBenchmark && endPoint.sp500 ? React.createElement("text", { x: 12, y: 43, className: "data-lab-end-label" }, `S&P 500: ${fmtMetric(endPoint.sp500 - 100)}`) : null,
+                      excessText ? React.createElement("text", { x: 12, y: 64, className: "data-lab-end-label" }, `Excesso: ${fmtMetric(excessValue)}`) : null
+                    )
+                  : null
+              )
+            : React.createElement("p", { className: "data-note" }, "Série histórica ainda não disponível para este instrumento.")
+        );
+      }
+
+      function DataLabModule() {
+        const [data, setData] = useState(null);
+        const [error, setError] = useState("");
+        const [selectedTicker, setSelectedTicker] = useState("SPY");
+        const [selectedGroup, setSelectedGroup] = useState("Core Equities");
+
+        useEffect(() => {
+          let cancelled = false;
+          const sources = [
+            `data/etf-performance.json?v=${Date.now()}`,
+            `https://raw.githubusercontent.com/cloretti55-hue/analysis_dashboard_v3/main/data/etf-performance.json?v=${Date.now()}`,
+          ];
+
+          const loadPerformanceData = async () => {
+            let lastError = null;
+            for (const source of sources) {
+              try {
+                const response = await fetch(source, { cache: "no-store" });
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const text = await response.text();
+                if (text.trim().length < 1000) throw new Error(`arquivo vazio ou incompleto (${text.length} bytes)`);
+                return JSON.parse(text);
+              } catch (err) {
+                lastError = err;
+              }
+            }
+            throw lastError || new Error("Falha ao carregar dados.");
+          };
+
+          loadPerformanceData()
+            .then((payload) => {
+              if (cancelled) return;
+              setData(payload);
+              const firstOk = payload.instruments.find((item) => item.status === "ok" && dataLabGroupFor(item) === "Core Equities") || payload.instruments.find((item) => item.status === "ok") || payload.instruments?.[0];
+              if (firstOk) setSelectedTicker(firstOk.ticker);
+            })
+            .catch((err) => {
+              if (cancelled) return;
+              setError(err.message || "Falha ao carregar dados.");
+            });
+          return () => {
+            cancelled = true;
+          };
+        }, []);
+
+        const instruments = data?.instruments || [];
+        const filteredInstruments = instruments.filter((item) => dataLabGroupFor(item) === selectedGroup);
+        const groupCounts = DATA_LAB_GROUPS.reduce((acc, group) => {
+          acc[group] = instruments.filter((item) => dataLabGroupFor(item) === group).length;
+          return acc;
+        }, {});
+
+        useEffect(() => {
+          if (!filteredInstruments.length) return;
+          if (!filteredInstruments.some((item) => item.ticker === selectedTicker)) {
+            setSelectedTicker(filteredInstruments[0].ticker);
+          }
+        }, [selectedGroup, data]);
+
+        const active = instruments.find((item) => item.ticker === selectedTicker) || instruments[0];
+
+        return React.createElement(
+          "main",
+          { className: "data-lab-layout" },
+          React.createElement(
+            "section",
+            { className: "panel data-lab-list" },
+            React.createElement(
+              "div",
+              { className: "section-head" },
+              React.createElement(
+                "div",
+                null,
+                React.createElement("span", { className: "control-title" }, "Base automatizada"),
+                React.createElement("h2", null, "ETFs monitorados")
+              ),
+              React.createElement("span", { className: "mini-label" }, data?.asOf ? `Atualizado em ${data.asOf}` : "JSON")
+            ),
+            error ? React.createElement("p", { className: "data-note" }, `Não foi possível carregar data/etf-performance.json: ${error}`) : null,
+            !data && !error ? React.createElement("p", { className: "data-note" }, "Carregando dados...") : null,
+            React.createElement(
+              "div",
+              { className: "data-lab-filters" },
+              DATA_LAB_GROUPS.map((group) =>
+                React.createElement(
+                  "button",
+                  {
+                    className: "data-lab-filter",
+                    type: "button",
+                    key: group,
+                    "aria-pressed": selectedGroup === group,
+                    onClick: () => setSelectedGroup(group),
+                  },
+                  `${group} ${groupCounts[group] ? `(${groupCounts[group]})` : ""}`
+                )
+              )
+            ),
+            React.createElement(
+              "div",
+              { className: "data-lab-instruments" },
+              filteredInstruments.map((item) =>
+                React.createElement(
+                  "button",
+                  {
+                    className: "data-lab-chip",
+                    type: "button",
+                    key: item.ticker,
+                    "aria-pressed": active.ticker === item.ticker,
+                    onClick: () => setSelectedTicker(item.ticker),
+                  },
+                  React.createElement("strong", null, item.ticker),
+                  React.createElement("span", null, item.status === "ok" ? item.category : "manual")
+                )
+              )
+            ),
+            React.createElement("p", { className: "data-note" }, data?.methodology || "O dashboard usa os dados fixos enquanto o JSON não carrega.")
+          ),
+          React.createElement(
+            "section",
+            { className: "panel data-lab-active" },
+            active
+              ? React.createElement(
+                  React.Fragment,
+                  null,
+                  React.createElement(
+                    "div",
+                    null,
+                    React.createElement("span", { className: "control-title" }, "Instrumento selecionado"),
+                    React.createElement("h2", null, active.ticker),
+                    React.createElement("p", null, active.name || active.category)
+                  ),
+                  React.createElement(
+                    "div",
+                    { className: "data-lab-badges" },
+                    React.createElement("span", null, "Veículo", React.createElement("b", null, active.wrapper || "n/d")),
+                    React.createElement("span", null, "Moeda", React.createElement("b", null, active.currency || "n/d")),
+                    React.createElement("span", null, "Benchmark", React.createElement("b", null, dataLabBenchmarkLabel(active))),
+                    React.createElement("span", null, "ReferÃªncia", React.createElement("b", null, dataLabReferenceLabel(active))),
+                    active.assetClass === "equity" && dataLabGroupFor(active) !== "Hedge" && active.valuation?.source ? React.createElement("span", null, "P/E", React.createElement("b", null, active.valuation.asOf || "manual")) : null,
+                    active.performanceChart?.startDate ? React.createElement("span", null, "Histórico", React.createElement("b", null, active.performanceChart.startDate)) : null,
+                    active.status !== "ok" ? React.createElement("span", null, "Status", React.createElement("b", null, "manual")) : null
+                  ),
+                  React.createElement(
+                    "div",
+                    { className: "data-lab-metrics" },
+                    dataLabMetricsFor(active).filter(([key]) => key !== "correlation1yVsSp500" || valueAtPath(active, key) !== undefined).map(([key, label]) =>
+                      React.createElement(
+                        "div",
+                        { className: "data-lab-metric", key },
+                        React.createElement("span", null, label),
+                        React.createElement("strong", null, fmtDataLabMetric(key, valueAtPath(active, key)))
+                      )
+                    )
+                  ),
+                  React.createElement(
+                    React.Fragment,
+                    null,
+                    React.createElement(DataLabLineChart, { active })
+                  )
+                )
+              : React.createElement("p", { className: "data-note" }, "Nenhum instrumento carregado ainda.")
+          )
+        );
+      }
 
       const TECH_CYCLES = [
         {
@@ -3321,7 +4532,7 @@
                 "div",
                 null,
                 React.createElement("span", { className: "control-title" }, "Linha do tempo"),
-                React.createElement("h2", null, "Onde estamos na IA?")
+                React.createElement("h2", null, "Onde estamos na IA")
               )
             ),
             React.createElement(
@@ -3411,6 +4622,11 @@
         { fn: "Crédito e core bond", why: "Spread corporativo e diversificação global em bonds.", tickers: ["LQDA", "IHYA", "AGGU"], note: "IG, high yield e agregado global cumprem funções distintas." },
         { fn: "Hedge macro", why: "Proteção de regime, moeda forte e reserva de valor.", tickers: ["GLD", "IAU", "FXF / CHF"], note: "Ouro físico e franco suíço como diversificadores macro." },
       ];
+
+      const FIXED_INCOME_TICKERS = new Set(["IB01", "IBTA", "CBU7", "IBTM", "DTLA", "TIP5", "ITPS", "ITPE", "LQDA", "IHYA", "AGGU"]);
+      const HEDGE_MACRO_TICKERS = new Set(["GLD", "IAU", "FXF / CHF"]);
+      const FIXED_INCOME_FUNCTIONS = CORE_FUNCTIONS.filter((row) => row.tickers.some((ticker) => FIXED_INCOME_TICKERS.has(ticker)));
+      const CORE_EQUITY_FUNCTIONS = CORE_FUNCTIONS.filter((row) => !row.tickers.some((ticker) => FIXED_INCOME_TICKERS.has(ticker) || HEDGE_MACRO_TICKERS.has(ticker)));
 
       const CORE_TOKEN_GROUPS = {
         VOO: "etf-us",
@@ -3872,14 +5088,18 @@
           ],
           shield: [path("M12 3l7 3v5c0 4.5-2.8 8-7 10-4.2-2-7-5.5-7-10V6l7-3z"), path("M9 12l2 2 4-5")],
           network: [circle(7, 8, 2), circle(17, 8, 2), circle(12, 17, 2), line(9, 9, 15, 9), line(8, 10, 11, 15), line(16, 10, 13, 15)],
+          phone: [rect(8, 3, 8, 18, 2), line(10, 6, 14, 6), circle(12, 18, 0.7), path("M18 8c1.5 2.5 1.5 5.5 0 8"), path("M6 8c-1.5 2.5-1.5 5.5 0 8")],
           robotics: [path("M5 18h8"), path("M8 18v-5l4-4 3 3-4 4"), circle(16, 7, 2), path("M14 19l4-4"), path("M18 15l2 2")],
           energy: [path("M13 2L5 14h6l-1 8 8-12h-6l1-8z")],
+          oil: [path("M5 20h14"), path("M8 20V8l4-4 4 4v12"), path("M8 10h8"), path("M10 20v-7h4v7"), path("M16 9l4 2v5"), circle(20, 17, 1.3)],
           grid: [path("M12 3l7 18H5l7-18z"), line(8, 13, 16, 13), line(9.5, 17, 14.5, 17), line(12, 3, 12, 21)],
+          faucet: [path("M9 6h8a3 3 0 013 3v1"), path("M4 10h13"), path("M7 10v7"), path("M5 17h4"), path("M15 10v3"), path("M17 16c0 1.2-.8 2-2 2s-2-.8-2-2c0-1.4 2-3.5 2-3.5s2 2.1 2 3.5z"), path("M10 6V4h4v2")],
           server: [rect(5, 5, 14, 5, 1), rect(5, 14, 14, 5, 1), circle(8, 7.5, 0.7), circle(8, 16.5, 0.7), line(11, 7.5, 16, 7.5), line(11, 16.5, 16, 16.5)],
           factory: [path("M4 20V9l5 3V9l5 3V5h6v15H4z"), line(7, 16, 7, 16), line(11, 16, 11, 16), line(15, 16, 15, 16)],
           home: [path("M4 11l8-7 8 7"), path("M6 10v10h12V10"), path("M10 20v-6h4v6")],
           book: [path("M5 5.5A3.5 3.5 0 018.5 2H20v17H8.5A3.5 3.5 0 005 22V5.5z"), path("M5 5.5A3.5 3.5 0 018.5 9H20")],
           diamond: [path("M6 4h12l3 5-9 11L3 9l3-5z"), path("M3 9h18"), path("M8 4l4 16 4-16")],
+          money: [rect(4, 6, 16, 12, 2), circle(12, 12, 3), path("M8 9h.01"), path("M16 15h.01"), path("M12 9v6"), path("M10.5 10.5c.6-.7 2.4-.7 3 0"), path("M10.5 13.5c.6.7 2.4.7 3 0")],
           pulse: [path("M20 12h-4l-2 5-4-10-2 5H4"), path("M12 21C7 17.5 4 14.5 4 10a4 4 0 017-2.6A4 4 0 0118 10c0 4.5-3 7.5-6 11z")],
           atom: [circle(12, 12, 1.5), React.createElement("ellipse", { cx: 12, cy: 12, rx: 8, ry: 3.2, key: "e1" }), React.createElement("ellipse", { cx: 12, cy: 12, rx: 8, ry: 3.2, transform: "rotate(60 12 12)", key: "e2" }), React.createElement("ellipse", { cx: 12, cy: 12, rx: 8, ry: 3.2, transform: "rotate(120 12 12)", key: "e3" })],
         };
@@ -4079,7 +5299,6 @@
           React.createElement(
             "article",
             { className: "panel" },
-            React.createElement("div", { className: "section-head" }, React.createElement("div", null, React.createElement("span", { className: "control-title" }, "Bolsões estratégicos"))),
             React.createElement(
               "div",
               { className: "risk-legend", style: { padding: "14px 16px 0" } },
@@ -4324,6 +5543,18 @@
 
       const HEDGE_STRATEGIES = [
         {
+          theme: "Hedge macro",
+          icon: "diamond",
+          objective: "stress",
+          tone: "sat-risk-defensive",
+          instruments: "GLD, IAU, FXF / CHF",
+          does: "Combina reserva de valor, moeda forte e proteção de regime.",
+          use: "Diversificar risco de moeda, confiança institucional e choques macro.",
+          limit: "Não é hedge perfeito de queda de bolsa; pode ficar parado em bull market.",
+          reading: "Dólar protege contra Brasil. Franco suíço protege qualidade monetária. Ouro protege regime.",
+          examples: ["GLD: ouro físico com alta liquidez", "IAU: ouro físico com custo competitivo", "FXF / CHF: exposição ao franco suíço"],
+        },
+        {
           theme: "Income de opções",
           icon: "network",
           objective: "income",
@@ -4498,9 +5729,24 @@
         );
       }
 
-      function CoreModule() {
-        const [selectedEtf, setSelectedEtf] = useState("VOO");
+      function CoreModule({ functions = CORE_EQUITY_FUNCTIONS, initialEtf = "VOO", legendMode = "equity" } = {}) {
+        const [selectedEtf, setSelectedEtf] = useState(initialEtf);
         const [ucitsView, setUcitsView] = useState("all");
+        const [geoData, setGeoData] = useState(null);
+        useEffect(() => {
+          let cancelled = false;
+          fetch("data/etf-geography.json", { cache: "no-store" })
+            .then((response) => (response.ok ? response.json() : null))
+            .then((payload) => {
+              if (!cancelled) setGeoData(payload);
+            })
+            .catch(() => {
+              if (!cancelled) setGeoData(null);
+            });
+          return () => {
+            cancelled = true;
+          };
+        }, []);
         const selectCoreEtf = (ticker) => {
           setSelectedEtf(ticker);
           if (window.matchMedia("(max-width: 720px)").matches) {
@@ -4515,11 +5761,13 @@
         const setCoreUcitsView = (nextView) => {
           setUcitsView(nextView);
           if (nextView === "ucits" && !UCITS_TICKERS.has(selectedEtf)) {
-            setSelectedEtf("CSPX");
+            const fallback = functions.flatMap((row) => row.tickers).find((ticker) => UCITS_TICKERS.has(ticker)) || "CSPX";
+            setSelectedEtf(fallback);
           }
         };
         const detail = CORE_DETAILS[selectedEtf] || CORE_DETAILS.VOO;
-        const countryWeights = CORE_COUNTRY_WEIGHTS[selectedEtf];
+        const geography = geoData?.instruments?.[selectedEtf];
+        const countryWeights = geography?.weights || CORE_COUNTRY_WEIGHTS[selectedEtf];
         const maxCountryWeight = countryWeights ? Math.max(...countryWeights.map((row) => row[1])) : 0;
 
         return React.createElement(
@@ -4531,19 +5779,25 @@
             React.createElement(
               "article",
               { className: "panel" },
-              React.createElement("div", { className: "section-head" }, React.createElement("div", null, React.createElement("span", { className: "control-title" }, "Matriz de implementação"), React.createElement("h2", null, "Função antes do ticker"))),
+              React.createElement("div", { className: "section-head" }, React.createElement("div", null, React.createElement("span", { className: "control-title" }, "Matriz de implementação"))),
               React.createElement(
                 "div",
                 { className: "core-legend-row" },
                 React.createElement(
                   "div",
                   { className: "core-legend" },
-                  React.createElement("span", { className: "etf-token etf-us" }, "EUA"),
-                  React.createElement("span", { className: "etf-token etf-global" }, "Global desenvolvido"),
-                  React.createElement("span", { className: "etf-token etf-developed" }, "Developed ex-US"),
-                  React.createElement("span", { className: "etf-token etf-emerging" }, "Emergentes"),
-                  React.createElement("span", { className: "etf-token etf-fixed" }, "Treasuries / Bonds"),
-                  React.createElement("span", { className: "etf-token etf-other" }, "Hedge macro")
+                  legendMode === "fixed"
+                    ? React.createElement(React.Fragment, null,
+                        React.createElement("span", { className: "etf-token etf-fixed" }, "Treasuries USD Acc"),
+                        React.createElement("span", { className: "etf-token etf-fixed" }, "TIPS USD Acc"),
+                        React.createElement("span", { className: "etf-token etf-fixed" }, "Crédito / bonds")
+                      )
+                    : React.createElement(React.Fragment, null,
+                        React.createElement("span", { className: "etf-token etf-us" }, "EUA"),
+                        React.createElement("span", { className: "etf-token etf-global" }, "Global desenvolvido"),
+                        React.createElement("span", { className: "etf-token etf-developed" }, "Developed ex-US"),
+                        React.createElement("span", { className: "etf-token etf-emerging" }, "Emergentes")
+                      )
                 ),
                 React.createElement(
                   "div",
@@ -4555,7 +5809,7 @@
               React.createElement(
                 "div",
                 { className: "core-function-grid" },
-                CORE_FUNCTIONS.map((row) =>
+                functions.map((row) =>
                   React.createElement(
                     "div",
                     { className: "core-function", key: row.fn },
@@ -4592,7 +5846,13 @@
                         React.createElement("span", null, `${weight.toFixed(1).replace(".", ",")}%`)
                       )
                     ),
-                    React.createElement("p", { className: "data-note" }, "Pesos aproximados por país. Base: lâminas dos provedores e benchmarks, junho/2026.")
+                    React.createElement(
+                      "p",
+                      { className: "data-note" },
+                      geography
+                        ? `Fonte: ${geography.source}.`
+                        : "Pesos aproximados por país. Base: lâminas dos provedores e benchmarks, junho/2026."
+                    )
                   )
                 : null,
               React.createElement("ul", { className: "core-detail-list" }, detail[3].map((point) => React.createElement("li", { key: point }, point)))
@@ -4601,16 +5861,205 @@
         );
       }
 
+      function FixedIncomeModule() {
+        return React.createElement(CoreModule, { functions: FIXED_INCOME_FUNCTIONS, initialEtf: "IB01", legendMode: "fixed" });
+      }
+
+      const SECTOR_GICS_ETFS = [
+        { ticker: "XLK", sector: "Information Technology", icon: "chip", tone: "sat-risk-high", role: "Growth / qualidade", why: "Software, semicondutores e infraestrutura digital.", limit: "Alta concentração e múltiplos mais sensíveis à revisão de crescimento.", points: ["Proxy mais direto de tecnologia no S&P 500.", "Carrega parte relevante da liderança estrutural do índice.", "Bom para testar prêmio de growth contra o benchmark."] },
+        { ticker: "XLC", sector: "Communication Services", icon: "phone", tone: "sat-risk-high", role: "Plataformas / mídia", why: "Mega plataformas digitais, mídia, streaming e telecom.", limit: "Mistura negócios muito diferentes e pode ficar concentrado em poucos nomes.", points: ["Útil para separar plataformas digitais de tecnologia pura.", "Conversa com publicidade, conteúdo e distribuição.", "Não é defensivo apesar de incluir telecom."] },
+        { ticker: "XLY", sector: "Consumer Discretionary", icon: "diamond", tone: "sat-risk-high", role: "Consumo cíclico", why: "E-commerce, autos, varejo e consumo sensível à renda.", limit: "Carrega ciclo econômico, confiança do consumidor e concentração em líderes.", points: ["Bom termômetro de apetite ao risco doméstico.", "Pode capturar consumo premium e plataformas de varejo.", "Sofre mais em desaceleração e juros altos."] },
+        { ticker: "XLB", sector: "Materials", icon: "factory", tone: "sat-risk-medium", role: "Ciclo / commodities", why: "Químicos, metais, materiais e insumos industriais.", limit: "Muito ligado a ciclo global, dólar e demanda por commodities.", points: ["Funciona como leitura de ciclo industrial.", "Complementa energia e industriais.", "Não substitui exposição direta a commodities."] },
+        { ticker: "XLE", sector: "Energy", icon: "oil", tone: "sat-risk-medium", role: "Energia tradicional", why: "Petróleo, gás, majors e geração de caixa do setor energético.", limit: "Sensível a preço de petróleo, geopolítica e disciplina de CAPEX.", points: ["Hedge parcial contra choque energético.", "Carrega dividendos e buybacks do setor.", "É mais energia tradicional do que transição energética."] },
+        { ticker: "XLF", sector: "Financials", icon: "money", tone: "sat-risk-medium", role: "Juros / crédito", why: "Bancos, seguros, cartões, brokers e mercado de capitais.", limit: "Depende de curva de juros, crédito e ciclo de inadimplência.", points: ["Boa leitura de ciclo financeiro americano.", "Pode se beneficiar de curva mais inclinada.", "Risco aumenta quando crédito deteriora."] },
+        { ticker: "XLI", sector: "Industrials", icon: "factory", tone: "sat-risk-medium", role: "Ciclo / CAPEX", why: "Indústria, transporte, defesa, máquinas e infraestrutura.", limit: "ETF amplo dilui teses específicas como defesa ou reindustrialização.", points: ["Bom bloco para ciclo físico e CAPEX.", "Conversa com onshoring e infraestrutura.", "Para tese precisa, cesta pode ser melhor."] },
+        { ticker: "XLP", sector: "Consumer Staples", icon: "home", tone: "sat-risk-defensive", role: "Defensivo / consumo essencial", why: "Marcas, alimentos, bebidas, higiene e varejo essencial.", limit: "Pode ficar para trás em bull market de growth.", points: ["Reduz ciclicidade dentro de equity.", "Boa proxy de estabilidade de margem.", "Sensível a custos e elasticidade de preço."] },
+        { ticker: "XLV", sector: "Health Care", icon: "pulse", tone: "sat-risk-defensive", role: "Qualidade defensiva", why: "Pharma, serviços, equipamentos médicos e managed care.", limit: "Mistura defensividade com risco regulatório e pipeline de inovação.", points: ["Boa camada de qualidade menos cíclica.", "Combina demografia, inovação e escala.", "Não é uma tese pura de biotech ou pharma."] },
+        { ticker: "XLRE", sector: "Real Estate", icon: "home", tone: "sat-risk-defensive", role: "Imobiliário listado", why: "REITs e ativos imobiliários listados.", limit: "Sensível a juros, crédito, cap rates e vacância.", points: ["Útil para exposição imobiliária líquida.", "Mais duration e crédito do que growth.", "Não substitui real estate privado."] },
+        { ticker: "XLU", sector: "Utilities", icon: "faucet", tone: "sat-risk-defensive", role: "Defensivo / duration", why: "Utilities reguladas, eletricidade e infraestrutura essencial.", limit: "Sensível a juros e regulação; não é a mesma coisa que grid específico.", points: ["Defensivo clássico dentro de equity.", "Conversa com eletrificação e demanda de data centers.", "Para grid/IA, pode precisar cesta complementar."] },
+      ];
+
+      function SectorGicsModule() {
+        const [selectedSector, setSelectedSector] = useState("XLK");
+        const activeMeta = SECTOR_GICS_ETFS.find((item) => item.ticker === selectedSector) || SECTOR_GICS_ETFS[0];
+
+        return React.createElement(
+          "main",
+          { className: "core-layout sector-layout" },
+          React.createElement(
+            "article",
+            { className: "panel" },
+            React.createElement(
+              "div",
+              { className: "section-head" },
+              React.createElement("div", null, React.createElement("span", { className: "control-title" }, "Setores GICS / S&P 500"))
+            ),
+            React.createElement(
+              "div",
+              { className: "risk-legend" },
+              React.createElement("span", { className: "sat-risk-high" }, "Growth / concentração"),
+              React.createElement("span", { className: "sat-risk-medium" }, "Cíclico / macro"),
+              React.createElement("span", { className: "sat-risk-defensive" }, "Defensivo / juros")
+            ),
+            React.createElement(
+              "div",
+              { className: "core-function-grid sector-function-grid" },
+              SECTOR_GICS_ETFS.map((item) =>
+                React.createElement(
+                  "div",
+                  {
+                    className: `core-function sector-function ${item.tone}`,
+                    key: item.ticker,
+                  },
+                  React.createElement(
+                    "div",
+                    null,
+                    React.createElement("div", { className: "satellite-title-row" }, React.createElement(SatelliteIcon, { type: item.icon }), React.createElement("h3", null, item.sector)),
+                    React.createElement("p", null, item.role),
+                    React.createElement("p", null, item.why)
+                  ),
+                  React.createElement(
+                    "div",
+                    { className: "etf-token-grid sector-token-wrap" },
+                    React.createElement(
+                      "button",
+                      {
+                        className: `etf-token sector-token ${item.tone}`,
+                        type: "button",
+                        "aria-pressed": selectedSector === item.ticker,
+                        onClick: () => {
+                          setSelectedSector(item.ticker);
+                          scrollToMobileDetail(".satellite-detail h2");
+                        },
+                      },
+                      item.ticker
+                    )
+                  )
+                )
+              )
+            ),
+            React.createElement("p", { className: "data-note" }, "Proxy setorial: SPDR Select Sector ETFs. Dados numéricos ficam no Data Lab.")
+          ),
+          React.createElement(
+            "aside",
+            { className: "panel satellite-detail core-detail" },
+            React.createElement("span", { className: "detail-role" }, "Setor selecionado"),
+            React.createElement("div", { className: `satellite-detail-head ${activeMeta.tone}` }, React.createElement(SatelliteIcon, { type: activeMeta.icon }), React.createElement("h2", null, activeMeta.ticker)),
+            React.createElement("p", null, activeMeta.sector),
+            React.createElement(
+              "div",
+              { className: "detail-grid" },
+              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Função"), React.createElement("strong", null, activeMeta.role)),
+              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "O que captura"), React.createElement("strong", null, activeMeta.why)),
+              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Limitação"), React.createElement("strong", null, activeMeta.limit))
+            ),
+            React.createElement("ul", { className: "satellite-list" }, activeMeta.points.map((point) => React.createElement("li", { key: point }, point)))
+          )
+        );
+      }
+
+      const ETF_SUBMODULES = [
+        ["core", "Core Equities"],
+        ["fixed", "Fixed Income"],
+        ["sectors", "Setoriais"],
+        ["satellites", "Satélites EUA"],
+        ["europe", "Europa Estratégica"],
+        ["china", "China / China+1"],
+        ["hedges", "Hedge"],
+      ];
+
+      function EtfsModule() {
+        const [activeEtfTab, setActiveEtfTab] = useState("core");
+        const renderActive = () => {
+          if (activeEtfTab === "core") return React.createElement(CoreModule);
+          if (activeEtfTab === "fixed") return React.createElement(FixedIncomeModule);
+          if (activeEtfTab === "sectors") return React.createElement(SectorGicsModule);
+          if (activeEtfTab === "satellites") return React.createElement(SatelliteModule);
+          if (activeEtfTab === "europe") return React.createElement(EuropeModule);
+          if (activeEtfTab === "china") return React.createElement(ChinaModule);
+          return React.createElement(HedgeModule);
+        };
+
+        return React.createElement(
+          "main",
+          { className: "etf-shell" },
+          React.createElement(
+            "nav",
+            { className: "panel etf-subtabs", "aria-label": "Submódulos de ETFs" },
+            ETF_SUBMODULES.map(([key, label]) =>
+              React.createElement(
+                "button",
+                {
+                  key,
+                  type: "button",
+                  "aria-pressed": activeEtfTab === key,
+                  onClick: () => setActiveEtfTab(key),
+                },
+                label
+              )
+            )
+          ),
+          renderActive()
+        );
+      }
+
       const MOBILE_MODULES = [
-        ["curve", "Curve Yield", "#48d6e9"],
+        ["curve", "Yield Curves", "#48d6e9"],
         ["equity", "Equity Valuation", "#6ee7b7"],
         ["tech", "Matriz de Ciclos", "#ffae6b"],
-        ["core", "Core", "#8db7ff"],
-        ["satellites", "Satélites EUA", "#7dd3fc"],
-        ["europe", "Europa Estratégica", "#c49bff"],
-        ["china", "China / China+1", "#f59e0b"],
-        ["hedges", "Hedge", "#ff8b86"],
+        ["etfs", "ETFs", "#8db7ff"],
+        ["dataLab", "Data Lab", "#6ee7b7"],
       ];
+
+      function HomeModule({ setActiveModule }) {
+        return React.createElement(
+          "main",
+          { className: "home-layout" },
+          React.createElement(
+            "section",
+            { className: "panel home-hero" },
+            React.createElement(
+              "div",
+              null,
+              React.createElement("span", { className: "control-title" }, "General Channels"),
+              React.createElement("h2", null, "Dashboard de alocação global"),
+              React.createElement("p", null, "Uma camada de navegação para separar macro, valuation, temas, implementação via ETFs e dados automatizados. A ideia é consulta permanente, não apenas apresentação estática.")
+            ),
+            React.createElement("div", { className: "home-stamp" }, "v3 data lab")
+          ),
+          React.createElement(
+            "section",
+            { className: "home-grid" },
+            HOME_CARDS.map(([key, layer, title, text, color]) =>
+              React.createElement(
+                "button",
+                {
+                  className: "home-card",
+                  key,
+                  type: "button",
+                  style: { "--home-accent": color },
+                  onClick: () => setActiveModule(key),
+                },
+                React.createElement(
+                  "div",
+                  null,
+                  React.createElement("span", null, layer),
+                  React.createElement("h3", null, title),
+                  React.createElement("p", null, text)
+                ),
+                React.createElement("small", null, "Abrir módulo")
+              )
+            )
+          ),
+          React.createElement(
+            "section",
+            { className: "home-notes" },
+            React.createElement("article", { className: "panel home-note" }, React.createElement("h3", null, "Onde olhar primeiro"), React.createElement("p", null, "Use Macro para juros e carrego; Data Lab para comparar instrumentos; ETFs para decidir veículo e função.")),
+            React.createElement("article", { className: "panel home-note" }, React.createElement("h3", null, "O que mudou"), React.createElement("p", null, "A base agora separa equity, renda fixa, hedge e temas, com métricas automáticas e filtros compatíveis.")),
+            React.createElement("article", { className: "panel home-note" }, React.createElement("h3", null, "Próxima camada"), React.createElement("p", null, "Portfólio pode entrar depois como uma aba própria, conectando pesos, risco, carrego e exposição por tese."))
+          )
+        );
+      }
 
       function useIsMobile() {
         const [isMobile, setIsMobile] = useState(false);
@@ -4626,7 +6075,7 @@
         return isMobile;
       }
 
-      function MobileCurveModule({ mode, setMode, theme }) {
+      function MobileCurveModule({ mode, setMode, theme, curveMeta, fedPolicy }) {
         const activeCurves = [mode];
         const current = CURVES[mode];
 
@@ -4690,7 +6139,7 @@
                 theme,
               })
             ),
-            React.createElement("p", { className: "data-note" }, "Base: Atlanta Fed, 22/06/26.")
+            React.createElement("p", { className: "data-note" }, curveSourceText(curveMeta))
           ),
           React.createElement(
             "section",
@@ -4708,33 +6157,33 @@
             React.createElement(
               "article",
               { className: "panel mobile-summary-card" },
-              React.createElement("h2", null, "Fed Funds até 16/09/26"),
+              React.createElement("h2", null, `Fed Funds ${fedPolicy.marketProbability.label}`),
+              React.createElement("strong", null, fedPolicy.targetRange.label),
+              React.createElement("p", null, `Atualizado em ${formatDatePtBr(fedPolicy.targetRange.asOf)}`),
               React.createElement(
                 "div",
                 { className: "kpi-probs" },
-                React.createElement("div", null, React.createElement("span", null, "Rate hike"), React.createElement("b", null, "76,7%")),
-                React.createElement("div", null, React.createElement("span", null, "Steady"), React.createElement("b", null, "20,8%")),
-                React.createElement("div", null, React.createElement("span", null, "Rate cut"), React.createElement("b", null, "2,5%"))
+                React.createElement("div", null, React.createElement("span", null, "Rate hike"), React.createElement("b", null, pctOne(fedPolicy.marketProbability.hike))),
+                React.createElement("div", null, React.createElement("span", null, "Steady"), React.createElement("b", null, pctOne(fedPolicy.marketProbability.steady))),
+                React.createElement("div", null, React.createElement("span", null, "Rate cut"), React.createElement("b", null, pctOne(fedPolicy.marketProbability.cut)))
               )
             )
           )
         );
       }
 
-      function MobileModuleContent({ activeModule, mode, setMode, theme }) {
+      function MobileModuleContent({ activeModule, mode, setMode, theme, curveMeta, fedPolicy }) {
         if (activeModule === "curve") {
-          return React.createElement(MobileCurveModule, { mode, setMode, theme });
+          return React.createElement(MobileCurveModule, { mode, setMode, theme, curveMeta, fedPolicy });
         }
         if (activeModule === "equity") return React.createElement(EquityValuationModule);
         if (activeModule === "tech") return React.createElement(TechCycleModule);
-        if (activeModule === "core") return React.createElement(CoreModule);
-        if (activeModule === "satellites") return React.createElement(SatelliteModule);
-        if (activeModule === "europe") return React.createElement(EuropeModule);
-        if (activeModule === "china") return React.createElement(ChinaModule);
-        return React.createElement(HedgeModule);
+        if (activeModule === "etfs") return React.createElement(EtfsModule);
+        if (activeModule === "dataLab") return React.createElement(DataLabModule);
+        return React.createElement(EtfsModule);
       }
 
-      function MobileDashboard({ activeModule, setActiveModule, theme, setTheme, mode, setMode }) {
+      function MobileDashboard({ activeModule, setActiveModule, theme, setTheme, mode, setMode, curveMeta, fedPolicy }) {
         const [mobileModule, setMobileModule] = useState(null);
         const selectedModule = mobileModule || activeModule;
         const selectedCopy = MODULE_COPY[selectedModule];
@@ -4782,11 +6231,10 @@
                 React.createElement(
                   "article",
                   { className: "panel mobile-module-head" },
-                  React.createElement("span", null, selectedCopy.thesis),
                   React.createElement("h1", null, selectedCopy.title),
                   React.createElement("p", null, selectedCopy.lead)
                 ),
-                React.createElement(MobileModuleContent, { activeModule: selectedModule, mode, setMode, theme })
+                React.createElement(MobileModuleContent, { activeModule: selectedModule, mode, setMode, theme, curveMeta, fedPolicy })
               )
             : React.createElement(
                 React.Fragment,
@@ -4815,8 +6263,7 @@
                         null,
                         React.createElement("h2", null, label),
                         React.createElement("p", null, MODULE_COPY[key].lead)
-                      ),
-                      React.createElement("strong", null, MODULE_COPY[key].thesis)
+                      )
                     )
                   )
                 )
@@ -4825,16 +6272,61 @@
       }
 
       function App() {
-        const [activeModule, setActiveModule] = useState("curve");
-        const [theme, setTheme] = useState("dark");
+        const [activeModule, setActiveModule] = useState("home");
+        const [theme, setTheme] = useState("light");
         const [mode, setMode] = useState("nominal");
-        const [diagnosticMode, setDiagnosticMode] = useState("curve");
+        const [curveMeta, setCurveMeta] = useState(DEFAULT_CURVE_META);
+        const [curveComparisons, setCurveComparisons] = useState(defaultCurveComparisons);
+        const [comparisonPeriods, setComparisonPeriods] = useState([]);
+        const [deltaPeriod, setDeltaPeriod] = useState("1m");
+        const [fedPolicy, setFedPolicy] = useState(DEFAULT_FED_POLICY);
         const isMobile = useIsMobile();
 
         useEffect(() => {
           document.body.classList.toggle("theme-light", theme === "light");
           return () => document.body.classList.remove("theme-light");
         }, [theme]);
+
+        useEffect(() => {
+          let cancelled = false;
+
+          fetch("data/curve-us.json", { cache: "no-store" })
+            .then((response) => (response.ok ? response.json() : null))
+            .then((payload) => {
+              if (cancelled || !payload?.curves) return;
+              ["nominal", "real", "inflation"].forEach((key) => {
+                if (payload.curves[key]) {
+                  CURVES[key].values = { ...CURVES[key].values, ...payload.curves[key] };
+                }
+              });
+              setCurveMeta({
+                source: payload.source || DEFAULT_CURVE_META.source,
+                asOf: payload.asOf || DEFAULT_CURVE_META.asOf,
+              });
+              setCurveComparisons(payload.comparisons || defaultCurveComparisons());
+            })
+            .catch(() => {});
+
+          return () => {
+            cancelled = true;
+          };
+        }, []);
+
+        useEffect(() => {
+          let cancelled = false;
+
+          fetch("data/fed-policy.json", { cache: "no-store" })
+            .then((response) => (response.ok ? response.json() : null))
+            .then((payload) => {
+              if (cancelled || !payload?.targetRange || !payload?.marketProbability) return;
+              setFedPolicy(payload);
+            })
+            .catch(() => {});
+
+          return () => {
+            cancelled = true;
+          };
+        }, []);
 
         const activeCurves = [mode];
         const kpiCurveKey = mode;
@@ -4848,6 +6340,14 @@
         const setSelected = () => {};
         const moduleCopy = MODULE_COPY[activeModule];
 
+        const toggleComparisonPeriod = (periodKey) => {
+          setComparisonPeriods((current) =>
+            current.includes(periodKey)
+              ? current.filter((key) => key !== periodKey)
+              : [...current, periodKey]
+          );
+        };
+
         if (isMobile) {
           return React.createElement(MobileDashboard, {
             activeModule,
@@ -4856,6 +6356,8 @@
             setTheme,
             mode,
             setMode,
+            curveMeta,
+            fedPolicy,
           });
         }
 
@@ -4871,89 +6373,22 @@
               React.createElement(
                 "nav",
                 { className: "view-tabs", "aria-label": "Módulos do dashboard" },
-                React.createElement(
-                  "button",
-                  {
-                    className: "view-tab",
-                    type: "button",
-                    "aria-current": activeModule === "curve" ? "page" : undefined,
-                    onClick: () => setActiveModule("curve"),
-                  },
-                  "Curve Yield"
-                ),
-                React.createElement(
-                  "button",
-                  {
-                    className: "view-tab",
-                    type: "button",
-                    "aria-current": activeModule === "equity" ? "page" : undefined,
-                    onClick: () => setActiveModule("equity"),
-                  },
-                  "Equity Valuation"
-                ),
-                React.createElement(
-                  "button",
-                  {
-                    className: "view-tab",
-                    type: "button",
-                    "aria-current": activeModule === "tech" ? "page" : undefined,
-                    onClick: () => setActiveModule("tech"),
-                  },
-                  "Matriz de Ciclos Tecnológicos"
-                ),
-                React.createElement(
-                  "button",
-                  {
-                    className: "view-tab",
-                    type: "button",
-                    "aria-current": activeModule === "core" ? "page" : undefined,
-                    onClick: () => setActiveModule("core"),
-                  },
-                  "Core"
-                ),
-                React.createElement(
-                  "button",
-                  {
-                    className: "view-tab",
-                    type: "button",
-                    "aria-current": activeModule === "satellites" ? "page" : undefined,
-                    onClick: () => setActiveModule("satellites"),
-                  },
-                  "Satélites EUA"
-                ),
-                React.createElement(
-                  "button",
-                  {
-                    className: "view-tab",
-                    type: "button",
-                    "aria-current": activeModule === "europe" ? "page" : undefined,
-                    onClick: () => setActiveModule("europe"),
-                  },
-                  "Europa Estratégica"
-                ),
-                React.createElement(
-                  "button",
-                  {
-                    className: "view-tab",
-                    type: "button",
-                    "aria-current": activeModule === "china" ? "page" : undefined,
-                    onClick: () => setActiveModule("china"),
-                  },
-                  "China / China+1"
-                ),
-                React.createElement(
-                  "button",
-                  {
-                    className: "view-tab",
-                    type: "button",
-                    "aria-current": activeModule === "hedges" ? "page" : undefined,
-                    onClick: () => setActiveModule("hedges"),
-                  },
-                  "Hedge"
+                MAIN_NAV.map(([key, label]) =>
+                  React.createElement(
+                    "button",
+                    {
+                      className: "view-tab",
+                      type: "button",
+                      key,
+                      "aria-current": activeModule === key ? "page" : undefined,
+                      onClick: () => setActiveModule(key),
+                    },
+                    label
+                  )
                 )
               ),
               React.createElement("h1", null, moduleCopy.title),
-              React.createElement("p", { className: "lead" }, moduleCopy.lead)
+              moduleCopy.lead ? React.createElement("p", { className: "lead" }, moduleCopy.lead) : null
             ),
             React.createElement(
               "aside",
@@ -4970,22 +6405,23 @@
                   },
                   theme === "dark" ? "Claro" : "Escuro"
                 )
-              ),
-              React.createElement(
-                "div",
-                { className: "market-stamp" },
-                React.createElement("span", null, "Tese central"),
-                React.createElement("strong", null, moduleCopy.thesis)
               )
             )
           ),
-          activeModule === "curve"
+          activeModule === "home"
+            ? React.createElement(HomeModule, { setActiveModule })
+            : activeModule === "curve"
             ? React.createElement(
             "main",
             { className: "layout" },
             React.createElement(
               "aside",
               { className: "controls panel" },
+              React.createElement(
+                "div",
+                { className: "country-subtabs", "aria-label": "País da curva" },
+                React.createElement("button", { type: "button", "aria-pressed": true }, "EUA")
+              ),
               React.createElement(
                 "div",
                 { className: "control-block" },
@@ -4998,7 +6434,7 @@
                       "--active-color": CURVES[mode].color,
                       "--active-soft":
                         mode === "nominal"
-                            ? "var(--nominal-soft)"
+                          ? "var(--nominal-soft)"
                             : mode === "real"
                               ? "var(--real-soft)"
                               : "var(--inflation-soft)",
@@ -5021,27 +6457,51 @@
               React.createElement(
                 "div",
                 { className: "control-block" },
-                React.createElement("div", { className: "control-title" }, "Diagnóstico"),
+                React.createElement("div", { className: "control-title" }, "Comparativo"),
                 React.createElement(
                   "div",
-              {
-                className: "segmented curve-view-segmented",
+                  {
+                    className: "segmented curve-view-segmented",
                     style: {
                       "--active-color": "var(--focus)",
                       "--active-soft": "var(--focus-soft)",
                     },
                   },
-                  [
-                    { key: "curve", label: "Por curva" },
-                    { key: "allocation", label: "Alocação" },
-                  ].map((item) =>
+                  COMPARISON_PERIODS.filter((item) => item.key !== "current").map((item) =>
                     React.createElement(
                       "button",
                       {
                         key: item.key,
                         type: "button",
-                        "aria-pressed": diagnosticMode === item.key,
-                        onClick: () => setDiagnosticMode(item.key),
+                        "aria-pressed": comparisonPeriods.includes(item.key),
+                        onClick: () => toggleComparisonPeriod(item.key),
+                      },
+                      item.label
+                    )
+                  )
+                )
+              ),
+              React.createElement(
+                "div",
+                { className: "control-block" },
+                React.createElement("div", { className: "control-title" }, "Variação"),
+                React.createElement(
+                  "div",
+                  {
+                    className: "segmented curve-view-segmented",
+                    style: {
+                      "--active-color": "var(--focus)",
+                      "--active-soft": "var(--focus-soft)",
+                    },
+                  },
+                  DELTA_PERIODS.map((item) =>
+                    React.createElement(
+                      "button",
+                      {
+                        key: item.key,
+                        type: "button",
+                        "aria-pressed": deltaPeriod === item.key,
+                        onClick: () => setDeltaPeriod(item.key),
                       },
                       item.label
                     )
@@ -5054,45 +6514,25 @@
               { className: "content" },
               React.createElement(
                 "section",
-                { className: "kpis" },
+                { className: "kpis curve-fed-kpis" },
                 React.createElement(
                   "article",
                   { className: "kpi panel" },
-                  React.createElement("span", null, `${kpiCurve.short} 5s2s`),
-                  React.createElement("strong", null, bps(spreadValue(kpiCurveKey, SPREADS[0]))),
-                  React.createElement("p", null, "Trecho curto da curva.")
-                ),
-                React.createElement(
-                  "article",
-                  { className: "kpi panel" },
-                  React.createElement("span", null, `${kpiCurve.short} 10s2s`),
-                  React.createElement("strong", null, bps(spreadValue(kpiCurveKey, SPREADS[1]))),
-                  React.createElement("p", null, "Inclinação contra o 2Y.")
-                ),
-                React.createElement(
-                  "article",
-                  { className: "kpi panel" },
-                  React.createElement("span", null, `${kpiCurve.short} 30s10s`),
-                  React.createElement("strong", null, bps(spreadValue(kpiCurveKey, SPREADS[2]))),
-                  React.createElement("p", null, "Prêmio concentrado na ponta longa.")
-                ),
-                React.createElement(
-                  "article",
-                  { className: "kpi panel" },
-                  React.createElement("span", null, "Fed Funds (até 16/09/26)"),
-                  React.createElement("strong", null, "3,50%–3,75%"),
+                  React.createElement("span", null, `Fed Funds (${fedPolicy.marketProbability.label})`),
+                  React.createElement("strong", null, fedPolicy.targetRange.label),
+                  React.createElement("p", null, `Atualizado em ${formatDatePtBr(fedPolicy.targetRange.asOf)}`),
                   React.createElement(
                     "div",
                     { className: "kpi-probs" },
-                    React.createElement("div", null, React.createElement("span", null, "Rate hike"), React.createElement("b", null, "76,7%")),
-                    React.createElement("div", null, React.createElement("span", null, "Steady"), React.createElement("b", null, "20,8%")),
-                    React.createElement("div", null, React.createElement("span", null, "Rate cut"), React.createElement("b", null, "2,5%"))
+                    React.createElement("div", null, React.createElement("span", null, "Rate hike"), React.createElement("b", null, pctOne(fedPolicy.marketProbability.hike))),
+                    React.createElement("div", null, React.createElement("span", null, "Steady"), React.createElement("b", null, pctOne(fedPolicy.marketProbability.steady))),
+                    React.createElement("div", null, React.createElement("span", null, "Rate cut"), React.createElement("b", null, pctOne(fedPolicy.marketProbability.cut)))
                   )
                 )
               ),
               React.createElement(
                 "section",
-                { className: "main-grid" },
+                { className: "main-grid curve-main-grid" },
                 React.createElement(
                   "article",
                   { className: "panel" },
@@ -5102,7 +6542,7 @@
                     React.createElement(
                       "div",
                       null,
-                      React.createElement("span", { className: "control-title" }, "O que o mercado está dizendo?"),
+                      React.createElement("span", { className: "control-title" }, "O que o mercado está dizendo"),
                       React.createElement("h2", null, CURVES[mode].label)
                     ),
                     React.createElement("span", { className: "mini-label" }, `${filteredMaturities.length} vértices no gráfico`)
@@ -5115,9 +6555,33 @@
                       filteredMaturities,
                       mode,
                       theme,
+                      comparisonPeriods,
+                      curveComparisons,
                     })
                   ),
-                  React.createElement("p", { className: "data-note" }, "Base: Atlanta Fed, 22/06/26.")
+                  comparisonPeriods.length > 0
+                    ? React.createElement(
+                        "div",
+                        { className: "comparison-legend" },
+                        COMPARISON_PERIODS.filter((period) => period.key === "current" || comparisonPeriods.includes(period.key)).map((period) =>
+                          React.createElement(
+                            "span",
+                            {
+                              key: period.key,
+                              style: {
+                                color:
+                                  period.key === "current"
+                                    ? (theme === "light" ? LIGHT_CHART_COLORS[mode] : CURVES[mode].color)
+                                    : (theme === "light" ? period.lightColor : period.color),
+                                "--line-opacity": period.opacity,
+                              },
+                            },
+                            period.label
+                          )
+                        )
+                      )
+                    : null,
+                  React.createElement("p", { className: "data-note" }, curveSourceText(curveMeta))
                 ),
                 React.createElement(
                   "article",
@@ -5128,65 +6592,89 @@
                     React.createElement(
                       "div",
                       null,
-                      React.createElement("span", { className: "control-title" }, "Diagnóstico"),
-                      React.createElement("h2", null, diagnosticMode === "curve" ? "Por curva" : "Alocação")
+                      React.createElement("span", { className: "control-title" }, "Inclinações"),
+                      React.createElement("h2", null, "Spreads em bps")
                     )
                   ),
-                  diagnosticMode === "curve"
-                    ? React.createElement(
-                        "div",
-                        { className: "reading" },
-                        activeCurves.map((key) =>
+                  React.createElement(
+                    "div",
+                    { className: "spread-list" },
+                    activeCurves.flatMap((curveKey) =>
+                      SPREADS.map((spread) => {
+                        const value = spreadValue(curveKey, spread);
+                        const maxAbs = 0.55;
+                        return React.createElement(
+                          "div",
+                          { className: "spread-row", key: `${curveKey}-${spread.label}` },
+                          React.createElement("strong", null, `${CURVES[curveKey].short} ${spread.label}`),
                           React.createElement(
-                            "article",
-                            {
-                              className: "reading-item",
-                              key,
+                            "div",
+                            { className: "spread-track" },
+                            React.createElement("div", {
+                              className: "spread-fill",
                               style: {
-                                "--tone": CURVES[key].color,
-                                "--soft":
-                                  key === "nominal"
-                                    ? "var(--nominal-soft)"
-                                    : key === "real"
-                                      ? "var(--real-soft)"
-                                      : "var(--inflation-soft)",
+                                "--w": `${Math.min(100, Math.abs(value / maxAbs) * 100)}%`,
+                                "--tone": value >= 0 ? "var(--positive)" : "var(--negative)",
                               },
+                            })
+                          ),
+                          React.createElement(
+                            "span",
+                            {
+                              className: "spread-value",
+                              style: { "--tone": value >= 0 ? "var(--positive)" : "var(--negative)" },
                             },
-                            React.createElement("h3", null, CURVES[key].label),
-                            React.createElement(
-                              "ul",
-                              null,
-                              READING_BULLETS[key].map((item) => React.createElement("li", { key: item }, item))
-                            )
+                            bps(value)
                           )
-                        )
-                      )
-                    : React.createElement(
-                        "div",
-                        { className: "allocation-diagnostic" },
+                        );
+                      })
+                    )
+                  ),
+                  React.createElement("div", { className: "side-divider" }),
+                  React.createElement(
+                    "div",
+                    { className: "section-head" },
+                    React.createElement(
+                      "div",
+                      null,
+                      React.createElement("span", { className: "control-title" }, "Variação"),
+                      React.createElement("h2", null, `Atual vs ${DELTA_PERIODS.find((item) => item.key === deltaPeriod)?.label}`)
+                    )
+                  ),
+                  React.createElement(
+                    "div",
+                    { className: "delta-bars" },
+                    (() => {
+                      const values = filteredMaturities.map((maturity) => ({
+                        maturity: maturity.key,
+                        value: curveDeltaBps(curveComparisons, deltaPeriod, mode, maturity.key),
+                      }));
+                      const maxAbs = Math.max(8, ...values.map((item) => Math.abs(item.value)));
+                      return values.map((item) =>
                         React.createElement(
                           "div",
-                          { className: "diagnosis" },
-                          ALLOCATION_DIAGNOSIS.map((item) =>
-                            React.createElement(
-                              "article",
-                              { className: "diag-item", key: item.title },
-                              React.createElement("h3", null, item.title),
-                              React.createElement("p", null, item.text)
-                            )
-                          )
-                        ),
-                        React.createElement(
-                          "article",
-                          { className: "selected-excerpt" },
-                          React.createElement("h3", null, "Trecho selecionado (0-5y)"),
+                          { className: "delta-row", key: item.maturity },
+                          React.createElement("strong", null, item.maturity),
                           React.createElement(
-                            "ul",
-                            null,
-                            ALLOCATION_BENEFITS.map((benefit) => React.createElement("li", { key: benefit }, benefit))
+                            "div",
+                            { className: "delta-track" },
+                            React.createElement("div", {
+                              className: "delta-fill",
+                              style: deltaBarStyle(item.value, maxAbs),
+                            })
+                          ),
+                          React.createElement(
+                            "span",
+                            {
+                              className: "delta-value",
+                              style: { "--tone": item.value >= 0 ? "var(--positive)" : "var(--negative)" },
+                            },
+                            `${item.value > 0 ? "+" : ""}${item.value}`
                           )
                         )
-                      )
+                      );
+                    })()
+                  )
                 )
               ),
               React.createElement(
@@ -5237,54 +6725,6 @@
                           )
                         )
                       )
-                    )
-                  )
-                ),
-                React.createElement(
-                  "article",
-                  { className: "panel" },
-                  React.createElement(
-                    "div",
-                    { className: "section-head" },
-                    React.createElement(
-                      "div",
-                      null,
-                      React.createElement("span", { className: "control-title" }, "Inclinações"),
-                      React.createElement("h2", null, "Spreads em bps")
-                    )
-                  ),
-                  React.createElement(
-                    "div",
-                    { className: "spread-list" },
-                    activeCurves.flatMap((curveKey) =>
-                      SPREADS.map((spread) => {
-                        const value = spreadValue(curveKey, spread);
-                        const maxAbs = 0.55;
-                        return React.createElement(
-                          "div",
-                          { className: "spread-row", key: `${curveKey}-${spread.label}` },
-                          React.createElement("strong", null, `${CURVES[curveKey].short} ${spread.label}`),
-                          React.createElement(
-                            "div",
-                            { className: "spread-track" },
-                            React.createElement("div", {
-                              className: "spread-fill",
-                              style: {
-                                "--w": `${Math.min(100, Math.abs(value / maxAbs) * 100)}%`,
-                                "--tone": value >= 0 ? "var(--positive)" : "var(--negative)",
-                              },
-                            })
-                          ),
-                          React.createElement(
-                            "span",
-                            {
-                              className: "spread-value",
-                              style: { "--tone": value >= 0 ? "var(--positive)" : "var(--negative)" },
-                            },
-                            bps(value)
-                          )
-                        );
-                      })
                     )
                   )
                 )
@@ -5360,7 +6800,7 @@
                   React.createElement(
                     "div",
                     { className: "callout" },
-                    React.createElement("h3", null, "Por que não duration longa?"),
+                    React.createElement("h3", null, "Por que não duration longa"),
                     React.createElement(
                       "p",
                       null,
@@ -5375,15 +6815,11 @@
               ? React.createElement(EquityValuationModule)
               : activeModule === "tech"
                 ? React.createElement(TechCycleModule)
-                : activeModule === "core"
-                  ? React.createElement(CoreModule)
-                  : activeModule === "satellites"
-                    ? React.createElement(SatelliteModule)
-                    : activeModule === "europe"
-                      ? React.createElement(EuropeModule)
-                      : activeModule === "china"
-                        ? React.createElement(ChinaModule)
-                        : React.createElement(HedgeModule)
+                : activeModule === "etfs"
+                  ? React.createElement(EtfsModule)
+                  : activeModule === "dataLab"
+                    ? React.createElement(DataLabModule)
+                    : React.createElement(EtfsModule)
         );
       }
 

@@ -1,0 +1,157 @@
+{
+  "country": "US",
+  "asOf": "2026-07-17",
+  "updatedAt": "2026-07-22T17:38:02+00:00",
+  "source": "FRED / Federal Reserve H.15 / Fed GSW TIPS model",
+  "methodology": "Nominal yields use DGS2, DGS5, DGS7, DGS10 and DGS30 from FRED/H.15. Real yields use DFII5, DFII7, DFII10 and DFII30 from FRED/H.15; 2Y real uses TIPSPY02 from the Federal Reserve Gürkaynak-Sack-Wright TIPS yield curve model. Implied inflation is calculated with Fisher: (1+nominal)/(1+real)-1.",
+  "series": {
+    "nominal": {
+      "2Y": "DGS2",
+      "5Y": "DGS5",
+      "7Y": "DGS7",
+      "10Y": "DGS10",
+      "30Y": "DGS30"
+    },
+    "real": {
+      "2Y": "TIPSPY02",
+      "5Y": "DFII5",
+      "7Y": "DFII7",
+      "10Y": "DFII10",
+      "30Y": "DFII30"
+    },
+    "inflation": "calculated_fisher"
+  },
+  "curves": {
+    "nominal": {
+      "2Y": 4.21,
+      "5Y": 4.33,
+      "7Y": 4.45,
+      "10Y": 4.6,
+      "30Y": 5.11
+    },
+    "real": {
+      "2Y": 2.12,
+      "5Y": 2.05,
+      "7Y": 2.19,
+      "10Y": 2.35,
+      "30Y": 2.91
+    },
+    "inflation": {
+      "2Y": 2.04,
+      "5Y": 2.23,
+      "7Y": 2.21,
+      "10Y": 2.2,
+      "30Y": 2.14
+    }
+  },
+  "comparisons": {
+    "current": {
+      "label": "Atual",
+      "asOf": "2026-07-17",
+      "curves": {
+        "nominal": {
+          "2Y": 4.21,
+          "5Y": 4.33,
+          "7Y": 4.45,
+          "10Y": 4.6,
+          "30Y": 5.11
+        },
+        "real": {
+          "2Y": 2.12,
+          "5Y": 2.05,
+          "7Y": 2.19,
+          "10Y": 2.35,
+          "30Y": 2.91
+        },
+        "inflation": {
+          "2Y": 2.04,
+          "5Y": 2.23,
+          "7Y": 2.21,
+          "10Y": 2.2,
+          "30Y": 2.14
+        }
+      }
+    },
+    "1m": {
+      "label": "1 mês atrás",
+      "asOf": "2026-06-17",
+      "curves": {
+        "nominal": {
+          "2Y": 4.2,
+          "5Y": 4.27,
+          "7Y": 4.37,
+          "10Y": 4.49,
+          "30Y": 4.93
+        },
+        "real": {
+          "2Y": 1.84,
+          "5Y": 1.96,
+          "7Y": 2.09,
+          "10Y": 2.23,
+          "30Y": 2.73
+        },
+        "inflation": {
+          "2Y": 2.31,
+          "5Y": 2.27,
+          "7Y": 2.23,
+          "10Y": 2.21,
+          "30Y": 2.14
+        }
+      }
+    },
+    "3m": {
+      "label": "3 meses atrás",
+      "asOf": "2026-04-17",
+      "curves": {
+        "nominal": {
+          "2Y": 3.71,
+          "5Y": 3.84,
+          "7Y": 4.04,
+          "10Y": 4.26,
+          "30Y": 4.88
+        },
+        "real": {
+          "2Y": 0.88,
+          "5Y": 1.28,
+          "7Y": 1.61,
+          "10Y": 1.9,
+          "30Y": 2.65
+        },
+        "inflation": {
+          "2Y": 2.81,
+          "5Y": 2.53,
+          "7Y": 2.39,
+          "10Y": 2.32,
+          "30Y": 2.17
+        }
+      }
+    },
+    "1y": {
+      "label": "1 ano atrás",
+      "asOf": "2025-07-17",
+      "curves": {
+        "nominal": {
+          "2Y": 3.91,
+          "5Y": 4.01,
+          "7Y": 4.22,
+          "10Y": 4.47,
+          "30Y": 5.01
+        },
+        "real": {
+          "2Y": 1.08,
+          "5Y": 1.48,
+          "7Y": 1.77,
+          "10Y": 2.04,
+          "30Y": 2.64
+        },
+        "inflation": {
+          "2Y": 2.8,
+          "5Y": 2.49,
+          "7Y": 2.41,
+          "10Y": 2.38,
+          "30Y": 2.31
+        }
+      }
+    }
+  }
+}

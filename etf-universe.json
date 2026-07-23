@@ -1,0 +1,1889 @@
+{
+  "version": 1,
+  "updatedBy": "manual",
+  "notes": [
+    "Cadastro mestre dos instrumentos usados pelo dashboard.",
+    "quoteSymbol e quoteSource definem como o robo busca precos.",
+    "compareToSp500 deve ser true apenas para ETFs de equity americana ou temas de equity comparaveis ao mercado americano."
+  ],
+  "benchmarkDefaults": {
+    "sp500": {
+      "display": "S&P 500",
+      "proxy": "SPY",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "SPY"
+    }
+  },
+  "instruments": [
+    {
+      "ticker": "SPY",
+      "name": "SPDR S&P 500 ETF Trust",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "S&P 500 benchmark",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "SPY",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": 28.0,
+        "forwardPe": null,
+        "source": "Vanguard benchmark S&P 500",
+        "asOf": "2026-05-31"
+      }
+    },
+    {
+      "ticker": "VOO",
+      "name": "Vanguard S&P 500 ETF",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "Core US equity",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "VOO",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": 28.1,
+        "forwardPe": null,
+        "source": "Vanguard",
+        "asOf": "2026-05-31"
+      }
+    },
+    {
+      "ticker": "QQQ",
+      "name": "Invesco QQQ Trust",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "US growth / Nasdaq-100",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "QQQ",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": 31.89,
+        "forwardPe": 27.55,
+        "source": "Invesco",
+        "asOf": "2025-08-21"
+      }
+    },
+    {
+      "ticker": "RSP",
+      "name": "Invesco S&P 500 Equal Weight ETF",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "Equal weight / concentration hedge",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "RSP",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": 18.77,
+        "forwardPe": 16.99,
+        "source": "Invesco",
+        "asOf": "2025-06-16"
+      }
+    },
+    {
+      "ticker": "SMH",
+      "name": "VanEck Semiconductor ETF",
+      "assetClass": "equity",
+      "region": "US/global",
+      "category": "Semiconductors / AI hardware",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "SMH",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "SOXX",
+      "name": "iShares Semiconductor ETF",
+      "assetClass": "equity",
+      "region": "US/global",
+      "category": "Semiconductors",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "SOXX",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": 75.66,
+        "forwardPe": null,
+        "source": "iShares",
+        "asOf": "2026-06-25"
+      }
+    },
+    {
+      "ticker": "CIBR",
+      "name": "First Trust Nasdaq Cybersecurity ETF",
+      "assetClass": "equity",
+      "region": "US/global",
+      "category": "Cybersecurity",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "CIBR",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": 32.52,
+        "forwardPe": null,
+        "source": "First Trust",
+        "asOf": "2026-06-30"
+      }
+    },
+    {
+      "ticker": "ITA",
+      "name": "iShares U.S. Aerospace & Defense ETF",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "Defense",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "ITA",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": 40.71,
+        "forwardPe": null,
+        "source": "iShares",
+        "asOf": "2026-07-17"
+      }
+    },
+    {
+      "ticker": "GLD",
+      "name": "SPDR Gold Shares",
+      "assetClass": "commodity",
+      "region": "Global",
+      "category": "Gold / regime hedge",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "GLD",
+      "benchmark": null,
+      "compareToSp500": false
+    },
+    {
+      "ticker": "XLK",
+      "name": "Technology Select Sector SPDR Fund",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "GICS sector / Information Technology",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "XLK",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "XLC",
+      "name": "Communication Services Select Sector SPDR Fund",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "GICS sector / Communication Services",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "XLC",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "XLY",
+      "name": "Consumer Discretionary Select Sector SPDR Fund",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "GICS sector / Consumer Discretionary",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "XLY",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "XLV",
+      "name": "Health Care Select Sector SPDR Fund",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "GICS sector / Health Care",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "XLV",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "XLF",
+      "name": "Financial Select Sector SPDR Fund",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "GICS sector / Financials",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "XLF",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "XLI",
+      "name": "Industrial Select Sector SPDR Fund",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "GICS sector / Industrials",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "XLI",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "XLE",
+      "name": "Energy Select Sector SPDR Fund",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "GICS sector / Energy",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "XLE",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "XLP",
+      "name": "Consumer Staples Select Sector SPDR Fund",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "GICS sector / Consumer Staples",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "XLP",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "XLU",
+      "name": "Utilities Select Sector SPDR Fund",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "GICS sector / Utilities",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "XLU",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "XLB",
+      "name": "Materials Select Sector SPDR Fund",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "GICS sector / Materials",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "XLB",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "XLRE",
+      "name": "Real Estate Select Sector SPDR Fund",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "GICS sector / Real Estate",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "XLRE",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "VEA",
+      "name": "Vanguard FTSE Developed Markets ETF",
+      "assetClass": "equity",
+      "region": "Developed ex-US",
+      "category": "Core developed ex-US",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "VEA",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "IEFA",
+      "name": "iShares Core MSCI EAFE ETF",
+      "assetClass": "equity",
+      "region": "Developed ex-US",
+      "category": "Core developed ex-US",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "IEFA",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "IWDA",
+      "name": "iShares Core MSCI World UCITS ETF USD Acc",
+      "assetClass": "equity",
+      "region": "Global developed",
+      "category": "Core global developed",
+      "wrapper": "UCITS ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "IWDA.L",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "SWDA",
+      "name": "iShares Core MSCI World UCITS ETF",
+      "assetClass": "equity",
+      "region": "Global developed",
+      "category": "Core global developed",
+      "wrapper": "UCITS ETF",
+      "currency": "GBp",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "SWDA.L",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "VGK",
+      "name": "Vanguard FTSE Europe ETF",
+      "assetClass": "equity",
+      "region": "Europe",
+      "category": "Core Europe",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "VGK",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "IEUR",
+      "name": "iShares Core MSCI Europe ETF",
+      "assetClass": "equity",
+      "region": "Europe",
+      "category": "Core Europe",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "IEUR",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "FEZ",
+      "name": "SPDR EURO STOXX 50 ETF",
+      "assetClass": "equity",
+      "region": "Europe",
+      "category": "Core Europe",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "FEZ",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "IMEU",
+      "name": "iShares Core MSCI Europe UCITS ETF",
+      "assetClass": "equity",
+      "region": "Europe",
+      "category": "Core Europe",
+      "wrapper": "UCITS ETF",
+      "currency": "GBp",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "IMEU.L",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "VWO",
+      "name": "Vanguard FTSE Emerging Markets ETF",
+      "assetClass": "equity",
+      "region": "Emerging markets",
+      "category": "Core emerging markets",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "VWO",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "IEMG",
+      "name": "iShares Core MSCI Emerging Markets ETF",
+      "assetClass": "equity",
+      "region": "Emerging markets",
+      "category": "Core emerging markets",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "IEMG",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "EIMI",
+      "name": "iShares Core MSCI EM IMI UCITS ETF USD Acc",
+      "assetClass": "equity",
+      "region": "Emerging markets",
+      "category": "Core emerging markets",
+      "wrapper": "UCITS ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "EIMI.L",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "EMXC",
+      "name": "iShares MSCI Emerging Markets ex China ETF",
+      "assetClass": "equity",
+      "region": "Emerging markets ex-China",
+      "category": "EM ex-China",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "EMXC",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "EXCH",
+      "name": "Xtrackers MSCI Emerging Markets ex China Equity ETF",
+      "assetClass": "equity",
+      "region": "Emerging markets ex-China",
+      "category": "EM ex-China",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "EXCH",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "LUXU",
+      "name": "Amundi S&P Global Luxury UCITS ETF",
+      "assetClass": "equity",
+      "region": "Global luxury",
+      "category": "Luxury global",
+      "wrapper": "UCITS ETF",
+      "currency": "EUR",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "LUXU.PA",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "IB01",
+      "name": "iShares $ Treasury Bond 0-1yr UCITS ETF USD Acc",
+      "assetClass": "fixed_income",
+      "region": "US",
+      "category": "USD liquidity / Treasury bills",
+      "wrapper": "UCITS ETF",
+      "currency": "USD",
+      "quoteSource": "manual",
+      "quoteSymbol": null,
+      "benchmark": null,
+      "compareToSp500": false,
+      "notes": "UCITS ticker/listing requires exchange-specific mapping before automated pricing."
+    },
+    {
+      "ticker": "CSPX",
+      "name": "iShares Core S&P 500 UCITS ETF USD Acc",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "Core US equity",
+      "wrapper": "UCITS ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "CSPX.L",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "VUAA",
+      "name": "Vanguard S&P 500 UCITS ETF USD Acc",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "Core US equity",
+      "wrapper": "UCITS ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "VUAA.L",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "QQQM",
+      "name": "Invesco NASDAQ 100 ETF",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "US growth / Nasdaq-100",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "QQQM",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "CNDX",
+      "name": "iShares NASDAQ 100 UCITS ETF USD Acc",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "US growth / Nasdaq-100",
+      "wrapper": "UCITS ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "CNDX.L",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "EQQQ",
+      "name": "Invesco EQQQ NASDAQ-100 UCITS ETF",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "US growth / Nasdaq-100",
+      "wrapper": "UCITS ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "EQQQ.L",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "IAU",
+      "name": "iShares Gold Trust",
+      "assetClass": "commodity",
+      "region": "Global",
+      "category": "Gold / regime hedge",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "IAU",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "FXF",
+      "name": "Invesco CurrencyShares Swiss Franc Trust",
+      "assetClass": "currency",
+      "region": "Switzerland",
+      "category": "Swiss franc hedge",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "FXF",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "IBTA",
+      "name": "iShares $ Treasury Bond 1-3yr UCITS ETF USD Acc",
+      "assetClass": "fixed_income",
+      "region": "US",
+      "category": "Treasuries USD Acc / short duration",
+      "wrapper": "UCITS ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "IBTA.L",
+      "benchmark": null,
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "CBU7",
+      "name": "iShares $ Treasury Bond 3-7yr UCITS ETF USD Acc",
+      "assetClass": "fixed_income",
+      "region": "US",
+      "category": "Treasuries USD Acc / medium-short duration",
+      "wrapper": "UCITS ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "CBU7.L",
+      "benchmark": null,
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "IBTM",
+      "name": "iShares $ Treasury Bond 7-10yr UCITS ETF USD Acc",
+      "assetClass": "fixed_income",
+      "region": "US",
+      "category": "Treasuries USD Acc / medium duration",
+      "wrapper": "UCITS ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "IBTM.L",
+      "benchmark": null,
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "DTLA",
+      "name": "iShares $ Treasury Bond 20+yr UCITS ETF USD Acc",
+      "assetClass": "fixed_income",
+      "region": "US",
+      "category": "Treasuries USD Acc / long duration",
+      "wrapper": "UCITS ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "DTLA.L",
+      "benchmark": null,
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "TIP5",
+      "name": "iShares $ TIPS 0-5 UCITS ETF USD Acc",
+      "assetClass": "fixed_income",
+      "region": "US",
+      "category": "Inflation USD Acc / short TIPS",
+      "wrapper": "UCITS ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "TIP5.L",
+      "benchmark": null,
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "ITPS",
+      "name": "iShares $ TIPS UCITS ETF Acc",
+      "assetClass": "fixed_income",
+      "region": "US",
+      "category": "Inflation USD Acc / broad TIPS",
+      "wrapper": "UCITS ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "ITPS.L",
+      "benchmark": null,
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "ITPE",
+      "name": "iShares $ TIPS UCITS ETF Acc",
+      "assetClass": "fixed_income",
+      "region": "US",
+      "category": "Inflation USD Acc / broad TIPS",
+      "wrapper": "UCITS ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "ITPE.L",
+      "benchmark": null,
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "LQDA",
+      "name": "iShares $ Corp Bond UCITS ETF USD Acc",
+      "assetClass": "fixed_income",
+      "region": "US",
+      "category": "Credit IG USD",
+      "wrapper": "UCITS ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "LQDA.L",
+      "benchmark": null,
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "IHYA",
+      "name": "iShares $ High Yield Corp Bond UCITS ETF USD Acc",
+      "assetClass": "fixed_income",
+      "region": "US",
+      "category": "High Yield USD",
+      "wrapper": "UCITS ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "IHYA.L",
+      "benchmark": null,
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "AGGU",
+      "name": "iShares Core Global Aggregate Bond UCITS ETF USD Acc",
+      "assetClass": "fixed_income",
+      "region": "Global",
+      "category": "Core bond global",
+      "wrapper": "UCITS ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "AGGU.L",
+      "benchmark": null,
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "PPA",
+      "name": "Invesco Aerospace & Defense ETF",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "Defense",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "PPA",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "HACK",
+      "name": "ETFMG Prime Cyber Security ETF",
+      "assetClass": "equity",
+      "region": "US/global",
+      "category": "Cybersecurity",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "HACK",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "BOTZ",
+      "name": "Global X Robotics & Artificial Intelligence ETF",
+      "assetClass": "equity",
+      "region": "Global",
+      "category": "Robotics / automation",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "BOTZ",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "ROBO",
+      "name": "ROBO Global Robotics and Automation Index ETF",
+      "assetClass": "equity",
+      "region": "Global",
+      "category": "Robotics / automation",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "ROBO",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "GRID",
+      "name": "First Trust NASDAQ Clean Edge Smart Grid Infrastructure ETF",
+      "assetClass": "equity",
+      "region": "US/global",
+      "category": "Energy / grid / electrification",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "GRID",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "PAVE",
+      "name": "Global X U.S. Infrastructure Development ETF",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "Infrastructure / onshoring",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "PAVE",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "ITB",
+      "name": "iShares U.S. Home Construction ETF",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "Residential construction",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "ITB",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "XHB",
+      "name": "SPDR S&P Homebuilders ETF",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "Residential construction",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "XHB",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "PKB",
+      "name": "Invesco Building & Construction ETF",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "Building materials / construction infrastructure",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "PKB",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "SRVR",
+      "name": "Pacer Benchmark Data & Infrastructure Real Estate SCTR ETF",
+      "assetClass": "equity",
+      "region": "US/global",
+      "category": "Data centers / digital infrastructure",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "SRVR",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "VPN",
+      "name": "Global X Data Center & Digital Infrastructure ETF",
+      "assetClass": "equity",
+      "region": "Global",
+      "category": "Data centers / digital infrastructure",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "VPN",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "AIRR",
+      "name": "First Trust RBA American Industrial Renaissance ETF",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "Onshoring / reindustrialization",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "AIRR",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "QTUM",
+      "name": "Defiance Quantum ETF",
+      "assetClass": "equity",
+      "region": "Global",
+      "category": "Quantum / frontier computing",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "QTUM",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "GLUX",
+      "name": "Amundi S&P Global Luxury UCITS ETF",
+      "assetClass": "equity",
+      "region": "Global luxury",
+      "category": "Luxury global",
+      "wrapper": "UCITS ETF",
+      "currency": "EUR",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "GLUX.PA",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "EXV4",
+      "name": "iShares STOXX Europe 600 Health Care UCITS ETF",
+      "assetClass": "equity",
+      "region": "Europe",
+      "category": "Europe healthcare / pharma",
+      "wrapper": "UCITS ETF",
+      "currency": "EUR",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "EXV4.DE",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "XDWH",
+      "name": "Xtrackers MSCI World Health Care UCITS ETF",
+      "assetClass": "equity",
+      "region": "Global developed",
+      "category": "Global healthcare",
+      "wrapper": "UCITS ETF",
+      "currency": "EUR",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "XDWH.DE",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "MCHI",
+      "name": "iShares MSCI China ETF",
+      "assetClass": "equity",
+      "region": "China",
+      "category": "China direct broad",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "MCHI",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "FXI",
+      "name": "iShares China Large-Cap ETF",
+      "assetClass": "equity",
+      "region": "China / Hong Kong",
+      "category": "China direct large caps",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "FXI",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "KWEB",
+      "name": "KraneShares CSI China Internet ETF",
+      "assetClass": "equity",
+      "region": "China",
+      "category": "China internet / tech",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "KWEB",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "ASHR",
+      "name": "Xtrackers Harvest CSI 300 China A-Shares ETF",
+      "assetClass": "equity",
+      "region": "China",
+      "category": "China A-shares",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "ASHR",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "KBA",
+      "name": "KraneShares Bosera MSCI China A 50 Connect Index ETF",
+      "assetClass": "equity",
+      "region": "China",
+      "category": "China A-shares",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "KBA",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "COPX",
+      "name": "Global X Copper Miners ETF",
+      "assetClass": "equity",
+      "region": "Global commodities",
+      "category": "Copper miners",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "COPX",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "PICK",
+      "name": "iShares MSCI Global Metals & Mining Producers ETF",
+      "assetClass": "equity",
+      "region": "Global commodities",
+      "category": "Metals and mining producers",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "PICK",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "INDA",
+      "name": "iShares MSCI India ETF",
+      "assetClass": "equity",
+      "region": "India",
+      "category": "China+1 / India",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "INDA",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "FLIN",
+      "name": "Franklin FTSE India ETF",
+      "assetClass": "equity",
+      "region": "India",
+      "category": "China+1 / India",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "FLIN",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "EWW",
+      "name": "iShares MSCI Mexico ETF",
+      "assetClass": "equity",
+      "region": "Mexico",
+      "category": "China+1 / Mexico nearshoring",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "EWW",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "VNM",
+      "name": "VanEck Vietnam ETF",
+      "assetClass": "equity",
+      "region": "Vietnam",
+      "category": "China+1 / Vietnam",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "VNM",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "EWT",
+      "name": "iShares MSCI Taiwan ETF",
+      "assetClass": "equity",
+      "region": "Taiwan",
+      "category": "Asia technology",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "EWT",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "EWY",
+      "name": "iShares MSCI South Korea ETF",
+      "assetClass": "equity",
+      "region": "South Korea",
+      "category": "Asia technology",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "EWY",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "JEPI",
+      "name": "JPMorgan Equity Premium Income ETF",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "Covered call / option income",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "JEPI",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "JEPQ",
+      "name": "JPMorgan Nasdaq Equity Premium Income ETF",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "Covered call / option income",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "JEPQ",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "XYLD",
+      "name": "Global X S&P 500 Covered Call ETF",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "Covered call / option income",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "XYLD",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "QYLD",
+      "name": "Global X Nasdaq 100 Covered Call ETF",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "Covered call / option income",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "QYLD",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "USMV",
+      "name": "iShares MSCI USA Min Vol Factor ETF",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "Minimum volatility",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "USMV",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "SPLV",
+      "name": "Invesco S&P 500 Low Volatility ETF",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "Minimum volatility",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "SPLV",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "VIXY",
+      "name": "ProShares VIX Short-Term Futures ETF",
+      "assetClass": "volatility",
+      "region": "US",
+      "category": "VIX / volatility hedge",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "VIXY",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "VXX",
+      "name": "iPath Series B S&P 500 VIX Short-Term Futures ETN",
+      "assetClass": "volatility",
+      "region": "US",
+      "category": "VIX / volatility hedge",
+      "wrapper": "US-listed ETN",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "VXX",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "UVXY",
+      "name": "ProShares Ultra VIX Short-Term Futures ETF",
+      "assetClass": "volatility",
+      "region": "US",
+      "category": "VIX / volatility hedge",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "UVXY",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "SH",
+      "name": "ProShares Short S&P500",
+      "assetClass": "inverse_equity",
+      "region": "US",
+      "category": "Inverse ETF / tactical hedge",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "SH",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "PSQ",
+      "name": "ProShares Short QQQ",
+      "assetClass": "inverse_equity",
+      "region": "US",
+      "category": "Inverse ETF / tactical hedge",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "PSQ",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "RWM",
+      "name": "ProShares Short Russell2000",
+      "assetClass": "inverse_equity",
+      "region": "US",
+      "category": "Inverse ETF / tactical hedge",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "RWM",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "EUM",
+      "name": "ProShares Short MSCI Emerging Markets",
+      "assetClass": "inverse_equity",
+      "region": "Emerging markets",
+      "category": "Inverse ETF / tactical hedge",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "EUM",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "SDS",
+      "name": "ProShares UltraShort S&P500",
+      "assetClass": "inverse_equity",
+      "region": "US",
+      "category": "Leveraged inverse ETF / tactical hedge",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "SDS",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "QID",
+      "name": "ProShares UltraShort QQQ",
+      "assetClass": "inverse_equity",
+      "region": "US",
+      "category": "Leveraged inverse ETF / tactical hedge",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "QID",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "SQQQ",
+      "name": "ProShares UltraPro Short QQQ",
+      "assetClass": "inverse_equity",
+      "region": "US",
+      "category": "Leveraged inverse ETF / tactical hedge",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "SQQQ",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "SPXU",
+      "name": "ProShares UltraPro Short S&P500",
+      "assetClass": "inverse_equity",
+      "region": "US",
+      "category": "Leveraged inverse ETF / tactical hedge",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "SPXU",
+      "benchmark": "SPY",
+      "compareToSp500": false,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    },
+    {
+      "ticker": "QQEW",
+      "name": "First Trust NASDAQ-100 Equal Weighted Index Fund",
+      "assetClass": "equity",
+      "region": "US",
+      "category": "Equal weight / concentration hedge",
+      "wrapper": "US-listed ETF",
+      "currency": "USD",
+      "quoteSource": "yahoo_chart",
+      "quoteSymbol": "QQEW",
+      "benchmark": "SPY",
+      "compareToSp500": true,
+      "valuation": {
+        "peRatio": null,
+        "forwardPe": null,
+        "source": null,
+        "asOf": null
+      }
+    }
+  ]
+}
