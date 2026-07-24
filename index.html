@@ -3736,7 +3736,7 @@
           unit: "%",
           values: { "2Y": 4.23, "5Y": 4.28, "7Y": 4.38, "10Y": 4.51, "30Y": 4.95 },
           reading:
-            "A curva voltou a apresentar inclinaÃ§Ã£o positiva, mas a maior parte do movimento estÃ¡ concentrada na ponta longa. O mercado exige prÃªmio crescente para financiar o governo americano em horizontes mais extensos.",
+            "A curva voltou a apresentar inclinação positiva, mas a maior parte do movimento está concentrada na ponta longa. O mercado exige prêmio crescente para financiar o governo americano em horizontes mais extensos.",
         },
         real: {
           label: "Curva Real - TIPS",
@@ -3745,16 +3745,16 @@
           unit: "%",
           values: { "2Y": 1.82, "5Y": 1.96, "7Y": 2.07, "10Y": 2.21, "30Y": 2.7 },
           reading:
-            "A principal fonte de inclinaÃ§Ã£o da curva americana estÃ¡ nos juros reais. O investidor volta a receber remuneraÃ§Ã£o real significativa sem necessidade de assumir risco corporativo.",
+            "A principal fonte de inclinação da curva americana está nos juros reais. O investidor volta a receber remuneração real significativa sem necessidade de assumir risco corporativo.",
         },
         inflation: {
-          label: "InflaÃ§Ã£o ImplÃ­cita",
-          short: "ImplÃ­cita",
+          label: "Inflação Implícita",
+          short: "Implícita",
           color: "#ffae6b",
           unit: "%",
           values: { "2Y": 2.37, "5Y": 2.28, "7Y": 2.27, "10Y": 2.25, "30Y": 2.19 },
           reading:
-            "As expectativas de inflaÃ§Ã£o permanecem bem ancoradas. A inflaÃ§Ã£o implÃ­cita cai gradualmente ao longo da curva, sugerindo confianÃ§a na convergÃªncia para nÃ­veis prÃ³ximos da meta do Federal Reserve.",
+            "As expectativas de inflação permanecem bem ancoradas. A inflação implícita cai gradualmente ao longo da curva, sugerindo confiança na convergência para níveis próximos da meta do Federal Reserve.",
         },
       };
 
@@ -3771,11 +3771,11 @@
 
       const COMPARISON_PERIODS = [
         { key: "current", label: "Atual", opacity: 1, dash: "", width: 3.8, color: null, lightColor: null },
-        { key: "1m", label: "1 mÃªs atrÃ¡s", opacity: 1, dash: "2 6", width: 4, color: "#ffcf6b", lightColor: "#b45309" },
+        { key: "1m", label: "1 mês atrás", opacity: 1, dash: "2 6", width: 4, color: "#ffcf6b", lightColor: "#b45309" },
       ];
 
       const DELTA_PERIODS = [
-        { key: "1m", label: "1 mÃªs" },
+        { key: "1m", label: "1 mês" },
         { key: "3m", label: "3 meses" },
         { key: "1y", label: "1 ano" },
       ];
@@ -3799,11 +3799,11 @@
       const DEFAULT_FED_POLICY = {
         source: "Atlanta Fed",
         targetRange: {
-          label: "3,50%â€“3,75%",
+          label: "3,50%–3,75%",
           asOf: "2026-06-22",
         },
         marketProbability: {
-          label: "atÃ© 16/09/26",
+          label: "até 16/09/26",
           hike: 76.7,
           steady: 20.8,
           cut: 2.5,
@@ -3824,7 +3824,7 @@
             curves: currentCurves,
           },
           "1m": {
-            label: "1 mÃªs atrÃ¡s",
+            label: "1 mês atrás",
             asOf: "2026-06-17",
             curves: {
               nominal: { "2Y": 4.2, "5Y": 4.27, "7Y": 4.37, "10Y": 4.49, "30Y": 4.93 },
@@ -3833,7 +3833,7 @@
             },
           },
           "3m": {
-            label: "3 meses atrÃ¡s",
+            label: "3 meses atrás",
             asOf: "2026-04-17",
             curves: {
               nominal: { "2Y": 3.71, "5Y": 3.84, "7Y": 4.04, "10Y": 4.26, "30Y": 4.88 },
@@ -3842,7 +3842,7 @@
             },
           },
           "1y": {
-            label: "1 ano atrÃ¡s",
+            label: "1 ano atrás",
             asOf: "2025-07-17",
             curves: {
               nominal: { "2Y": 3.91, "5Y": 4.01, "7Y": 4.22, "10Y": 4.47, "30Y": 5.01 },
@@ -3857,16 +3857,16 @@
         nominal: [
           "Curva voltou a inclinar.",
           "Ponta longa lidera o movimento.",
-          "PrÃªmio de prazo voltou a importar.",
+          "Prêmio de prazo voltou a importar.",
         ],
         real: [
-          "Juro real explica a inclinaÃ§Ã£o.",
+          "Juro real explica a inclinação.",
           "Carry real voltou a ser relevante.",
           "Menos necessidade de risco corporativo.",
         ],
         inflation: [
           "Expectativas seguem ancoradas.",
-          "ImplÃ­cita cai ao longo da curva.",
+          "Implícita cai ao longo da curva.",
           "Sem sinal de desancoragem.",
         ],
       };
@@ -3880,39 +3880,39 @@
 
       const DIAGNOSIS = [
         {
-          title: "O problema nÃ£o Ã© inflaÃ§Ã£o",
-          text: "A inflaÃ§Ã£o implÃ­cita permanece concentrada entre 2,19% e 2,37%, sem sinais de desancoragem de longo prazo.",
+          title: "O problema não é inflação",
+          text: "A inflação implícita permanece concentrada entre 2,19% e 2,37%, sem sinais de desancoragem de longo prazo.",
         },
         {
           title: "Juros reais elevados",
-          text: "O aumento dos yields nominais Ã© explicado principalmente pela elevaÃ§Ã£o dos juros reais e do prÃªmio de prazo.",
+          text: "O aumento dos yields nominais é explicado principalmente pela elevação dos juros reais e do prêmio de prazo.",
         },
         {
-          title: "Duration exige convicÃ§Ã£o",
-          text: "A maior parte da inclinaÃ§Ã£o estÃ¡ entre 10 e 30 anos, exatamente onde o risco de duration Ã© mais elevado.",
+          title: "Duration exige convicção",
+          text: "A maior parte da inclinação está entre 10 e 30 anos, exatamente onde o risco de duration é mais elevado.",
         },
       ];
 
       const BENEFITS = [
-        "ProteÃ§Ã£o contra inflaÃ§Ã£o realizada.",
+        "Proteção contra inflação realizada.",
         "Juros reais positivos.",
         "Duration reduzida, em torno de 2,3 anos.",
         "Menor volatilidade.",
-        "Menor dependÃªncia do timing dos cortes do Federal Reserve.",
-        "AdaptaÃ§Ã£o natural para investidores acostumados a carrego.",
+        "Menor dependência do timing dos cortes do Federal Reserve.",
+        "Adaptação natural para investidores acostumados a carrego.",
       ];
 
       const ALLOCATION_DIAGNOSIS = [
-        { title: "InflaÃ§Ã£o ancorada", text: "A curva nÃ£o aponta desancoragem." },
+        { title: "Inflação ancorada", text: "A curva não aponta desancoragem." },
         { title: "Juro real elevado", text: "O carry real remunera a espera." },
-        { title: "Duration seletiva", text: "A ponta longa exige convicÃ§Ã£o." },
+        { title: "Duration seletiva", text: "A ponta longa exige convicção." },
       ];
 
       const ALLOCATION_BENEFITS = [
-        "ProteÃ§Ã£o contra inflaÃ§Ã£o realizada.",
+        "Proteção contra inflação realizada.",
         "Juro real positivo no carrego.",
         "Duration moderada (2.3y).",
-        "Menor dependÃªncia do timing do Fed.",
+        "Menor dependência do timing do Fed.",
       ];
 
       function pct(value) {
@@ -4102,16 +4102,16 @@
       }
 
       const EQUITY_PE = [
-        { name: "Magnificent 7", value: 24.7, tone: "#4f7cff", note: "Principal fonte do pr?mio." },
-        { name: "S&P 500", value: 19.9, tone: "#48d6e9", note: "Benchmark do ?ndice cheio." },
+        { name: "Magnificent 7", value: 24.7, tone: "#4f7cff", note: "Principal fonte do prêmio." },
+        { name: "S&P 500", value: 19.9, tone: "#48d6e9", note: "Benchmark do índice cheio." },
         { name: "S&P 400 MidCap", value: 16.2, tone: "#ffae6b", note: "Valuation mais moderado." },
         { name: "S&P 600 SmallCap", value: 15.9, tone: "#8ea0b8", note: "Desconto com maior ciclicidade." },
       ];
 
       const EQUITY_PE_META = {
-        "Magnificent 7": { tone: "#4f7cff", note: "Principal fonte do prÃªmio." },
+        "Magnificent 7": { tone: "#4f7cff", note: "Principal fonte do prêmio." },
         "S&P 500 Information Technology": { tone: "#5bbcff", note: "Setor de tecnologia do S&P 500." },
-        "S&P 500": { tone: "#48d6e9", note: "Benchmark do Ã­ndice cheio." },
+        "S&P 500": { tone: "#48d6e9", note: "Benchmark do índice cheio." },
         "S&P 400 MidCap": { tone: "#ffae6b", note: "Valuation mais moderado." },
         "S&P 600 SmallCap": { tone: "#8ea0b8", note: "Desconto com maior ciclicidade." },
       };
@@ -4119,7 +4119,7 @@
       const EQUITY_VALUATION_SNAPSHOT = {
         asOf: "2026-07-21",
         source: "Yardeni Research / LSEG Datastream",
-        methodology: "Forward P/E aproximado lido manualmente da figura p?blica Forward P/E Ratios: LargeCap, MidCap, SmallCap & Mag-7.",
+        methodology: "Forward P/E aproximado lido manualmente da figura pública Forward P/E Ratios: LargeCap, MidCap, SmallCap & Mag-7.",
         items: [
           { name: "Magnificent 7", forwardPE: 24.7 },
           { name: "S&P 500", forwardPE: 19.9 },
@@ -4173,7 +4173,7 @@
         return {
           asOf: payload?.asOf || null,
           source: payload?.source || "FactSet Earnings Insight",
-          methodology: payload?.methodology || "AtualizaÃ§Ã£o manual a partir do relatÃ³rio semanal.",
+          methodology: payload?.methodology || "Atualização manual a partir do relatório semanal.",
           sp500: {
             forwardPE: cleanNumber(sp500.forwardPE),
             forwardEPS: cleanNumber(sp500.forwardEPS),
@@ -4220,10 +4220,10 @@
         const premium = (base) => Math.round(((mag7 / base) - 1) * 100);
         const premiumItems = activeItems
           .filter((item) => item.name !== "Magnificent 7")
-          .map((item) => [`PrÃªmio vs ${item.name.replace("S&P 500 Information Technology", "Tecnologia").replace("S&P 400 ", "").replace("S&P 600 ", "")}`, `+${premium(item.value)}%`, item.tone]);
+          .map((item) => [`Prêmio vs ${item.name.replace("S&P 500 Information Technology", "Tecnologia").replace("S&P 400 ", "").replace("S&P 600 ", "")}`, `+${premium(item.value)}%`, item.tone]);
         const sourceText = valuationData?.source
-          ? `Base: ${valuationData.source}, ${valuationData.asOf || "data nÃ£o informada"}. Valores aproximados; grÃ¡fico prÃ³prio.`
-          : "Base: Yardeni Research, LSEG Datastream e S&P, 22/06/26. Valores aproximados; grÃ¡fico prÃ³prio.";
+          ? `Base: ${valuationData.source}, ${valuationData.asOf || "data não informada"}. Valores aproximados; gráfico próprio.`
+          : "Base: Yardeni Research, LSEG Datastream e S&P, 22/06/26. Valores aproximados; gráfico próprio.";
 
         return React.createElement(
           "div",
@@ -4268,8 +4268,8 @@
         const averages = Object.entries(sp500.averages || {}).filter(([, value]) => Number.isFinite(value));
         const barItems = [
           { label: "Atual", value: forwardPE, tone: "#4f7cff" },
-          { label: "MÃ©dia 5Y", value: sp500.averages?.["5y"], tone: "#48d6e9" },
-          { label: "MÃ©dia 10Y", value: sp500.averages?.["10y"], tone: "#8ea0b8" },
+          { label: "Média 5Y", value: sp500.averages?.["5y"], tone: "#48d6e9" },
+          { label: "Média 10Y", value: sp500.averages?.["10y"], tone: "#8ea0b8" },
         ].filter((item) => Number.isFinite(item.value));
         const maxBar = Math.max(...barItems.map((item) => item.value), 1);
         const averageComparisons = averages.map(([label, value]) => {
@@ -4289,13 +4289,13 @@
         });
         const sourceText = data?.asOf
           ? `Base: ${data.source}, ${data.asOf}. Yardeni e FactSet podem divergir por data, universo e metodologia.`
-          : "Base FactSet ainda nÃ£o preenchida; usando S&P 500 do valuation manual como referÃªncia temporÃ¡ria.";
+          : "Base FactSet ainda não preenchida; usando S&P 500 do valuation manual como referência temporária.";
 
         return React.createElement(
           "div",
           { className: "valuation-context" },
           React.createElement("span", { className: "control-title" }, "S&P 500 em contexto"),
-          React.createElement("h2", null, "Base B: Forward P/E vs mÃ©dias"),
+          React.createElement("h2", null, "Base B: Forward P/E vs médias"),
           React.createElement(
             "div",
             { className: "forward-average-chart" },
@@ -4317,10 +4317,10 @@
                   "div",
                   { className: "forward-chart-note" },
                   averageComparisons.map((item) =>
-                    React.createElement("span", { key: item.label }, `Vs mÃ©dia ${item.label.toUpperCase()}: ${item.text}. `)
+                    React.createElement("span", { key: item.label }, `Vs média ${item.label.toUpperCase()}: ${item.text}. `)
                   )
                 )
-              : React.createElement("p", { className: "data-note" }, "MÃ©dias histÃ³ricas ainda nÃ£o disponÃ­veis no JSON FactSet.")
+              : React.createElement("p", { className: "data-note" }, "Médias históricas ainda não disponíveis no JSON FactSet.")
           ),
           Number.isFinite(sp500.forwardEPS)
             ? React.createElement(
@@ -4361,16 +4361,16 @@
         return React.createElement(
           "section",
           { className: "panel pe-history-chart" },
-          React.createElement("span", { className: "control-title" }, "P/E histÃ³rico TTM"),
+          React.createElement("span", { className: "control-title" }, "P/E histórico TTM"),
           React.createElement("h2", null, "S&P 500: P/E atualizado"),
           React.createElement(
             "div",
             { className: "pe-history-kpis" },
             [
-              ["Ãšltimo", formatMultiple(latest.pe)],
+              ["Último", formatMultiple(latest.pe)],
               ["Desde", String(minYear)],
-              ["AtÃ©", latest.date.slice(0, 7)],
-              ["MÃ©dia desde 1950", formatMultiple(data?.stats?.averageSince1950 || average)],
+              ["Até", latest.date.slice(0, 7)],
+              ["Média desde 1950", formatMultiple(data?.stats?.averageSince1950 || average)],
               Number.isFinite(median) ? ["Mediana desde 1950", formatMultiple(median)] : null,
             ].filter(Boolean).map(([label, value]) =>
               React.createElement(
@@ -4384,12 +4384,12 @@
           React.createElement(
             "div",
             { className: "pe-history-legend" },
-            Number.isFinite(average) ? React.createElement("span", { className: "avg" }, React.createElement("i", null), `MÃ©dia desde 1950: ${formatMultiple(average)}`) : null,
+            Number.isFinite(average) ? React.createElement("span", { className: "avg" }, React.createElement("i", null), `Média desde 1950: ${formatMultiple(average)}`) : null,
             Number.isFinite(median) ? React.createElement("span", { className: "med" }, React.createElement("i", null), `Mediana desde 1950: ${formatMultiple(median)}`) : null
           ),
           React.createElement(
             "svg",
-            { className: "pe-history-svg", viewBox: `0 0 ${width} ${height}`, role: "img", "aria-label": "HistÃ³rico do P/E TTM do S&P 500" },
+            { className: "pe-history-svg", viewBox: `0 0 ${width} ${height}`, role: "img", "aria-label": "Histórico do P/E TTM do S&P 500" },
             yTicks.map((tick) =>
               React.createElement(
                 React.Fragment,
@@ -4407,7 +4407,7 @@
             React.createElement("circle", { className: "pe-history-latest", cx: xFor(latest.date), cy: yFor(latest.pe), r: 5 }),
             React.createElement("text", { className: "pe-history-axis-label", x: xFor(latest.date) - 8, y: yFor(latest.pe) - 10, textAnchor: "end" }, formatMultiple(latest.pe))
           ),
-          React.createElement("p", null, `Base: ${data?.source || "Multpl"}. P/E trailing/reportado; nÃ£o Ã© Forward P/E. O valor mais recente pode ser estimado pela fonte.`)
+          React.createElement("p", null, `Base: ${data?.source || "Multpl"}. P/E trailing/reportado; não é Forward P/E. O valor mais recente pode ser estimado pela fonte.`)
         );
       }
 
@@ -4415,19 +4415,19 @@
         {
           title: "Magnificent 7",
           tone: "#4f7cff",
-          bullets: ["Concentra o prÃªmio do Ã­ndice.", "Entrega crescimento e margem superiores.", "Carrega expectativa elevada."],
-          message: "O prÃªmio exige execuÃ§Ã£o quase perfeita.",
+          bullets: ["Concentra o prêmio do índice.", "Entrega crescimento e margem superiores.", "Carrega expectativa elevada."],
+          message: "O prêmio exige execução quase perfeita.",
         },
         {
-          title: "Ãndice cheio",
+          title: "Índice cheio",
           tone: "#48d6e9",
-          bullets: ["O mÃºltiplo agregado mistura empresas muito diferentes.", "A Magnificent 7 puxa a leitura para cima."],
-          message: "Comprar S&P 500 hoje tambÃ©m Ã© aceitar concentraÃ§Ã£o.",
+          bullets: ["O múltiplo agregado mistura empresas muito diferentes.", "A Magnificent 7 puxa a leitura para cima."],
+          message: "Comprar S&P 500 hoje também é aceitar concentração.",
         },
         {
           title: "Mid e small caps",
           tone: "#ffae6b",
-          bullets: ["Negociam a mÃºltiplos mais baixos.", "SÃ£o mais sensÃ­veis a juros, crÃ©dito e ciclo."],
+          bullets: ["Negociam a múltiplos mais baixos.", "São mais sensíveis a juros, crédito e ciclo."],
           message: "O desconto existe, mas tem motivo.",
         },
       ];
@@ -4437,28 +4437,28 @@
           company: "S&P 500",
           pe: "19,9x",
           recent: "Lucro Q1 2026 entre ~27%-29% YoY.",
-          outlook: "Goldman vÃª EPS 2026 +24%; Wells Fargo e UBS elevaram projeÃ§Ãµes.",
+          outlook: "Goldman vê EPS 2026 +24%; Wells Fargo e UBS elevaram projeções.",
           read: "Benchmark: lucro forte, mas parte relevante vem de IA, semis, energia e megacaps.",
           benchmark: true,
         },
         {
           company: "Nvidia",
           pe: "~20x-25x",
-          recent: "Receita Q4 FY26 +73% YoY; lucro lÃ­quido +94% YoY.",
+          recent: "Receita Q4 FY26 +73% YoY; lucro líquido +94% YoY.",
           outlook: "Guidance Q1 FY27 de US$ 78 bi em receita.",
-          read: "Motor mais explosivo do grupo; principal beneficiÃ¡ria direta do CAPEX de IA.",
+          read: "Motor mais explosivo do grupo; principal beneficiária direta do CAPEX de IA.",
         },
         {
           company: "Meta",
           pe: "~22x-26x",
           recent: "Q1 2026: receita US$ 56,3 bi; EPS +62% YoY.",
           outlook: "CAPEX 2026 elevado para US$ 125-145 bi.",
-          read: "MonetizaÃ§Ã£o de IA via ads Ã© forte, mas o CAPEX virou ponto de cobranÃ§a.",
+          read: "Monetização de IA via ads é forte, mas o CAPEX virou ponto de cobrança.",
         },
         {
           company: "Amazon",
           pe: "~30x-40x",
-          recent: "Q1 2026: receita +16,6%; lucro lÃ­quido +76,7%; AWS +28%.",
+          recent: "Q1 2026: receita +16,6%; lucro líquido +76,7%; AWS +28%.",
           outlook: "CAPEX pode chegar perto de US$ 200 bi em 2026.",
           read: "Lucro cresce bem, mas o mercado cobra retorno em AWS, IA e free cash flow.",
         },
@@ -4467,28 +4467,28 @@
           pe: "~22x-26x",
           recent: "Receita Q1 2026 +22%; Google Cloud +63%.",
           outlook: "Search, Cloud e Gemini sustentam a tese, apesar de CAPEX alto.",
-          read: "Deixa de ser sÃ³ advertising e ganha perfil de infraestrutura/plataforma de IA.",
+          read: "Deixa de ser só advertising e ganha perfil de infraestrutura/plataforma de IA.",
         },
         {
           company: "Microsoft",
           pe: "~20x-25x",
           recent: "Receita trimestre mar/2026 +18%; Microsoft Cloud +29%.",
-          outlook: "Foco do mercado Ã© se o CAPEX de IA vira margem sustentÃ¡vel.",
+          outlook: "Foco do mercado é se o CAPEX de IA vira margem sustentável.",
           read: "Um dos melhores perfis: cloud, software recorrente e IA corporativa.",
         },
         {
           company: "Apple",
           pe: "~28x-32x",
           recent: "Receita fiscal Q2 2026 +17% YoY; EPS cerca de +22% YoY.",
-          outlook: "Depende mais de iPhone, serviÃ§os e China do que de AI infra puro.",
+          outlook: "Depende mais de iPhone, serviços e China do que de AI infra puro.",
           read: "Forte, mas menos ligada ao CAPEX de IA do que o restante do grupo.",
         },
         {
           company: "Tesla",
           pe: ">100x / distorcido",
-          recent: "Q1 2026: receita +16%; lucro lÃ­quido +17%.",
+          recent: "Q1 2026: receita +16%; lucro líquido +17%.",
           outlook: "Narrativa depende de robotaxi, Optimus, IA e CAPEX estimado em US$ 25 bi.",
-          read: "O mais especulativo: lucro atual nÃ£o sustenta sozinho a narrativa.",
+          read: "O mais especulativo: lucro atual não sustenta sozinho a narrativa.",
         },
       ];
 
@@ -4594,7 +4594,7 @@
           { className: "equity-filter" },
           React.createElement(
             "div",
-            { className: "segmented", "aria-label": "VisÃ£o do mÃ³dulo Equity Valuation" },
+            { className: "segmented", "aria-label": "Visão do módulo Equity Valuation" },
             React.createElement(
               "button",
               {
@@ -4649,7 +4649,7 @@
         const mag7TableRows = activeMag7Valuation.companies;
         const mag7SourceText = activeMag7Valuation.status === "ok"
           ? `Base: ${activeMag7Valuation.source}, ${activeMag7Valuation.asOf}. P/E TTM e Forward P/E por empresa; agregado calculado pelo dashboard.`
-          : `Snapshot local: ${activeMag7Valuation.source}, ${activeMag7Valuation.asOf}. AtualizaÃ§Ã£o automÃ¡tica entra quando data/mag7-valuation.json carregar.`;
+          : `Snapshot local: ${activeMag7Valuation.source}, ${activeMag7Valuation.asOf}. Atualização automática entra quando data/mag7-valuation.json carregar.`;
 
         const megaView = React.createElement(
           React.Fragment,
@@ -4664,7 +4664,7 @@
                 "div",
                 null,
                 React.createElement("span", { className: "control-title" }, "Magnificent 7"),
-                React.createElement("h2", null, "MÃºltiplo vs crescimento")
+                React.createElement("h2", null, "Múltiplo vs crescimento")
               )
             ),
             React.createElement(
@@ -4695,7 +4695,7 @@
                       React.createElement("td", null, row.company),
                       React.createElement("td", null, Number.isFinite(row.trailingPE) ? formatMultiple(row.trailingPE) : "n.d."),
                       React.createElement("td", null, Number.isFinite(row.forwardPE) ? formatMultiple(row.forwardPE) : (row.pe || "n.d.")),
-                      React.createElement("td", null, row.read || (row.marketCap ? `Market cap: ${formatMarketCap(row.marketCap)}.` : "Atualizar apÃ³s robÃ´ rodar."))
+                      React.createElement("td", null, row.read || (row.marketCap ? `Market cap: ${formatMarketCap(row.marketCap)}.` : "Atualizar após robô rodar."))
                     )
                   )
                 )
@@ -4729,49 +4729,49 @@
         equity: {
           title: "Stock Market Valuation",
           lead: "",
-          thesis: "ConcentraÃ§Ã£o",
-          subtitle: "PrÃªmio na Magnificent 7",
+          thesis: "Concentração",
+          subtitle: "Prêmio na Magnificent 7",
         },
         tech: {
           title: "Temas",
-          lead: "PÃ¡ginas temÃ¡ticas para acompanhar teses atuais, mapas setoriais, ciclos tecnolÃ³gicos e mudanÃ§as estruturais.",
+          lead: "Páginas temáticas para acompanhar teses atuais, mapas setoriais, ciclos tecnológicos e mudanças estruturais.",
           thesis: "Temas",
-          subtitle: "PÃ¡ginas atuais",
+          subtitle: "Páginas atuais",
         },
         core: {
-          title: "O veÃ­culo define a exposiÃ§Ã£o real da carteira",
-          lead: "Em carteiras globais, ETF nÃ£o Ã© sÃ³ custo: define liquidez, fiscalidade, acumulaÃ§Ã£o, hedge, concentraÃ§Ã£o e eficiÃªncia operacional.",
-          thesis: "ImplementaÃ§Ã£o",
-          subtitle: "ExposiÃ§Ã£o, veÃ­culo e funÃ§Ã£o",
+          title: "O veículo define a exposição real da carteira",
+          lead: "Em carteiras globais, ETF não é só custo: define liquidez, fiscalidade, acumulação, hedge, concentração e eficiência operacional.",
+          thesis: "Implementação",
+          subtitle: "Exposição, veículo e função",
         },
       };
 
       MODULE_COPY.satellites = {
-        title: "SatÃ©lites devem combinar convexidade, veÃ­culo correto e tamanho de risco",
-        lead: "A alocaÃ§Ã£o satÃ©lite nÃ£o Ã© lista de temas: cada tese precisa casar motor econÃ´mico, instrumento e risco de implementaÃ§Ã£o.",
+        title: "Satélites devem combinar convexidade, veículo correto e tamanho de risco",
+        lead: "A alocação satélite não é lista de temas: cada tese precisa casar motor econômico, instrumento e risco de implementação.",
         thesis: "Convexidade",
         subtitle: "ETF vs cesta",
       };
 
       MODULE_COPY.europe = {
-        title: "Na Europa, o core compra o continente â€” a cesta compra a tese",
-        lead: "A exposiÃ§Ã£o ampla diversifica. As melhores teses exigem seleÃ§Ã£o: defesa, luxo, pharma, soberania digital e industriais.",
-        thesis: "SeleÃ§Ã£o",
-        subtitle: "Europa estratÃ©gica",
+        title: "Na Europa, o core compra o continente — a cesta compra a tese",
+        lead: "A exposição ampla diversifica. As melhores teses exigem seleção: defesa, luxo, pharma, soberania digital e industriais.",
+        thesis: "Seleção",
+        subtitle: "Europa estratégica",
       };
 
       MODULE_COPY.china = {
-        title: "China continua relevante â€” mas o canal de exposiÃ§Ã£o importa mais",
-        lead: "A economia chinesa segue central para consumo, manufatura, commodities e cadeias globais. Isso nÃ£o significa que a melhor forma de capturar China seja comprar aÃ§Ãµes chinesas diretamente.",
+        title: "China continua relevante — mas o canal de exposição importa mais",
+        lead: "A economia chinesa segue central para consumo, manufatura, commodities e cadeias globais. Isso não significa que a melhor forma de capturar China seja comprar ações chinesas diretamente.",
         thesis: "Canal",
         subtitle: "Direta, indireta ou China+1",
       };
 
       MODULE_COPY.hedges = {
-        title: "EstratÃ©gias lÃ­quidas de hedge",
-        lead: "Quando Treasuries, TIPS, caixa e ouro jÃ¡ estÃ£o cobertos em outras camadas, hedge vira engenharia de payoff, beta e volatilidade.",
+        title: "Estratégias líquidas de hedge",
+        lead: "Quando Treasuries, TIPS, caixa e ouro já estão cobertos em outras camadas, hedge vira engenharia de payoff, beta e volatilidade.",
         thesis: "Payoff",
-        subtitle: "OpÃ§Ãµes, beta e volatilidade",
+        subtitle: "Opções, beta e volatilidade",
       };
 
       MODULE_COPY.etfs = {
@@ -4789,11 +4789,11 @@
       };
 
       const HOME_CARDS = [
-        ["curve", "Rates", "Yield Curves", "Curvas nominais, reais, inflaÃ§Ã£o implÃ­cita, Fed Funds e inclinaÃ§Ãµes.", "#48d6e9"],
-        ["equity", "Valuation", "Equity Valuation", "MÃºltiplos, Magnificent 7, dispersÃ£o e prÃªmio relativo do mercado americano.", "#6ee7b7"],
-        ["etfs", "VeÃ­culos", "ETFs", "Core equities, renda fixa, setoriais, satÃ©lites, China, Europa e hedge.", "#8db7ff"],
-        ["dataLab", "Dados", "Data Lab", "Retorno, volatilidade, drawdown, beta, correlaÃ§Ã£o e benchmark dos ETFs.", "#6ee7b7"],
-        ["tech", "Temas", "PÃ¡ginas temÃ¡ticas", "Teses atuais, mapas setoriais, ciclos tecnolÃ³gicos e gargalos econÃ´micos.", "#ffae6b"],
+        ["curve", "Rates", "Yield Curves", "Curvas nominais, reais, inflação implícita, Fed Funds e inclinações.", "#48d6e9"],
+        ["equity", "Valuation", "Equity Valuation", "Múltiplos, Magnificent 7, dispersão e prêmio relativo do mercado americano.", "#6ee7b7"],
+        ["etfs", "Veículos", "ETFs", "Core equities, renda fixa, setoriais, satélites, China, Europa e hedge.", "#8db7ff"],
+        ["dataLab", "Dados", "Data Lab", "Retorno, volatilidade, drawdown, beta, correlação e benchmark dos ETFs.", "#6ee7b7"],
+        ["tech", "Temas", "Páginas temáticas", "Teses atuais, mapas setoriais, ciclos tecnológicos e gargalos econômicos.", "#ffae6b"],
       ];
 
       const MAIN_NAV = [
@@ -4832,7 +4832,7 @@
         ["beta1yVsSp500", "Beta 1 ano"],
       ];
 
-      const DATA_LAB_GROUPS = ["Fixed Income", "Core Equities", "Setoriais", "SatÃ©lites EUA", "Europa EstratÃ©gica", "China / China+1", "Hedge"];
+      const DATA_LAB_GROUPS = ["Fixed Income", "Core Equities", "Setoriais", "Satélites EUA", "Europa Estratégica", "China / China+1", "Hedge"];
 
       const dataLabGroupFor = (item) => {
         const category = (item?.category || "").toLowerCase();
@@ -4840,19 +4840,19 @@
         if (category.includes("covered call") || category.includes("minimum volatility") || category.includes("vix") || category.includes("inverse") || category.includes("concentration hedge") || category.includes("gold") || category.includes("swiss franc")) return "Hedge";
         if (category.includes("treasuries") || category.includes("treasury bills") || category.includes("inflation usd") || category.includes("credit") || category.includes("high yield") || category.includes("core bond")) return "Fixed Income";
         if (category.includes("china") || category.includes("em ex-china") || category.includes("china+1") || category.includes("asia technology") || category.includes("copper miners") || category.includes("metals and mining")) return "China / China+1";
-        if (category.includes("luxury") || category.includes("europe healthcare") || category.includes("global healthcare")) return "Europa EstratÃ©gica";
+        if (category.includes("luxury") || category.includes("europe healthcare") || category.includes("global healthcare")) return "Europa Estratégica";
         if (category.startsWith("core") || category.includes("s&p 500 benchmark") || category.includes("us growth") || category.includes("nasdaq-100")) return "Core Equities";
-        return "SatÃ©lites EUA";
+        return "Satélites EUA";
       };
 
       const DATA_LAB_SUBGROUP_ORDER = {
-        "Fixed Income": ["Liquidez USD", "Treasuries por duration", "TIPS / inflaÃ§Ã£o", "CrÃ©dito USD", "Core bond global"],
+        "Fixed Income": ["Liquidez USD", "Treasuries por duration", "TIPS / inflação", "Crédito USD", "Core bond global"],
         "Core Equities": ["EUA amplo", "Growth / Nasdaq", "Core global desenvolvido", "Developed ex-US", "Europa core", "Emergentes"],
-        Setoriais: ["Growth / comunicaÃ§Ã£o", "CÃ­clicos", "Defensivos / yield", "Outros setores"],
-        "SatÃ©lites EUA": ["IA / semicondutores", "SeguranÃ§a / defesa", "Infraestrutura / energia", "Onshoring / reindustrializaÃ§Ã£o", "Opcionalidade tecnolÃ³gica", "Economia restrita"],
-        "Europa EstratÃ©gica": ["Defesa", "Luxo / China indireta", "Pharma / healthcare", "Industriais / eletrificaÃ§Ã£o", "Soberania digital"],
+        Setoriais: ["Growth / comunicação", "Cíclicos", "Defensivos / yield", "Outros setores"],
+        "Satélites EUA": ["IA / semicondutores", "Segurança / defesa", "Infraestrutura / energia", "Onshoring / reindustrialização", "Opcionalidade tecnológica", "Economia restrita"],
+        "Europa Estratégica": ["Defesa", "Luxo / China indireta", "Pharma / healthcare", "Industriais / eletrificação", "Soberania digital"],
         "China / China+1": ["China direta", "China indireta", "China+1", "EM ex-China"],
-        Hedge: ["Option income", "ReduÃ§Ã£o de beta", "Volatilidade", "Hedge direcional", "DesconcentraÃ§Ã£o", "Macro"],
+        Hedge: ["Option income", "Redução de beta", "Volatilidade", "Hedge direcional", "Desconcentração", "Macro"],
       };
 
       const dataLabSubgroupFor = (item) => {
@@ -4863,8 +4863,8 @@
         if (group === "Fixed Income") {
           if (category.includes("treasury bills") || category.includes("liquidity")) return "Liquidez USD";
           if (category.includes("treasuries")) return "Treasuries por duration";
-          if (category.includes("inflation")) return "TIPS / inflaÃ§Ã£o";
-          if (category.includes("credit") || category.includes("high yield")) return "CrÃ©dito USD";
+          if (category.includes("inflation")) return "TIPS / inflação";
+          if (category.includes("credit") || category.includes("high yield")) return "Crédito USD";
           return "Core bond global";
         }
 
@@ -4879,26 +4879,26 @@
         }
 
         if (group === "Setoriais") {
-          if (["XLK", "XLC", "XLY"].includes(ticker)) return "Growth / comunicaÃ§Ã£o";
-          if (["XLF", "XLI", "XLB", "XLE"].includes(ticker)) return "CÃ­clicos";
+          if (["XLK", "XLC", "XLY"].includes(ticker)) return "Growth / comunicação";
+          if (["XLF", "XLI", "XLB", "XLE"].includes(ticker)) return "Cíclicos";
           if (["XLV", "XLP", "XLU", "XLRE"].includes(ticker)) return "Defensivos / yield";
           return "Outros setores";
         }
 
-        if (group === "SatÃ©lites EUA") {
+        if (group === "Satélites EUA") {
           if (category.includes("semiconductor") || category.includes("ai")) return "IA / semicondutores";
-          if (category.includes("defense") || category.includes("cyber")) return "SeguranÃ§a / defesa";
+          if (category.includes("defense") || category.includes("cyber")) return "Segurança / defesa";
           if (category.includes("grid") || category.includes("infrastructure") || category.includes("energy")) return "Infraestrutura / energia";
-          if (category.includes("onshoring") || category.includes("reindustrialization")) return "Onshoring / reindustrializaÃ§Ã£o";
-          if (category.includes("robot") || category.includes("quantum")) return "Opcionalidade tecnolÃ³gica";
+          if (category.includes("onshoring") || category.includes("reindustrialization")) return "Onshoring / reindustrialização";
+          if (category.includes("robot") || category.includes("quantum")) return "Opcionalidade tecnológica";
           return "Economia restrita";
         }
 
-        if (group === "Europa EstratÃ©gica") {
+        if (group === "Europa Estratégica") {
           if (category.includes("defense")) return "Defesa";
           if (category.includes("luxury")) return "Luxo / China indireta";
           if (category.includes("healthcare")) return "Pharma / healthcare";
-          if (category.includes("industrial") || category.includes("electrification")) return "Industriais / eletrificaÃ§Ã£o";
+          if (category.includes("industrial") || category.includes("electrification")) return "Industriais / eletrificação";
           return "Soberania digital";
         }
 
@@ -4912,10 +4912,10 @@
 
         if (group === "Hedge") {
           if (category.includes("covered call")) return "Option income";
-          if (category.includes("minimum volatility")) return "ReduÃ§Ã£o de beta";
+          if (category.includes("minimum volatility")) return "Redução de beta";
           if (category.includes("vix")) return "Volatilidade";
           if (category.includes("inverse")) return "Hedge direcional";
-          if (category.includes("concentration")) return "DesconcentraÃ§Ã£o";
+          if (category.includes("concentration")) return "Desconcentração";
           return "Macro";
         }
 
@@ -4926,8 +4926,8 @@
         const tones = {
           "Liquidez USD": "#42d1b7",
           "Treasuries por duration": "#7fb8ff",
-          "TIPS / inflaÃ§Ã£o": "#77d38b",
-          "CrÃ©dito USD": "#9ea7ff",
+          "TIPS / inflação": "#77d38b",
+          "Crédito USD": "#9ea7ff",
           "Core bond global": "#8bc7ff",
           "EUA amplo": "#54b6ff",
           "Growth / Nasdaq": "#6f8cff",
@@ -4935,30 +4935,30 @@
           "Developed ex-US": "#7ac6ff",
           "Europa core": "#86a8ff",
           "Emergentes": "#4fd6a8",
-          "Growth / comunicaÃ§Ã£o": "#5d8cff",
-          "CÃ­clicos": "#4eb7e8",
+          "Growth / comunicação": "#5d8cff",
+          "Cíclicos": "#4eb7e8",
           "Defensivos / yield": "#55c891",
           "Outros setores": "#9da8b8",
           "IA / semicondutores": "#5d8cff",
-          "SeguranÃ§a / defesa": "#50c7d8",
+          "Segurança / defesa": "#50c7d8",
           "Infraestrutura / energia": "#58c489",
-          "Onshoring / reindustrializaÃ§Ã£o": "#7aa7ff",
-          "Opcionalidade tecnolÃ³gica": "#8c7dff",
+          "Onshoring / reindustrialização": "#7aa7ff",
+          "Opcionalidade tecnológica": "#8c7dff",
           "Economia restrita": "#4ec0a8",
           "Defesa": "#54b5d8",
           "Luxo / China indireta": "#c5a35a",
           "Pharma / healthcare": "#5ec08b",
-          "Industriais / eletrificaÃ§Ã£o": "#62b6d8",
+          "Industriais / eletrificação": "#62b6d8",
           "Soberania digital": "#8a9cff",
           "China direta": "#5d8cff",
           "China indireta": "#63c7d2",
           "China+1": "#65bf8b",
           "EM ex-China": "#8aa4ff",
           "Option income": "#7fa8ff",
-          "ReduÃ§Ã£o de beta": "#62c2d8",
+          "Redução de beta": "#62c2d8",
           "Volatilidade": "#9d8cff",
           "Hedge direcional": "#e08585",
-          "DesconcentraÃ§Ã£o": "#6cc4a0",
+          "Desconcentração": "#6cc4a0",
           "Macro": "#c8a85a",
         };
         return tones[subgroup] || "#7fb8ff";
@@ -4972,13 +4972,13 @@
         const isHedge = dataLabGroupFor(item) === "Hedge";
         const baseMetrics = DATA_LAB_METRICS.filter(([key]) => key !== "beta1yVsSp500" && key !== "valuation.peRatio");
         if (isFixedIncome) {
-          return [...baseMetrics, ["correlation1yVsCash", "CorrelaÃ§Ã£o vs Fed Funds"]];
+          return [...baseMetrics, ["correlation1yVsCash", "Correlação vs Fed Funds"]];
         }
         if (assetClass === "volatility") {
           return baseMetrics;
         }
         if (isMacro || isHedge || category.includes("gold") || category.includes("swiss franc")) {
-          return [...baseMetrics, ["correlation1yVsSp500", "CorrelaÃ§Ã£o vs S&P 500"]];
+          return [...baseMetrics, ["correlation1yVsSp500", "Correlação vs S&P 500"]];
         }
         return DATA_LAB_METRICS;
       };
@@ -4993,7 +4993,7 @@
       const dataLabReferenceLabel = (item) => {
         if (item?.assetClass === "fixed_income") return "Fed Funds";
         if (item?.assetClass === "volatility") return "";
-        if (["commodity", "currency", "inverse_equity"].includes(item?.assetClass)) return "CorrelaÃ§Ã£o";
+        if (["commodity", "currency", "inverse_equity"].includes(item?.assetClass)) return "Correlação";
         return "Beta";
       };
 
@@ -5065,7 +5065,7 @@
           React.createElement(
             "div",
             { className: "data-lab-chart-head" },
-            React.createElement("h3", null, hasBenchmark ? `EvoluÃ§Ã£o: ${active.ticker || "ETF"} vs ${benchmarkLabel}` : `EvoluÃ§Ã£o: ${active.ticker || "ETF"}`),
+            React.createElement("h3", null, hasBenchmark ? `Evolução: ${active.ticker || "ETF"} vs ${benchmarkLabel}` : `Evolução: ${active.ticker || "ETF"}`),
             React.createElement(
               "div",
               { className: "data-lab-legend" },
@@ -5108,7 +5108,7 @@
                     )
                   : null
               )
-            : React.createElement("p", { className: "data-note" }, "SÃ©rie histÃ³rica ainda nÃ£o disponÃ­vel para este instrumento."),
+            : React.createElement("p", { className: "data-note" }, "Série histórica ainda não disponível para este instrumento."),
           React.createElement("p", { className: "data-note" }, "Retorno total aproximado via adjusted close.")
         );
       }
@@ -5237,7 +5237,7 @@
               ),
               React.createElement("span", { className: "mini-label" }, data?.asOf ? `Atualizado em ${data.asOf}` : "JSON")
             ),
-            error ? React.createElement("p", { className: "data-note" }, `NÃ£o foi possÃ­vel carregar data/etf-performance.json: ${error}`) : null,
+            error ? React.createElement("p", { className: "data-note" }, `Não foi possível carregar data/etf-performance.json: ${error}`) : null,
             !data && !error ? React.createElement("p", { className: "data-note" }, "Carregando dados...") : null,
             React.createElement(
               "div",
@@ -5287,7 +5287,7 @@
                 )
               )
             ),
-            React.createElement("p", { className: "data-note" }, data?.methodology || "O dashboard usa os dados fixos enquanto o JSON nÃ£o carrega.")
+            React.createElement("p", { className: "data-note" }, data?.methodology || "O dashboard usa os dados fixos enquanto o JSON não carrega.")
           ),
           React.createElement(
             "section",
@@ -5306,12 +5306,12 @@
                   React.createElement(
                     "div",
                     { className: "data-lab-badges" },
-                    React.createElement("span", null, "VeÃ­culo", React.createElement("b", null, active.wrapper || "n/d")),
+                    React.createElement("span", null, "Veículo", React.createElement("b", null, active.wrapper || "n/d")),
                     React.createElement("span", null, "Moeda", React.createElement("b", null, active.currency || "n/d")),
                     activeBenchmarkLabel ? React.createElement("span", null, "Benchmark", React.createElement("b", null, activeBenchmarkLabel)) : null,
-                    activeReferenceLabel ? React.createElement("span", null, "ReferÃƒÂªncia", React.createElement("b", null, activeReferenceLabel)) : null,
+                    activeReferenceLabel ? React.createElement("span", null, "Refer?ncia", React.createElement("b", null, activeReferenceLabel)) : null,
                     active.assetClass === "equity" && dataLabGroupFor(active) !== "Hedge" && active.valuation?.source ? React.createElement("span", null, "P/E", React.createElement("b", null, active.valuation.asOf || "manual")) : null,
-                    active.performanceChart?.startDate ? React.createElement("span", null, "HistÃ³rico", React.createElement("b", null, active.performanceChart.startDate)) : null,
+                    active.performanceChart?.startDate ? React.createElement("span", null, "Histórico", React.createElement("b", null, active.performanceChart.startDate)) : null,
                     active.status !== "ok" ? React.createElement("span", null, "Status", React.createElement("b", null, "manual")) : null
                   ),
                   React.createElement(
@@ -5344,13 +5344,13 @@
           excess: ["Alto", "risk-high"],
           destruction: ["Muito alta", "risk-very"],
           winners: ["Alto", "winner-high"],
-          lesson: "Infraestrutura real; capital destruÃ­do.",
+          lesson: "Infraestrutura real; capital destruído.",
         },
         {
-          cycle: "EletrificaÃ§Ã£o",
+          cycle: "Eletrificação",
           capex: ["Alto", "capex-high"],
-          excess: ["MÃ©dio", "risk-mid"],
-          destruction: ["MÃ©dia", "risk-mid"],
+          excess: ["Médio", "risk-mid"],
+          destruction: ["Média", "risk-mid"],
           winners: ["Alto", "winner-high"],
           lesson: "Escala captura valor.",
         },
@@ -5360,63 +5360,63 @@
           excess: ["Muito alto", "risk-very"],
           destruction: ["Muito alta", "risk-very"],
           winners: ["Muito alto", "winner-very"],
-          lesson: "Tese certa; preÃ§o errado.",
+          lesson: "Tese certa; preço errado.",
         },
         {
           cycle: "IA atual",
           capex: ["Muito alto", "capex-very"],
-          excess: ["Em formaÃ§Ã£o", "unknown"],
+          excess: ["Em formação", "unknown"],
           destruction: ["Ainda incompleta", "unknown"],
           winners: ["Indefinido", "unknown"],
-          lesson: "Vencedores ainda em seleÃ§Ã£o.",
+          lesson: "Vencedores ainda em seleção.",
         },
       ];
 
       const CYCLE_DETAILS = {
         Ferrovias: {
           anatomy:
-            "O investimento era real: trilhos, terras, pontes, locomotivas e concessÃµes. Nos EUA, o excesso de linhas, a dÃ­vida ferroviÃ¡ria e projetos antes da demanda alimentaram crises como 1873 e 1893. A infraestrutura ficou; muitos acionistas e credores quebraram. O valor migrou para redes consolidadas, rotas crÃ­ticas e operadores com escala logÃ­stica.",
-          lesson: "Infraestrutura real nÃ£o garante retorno para todo investidor.",
+            "O investimento era real: trilhos, terras, pontes, locomotivas e concessões. Nos EUA, o excesso de linhas, a dívida ferroviária e projetos antes da demanda alimentaram crises como 1873 e 1893. A infraestrutura ficou; muitos acionistas e credores quebraram. O valor migrou para redes consolidadas, rotas críticas e operadores com escala logística.",
+          lesson: "Infraestrutura real não garante retorno para todo investidor.",
         },
-        "EletrificaÃ§Ã£o": {
+        "Eletrificação": {
           anatomy:
-            "O CAPEX criou usinas, redes de transmissÃ£o, distribuiÃ§Ã£o urbana, motores elÃ©tricos e equipamentos industriais. A disputa entre padrÃµes, utilities locais e fabricantes eliminou operadores sem escala. O domÃ­nio ficou com quem controlou equipamentos, rede e distribuiÃ§Ã£o: General Electric, Westinghouse e grandes utilities reguladas.",
-          lesson: "Valor nÃ£o vem sÃ³ da infraestrutura; vem quando ela vira uso recorrente e escala econÃ´mica.",
+            "O CAPEX criou usinas, redes de transmissão, distribuição urbana, motores elétricos e equipamentos industriais. A disputa entre padrões, utilities locais e fabricantes eliminou operadores sem escala. O domínio ficou com quem controlou equipamentos, rede e distribuição: General Electric, Westinghouse e grandes utilities reguladas.",
+          lesson: "Valor não vem só da infraestrutura; vem quando ela vira uso recorrente e escala econômica.",
         },
         Dotcom: {
           anatomy:
-            "A tese da internet estava certa, mas o capital entrou cedo demais e caro demais. Entre 1999 e 2002 houve excesso de fibra, telecom, servidores, portais e e-commerce sem lucro. WorldCom e Global Crossing simbolizaram a destruiÃ§Ã£o em infraestrutura; Amazon, Google, Microsoft e Apple sobreviveram, escalaram e monetizaram.",
-          lesson: "Tese certa pode destruir capital quando preÃ§o, timing e monetizaÃ§Ã£o estÃ£o errados.",
+            "A tese da internet estava certa, mas o capital entrou cedo demais e caro demais. Entre 1999 e 2002 houve excesso de fibra, telecom, servidores, portais e e-commerce sem lucro. WorldCom e Global Crossing simbolizaram a destruição em infraestrutura; Amazon, Google, Microsoft e Apple sobreviveram, escalaram e monetizaram.",
+          lesson: "Tese certa pode destruir capital quando preço, timing e monetização estão errados.",
         },
         "IA atual": {
           anatomy:
-            "O CAPEX Ã© real: GPUs, HBM, networking, data centers, energia, cooling, cloud e modelos fundacionais. A captura inicial aparece em Nvidia, TSMC, ASML, Broadcom, hyperscalers, equipamentos elÃ©tricos e data centers. O risco nÃ£o Ã© a IA ser falsa; Ã© pagar por sucesso perfeito antes da monetizaÃ§Ã£o final em aplicaÃ§Ãµes.",
-          lesson: "O ciclo Ã© real, mas os vencedores finais ainda estÃ£o sendo escolhidos.",
+            "O CAPEX é real: GPUs, HBM, networking, data centers, energia, cooling, cloud e modelos fundacionais. A captura inicial aparece em Nvidia, TSMC, ASML, Broadcom, hyperscalers, equipamentos elétricos e data centers. O risco não é a IA ser falsa; é pagar por sucesso perfeito antes da monetização final em aplicações.",
+          lesson: "O ciclo é real, mas os vencedores finais ainda estão sendo escolhidos.",
         },
       };
 
       const AI_STACK = [
-        ["Energia / Grid", "Demanda fÃ­sica: utilities, transmissÃ£o e equipamentos.", "money-now", "fluxo de CAPEX visÃ­vel"],
-        ["Data centers / Cooling", "Infraestrutura crÃ­tica: Vertiv, Eaton, Schneider, Equinix.", "money-now", "fluxo de CAPEX visÃ­vel"],
-        ["Chips / HBM / Networking", "Gargalo tecnolÃ³gico: Nvidia, TSMC, Broadcom, ASML.", "money-flow", "captura acelerada"],
-        ["Cloud / Hyperscalers", "Escala e distribuiÃ§Ã£o: Microsoft, Amazon, Google, Oracle.", "money-forming", "monetizaÃ§Ã£o em formaÃ§Ã£o"],
-        ["AplicaÃ§Ãµes", "MonetizaÃ§Ã£o final: software, agentes e vertical apps.", "money-future", "prova ainda incompleta"],
+        ["Energia / Grid", "Demanda física: utilities, transmissão e equipamentos.", "money-now", "fluxo de CAPEX visível"],
+        ["Data centers / Cooling", "Infraestrutura crítica: Vertiv, Eaton, Schneider, Equinix.", "money-now", "fluxo de CAPEX visível"],
+        ["Chips / HBM / Networking", "Gargalo tecnológico: Nvidia, TSMC, Broadcom, ASML.", "money-flow", "captura acelerada"],
+        ["Cloud / Hyperscalers", "Escala e distribuição: Microsoft, Amazon, Google, Oracle.", "money-forming", "monetização em formação"],
+        ["Aplicações", "Monetização final: software, agentes e vertical apps.", "money-future", "prova ainda incompleta"],
       ];
 
       const TECH_TIMELINE = [
         ["1", "Narrativa", ""],
         ["2", "CAPEX", "current-zone"],
         ["3", "Excesso", "current-zone"],
-        ["4", "Quebra / seleÃ§Ã£o", ""],
-        ["5", "ConcentraÃ§Ã£o dos ganhos", ""],
+        ["4", "Quebra / seleção", ""],
+        ["5", "Concentração dos ganhos", ""],
       ];
 
       const GOVERNMENT_STACK = [
-        ["Semicondutores", "CHIPS Act / Intel", "ReindustrializaÃ§Ã£o e soberania de chips."],
-        ["Quantum / supercomputaÃ§Ã£o", "IBM, National Quantum Initiative, DOE labs", "PrÃ³xima fronteira de computaÃ§Ã£o, criptografia e defesa."],
-        ["Data centers / energia", "FERC, DOE, terrenos federais, grid", "IA precisa de eletricidade, conexÃ£o e licenciamento."],
-        ["Defesa / seguranÃ§a nacional", "Pentagon, cloud, IA militar, ciber", "Demanda estatal para tecnologias dual-use."],
-        ["Pesquisa bÃ¡sica", "NSF, DARPA, DOE, universidades", "Estado financia a base cientÃ­fica antes da monetizaÃ§Ã£o privada."],
+        ["Semicondutores", "CHIPS Act / Intel", "Reindustrialização e soberania de chips."],
+        ["Quantum / supercomputação", "IBM, National Quantum Initiative, DOE labs", "Próxima fronteira de computação, criptografia e defesa."],
+        ["Data centers / energia", "FERC, DOE, terrenos federais, grid", "IA precisa de eletricidade, conexão e licenciamento."],
+        ["Defesa / segurança nacional", "Pentagon, cloud, IA militar, ciber", "Demanda estatal para tecnologias dual-use."],
+        ["Pesquisa básica", "NSF, DARPA, DOE, universidades", "Estado financia a base científica antes da monetização privada."],
       ];
 
       const THEME_BRIEFINGS = [
@@ -5425,23 +5425,23 @@
           date: "20/07",
           label: "Ecossistema de IA",
           title: "Ecossistema de IA e Semicondutores",
-          summary: "ExtensÃ£o da tese de ciclos: formaÃ§Ã£o bruta de capital fixo, CAPEX, hyperscalers, data centers, chips, memÃ³ria e infraestrutura fÃ­sica da IA.",
+          summary: "Extensão da tese de ciclos: formação bruta de capital fixo, CAPEX, hyperscalers, data centers, chips, memória e infraestrutura física da IA.",
           tags: ["IA", "Semicondutores", "Infraestrutura"],
           images: [
             {
               src: "assets/themes/ai-capex-fbcf.png",
-              title: "FormaÃ§Ã£o bruta de capital fixo como ponto de partida",
-              comment: "O grÃ¡fico parte da FBCF/PIB para mostrar quando a economia transforma narrativa em investimento real. A IA entra nessa leitura como novo ciclo de capital fÃ­sico: data centers, energia, chips e infraestrutura antes da monetizaÃ§Ã£o final em aplicaÃ§Ãµes.",
+              title: "Formação bruta de capital fixo como ponto de partida",
+              comment: "O gráfico parte da FBCF/PIB para mostrar quando a economia transforma narrativa em investimento real. A IA entra nessa leitura como novo ciclo de capital físico: data centers, energia, chips e infraestrutura antes da monetização final em aplicações.",
             },
             {
               src: "assets/themes/ai-ecosystem.png",
               title: "Arquitetura do ecossistema de IA",
-              comment: "A demanda nasce na camada de modelos e aplicaÃ§Ãµes, mas desce para hyperscalers, operadores de data centers, servidores, chips, foundries e memÃ³ria.",
+              comment: "A demanda nasce na camada de modelos e aplicações, mas desce para hyperscalers, operadores de data centers, servidores, chips, foundries e memória.",
             },
             {
               src: "assets/themes/semiconductor-ecosystem.png",
-              title: "Semicondutores como cadeia crÃ­tica",
-              comment: "A IA depende de uma cadeia especializada: design, IP, fabricaÃ§Ã£o, packaging avanÃ§ado, memÃ³ria e montagem de sistemas. NÃ£o Ã© apenas Nvidia.",
+              title: "Semicondutores como cadeia crítica",
+              comment: "A IA depende de uma cadeia especializada: design, IP, fabricação, packaging avançado, memória e montagem de sistemas. Não é apenas Nvidia.",
             },
           ],
         },
@@ -5450,23 +5450,23 @@
           date: "26/06",
           label: "Economia americana",
           title: "Receitas corporativas como retrato da economia americana",
-          summary: "O mapa das maiores receitas americanas mostra uma economia pÃ³s-industrial: saÃºde, consumo online, tecnologia, energia, finanÃ§as e logÃ­stica.",
+          summary: "O mapa das maiores receitas americanas mostra uma economia pós-industrial: saúde, consumo online, tecnologia, energia, finanças e logística.",
           tags: ["Receitas", "EUA", "Setores"],
           images: [
             {
               src: "assets/themes/us-largest-companies-2025-original.png",
               title: "Receita corporativa como retrato da economia americana",
               layout: "tall",
-              comment: "O grÃ¡fico mostra a base econÃ´mica sobre a qual os novos ciclos se encaixam: populaÃ§Ã£o envelhecendo gradualmente, consumo online, saÃºde em escala, tecnologia como infraestrutura cotidiana, logÃ­stica nacional, energia e finanÃ§as profundas. Dados: Fortune via 50Pros; referÃªncia visual: Voronoi / Visual Capitalist; visual prÃ³prio.",
+              comment: "O gráfico mostra a base econômica sobre a qual os novos ciclos se encaixam: população envelhecendo gradualmente, consumo online, saúde em escala, tecnologia como infraestrutura cotidiana, logística nacional, energia e finanças profundas. Dados: Fortune via 50Pros; referência visual: Voronoi / Visual Capitalist; visual próprio.",
             },
           ],
         },
         {
           key: "tech-cycles",
           date: "26/06",
-          label: "Ciclo tecnolÃ³gico",
-          title: "Matriz de Ciclos TecnolÃ³gicos",
-          summary: "Ferrovias, eletrificaÃ§Ã£o, dotcom e IA: primeiro vem CAPEX, depois excesso, seleÃ§Ã£o e concentraÃ§Ã£o dos ganhos.",
+          label: "Ciclo tecnológico",
+          title: "Matriz de Ciclos Tecnológicos",
+          summary: "Ferrovias, eletrificação, dotcom e IA: primeiro vem CAPEX, depois excesso, seleção e concentração dos ganhos.",
           tags: ["IA", "CAPEX", "Semicondutores"],
         },
       ];
@@ -5493,7 +5493,7 @@
                   "div",
                   null,
                   React.createElement("span", { className: "control-title" }, "Matriz de ciclos"),
-                  React.createElement("h2", null, "InovaÃ§Ã£o real nÃ£o impede destruiÃ§Ã£o de capital")
+                  React.createElement("h2", null, "Inovação real não impede destruição de capital")
                 )
               ),
               React.createElement(
@@ -5511,9 +5511,9 @@
                       React.createElement("th", null, "Ciclo"),
                       React.createElement("th", null, "CAPEX inicial"),
                       React.createElement("th", null, "Excesso / bolha"),
-                      React.createElement("th", null, "DestruiÃ§Ã£o de capital"),
+                      React.createElement("th", null, "Destruição de capital"),
                       React.createElement("th", null, "Vencedores finais"),
-                      React.createElement("th", null, "LiÃ§Ã£o para IA")
+                      React.createElement("th", null, "Lição para IA")
                     )
                   ),
                   React.createElement(
@@ -5540,7 +5540,7 @@
                 React.createElement("span", { className: "control-title" }, "Anatomia do ciclo"),
                 React.createElement("h3", null, selectedCycle),
                 React.createElement("p", null, cycleDetail.anatomy),
-                React.createElement("p", { className: "cycle-lesson" }, `LiÃ§Ã£o para IA: ${cycleDetail.lesson}`)
+                React.createElement("p", { className: "cycle-lesson" }, `Lição para IA: ${cycleDetail.lesson}`)
               )
             ),
             React.createElement(
@@ -5552,8 +5552,8 @@
                 React.createElement(
                   "div",
                   null,
-                  React.createElement("span", { className: "control-title" }, "Fluxo econÃ´mico"),
-                  React.createElement("h2", null, "O capital entra pela infraestrutura antes de aparecer na monetizaÃ§Ã£o final")
+                  React.createElement("span", { className: "control-title" }, "Fluxo econômico"),
+                  React.createElement("h2", null, "O capital entra pela infraestrutura antes de aparecer na monetização final")
                 )
               ),
               React.createElement(
@@ -5561,7 +5561,7 @@
                 { className: "stack-frame" },
                 React.createElement(
                   "div",
-                  { className: "stack-arrow", "aria-label": "Ler da infraestrutura para a monetizaÃ§Ã£o" }
+                  { className: "stack-arrow", "aria-label": "Ler da infraestrutura para a monetização" }
                 ),
                 React.createElement(
                   "div",
@@ -5611,7 +5611,7 @@
             React.createElement(
               "p",
               { className: "timeline-note" },
-              "IA estÃ¡ na zona entre CAPEX acelerado e formaÃ§Ã£o de excesso, antes da seleÃ§Ã£o completa dos vencedores."
+              "IA está na zona entre CAPEX acelerado e formação de excesso, antes da seleção completa dos vencedores."
             )
           ),
           React.createElement(
@@ -5623,7 +5623,7 @@
               React.createElement(
                 "div",
                 null,
-                React.createElement("span", { className: "control-title" }, "Estado EstratÃ©gico"),
+                React.createElement("span", { className: "control-title" }, "Estado Estratégico"),
                 React.createElement("h2", null, "Onde o governo aparece")
               )
             ),
@@ -5728,7 +5728,7 @@
                     "div",
                     null,
                     React.createElement("span", { className: "control-title" }, "Biblioteca"),
-                    React.createElement("h2", null, "PÃ¡ginas temÃ¡ticas")
+                    React.createElement("h2", null, "Páginas temáticas")
                   )
                 ),
                 THEME_BRIEFINGS.map((item) =>
@@ -5832,20 +5832,20 @@
       }
 
       const CORE_FUNCTIONS = [
-        { fn: "Beta estrutural EUA", why: "Baixo custo, replicaÃ§Ã£o eficiente e longo prazo.", tickers: ["VOO", "CSPX", "VUAA"], note: "Preferir UCITS Acc para offshore nÃ£o-US quando fiscalmente adequado." },
-        { fn: "ExecuÃ§Ã£o / hedge EUA", why: "Liquidez, opÃ§Ãµes e profundidade de mercado.", tickers: ["SPY"], note: "Melhor para puts, collars, overlays e rebalanceamento tÃ¡tico." },
-        { fn: "Growth estrutural", why: "Nasdaq-100 com menor custo ou versÃ£o UCITS.", tickers: ["QQQM", "CNDX", "EQQQ"], note: "QQQ executa melhor; QQQM/UCITS carregam melhor." },
-        { fn: "Growth tÃ¡tico / hedge", why: "OpÃ§Ãµes profundas e liquidez superior.", tickers: ["QQQ"], note: "Instrumento de trading, nÃ£o necessariamente melhor veÃ­culo fiscal." },
-        { fn: "ReduÃ§Ã£o de concentraÃ§Ã£o", why: "Reduz dominÃ¢ncia das mega caps.", tickers: ["RSP"], note: "Aumenta exposiÃ§Ã£o a cÃ­clicas e risco de juros." },
-        { fn: "Core global desenvolvido", why: "MSCI World com peso relevante em EUA.", tickers: ["IWDA", "SWDA"], note: "Serve para simplificar core global, nÃ£o para reduzir EUA." },
-        { fn: "Core developed ex-US", why: "DiversificaÃ§Ã£o desenvolvida fora dos EUA.", tickers: ["VEA", "IEFA"], note: "VEA inclui CanadÃ¡; IEFA segue EAFE e exclui EUA/CanadÃ¡." },
-        { fn: "Core Europa", why: "ExposiÃ§Ã£o regional.", tickers: ["VGK", "IEUR", "FEZ", "IMEU"], note: "ETF amplo nÃ£o captura bem defesa, luxo e soberania digital." },
+        { fn: "Beta estrutural EUA", why: "Baixo custo, replicação eficiente e longo prazo.", tickers: ["VOO", "CSPX", "VUAA"], note: "Preferir UCITS Acc para offshore não-US quando fiscalmente adequado." },
+        { fn: "Execução / hedge EUA", why: "Liquidez, opções e profundidade de mercado.", tickers: ["SPY"], note: "Melhor para puts, collars, overlays e rebalanceamento tático." },
+        { fn: "Growth estrutural", why: "Nasdaq-100 com menor custo ou versão UCITS.", tickers: ["QQQM", "CNDX", "EQQQ"], note: "QQQ executa melhor; QQQM/UCITS carregam melhor." },
+        { fn: "Growth tático / hedge", why: "Opções profundas e liquidez superior.", tickers: ["QQQ"], note: "Instrumento de trading, não necessariamente melhor veículo fiscal." },
+        { fn: "Redução de concentração", why: "Reduz dominância das mega caps.", tickers: ["RSP"], note: "Aumenta exposição a cíclicas e risco de juros." },
+        { fn: "Core global desenvolvido", why: "MSCI World com peso relevante em EUA.", tickers: ["IWDA", "SWDA"], note: "Serve para simplificar core global, não para reduzir EUA." },
+        { fn: "Core developed ex-US", why: "Diversificação desenvolvida fora dos EUA.", tickers: ["VEA", "IEFA"], note: "VEA inclui Canadá; IEFA segue EAFE e exclui EUA/Canadá." },
+        { fn: "Core Europa", why: "Exposição regional.", tickers: ["VGK", "IEUR", "FEZ", "IMEU"], note: "ETF amplo não captura bem defesa, luxo e soberania digital." },
         { fn: "Emergentes amplos", why: "Beta EM diversificado.", tickers: ["VWO", "IEMG", "EIMI"], note: "China pode dominar demais o risco." },
-        { fn: "Emergentes ex-China", why: "Reduz risco China.", tickers: ["EMXC", "EXCH"], note: "Ãštil para China+1 e diversificaÃ§Ã£o geopolÃ­tica." },
-        { fn: "Treasuries USD Acc", why: "Escada de tÃ­tulos do Tesouro americano por duration.", tickers: ["IB01", "IBTA", "CBU7", "IBTM", "DTLA"], note: "Do caixa remunerado Ã  posiÃ§Ã£o direcional em queda de juros." },
-        { fn: "InflaÃ§Ã£o USD Acc", why: "TIPS com diferentes perfis de duration.", tickers: ["TIP5", "ITPS", "ITPE"], note: "Separa proteÃ§Ã£o inflacionÃ¡ria curta de inflaÃ§Ã£o ampla." },
-        { fn: "CrÃ©dito e core bond", why: "Spread corporativo e diversificaÃ§Ã£o global em bonds.", tickers: ["LQDA", "IHYA", "AGGU"], note: "IG, high yield e agregado global cumprem funÃ§Ãµes distintas." },
-        { fn: "Hedge macro", why: "ProteÃ§Ã£o de regime, moeda forte e reserva de valor.", tickers: ["GLD", "IAU", "FXF / CHF"], note: "Ouro fÃ­sico e franco suÃ­Ã§o como diversificadores macro." },
+        { fn: "Emergentes ex-China", why: "Reduz risco China.", tickers: ["EMXC", "EXCH"], note: "Útil para China+1 e diversificação geopolítica." },
+        { fn: "Treasuries USD Acc", why: "Escada de títulos do Tesouro americano por duration.", tickers: ["IB01", "IBTA", "CBU7", "IBTM", "DTLA"], note: "Do caixa remunerado à posição direcional em queda de juros." },
+        { fn: "Inflação USD Acc", why: "TIPS com diferentes perfis de duration.", tickers: ["TIP5", "ITPS", "ITPE"], note: "Separa proteção inflacionária curta de inflação ampla." },
+        { fn: "Crédito e core bond", why: "Spread corporativo e diversificação global em bonds.", tickers: ["LQDA", "IHYA", "AGGU"], note: "IG, high yield e agregado global cumprem funções distintas." },
+        { fn: "Hedge macro", why: "Proteção de regime, moeda forte e reserva de valor.", tickers: ["GLD", "IAU", "FXF / CHF"], note: "Ouro físico e franco suíço como diversificadores macro." },
       ];
 
       const FIXED_INCOME_TICKERS = new Set(["IB01", "IBTA", "CBU7", "IBTM", "DTLA", "TIP5", "ITPS", "ITPE", "LQDA", "IHYA", "AGGU"]);
@@ -5925,65 +5925,65 @@
 
       const CORE_COUNTRY_WEIGHTS = {
         VEA: [
-          ["JapÃ£o", 21.0],
+          ["Japão", 21.0],
           ["Reino Unido", 12.0],
-          ["CanadÃ¡", 9.0],
-          ["FranÃ§a", 8.0],
-          ["SuÃ­Ã§a", 7.5],
+          ["Canadá", 9.0],
+          ["França", 8.0],
+          ["Suíça", 7.5],
           ["Alemanha", 7.0],
         ],
         IEFA: [
-          ["JapÃ£o", 25.7],
+          ["Japão", 25.7],
           ["Reino Unido", 13.9],
-          ["FranÃ§a", 9.0],
-          ["SuÃ­Ã§a", 8.7],
+          ["França", 9.0],
+          ["Suíça", 8.7],
           ["Alemanha", 8.0],
-          ["AustrÃ¡lia", 7.1],
+          ["Austrália", 7.1],
         ],
         IWDA: [
           ["EUA", 72.0],
-          ["JapÃ£o", 5.5],
+          ["Japão", 5.5],
           ["Reino Unido", 3.5],
-          ["CanadÃ¡", 3.0],
-          ["FranÃ§a", 2.8],
-          ["SuÃ­Ã§a", 2.6],
+          ["Canadá", 3.0],
+          ["França", 2.8],
+          ["Suíça", 2.6],
         ],
         SWDA: [
           ["EUA", 72.0],
-          ["JapÃ£o", 5.5],
+          ["Japão", 5.5],
           ["Reino Unido", 3.5],
-          ["CanadÃ¡", 3.0],
-          ["FranÃ§a", 2.8],
-          ["SuÃ­Ã§a", 2.6],
+          ["Canadá", 3.0],
+          ["França", 2.8],
+          ["Suíça", 2.6],
         ],
         VGK: [
           ["Reino Unido", 23.0],
-          ["FranÃ§a", 17.0],
-          ["SuÃ­Ã§a", 15.0],
+          ["França", 17.0],
+          ["Suíça", 15.0],
           ["Alemanha", 13.0],
           ["Holanda", 7.0],
-          ["SuÃ©cia", 6.0],
+          ["Suécia", 6.0],
         ],
         IEUR: [
           ["Reino Unido", 21.5],
-          ["FranÃ§a", 18.2],
-          ["SuÃ­Ã§a", 16.5],
+          ["França", 18.2],
+          ["Suíça", 16.5],
           ["Alemanha", 13.6],
           ["Holanda", 7.3],
           ["Dinamarca", 5.4],
         ],
         FEZ: [
-          ["FranÃ§a", 34.0],
+          ["França", 34.0],
           ["Alemanha", 31.0],
           ["Holanda", 14.0],
           ["Espanha", 8.0],
-          ["ItÃ¡lia", 7.0],
-          ["BÃ©lgica", 3.0],
+          ["Itália", 7.0],
+          ["Bélgica", 3.0],
         ],
         IMEU: [
           ["Reino Unido", 22.0],
-          ["FranÃ§a", 18.0],
-          ["SuÃ­Ã§a", 16.2],
+          ["França", 18.0],
+          ["Suíça", 16.2],
           ["Alemanha", 13.8],
           ["Holanda", 7.2],
           ["Dinamarca", 5.1],
@@ -5991,82 +5991,82 @@
         VWO: [
           ["Taiwan", 29.0],
           ["China", 29.0],
-          ["Ãndia", 19.0],
+          ["Índia", 19.0],
           ["Brasil", 4.0],
-          ["ArÃ¡bia Saudita", 3.0],
-          ["Ãfrica do Sul", 3.0],
+          ["Arábia Saudita", 3.0],
+          ["África do Sul", 3.0],
         ],
         IEMG: [
           ["Taiwan", 28.1],
           ["Coreia do Sul", 21.7],
           ["China", 17.9],
-          ["Ãndia", 12.2],
+          ["Índia", 12.2],
           ["Brasil", 3.7],
-          ["Ãfrica do Sul", 3.0],
+          ["África do Sul", 3.0],
         ],
         EIMI: [
           ["Taiwan", 28.0],
           ["Coreia do Sul", 21.5],
           ["China", 18.0],
-          ["Ãndia", 12.0],
+          ["Índia", 12.0],
           ["Brasil", 3.7],
-          ["Ãfrica do Sul", 3.0],
+          ["África do Sul", 3.0],
         ],
         EMXC: [
           ["Taiwan", 34.6],
           ["Coreia do Sul", 28.2],
-          ["Ãndia", 13.6],
+          ["Índia", 13.6],
           ["Brasil", 4.6],
-          ["Ãfrica do Sul", 3.6],
-          ["ArÃ¡bia Saudita", 3.0],
+          ["África do Sul", 3.6],
+          ["Arábia Saudita", 3.0],
         ],
         EXCH: [
           ["Taiwan", 34.5],
           ["Coreia do Sul", 28.0],
-          ["Ãndia", 13.5],
+          ["Índia", 13.5],
           ["Brasil", 4.5],
-          ["Ãfrica do Sul", 3.5],
-          ["ArÃ¡bia Saudita", 3.0],
+          ["África do Sul", 3.5],
+          ["Arábia Saudita", 3.0],
         ],
       };
 
       const CORE_DETAILS = {
-        VOO: ["Beta estrutural EUA", "Carregar S&P 500 com baixo custo.", "NÃ£o Ã© o melhor instrumento para hedge com opÃ§Ãµes.", ["VeÃ­culo eficiente para buy and hold.", "Boa escolha quando fiscalidade US-listed Ã© aceitÃ¡vel.", "Menos vocacionado a overlays tÃ¡ticos do que SPY."]],
-        CSPX: ["Beta estrutural EUA", "S&P 500 UCITS acumulador.", "Menos Ãºtil para execuÃ§Ã£o tÃ¡tica e opÃ§Ãµes.", ["Apropriado para muitas carteiras offshore nÃ£o-US.", "Accumulating reduz distribuiÃ§Ã£o de caixa.", "VeÃ­culo de carregamento, nÃ£o de trading."]],
-        VUAA: ["Beta estrutural EUA", "S&P 500 UCITS Acc com custo competitivo.", "Menor profundidade tÃ¡tica que SPY.", ["Bom para reinvestimento automÃ¡tico.", "Ãštil quando domicÃ­lio UCITS importa.", "FunÃ§Ã£o principal: core estrutural."]],
-        SPY: ["ExecuÃ§Ã£o / hedge EUA", "Liquidez, opÃ§Ãµes e execuÃ§Ã£o tÃ¡tica.", "Pode nÃ£o ser o veÃ­culo mais eficiente para carregar patrimÃ´nio offshore.", ["Excelente para puts, collars e overlays.", "Profundidade de mercado reduz fricÃ§Ã£o.", "Instrumento de operaÃ§Ã£o, nÃ£o necessariamente de carregamento fiscal."]],
-        QQQ: ["Growth tÃ¡tico / hedge", "ExecuÃ§Ã£o e opÃ§Ãµes em Nasdaq-100.", "Buy and hold pode pedir outro veÃ­culo.", ["Alta liquidez intradiÃ¡ria.", "OpÃ§Ãµes profundas.", "ConcentraÃ§Ã£o em growth e tecnologia Ã© parte da tese."]],
-        QQQM: ["Growth estrutural", "Carregar Nasdaq-100 com custo menor.", "Menos ideal para trading pesado que QQQ.", ["Melhor vocaÃ§Ã£o para posiÃ§Ã£o estrutural.", "MantÃ©m exposiÃ§Ã£o growth concentrada.", "DiferenÃ§a de veÃ­culo importa no horizonte longo."]],
-        CNDX: ["Growth estrutural", "Nasdaq-100 UCITS Acc.", "NÃ£o substitui QQQ em liquidez/opÃ§Ãµes.", ["Ãštil para offshore nÃ£o-US.", "AcumulaÃ§Ã£o facilita reinvestimento.", "ExposiÃ§Ã£o growth com wrapper UCITS."]],
-        EQQQ: ["Growth estrutural", "Nasdaq-100 em formato UCITS.", "Verificar distribuiÃ§Ã£o, custo e moeda de negociaÃ§Ã£o.", ["Alternativa europeia para Nasdaq-100.", "Boa para separar exposiÃ§Ã£o de veÃ­culo.", "Comparar com CNDX conforme domicÃ­lio e polÃ­tica de distribuiÃ§Ã£o."]],
-        RSP: ["ReduÃ§Ã£o de concentraÃ§Ã£o", "Equal weight no S&P 500.", "NÃ£o Ã© automaticamente melhor; muda fatores de risco.", ["Reduz peso da Magnificent 7.", "Aumenta sensibilidade a mid/large cÃ­clicas.", "Pode sofrer mais com juros e ciclo domÃ©stico."]],
-        VEA: ["Core developed ex-US", "Mercados desenvolvidos fora dos EUA.", "Pode diluir qualidade/crescimento versus EUA.", ["DiversificaÃ§Ã£o geogrÃ¡fica ampla.", "ExposiÃ§Ã£o a Europa, JapÃ£o e PacÃ­fico.", "Ver overlap com ETFs regionais."]],
-        IEFA: ["Core developed ex-US", "Developed ex-US amplo.", "NÃ£o resolve sozinho a composiÃ§Ã£o setorial desejada.", ["Alternativa ampla para mercados desenvolvidos.", "Boa peÃ§a de core internacional.", "Checar tracking, custo e domicÃ­lio."]],
-        IWDA: ["Core global desenvolvido", "MSCI World UCITS.", "Inclui EUA; pode sobrepor com S&P 500.", ["VeÃ­culo UCITS amplo.", "Ãštil para simplificar core global.", "Checar overlap com VOO/CSPX/VUAA."]],
-        SWDA: ["Core global desenvolvido", "MSCI World UCITS Acc.", "NÃ£o Ã© ex-US; EUA domina o Ã­ndice.", ["AcumulaÃ§Ã£o e ampla diversificaÃ§Ã£o.", "Bom para carteira offshore simples.", "Requer controle de concentraÃ§Ã£o EUA."]],
-        VGK: ["Core Europa", "Beta europeu amplo.", "Europa ampla pode esconder teses setoriais distintas.", ["ExposiÃ§Ã£o regional direta.", "Ãštil para rebalancear geografia.", "NÃ£o captura perfeitamente luxo, defesa e soberania digital."]],
-        IEUR: ["Core Europa", "Europa ampla com veÃ­culo iShares.", "Avaliar custo, domicÃ­lio e liquidez.", ["PeÃ§a regional para developed markets.", "Pode complementar core global.", "Checar sobreposiÃ§Ã£o com VEA/IEFA."]],
-        FEZ: ["Core Europa", "Euro Stoxx 50.", "Mais concentrado que Europa ampla.", ["ExposiÃ§Ã£o blue chips da zona do euro.", "Mais concentrado em grandes nomes.", "NÃ£o substitui Europa ampla."]],
-        IMEU: ["Core Europa", "Europa via UCITS.", "Checar benchmark e polÃ­tica de distribuiÃ§Ã£o.", ["Ferramenta regional para offshore.", "Ãštil para controle de domicÃ­lio.", "Comparar com VGK/IEUR/FEZ."]],
-        VWO: ["Emergentes amplos", "Beta emergente diversificado.", "China pode dominar o risco.", ["ExposiÃ§Ã£o ampla a EM.", "Custo competitivo.", "Risco geopolÃ­tico e China precisam ser conscientes."]],
-        IEMG: ["Emergentes amplos", "EM amplo com grande liquidez.", "NÃ£o neutraliza China por si sÃ³.", ["Inclui large, mid e small em EM.", "Boa peÃ§a de beta emergente.", "Avaliar composiÃ§Ã£o regional."]],
-        EIMI: ["Emergentes amplos", "EM UCITS amplo.", "Risco China e tracking devem ser monitorados.", ["Ãštil para offshore UCITS.", "DiversificaÃ§Ã£o EM ampla.", "Checar Acc/Dist e moeda."]],
-        EMXC: ["Emergentes ex-China", "Tese China+1 e reduÃ§Ã£o de risco China.", "NÃ£o representa o beta EM tradicional completo.", ["Remove o principal risco geopolÃ­tico do EM amplo.", "Aumenta peso relativo de Ãndia, Taiwan e outros.", "Ãštil como complemento."]],
-        EXCH: ["Emergentes ex-China", "EM ex-China em wrapper UCITS.", "Checar liquidez e tracking.", ["SeparaÃ§Ã£o geopolÃ­tica do beta EM.", "Ãštil para carteiras offshore.", "Complementa VWO/IEMG/EIMI."]],
-        IB01: ["Liquidez USD", "iShares $ Treasury Bond 0-1yr UCITS ETF USD Acc.", "Caixa remunerado em dÃ³lar, nÃ£o aposta de duration.", ["Serve como liquidez remunerada.", "Baixa volatilidade e baixa sensibilidade a juros.", "Bom veÃ­culo Acc quando o objetivo Ã© reinvestimento offshore."]],
-        IBTA: ["Duration curta", "iShares $ Treasury Bond 1-3yr UCITS ETF USD Acc.", "Baixa sensibilidade a juros.", ["Adiciona um pouco mais de duration que caixa.", "Ãštil para carregar yield sem alongar demais.", "Funciona como primeiro degrau depois de liquidez."]],
-        CBU7: ["Duration mÃ©dia curta", "iShares $ Treasury Bond 3-7yr UCITS ETF USD Acc.", "Miolo curto da curva.", ["Equilibra carrego e risco de duration.", "Pode capturar cortes moderados sem ir para a ponta longa.", "Boa peÃ§a intermediÃ¡ria em escada de Treasuries."]],
-        IBTM: ["Duration mÃ©dia", "iShares $ Treasury Bond 7-10yr UCITS ETF USD Acc.", "Hedge parcial contra queda de juros.", ["Mais sensÃ­vel ao ciclo de polÃ­tica monetÃ¡ria.", "Pode ajudar quando a tese pede queda de juros.", "Exige mais convicÃ§Ã£o do que os vÃ©rtices curtos."]],
-        DTLA: ["Duration longa", "iShares $ Treasury Bond 20+yr UCITS ETF USD Acc.", "PosiÃ§Ã£o direcional em queda de juros.", ["Alta sensibilidade a juros longos.", "Potencial de ganho maior se yields comprimirem.", "Volatilidade relevante; nÃ£o Ã© simples caixa remunerado."]],
-        TIP5: ["InflaÃ§Ã£o curta", "iShares $ TIPS 0-5 UCITS ETF USD Acc.", "ProteÃ§Ã£o inflacionÃ¡ria com duration menor.", ["Combina juro real positivo com menor duration.", "Mais alinhado a carrego real do que a aposta em juros longos.", "Evita misturar inflaÃ§Ã£o com duration excessiva."]],
-        ITPS: ["InflaÃ§Ã£o ampla", "iShares $ TIPS UCITS ETF Acc.", "InflaÃ§Ã£o americana com mais duration.", ["Protege contra inflaÃ§Ã£o realizada em uma cesta mais ampla.", "Traz mais sensibilidade a juros reais.", "Ãštil quando a carteira aceita mais duration."]],
-        ITPE: ["InflaÃ§Ã£o ampla", "iShares $ TIPS UCITS ETF Acc.", "InflaÃ§Ã£o americana com mais duration.", ["Alternativa para exposiÃ§Ã£o ampla a TIPS.", "A escolha final depende da bolsa/listagem e polÃ­tica operacional.", "Comparar custo, tracking e moeda de negociaÃ§Ã£o."]],
-        LQDA: ["CrÃ©dito IG USD", "iShares $ Corp Bond UCITS ETF USD Acc.", "Spread corporativo investment grade.", ["Adiciona prÃªmio de crÃ©dito com qualidade maior.", "NÃ£o substitui Treasury como hedge de crise.", "SensÃ­vel a spread, duration e ciclo corporativo."]],
-        IHYA: ["High Yield USD", "iShares $ High Yield Corp Bond UCITS ETF USD Acc.", "CrÃ©dito mais arriscado e yield maior.", ["Carrega mais spread e mais risco de default.", "Funciona melhor quando crÃ©dito e ciclo estÃ£o construtivos.", "NÃ£o deve ser tratado como renda fixa defensiva."]],
-        AGGU: ["Core bond global", "iShares Core Global Aggregate Bond UCITS ETF USD Acc.", "DiversificaÃ§Ã£o global em bonds.", ["Combina governos e crÃ©dito global.", "Ãštil como peÃ§a ampla de renda fixa.", "Checar hedge cambial, duration e composiÃ§Ã£o antes de usar como core."]],
-        GLD: ["Hedge macro", "SPDR Gold Shares.", "ETF de ouro fÃ­sico com alta liquidez.", ["Funciona como ativo real/monetÃ¡rio.", "Ajuda em choques de confianÃ§a e regimes adversos.", "Mais usado quando liquidez e profundidade importam."]],
-        IAU: ["Hedge macro", "iShares Gold Trust.", "ETF de ouro fÃ­sico com custo competitivo.", ["Alternativa eficiente para carregar exposiÃ§Ã£o a ouro.", "Ãštil como diversificador macro de longo prazo.", "Menor foco em trading pesado do que GLD."]],
-        "FXF / CHF": ["Hedge macro", "Invesco CurrencyShares Swiss Franc Trust.", "ExposiÃ§Ã£o ao franco suÃ­Ã§o contra o dÃ³lar.", ["RefÃºgio histÃ³rico em choques de confianÃ§a.", "Baixo carrego, liquidez menor que grandes ETFs e risco de intervenÃ§Ã£o do SNB.", "DÃ³lar Ã© o hedge natural contra Brasil. Franco suÃ­Ã§o Ã© hedge de qualidade monetÃ¡ria. Ouro Ã© hedge de regime."]],
+        VOO: ["Beta estrutural EUA", "Carregar S&P 500 com baixo custo.", "Não é o melhor instrumento para hedge com opções.", ["Veículo eficiente para buy and hold.", "Boa escolha quando fiscalidade US-listed é aceitável.", "Menos vocacionado a overlays táticos do que SPY."]],
+        CSPX: ["Beta estrutural EUA", "S&P 500 UCITS acumulador.", "Menos útil para execução tática e opções.", ["Apropriado para muitas carteiras offshore não-US.", "Accumulating reduz distribuição de caixa.", "Veículo de carregamento, não de trading."]],
+        VUAA: ["Beta estrutural EUA", "S&P 500 UCITS Acc com custo competitivo.", "Menor profundidade tática que SPY.", ["Bom para reinvestimento automático.", "Útil quando domicílio UCITS importa.", "Função principal: core estrutural."]],
+        SPY: ["Execução / hedge EUA", "Liquidez, opções e execução tática.", "Pode não ser o veículo mais eficiente para carregar patrimônio offshore.", ["Excelente para puts, collars e overlays.", "Profundidade de mercado reduz fricção.", "Instrumento de operação, não necessariamente de carregamento fiscal."]],
+        QQQ: ["Growth tático / hedge", "Execução e opções em Nasdaq-100.", "Buy and hold pode pedir outro veículo.", ["Alta liquidez intradiária.", "Opções profundas.", "Concentração em growth e tecnologia é parte da tese."]],
+        QQQM: ["Growth estrutural", "Carregar Nasdaq-100 com custo menor.", "Menos ideal para trading pesado que QQQ.", ["Melhor vocação para posição estrutural.", "Mantém exposição growth concentrada.", "Diferença de veículo importa no horizonte longo."]],
+        CNDX: ["Growth estrutural", "Nasdaq-100 UCITS Acc.", "Não substitui QQQ em liquidez/opções.", ["Útil para offshore não-US.", "Acumulação facilita reinvestimento.", "Exposição growth com wrapper UCITS."]],
+        EQQQ: ["Growth estrutural", "Nasdaq-100 em formato UCITS.", "Verificar distribuição, custo e moeda de negociação.", ["Alternativa europeia para Nasdaq-100.", "Boa para separar exposição de veículo.", "Comparar com CNDX conforme domicílio e política de distribuição."]],
+        RSP: ["Redução de concentração", "Equal weight no S&P 500.", "Não é automaticamente melhor; muda fatores de risco.", ["Reduz peso da Magnificent 7.", "Aumenta sensibilidade a mid/large cíclicas.", "Pode sofrer mais com juros e ciclo doméstico."]],
+        VEA: ["Core developed ex-US", "Mercados desenvolvidos fora dos EUA.", "Pode diluir qualidade/crescimento versus EUA.", ["Diversificação geográfica ampla.", "Exposição a Europa, Japão e Pacífico.", "Ver overlap com ETFs regionais."]],
+        IEFA: ["Core developed ex-US", "Developed ex-US amplo.", "Não resolve sozinho a composição setorial desejada.", ["Alternativa ampla para mercados desenvolvidos.", "Boa peça de core internacional.", "Checar tracking, custo e domicílio."]],
+        IWDA: ["Core global desenvolvido", "MSCI World UCITS.", "Inclui EUA; pode sobrepor com S&P 500.", ["Veículo UCITS amplo.", "Útil para simplificar core global.", "Checar overlap com VOO/CSPX/VUAA."]],
+        SWDA: ["Core global desenvolvido", "MSCI World UCITS Acc.", "Não é ex-US; EUA domina o índice.", ["Acumulação e ampla diversificação.", "Bom para carteira offshore simples.", "Requer controle de concentração EUA."]],
+        VGK: ["Core Europa", "Beta europeu amplo.", "Europa ampla pode esconder teses setoriais distintas.", ["Exposição regional direta.", "Útil para rebalancear geografia.", "Não captura perfeitamente luxo, defesa e soberania digital."]],
+        IEUR: ["Core Europa", "Europa ampla com veículo iShares.", "Avaliar custo, domicílio e liquidez.", ["Peça regional para developed markets.", "Pode complementar core global.", "Checar sobreposição com VEA/IEFA."]],
+        FEZ: ["Core Europa", "Euro Stoxx 50.", "Mais concentrado que Europa ampla.", ["Exposição blue chips da zona do euro.", "Mais concentrado em grandes nomes.", "Não substitui Europa ampla."]],
+        IMEU: ["Core Europa", "Europa via UCITS.", "Checar benchmark e política de distribuição.", ["Ferramenta regional para offshore.", "Útil para controle de domicílio.", "Comparar com VGK/IEUR/FEZ."]],
+        VWO: ["Emergentes amplos", "Beta emergente diversificado.", "China pode dominar o risco.", ["Exposição ampla a EM.", "Custo competitivo.", "Risco geopolítico e China precisam ser conscientes."]],
+        IEMG: ["Emergentes amplos", "EM amplo com grande liquidez.", "Não neutraliza China por si só.", ["Inclui large, mid e small em EM.", "Boa peça de beta emergente.", "Avaliar composição regional."]],
+        EIMI: ["Emergentes amplos", "EM UCITS amplo.", "Risco China e tracking devem ser monitorados.", ["Útil para offshore UCITS.", "Diversificação EM ampla.", "Checar Acc/Dist e moeda."]],
+        EMXC: ["Emergentes ex-China", "Tese China+1 e redução de risco China.", "Não representa o beta EM tradicional completo.", ["Remove o principal risco geopolítico do EM amplo.", "Aumenta peso relativo de Índia, Taiwan e outros.", "Útil como complemento."]],
+        EXCH: ["Emergentes ex-China", "EM ex-China em wrapper UCITS.", "Checar liquidez e tracking.", ["Separação geopolítica do beta EM.", "Útil para carteiras offshore.", "Complementa VWO/IEMG/EIMI."]],
+        IB01: ["Liquidez USD", "iShares $ Treasury Bond 0-1yr UCITS ETF USD Acc.", "Caixa remunerado em dólar, não aposta de duration.", ["Serve como liquidez remunerada.", "Baixa volatilidade e baixa sensibilidade a juros.", "Bom veículo Acc quando o objetivo é reinvestimento offshore."]],
+        IBTA: ["Duration curta", "iShares $ Treasury Bond 1-3yr UCITS ETF USD Acc.", "Baixa sensibilidade a juros.", ["Adiciona um pouco mais de duration que caixa.", "Útil para carregar yield sem alongar demais.", "Funciona como primeiro degrau depois de liquidez."]],
+        CBU7: ["Duration média curta", "iShares $ Treasury Bond 3-7yr UCITS ETF USD Acc.", "Miolo curto da curva.", ["Equilibra carrego e risco de duration.", "Pode capturar cortes moderados sem ir para a ponta longa.", "Boa peça intermediária em escada de Treasuries."]],
+        IBTM: ["Duration média", "iShares $ Treasury Bond 7-10yr UCITS ETF USD Acc.", "Hedge parcial contra queda de juros.", ["Mais sensível ao ciclo de política monetária.", "Pode ajudar quando a tese pede queda de juros.", "Exige mais convicção do que os vértices curtos."]],
+        DTLA: ["Duration longa", "iShares $ Treasury Bond 20+yr UCITS ETF USD Acc.", "Posição direcional em queda de juros.", ["Alta sensibilidade a juros longos.", "Potencial de ganho maior se yields comprimirem.", "Volatilidade relevante; não é simples caixa remunerado."]],
+        TIP5: ["Inflação curta", "iShares $ TIPS 0-5 UCITS ETF USD Acc.", "Proteção inflacionária com duration menor.", ["Combina juro real positivo com menor duration.", "Mais alinhado a carrego real do que a aposta em juros longos.", "Evita misturar inflação com duration excessiva."]],
+        ITPS: ["Inflação ampla", "iShares $ TIPS UCITS ETF Acc.", "Inflação americana com mais duration.", ["Protege contra inflação realizada em uma cesta mais ampla.", "Traz mais sensibilidade a juros reais.", "Útil quando a carteira aceita mais duration."]],
+        ITPE: ["Inflação ampla", "iShares $ TIPS UCITS ETF Acc.", "Inflação americana com mais duration.", ["Alternativa para exposição ampla a TIPS.", "A escolha final depende da bolsa/listagem e política operacional.", "Comparar custo, tracking e moeda de negociação."]],
+        LQDA: ["Crédito IG USD", "iShares $ Corp Bond UCITS ETF USD Acc.", "Spread corporativo investment grade.", ["Adiciona prêmio de crédito com qualidade maior.", "Não substitui Treasury como hedge de crise.", "Sensível a spread, duration e ciclo corporativo."]],
+        IHYA: ["High Yield USD", "iShares $ High Yield Corp Bond UCITS ETF USD Acc.", "Crédito mais arriscado e yield maior.", ["Carrega mais spread e mais risco de default.", "Funciona melhor quando crédito e ciclo estão construtivos.", "Não deve ser tratado como renda fixa defensiva."]],
+        AGGU: ["Core bond global", "iShares Core Global Aggregate Bond UCITS ETF USD Acc.", "Diversificação global em bonds.", ["Combina governos e crédito global.", "Útil como peça ampla de renda fixa.", "Checar hedge cambial, duration e composição antes de usar como core."]],
+        GLD: ["Hedge macro", "SPDR Gold Shares.", "ETF de ouro físico com alta liquidez.", ["Funciona como ativo real/monetário.", "Ajuda em choques de confiança e regimes adversos.", "Mais usado quando liquidez e profundidade importam."]],
+        IAU: ["Hedge macro", "iShares Gold Trust.", "ETF de ouro físico com custo competitivo.", ["Alternativa eficiente para carregar exposição a ouro.", "Útil como diversificador macro de longo prazo.", "Menor foco em trading pesado do que GLD."]],
+        "FXF / CHF": ["Hedge macro", "Invesco CurrencyShares Swiss Franc Trust.", "Exposição ao franco suíço contra o dólar.", ["Refúgio histórico em choques de confiança.", "Baixo carrego, liquidez menor que grandes ETFs e risco de intervenção do SNB.", "Dólar é o hedge natural contra Brasil. Franco suíço é hedge de qualidade monetária. Ouro é hedge de regime."]],
       };
 
       const SATELLITE_FILTERS = {
@@ -6079,7 +6079,7 @@
         aggression: [
           ["all", "Todos"],
           ["high", "Alta convexidade"],
-          ["medium", "Convexidade mÃ©dia"],
+          ["medium", "Convexidade média"],
           ["defensive", "Defensivo"],
         ],
         motor: [
@@ -6088,7 +6088,7 @@
           ["energy", "Energia & grid"],
           ["defense", "Defesa"],
           ["cyber", "Cyber"],
-          ["industry", "ReindustrializaÃ§Ã£o"],
+          ["industry", "Reindustrialização"],
           ["housing", "Moradia"],
           ["demography", "Demografia"],
         ],
@@ -6113,14 +6113,14 @@
           implementation: "ETF + cesta",
           reading: "Captura o gargalo central da IA, mas carrega alta sensibilidade ao ciclo de CAPEX.",
           names: ["Nvidia", "TSMC", "Broadcom", "ASML", "AMD"],
-          extraTitle: "Empresas estratÃ©gicas fora do ETF",
+          extraTitle: "Empresas estratégicas fora do ETF",
           extraCompanies: [
-            "Samsung Electronics: memÃ³ria HBM, DRAM e NAND.",
-            "SK Hynix: lÃ­der em HBM para IA.",
-            "Tokyo Electron: equipamentos para fabricaÃ§Ã£o de chips.",
-            "Advantest: testes de chips avanÃ§ados.",
+            "Samsung Electronics: memória HBM, DRAM e NAND.",
+            "SK Hynix: líder em HBM para IA.",
+            "Tokyo Electron: equipamentos para fabricação de chips.",
+            "Advantest: testes de chips avançados.",
           ],
-          points: ["ETF captura bem a cadeia de valor.", "Valuation e ciclo de semicondutores precisam ser monitorados.", "Boa primeira camada para exposiÃ§Ã£o Ã  infraestrutura de IA."],
+          points: ["ETF captura bem a cadeia de valor.", "Valuation e ciclo de semicondutores precisam ser monitorados.", "Boa primeira camada para exposição à infraestrutura de IA."],
         },
         {
           theme: "Defesa EUA",
@@ -6132,9 +6132,9 @@
           etfs: "ITA / PPA",
           quality: "Alta",
           implementation: "ETF",
-          reading: "GeopolÃ­tica, orÃ§amento pÃºblico e tecnologia dual-use sustentam demanda estrutural.",
+          reading: "Geopolítica, orçamento público e tecnologia dual-use sustentam demanda estrutural.",
           names: ["Lockheed Martin", "RTX", "Northrop Grumman", "General Dynamics"],
-          points: ["ETF representa bem as grandes contratadas americanas.", "Demanda estatal reduz dependÃªncia do consumidor.", "Mistura defesa tradicional, ciber e tecnologia militar."],
+          points: ["ETF representa bem as grandes contratadas americanas.", "Demanda estatal reduz dependência do consumidor.", "Mistura defesa tradicional, ciber e tecnologia militar."],
         },
         {
           theme: "Cybersecurity",
@@ -6144,25 +6144,25 @@
           motor: "cyber",
           vehicle: "etf",
           etfs: "CIBR / HACK",
-          quality: "MÃ©dia/alta",
+          quality: "Média/alta",
           implementation: "ETF",
-          reading: "Demanda estrutural, recorrente e menos dependente de CAPEX fÃ­sico.",
+          reading: "Demanda estrutural, recorrente e menos dependente de CAPEX físico.",
           names: ["Palo Alto", "CrowdStrike", "Fortinet", "Zscaler"],
-          points: ["ETF funciona, mas a composiÃ§Ã£o deve ser monitorada.", "Tema recorrente dentro de seguranÃ§a digital.", "Menos binÃ¡rio do que quantum ou data centers fÃ­sicos."],
+          points: ["ETF funciona, mas a composição deve ser monitorada.", "Tema recorrente dentro de segurança digital.", "Menos binário do que quantum ou data centers físicos."],
         },
         {
-          theme: "Robotics / automaÃ§Ã£o",
+          theme: "Robotics / automação",
           icon: "robotics",
           zone: "partial",
           aggression: "high",
           motor: "industry",
           vehicle: "hybrid",
           etfs: "BOTZ / ROBO",
-          quality: "MÃ©dia",
+          quality: "Média",
           implementation: "ETF + cesta",
-          reading: "Tema forte, mas os ETFs misturam empresas com motores econÃ´micos diferentes.",
+          reading: "Tema forte, mas os ETFs misturam empresas com motores econômicos diferentes.",
           names: ["Rockwell", "ABB", "Fanuc", "Teradyne"],
-          points: ["ETF ajuda como camada inicial.", "Cesta melhora precisÃ£o da tese.", "AutomaÃ§Ã£o industrial Ã© subtema relevante de reindustrializaÃ§Ã£o."],
+          points: ["ETF ajuda como camada inicial.", "Cesta melhora precisão da tese.", "Automação industrial é subtema relevante de reindustrialização."],
         },
         {
           theme: "Energia / grid",
@@ -6174,9 +6174,9 @@
           etfs: "XLE / GRID / PAVE / XLU",
           quality: "Parcial",
           implementation: "ETF + cesta",
-          reading: "A tese Ã© eletrificaÃ§Ã£o, transmissÃ£o e equipamentos, nÃ£o apenas energia tradicional.",
+          reading: "A tese é eletrificação, transmissão e equipamentos, não apenas energia tradicional.",
           names: ["Eaton", "Hubbell", "Quanta Services", "Constellation", "NextEra"],
-          points: ["ETF amplo dilui o motor econÃ´mico.", "Cesta separa utilities, equipamentos e engenharia.", "Data centers tornam o grid uma restriÃ§Ã£o estratÃ©gica."],
+          points: ["ETF amplo dilui o motor econômico.", "Cesta separa utilities, equipamentos e engenharia.", "Data centers tornam o grid uma restrição estratégica."],
         },
         {
           theme: "Infrastructure / utilities",
@@ -6186,14 +6186,14 @@
           motor: "energy",
           vehicle: "hybrid",
           etfs: "XLU / PAVE / GRID",
-          quality: "MÃ©dia",
+          quality: "Média",
           implementation: "ETF + cesta",
-          reading: "ExposiÃ§Ã£o mais defensiva, ligada a CAPEX fÃ­sico, regulaÃ§Ã£o e demanda elÃ©trica.",
+          reading: "Exposição mais defensiva, ligada a CAPEX físico, regulação e demanda elétrica.",
           names: ["Duke Energy", "Southern Company", "NextEra", "Quanta Services"],
           points: ["Pode estabilizar a carteira.", "Risco de duration precisa ser monitorado.", "ETF amplo mistura perfil defensivo com sensibilidade a juros."],
         },
         {
-          theme: "ConstruÃ§Ã£o residencial",
+          theme: "Construção residencial",
           icon: "home",
           zone: "resolve",
           aggression: "medium",
@@ -6202,23 +6202,23 @@
           etfs: "ITB / XHB",
           quality: "Alta",
           implementation: "ETF",
-          reading: "Escassez estrutural de moradias, terrenos e capacidade de construÃ§Ã£o.",
+          reading: "Escassez estrutural de moradias, terrenos e capacidade de construção.",
           names: ["D.R. Horton", "Lennar", "PulteGroup", "NVR"],
-          points: ["Demanda habitacional Ã© estrutural, mas sensÃ­vel a juros.", "ETF ajuda a capturar o ciclo de homebuilders.", "A tese melhora quando a oferta nova segue restrita."],
+          points: ["Demanda habitacional é estrutural, mas sensível a juros.", "ETF ajuda a capturar o ciclo de homebuilders.", "A tese melhora quando a oferta nova segue restrita."],
         },
         {
-          theme: "Materiais e infraestrutura da construÃ§Ã£o",
+          theme: "Materiais e infraestrutura da construção",
           icon: "factory",
           zone: "resolve",
           aggression: "medium",
           motor: "housing",
           vehicle: "etf",
           etfs: "PKB",
-          quality: "MÃ©dia/alta",
+          quality: "Média/alta",
           implementation: "ETF",
-          reading: "Fornecedores crÃ­ticos da cadeia habitacional e de infraestrutura.",
+          reading: "Fornecedores críticos da cadeia habitacional e de infraestrutura.",
           names: ["Builders FirstSource", "Vulcan Materials", "Martin Marietta", "Masco"],
-          points: ["Captura a cadeia de construÃ§Ã£o alÃ©m dos homebuilders.", "Mistura moradia, infraestrutura e materiais.", "SensÃ­vel a ciclo, mas apoiada por necessidade fÃ­sica."],
+          points: ["Captura a cadeia de construção além dos homebuilders.", "Mistura moradia, infraestrutura e materiais.", "Sensível a ciclo, mas apoiada por necessidade física."],
         },
         {
           theme: "Cuidados com idosos",
@@ -6230,12 +6230,12 @@
           etfs: "Sem ETF puro",
           quality: "Baixa",
           implementation: "Cesta",
-          reading: "Envelhecimento aumenta demanda por residÃªncias assistidas, enfermagem e serviÃ§os de longo prazo.",
+          reading: "Envelhecimento aumenta demanda por residências assistidas, enfermagem e serviços de longo prazo.",
           names: ["Brookdale Senior Living", "The Ensign Group", "Option Care Health"],
-          points: ["Demografia cria vento estrutural.", "Oferta cresce devagar por mÃ£o de obra e regulaÃ§Ã£o.", "Cesta pequena evita ETF genÃ©rico demais."],
+          points: ["Demografia cria vento estrutural.", "Oferta cresce devagar por mão de obra e regulação.", "Cesta pequena evita ETF genérico demais."],
         },
         {
-          theme: "DistribuiÃ§Ã£o farmacÃªutica",
+          theme: "Distribuição farmacêutica",
           icon: "pulse",
           zone: "basket",
           aggression: "defensive",
@@ -6243,13 +6243,13 @@
           vehicle: "basket",
           etfs: "Sem ETF limpo",
           quality: "Baixa",
-          implementation: "Cesta de aÃ§Ãµes",
-          reading: "Mercado altamente concentrado, responsÃ¡vel pela distribuiÃ§Ã£o da maior parte dos medicamentos nos Estados Unidos.",
+          implementation: "Cesta de ações",
+          reading: "Mercado altamente concentrado, responsável pela distribuição da maior parte dos medicamentos nos Estados Unidos.",
           names: ["McKesson", "Cencora", "Cardinal Health"],
-          points: ["Receitas recorrentes, escala operacional elevada e barreiras logÃ­sticas.", "Demanda estrutural impulsionada por envelhecimento populacional e maior consumo de medicamentos.", "Riscos: margens reduzidas, pressÃ£o regulatÃ³ria, mudanÃ§as no sistema de reembolso e concentraÃ§Ã£o de clientes."],
+          points: ["Receitas recorrentes, escala operacional elevada e barreiras logísticas.", "Demanda estrutural impulsionada por envelhecimento populacional e maior consumo de medicamentos.", "Riscos: margens reduzidas, pressão regulatória, mudanças no sistema de reembolso e concentração de clientes."],
         },
         {
-          theme: "Data centers fÃ­sicos",
+          theme: "Data centers físicos",
           icon: "server",
           zone: "basket",
           aggression: "high",
@@ -6260,10 +6260,10 @@
           implementation: "Cesta",
           reading: "ETFs ainda capturam mal energia, cooling, equipamentos e networking.",
           names: ["Vertiv", "Eaton", "Schneider", "Equinix", "Digital Realty", "Arista", "Broadcom"],
-          points: ["Tema fÃ­sico e fragmentado.", "REITs e proxies nÃ£o capturam a cadeia completa.", "Aqui a cesta vira necessidade de implementaÃ§Ã£o."],
+          points: ["Tema físico e fragmentado.", "REITs e proxies não capturam a cadeia completa.", "Aqui a cesta vira necessidade de implementação."],
         },
         {
-          theme: "Onshoring / reindustrializaÃ§Ã£o",
+          theme: "Onshoring / reindustrialização",
           icon: "factory",
           zone: "basket",
           aggression: "medium",
@@ -6272,9 +6272,9 @@
           etfs: "XLI / AIRR",
           quality: "Parcial",
           implementation: "Cesta",
-          reading: "ETF industrial amplo dilui a tese de reindustrializaÃ§Ã£o.",
+          reading: "ETF industrial amplo dilui a tese de reindustrialização.",
           names: ["Rockwell", "Emerson", "Honeywell", "Caterpillar", "Nucor", "Union Pacific"],
-          points: ["Exige separar automaÃ§Ã£o, transporte, aÃ§o e bens de capital.", "ETF amplo tende a olhar indÃºstria passada, nÃ£o necessariamente CAPEX futuro.", "Cesta melhora aderÃªncia Ã  tese."],
+          points: ["Exige separar automação, transporte, aço e bens de capital.", "ETF amplo tende a olhar indústria passada, não necessariamente CAPEX futuro.", "Cesta melhora aderência à tese."],
         },
         {
           theme: "Quantum / frontier computing",
@@ -6284,11 +6284,11 @@
           motor: "ai",
           vehicle: "basket",
           etfs: "QTUM / cestas",
-          quality: "Baixa/mÃ©dia",
+          quality: "Baixa/média",
           implementation: "Cesta pequena",
-          reading: "Opcionalidade alta, baixa previsibilidade e dispersÃ£o extrema de resultados.",
+          reading: "Opcionalidade alta, baixa previsibilidade e dispersão extrema de resultados.",
           names: ["IBM", "IonQ", "Rigetti", "D-Wave", "Microsoft"],
-          points: ["Tamanho inicial deve ser controlado.", "O tema ainda estÃ¡ escolhendo vencedores.", "ETF pode misturar empresas pouco expostas ao motor real."],
+          points: ["Tamanho inicial deve ser controlado.", "O tema ainda está escolhendo vencedores.", "ETF pode misturar empresas pouco expostas ao motor real."],
         },
       ];
 
@@ -6367,7 +6367,7 @@
           React.createElement(
             "article",
             { className: "panel" },
-            React.createElement("div", { className: "section-head" }, React.createElement("div", null, React.createElement("span", { className: "control-title" }, "SatÃ©lites temÃ¡ticos"))),
+            React.createElement("div", { className: "section-head" }, React.createElement("div", null, React.createElement("span", { className: "control-title" }, "Satélites temáticos"))),
             React.createElement(
               "div",
               { className: "satellite-filters" },
@@ -6377,7 +6377,7 @@
                 "div",
                 { className: "risk-legend" },
                 React.createElement("span", { className: "sat-risk-high" }, "Alta convexidade"),
-                React.createElement("span", { className: "sat-risk-medium" }, "Convexidade mÃ©dia"),
+                React.createElement("span", { className: "sat-risk-medium" }, "Convexidade média"),
                 React.createElement("span", { className: "sat-risk-defensive" }, "Defensivo")
               )
             ),
@@ -6406,8 +6406,8 @@
             React.createElement(
               "div",
               { className: "detail-grid" },
-              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "ETF possÃ­vel"), React.createElement("strong", null, active.etfs)),
-              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "ImplementaÃ§Ã£o"), React.createElement("strong", null, active.implementation)),
+              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "ETF possível"), React.createElement("strong", null, active.etfs)),
+              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Implementação"), React.createElement("strong", null, active.implementation)),
               React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Qualidade do ETF"), React.createElement("strong", null, active.quality))
             ),
             React.createElement("p", null, active.reading),
@@ -6420,8 +6420,8 @@
                   React.createElement("ul", { className: "satellite-list" }, active.extraCompanies.map((point) => React.createElement("li", { key: point }, point)))
                 )
               : null,
-            React.createElement("div", { className: "detail-box proxy-box" }, React.createElement("span", null, "Nomes / proxies"), React.createElement("strong", null, active.names.join(" Â· "))),
-            React.createElement("p", { className: "data-note" }, "Base: exemplos e proxies setoriais, junho/2026. Cestas nÃ£o sÃ£o exaustivas.")
+            React.createElement("div", { className: "detail-box proxy-box" }, React.createElement("span", null, "Nomes / proxies"), React.createElement("strong", null, active.names.join(" · "))),
+            React.createElement("p", { className: "data-note" }, "Base: exemplos e proxies setoriais, junho/2026. Cestas não são exaustivas.")
           )
         );
       }
@@ -6429,30 +6429,30 @@
         {
           theme: "Defesa europeia",
           icon: "shield",
-          status: "NÃ£o",
+          status: "Não",
           quality: "Cesta superior",
           tone: "sat-risk-high",
           implementation: "Cesta",
           etfs: "ETF amplo europeu dilui a tese",
           tag: "Sem ETF limpo",
           why: "Rearmamento, OTAN e soberania militar.",
-          thesis: "Novo ciclo de gasto militar europeu. A exposiÃ§Ã£o Ã© fragmentada por paÃ­ses e campeÃµes nacionais.",
+          thesis: "Novo ciclo de gasto militar europeu. A exposição é fragmentada por países e campeões nacionais.",
           names: ["Rheinmetall", "BAE Systems", "Leonardo", "Saab", "Thales", "Dassault Aviation", "Airbus", "Safran", "Rolls-Royce", "Hensoldt", "Kongsberg", "Indra"],
-          points: ["Gasto militar virou prioridade.", "ETF amplo dilui defesa.", "Cesta captura campeÃµes nacionais."],
+          points: ["Gasto militar virou prioridade.", "ETF amplo dilui defesa.", "Cesta captura campeões nacionais."],
         },
         {
           theme: "Soberania digital",
           icon: "network",
-          status: "NÃ£o",
+          status: "Não",
           quality: "Cesta superior",
           tone: "sat-risk-high",
           implementation: "Cesta",
           etfs: "Sem ETF limpo para a tese",
           tag: "Sem ETF limpo",
           why: "Cloud local, telecom, software, cyber e dados.",
-          thesis: "A Europa nÃ£o tem um hyperscaler dominante. A tese Ã© uma arquitetura regulada de infraestrutura, software e seguranÃ§a.",
-          names: ["SAP", "OVHcloud", "Deutsche Telekom", "Orange", "TelefÃ³nica", "Capgemini", "Dassault SystÃ¨mes", "Sopra Steria", "Thales", "Schneider", "Siemens", "Legrand"],
-          points: ["Mais controle de dados do que crescimento explosivo.", "RegulaÃ§Ã£o sustenta demanda.", "Cesta evita depender de um Ãºnico nome."],
+          thesis: "A Europa não tem um hyperscaler dominante. A tese é uma arquitetura regulada de infraestrutura, software e segurança.",
+          names: ["SAP", "OVHcloud", "Deutsche Telekom", "Orange", "Telefónica", "Capgemini", "Dassault Systèmes", "Sopra Steria", "Thales", "Schneider", "Siemens", "Legrand"],
+          points: ["Mais controle de dados do que crescimento explosivo.", "Regulação sustenta demanda.", "Cesta evita depender de um único nome."],
         },
         {
           theme: "Luxo / China indireta",
@@ -6461,12 +6461,12 @@
           quality: "ETF parcial",
           tone: "sat-risk-medium",
           implementation: "Cesta",
-          etfs: "LUXU / GLUX (UCITS) como exposiÃ§Ã£o simples; LUXY como alternativa US-listed",
+          etfs: "LUXU / GLUX (UCITS) como exposição simples; LUXY como alternativa US-listed",
           tag: "LUXU / GLUX",
-          why: "Pricing power e consumidor asiÃ¡tico indireto.",
-          thesis: "Luxo europeu combina marca, escassez e margem global. ETF existe, mas a tese fica mais limpa em marcas especÃ­ficas.",
-          names: ["LVMH", "HermÃ¨s", "Ferrari", "Richemont", "Moncler", "Prada", "Kering", "Lâ€™OrÃ©al", "EssilorLuxottica", "Pernod Ricard"],
-          points: ["LUXU/GLUX dÃ£o exposiÃ§Ã£o simples.", "ETF compra o setor; cesta compra marcas escassas.", "Cesta separa lÃ­deres de marcas frÃ¡geis."],
+          why: "Pricing power e consumidor asiático indireto.",
+          thesis: "Luxo europeu combina marca, escassez e margem global. ETF existe, mas a tese fica mais limpa em marcas específicas.",
+          names: ["LVMH", "Hermès", "Ferrari", "Richemont", "Moncler", "Prada", "Kering", "L’Oréal", "EssilorLuxottica", "Pernod Ricard"],
+          points: ["LUXU/GLUX dão exposição simples.", "ETF compra o setor; cesta compra marcas escassas.", "Cesta separa líderes de marcas frágeis."],
         },
         {
           theme: "Pharma / healthcare",
@@ -6475,15 +6475,15 @@
           quality: "ETF parcial",
           tone: "sat-risk-defensive",
           implementation: "Cesta ou ETF setorial",
-          etfs: "EXV4 / XDWH / healthcare global como primeira camada; cesta melhora precisÃ£o",
+          etfs: "EXV4 / XDWH / healthcare global como primeira camada; cesta melhora precisão",
           tag: "EXV4 / XDWH",
-          why: "Defensividade, inovaÃ§Ã£o e receita global.",
-          thesis: "Pharma europeia combina pesquisa, escala global e menor dependÃªncia do ciclo econÃ´mico.",
+          why: "Defensividade, inovação e receita global.",
+          thesis: "Pharma europeia combina pesquisa, escala global e menor dependência do ciclo econômico.",
           names: ["Novo Nordisk", "Roche", "Novartis", "AstraZeneca", "Sanofi", "GSK", "Merck KGaA", "Lonza", "Genmab", "UCB"],
           points: ["Receita global.", "Menor ciclicidade.", "Qualidade defensiva."],
         },
         {
-          theme: "EletrificaÃ§Ã£o / industriais",
+          theme: "Eletrificação / industriais",
           icon: "energy",
           status: "Parcial",
           quality: "ETF parcial",
@@ -6491,10 +6491,10 @@
           implementation: "Cesta",
           etfs: "GRID / PAVE / ETF industrial europeu como primeira camada",
           tag: "GRID / PAVE",
-          why: "Grid, automaÃ§Ã£o e equipamentos elÃ©tricos.",
-          thesis: "A Europa tem lÃ­deres em equipamentos elÃ©tricos, automaÃ§Ã£o e componentes crÃ­ticos para infraestrutura, IA e data centers.",
+          why: "Grid, automação e equipamentos elétricos.",
+          thesis: "A Europa tem líderes em equipamentos elétricos, automação e componentes críticos para infraestrutura, IA e data centers.",
           names: ["Schneider Electric", "Siemens", "ABB", "Legrand", "Prysmian", "Assa Abloy", "Atlas Copco", "Sandvik", "Infineon", "STMicroelectronics", "ASML"],
-          points: ["Conversa com IA, energia e data centers.", "ETF industrial amplo dilui qualidade.", "Cesta captura melhor equipamentos e automaÃ§Ã£o."],
+          points: ["Conversa com IA, energia e data centers.", "ETF industrial amplo dilui qualidade.", "Cesta captura melhor equipamentos e automação."],
         },
         {
           theme: "Semis europeus",
@@ -6505,10 +6505,10 @@
           implementation: "Cesta",
           etfs: "SMH / SOXX como proxy global; cesta para Europa pura",
           tag: "SMH / SOXX",
-          why: "ASML, power semis e equipment crÃ­tico.",
-          thesis: "A Europa nÃ£o domina toda a cadeia, mas controla peÃ§as crÃ­ticas em equipment, analog e power semis.",
+          why: "ASML, power semis e equipment crítico.",
+          thesis: "A Europa não domina toda a cadeia, mas controla peças críticas em equipment, analog e power semis.",
           names: ["ASML", "Infineon", "STMicroelectronics", "ASM International", "BE Semiconductor", "Soitec"],
-          points: ["ASML Ã© difÃ­cil de replicar.", "ExposiÃ§Ã£o concentrada em poucos nomes.", "Cesta evita diluiÃ§Ã£o."],
+          points: ["ASML é difícil de replicar.", "Exposição concentrada em poucos nomes.", "Cesta evita diluição."],
         },
       ];
 
@@ -6527,9 +6527,9 @@
             React.createElement(
               "div",
               { className: "risk-legend", style: { padding: "14px 16px 0" } },
-              React.createElement("span", { className: "sat-risk-high" }, "EstratÃ©gia de crescimento local"),
+              React.createElement("span", { className: "sat-risk-high" }, "Estratégia de crescimento local"),
               React.createElement("span", { className: "sat-risk-defensive" }, "Tema defensivo"),
-              React.createElement("span", { className: "sat-risk-medium" }, "ExposiÃ§Ã£o Ã  China")
+              React.createElement("span", { className: "sat-risk-medium" }, "Exposição à China")
             ),
             React.createElement(
               "div",
@@ -6557,14 +6557,14 @@
               "div",
               { className: "detail-grid" },
               React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "ETF amplo"), React.createElement("strong", null, active.status)),
-              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "ImplementaÃ§Ã£o"), React.createElement("strong", null, active.implementation)),
-              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Leitura do veÃ­culo"), React.createElement("strong", null, active.quality)),
+              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Implementação"), React.createElement("strong", null, active.implementation)),
+              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Leitura do veículo"), React.createElement("strong", null, active.quality)),
               React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Primeira camada"), React.createElement("strong", null, active.etfs))
             ),
             React.createElement("p", null, active.thesis),
             React.createElement("ul", { className: "satellite-list" }, active.points.map((point) => React.createElement("li", { key: point }, point))),
-            React.createElement("div", { className: "detail-box proxy-box" }, React.createElement("span", null, "Cesta possÃ­vel"), React.createElement("strong", null, active.names.join(" Â· "))),
-            React.createElement("p", { className: "data-note" }, "Base: exemplos de ETFs/proxies e cestas estratÃ©gicas, junho/2026. Lista nÃ£o exaustiva.")
+            React.createElement("div", { className: "detail-box proxy-box" }, React.createElement("span", null, "Cesta possível"), React.createElement("strong", null, active.names.join(" · "))),
+            React.createElement("p", { className: "data-note" }, "Base: exemplos de ETFs/proxies e cestas estratégicas, junho/2026. Lista não exaustiva.")
           )
         );
       }
@@ -6580,7 +6580,7 @@
           ["all", "Todos"],
           ["market", "Mercado"],
           ["consumer", "Consumo"],
-          ["physical", "Demanda fÃ­sica"],
+          ["physical", "Demanda física"],
           ["technology", "Tecnologia"],
           ["chain", "Cadeia"],
         ],
@@ -6594,49 +6594,49 @@
           motor: "market",
           tone: "sat-risk-high",
           instruments: "MCHI, FXI, KWEB, ASHR, KBA",
-          captures: "Mercado acionÃ¡rio chinÃªs, consumo local, internet e A-shares.",
-          risk: "GovernanÃ§a, intervenÃ§Ã£o estatal, geopolÃ­tica, VIEs e deflaÃ§Ã£o.",
-          reading: "ExposiÃ§Ã£o pura, mas risco alto. Comprar China exige escolher qual China.",
+          captures: "Mercado acionário chinês, consumo local, internet e A-shares.",
+          risk: "Governança, intervenção estatal, geopolítica, VIEs e deflação.",
+          reading: "Exposição pura, mas risco alto. Comprar China exige escolher qual China.",
           points: ["MCHI compra China ampla.", "FXI concentra large caps/Hong Kong.", "KWEB compra internet chinesa.", "ASHR/KBA compram A-shares onshore."],
           names: ["Alibaba", "Tencent", "PDD", "Baidu", "A-shares", "large caps Hong Kong"],
         },
         {
-          theme: "China indireta â€” luxo",
+          theme: "China indireta — luxo",
           icon: "diamond",
           channel: "indirect",
           motor: "consumer",
           tone: "sat-risk-medium",
-          instruments: "LVMH, HermÃ¨s, Ferrari, Richemont, Moncler, Prada, L'OrÃ©al",
-          captures: "Consumidor chinÃªs premium e demanda asiÃ¡tica sem comprar bolsa chinesa diretamente.",
-          risk: "Ciclo de consumo chinÃªs, turismo, confianÃ§a e desaceleraÃ§Ã£o de renda.",
-          reading: "Mais qualidade e menor risco polÃ­tico direto, mas ainda dependente do consumidor asiÃ¡tico.",
-          points: ["Marcas globais, margens altas e pricing power.", "Menor risco jurÃ­dico/polÃ­tico direto.", "ETF de luxo existe, mas cesta costuma ser mais limpa."],
-          names: ["LVMH", "HermÃ¨s", "Ferrari", "Richemont", "Moncler", "Prada", "L'OrÃ©al", "EssilorLuxottica"],
+          instruments: "LVMH, Hermès, Ferrari, Richemont, Moncler, Prada, L'Oréal",
+          captures: "Consumidor chinês premium e demanda asiática sem comprar bolsa chinesa diretamente.",
+          risk: "Ciclo de consumo chinês, turismo, confiança e desaceleração de renda.",
+          reading: "Mais qualidade e menor risco político direto, mas ainda dependente do consumidor asiático.",
+          points: ["Marcas globais, margens altas e pricing power.", "Menor risco jurídico/político direto.", "ETF de luxo existe, mas cesta costuma ser mais limpa."],
+          names: ["LVMH", "Hermès", "Ferrari", "Richemont", "Moncler", "Prada", "L'Oréal", "EssilorLuxottica"],
         },
         {
-          theme: "China indireta â€” commodities",
+          theme: "China indireta — commodities",
           icon: "energy",
           channel: "indirect",
           motor: "physical",
           tone: "sat-risk-medium",
           instruments: "BHP, Rio Tinto, Freeport, Glencore, Vale, COPX, PICK",
-          captures: "Demanda chinesa por cobre, minÃ©rio, energia e infraestrutura.",
-          risk: "Ciclo industrial, construÃ§Ã£o, estÃ­mulo estatal e preÃ§o de commodities.",
-          reading: "Aqui a China aparece como comprador fÃ­sico, nÃ£o como mercado acionÃ¡rio.",
-          points: ["ExposiÃ§Ã£o mais ligada a recursos reais.", "Mais cÃ­clica e sensÃ­vel a estÃ­mulo.", "Boa para separar China fÃ­sica de China listada."],
+          captures: "Demanda chinesa por cobre, minério, energia e infraestrutura.",
+          risk: "Ciclo industrial, construção, estímulo estatal e preço de commodities.",
+          reading: "Aqui a China aparece como comprador físico, não como mercado acionário.",
+          points: ["Exposição mais ligada a recursos reais.", "Mais cíclica e sensível a estímulo.", "Boa para separar China física de China listada."],
           names: ["BHP", "Rio Tinto", "Freeport-McMoRan", "Glencore", "Vale", "COPX", "PICK"],
         },
         {
-          theme: "China indireta â€” tecnologia",
+          theme: "China indireta — tecnologia",
           icon: "chip",
           channel: "indirect",
           motor: "technology",
           tone: "sat-risk-high",
           instruments: "ASML, TSMC, Applied Materials, Lam, KLA, Nvidia, Broadcom",
-          captures: "Cadeia tecnolÃ³gica global com demanda chinesa e gargalos estratÃ©gicos.",
-          risk: "SanÃ§Ãµes, restriÃ§Ãµes de exportaÃ§Ã£o, Taiwan e competiÃ§Ã£o geopolÃ­tica.",
-          reading: "ExposiÃ§Ã£o estratÃ©gica, mas com geopolÃ­tica no centro da tese.",
-          points: ["Captura gargalos de semicondutores e equipment.", "NÃ£o depende apenas do consumidor chinÃªs.", "Export controls podem mudar a tese rapidamente."],
+          captures: "Cadeia tecnológica global com demanda chinesa e gargalos estratégicos.",
+          risk: "Sanções, restrições de exportação, Taiwan e competição geopolítica.",
+          reading: "Exposição estratégica, mas com geopolítica no centro da tese.",
+          points: ["Captura gargalos de semicondutores e equipment.", "Não depende apenas do consumidor chinês.", "Export controls podem mudar a tese rapidamente."],
           names: ["ASML", "TSMC", "Applied Materials", "Lam Research", "KLA", "Nvidia", "Broadcom"],
         },
         {
@@ -6646,11 +6646,11 @@
           motor: "chain",
           tone: "sat-risk-defensive",
           instruments: "INDA, FLIN, EWW, VNM, EWT, EWY",
-          captures: "DiversificaÃ§Ã£o de cadeia, nearshoring e manufatura alternativa.",
-          risk: "Valuation, execuÃ§Ã£o local, infraestrutura e capacidade institucional.",
-          reading: "NÃ£o Ã© abandonar China. Ã‰ comprar seguro contra concentraÃ§Ã£o em uma Ãºnica cadeia.",
-          points: ["Ãndia combina mercado domÃ©stico, serviÃ§os e escala demogrÃ¡fica.", "MÃ©xico captura nearshoring para os EUA.", "VietnÃ£ e Sudeste AsiÃ¡tico capturam manufatura alternativa."],
-          names: ["Ãndia", "MÃ©xico", "VietnÃ£", "IndonÃ©sia", "Taiwan", "Coreia"],
+          captures: "Diversificação de cadeia, nearshoring e manufatura alternativa.",
+          risk: "Valuation, execução local, infraestrutura e capacidade institucional.",
+          reading: "Não é abandonar China. É comprar seguro contra concentração em uma única cadeia.",
+          points: ["Índia combina mercado doméstico, serviços e escala demográfica.", "México captura nearshoring para os EUA.", "Vietnã e Sudeste Asiático capturam manufatura alternativa."],
+          names: ["Índia", "México", "Vietnã", "Indonésia", "Taiwan", "Coreia"],
         },
         {
           theme: "EM ex-China",
@@ -6660,10 +6660,10 @@
           tone: "sat-risk-defensive",
           instruments: "EMXC / EXCH",
           captures: "Emergentes sem peso dominante da China.",
-          risk: "Perde eventual recuperaÃ§Ã£o chinesa e pode diluir teses especÃ­ficas.",
-          reading: "SoluÃ§Ã£o estrutural para reduzir risco China sem abandonar emergentes.",
-          points: ["Remove o risco dominante chinÃªs do bloco emergente.", "Ajuda na construÃ§Ã£o de core EM mais neutro geopoliticamente.", "Menos tÃ¡tico; mais arquitetura de carteira."],
-          names: ["Ãndia", "Taiwan", "Coreia", "Brasil", "MÃ©xico", "Sudeste AsiÃ¡tico"],
+          risk: "Perde eventual recuperação chinesa e pode diluir teses específicas.",
+          reading: "Solução estrutural para reduzir risco China sem abandonar emergentes.",
+          points: ["Remove o risco dominante chinês do bloco emergente.", "Ajuda na construção de core EM mais neutro geopoliticamente.", "Menos tático; mais arquitetura de carteira."],
+          names: ["Índia", "Taiwan", "Coreia", "Brasil", "México", "Sudeste Asiático"],
         },
       ];
 
@@ -6705,7 +6705,7 @@
             React.createElement(
               "div",
               { className: "section-head" },
-              React.createElement("div", null, React.createElement("span", { className: "control-title" }, "Matriz de exposiÃ§Ã£o"), React.createElement("h2", null, "Direta, indireta ou substituiÃ§Ã£o parcial"))
+              React.createElement("div", null, React.createElement("span", { className: "control-title" }, "Matriz de exposição"), React.createElement("h2", null, "Direta, indireta ou substituição parcial"))
             ),
             React.createElement(
               "div",
@@ -6715,9 +6715,9 @@
               React.createElement(
                 "div",
                 { className: "risk-legend" },
-                React.createElement("span", { className: "sat-risk-high" }, "Risco geopolÃ­tico direto"),
+                React.createElement("span", { className: "sat-risk-high" }, "Risco geopolítico direto"),
                 React.createElement("span", { className: "sat-risk-medium" }, "Demanda chinesa indireta"),
-                React.createElement("span", { className: "sat-risk-defensive" }, "China+1 / reduÃ§Ã£o de dependÃªncia")
+                React.createElement("span", { className: "sat-risk-defensive" }, "China+1 / redução de dependência")
               )
             ),
             React.createElement(
@@ -6750,8 +6750,8 @@
             ),
             React.createElement("p", null, active.reading),
             React.createElement("ul", { className: "satellite-list" }, active.points.map((point) => React.createElement("li", { key: point }, point))),
-            React.createElement("div", { className: "detail-box proxy-box" }, React.createElement("span", null, "Exemplos"), React.createElement("strong", null, active.names.join(" Â· "))),
-            React.createElement("p", { className: "data-note" }, "Base: exemplos de canais e instrumentos, junho/2026. Pesos e composiÃ§Ã£o devem ser checados no provedor antes da execuÃ§Ã£o.")
+            React.createElement("div", { className: "detail-box proxy-box" }, React.createElement("span", null, "Exemplos"), React.createElement("strong", null, active.names.join(" · "))),
+            React.createElement("p", { className: "data-note" }, "Base: exemplos de canais e instrumentos, junho/2026. Pesos e composição devem ser checados no provedor antes da execução.")
           )
         );
       }
@@ -6773,23 +6773,23 @@
           objective: "stress",
           tone: "sat-risk-defensive",
           instruments: "GLD, IAU, FXF / CHF",
-          does: "Combina reserva de valor, moeda forte e proteÃ§Ã£o de regime.",
-          use: "Diversificar risco de moeda, confianÃ§a institucional e choques macro.",
-          limit: "NÃ£o Ã© hedge perfeito de queda de bolsa; pode ficar parado em bull market.",
-          reading: "DÃ³lar protege contra Brasil. Franco suÃ­Ã§o protege qualidade monetÃ¡ria. Ouro protege regime.",
-          examples: ["GLD: ouro fÃ­sico com alta liquidez", "IAU: ouro fÃ­sico com custo competitivo", "FXF / CHF: exposiÃ§Ã£o ao franco suÃ­Ã§o"],
+          does: "Combina reserva de valor, moeda forte e proteção de regime.",
+          use: "Diversificar risco de moeda, confiança institucional e choques macro.",
+          limit: "Não é hedge perfeito de queda de bolsa; pode ficar parado em bull market.",
+          reading: "Dólar protege contra Brasil. Franco suíço protege qualidade monetária. Ouro protege regime.",
+          examples: ["GLD: ouro físico com alta liquidez", "IAU: ouro físico com custo competitivo", "FXF / CHF: exposição ao franco suíço"],
         },
         {
-          theme: "Income de opÃ§Ãµes",
+          theme: "Income de opções",
           icon: "network",
           objective: "income",
           tone: "sat-risk-medium",
           instruments: "JEPI, JEPQ, XYLD, QYLD",
           does: "Vende calls para transformar parte da alta esperada em renda corrente.",
           use: "Mercado lateral ou carteira que prioriza income.",
-          limit: "Continua sendo equity e fica para trÃ¡s em alta forte.",
-          reading: "Renda hoje em troca de menos upside amanhÃ£.",
-          examples: ["JEPI: equity defensivo + opÃ§Ãµes", "JEPQ: Nasdaq/growth + opÃ§Ãµes", "XYLD: S&P 500 covered call", "QYLD: Nasdaq 100 covered call"],
+          limit: "Continua sendo equity e fica para trás em alta forte.",
+          reading: "Renda hoje em troca de menos upside amanhã.",
+          examples: ["JEPI: equity defensivo + opções", "JEPQ: Nasdaq/growth + opções", "XYLD: S&P 500 covered call", "QYLD: Nasdaq 100 covered call"],
         },
         {
           theme: "Equity defensivo / min-vol",
@@ -6797,11 +6797,11 @@
           objective: "beta",
           tone: "sat-risk-defensive",
           instruments: "USMV, SPLV, MVOL / Min Vol UCITS",
-          does: "Troca bolsa agressiva por uma cesta historicamente menos volÃ¡til.",
+          does: "Troca bolsa agressiva por uma cesta historicamente menos volátil.",
           use: "Reduzir beta sem sair de equity.",
           limit: "Ainda cai em crise e pode perder em bull market concentrado.",
-          reading: "Menos beta, nÃ£o menos mercado.",
-          examples: ["USMV: min-vol EUA", "SPLV: baixa volatilidade no S&P 500", "MVOL / UCITS: versÃµes globais ou regionais"],
+          reading: "Menos beta, não menos mercado.",
+          examples: ["USMV: min-vol EUA", "SPLV: baixa volatilidade no S&P 500", "MVOL / UCITS: versões globais ou regionais"],
         },
         {
           theme: "Volatilidade / VIX",
@@ -6809,20 +6809,20 @@
           objective: "stress",
           tone: "sat-risk-high",
           instruments: "VIXY, VXX, UVXY, VIX futures UCITS",
-          does: "Ganha quando a volatilidade implÃ­cita dispara.",
-          use: "Stress curto, evento especÃ­fico ou proteÃ§Ã£o tÃ¡tica.",
+          does: "Ganha quando a volatilidade implícita dispara.",
+          use: "Stress curto, evento específico ou proteção tática.",
           limit: "Decay e rolagem tornam o carregamento caro.",
-          reading: "Funciona melhor como proteÃ§Ã£o de emergÃªncia.",
+          reading: "Funciona melhor como proteção de emergência.",
           examples: ["VIXY: futuros curtos de VIX", "VXX: ETN de futuros curtos", "UVXY: alavancado", "UCITS: alternativa offshore"],
         },
         {
-          theme: "Hedge tÃ¡tico direcional",
+          theme: "Hedge tático direcional",
           icon: "shield",
           objective: "stress",
           tone: "sat-risk-high",
           instruments: "SH, PSQ, RWM, EUM, SDS, QID, SQQQ, SPXU",
-          does: "Sobe quando o Ã­ndice cai, geralmente em base diÃ¡ria.",
-          use: "Hedge curto sem vender a posiÃ§Ã£o original.",
+          does: "Sobe quando o índice cai, geralmente em base diária.",
+          use: "Hedge curto sem vender a posição original.",
           limit: "Compounding e decay punem carregamento longo.",
           reading: "Direcional, curto prazo e disciplinado.",
           examples: ["SH: -1x S&P 500", "PSQ: -1x Nasdaq-100", "RWM: -1x small caps", "EUM: -1x emergentes", "SDS / QID / SQQQ / SPXU: alavancados"],
@@ -6836,38 +6836,38 @@
           does: "Cria buffer de queda em troca de teto de alta.",
           use: "Cliente que aceita cap para reduzir perda moderada.",
           limit: "Depende da janela, do buffer e do cap vigentes.",
-          reading: "ProteÃ§Ã£o parcial, nÃ£o seguro total.",
-          examples: ["Innovator Buffer ETFs: sÃ©ries como BJAN/BJUN/BJUL", "FT Vest Buffer ETFs: famÃ­lias como FJAN/FJUN/FJUL", "AllianzIM Buffered Outcome ETFs: buffer e cap definidos", "Collars/put spreads: estruturas, nÃ£o ETFs prontos"],
+          reading: "Proteção parcial, não seguro total.",
+          examples: ["Innovator Buffer ETFs: séries como BJAN/BJUN/BJUL", "FT Vest Buffer ETFs: famílias como FJAN/FJUN/FJUL", "AllianzIM Buffered Outcome ETFs: buffer e cap definidos", "Collars/put spreads: estruturas, não ETFs prontos"],
         },
         {
-          theme: "DesconcentraÃ§Ã£o",
+          theme: "Desconcentração",
           icon: "grid",
           objective: "beta",
           tone: "sat-risk-defensive",
           instruments: "RSP, QQEW, USMV",
-          does: "Reduz dependÃªncia de mega caps e lideranÃ§a estreita.",
-          use: "Quando o risco principal Ã© concentraÃ§Ã£o em poucos nomes.",
-          limit: "NÃ£o protege queda geral do mercado.",
-          reading: "Hedge de concentraÃ§Ã£o, nÃ£o de crash.",
-          examples: ["RSP: S&P 500 equal weight", "QQEW: Nasdaq 100 equal weight", "USMV: min-vol com viÃ©s defensivo"],
+          does: "Reduz dependência de mega caps e liderança estreita.",
+          use: "Quando o risco principal é concentração em poucos nomes.",
+          limit: "Não protege queda geral do mercado.",
+          reading: "Hedge de concentração, não de crash.",
+          examples: ["RSP: S&P 500 equal weight", "QQEW: Nasdaq 100 equal weight", "USMV: min-vol com viés defensivo"],
         },
         {
-          theme: "OpÃ§Ãµes diretas sobre Ã­ndice",
+          theme: "Opções diretas sobre índice",
           icon: "shield",
           objective: "payoff",
           tone: "sat-risk-high",
           instruments: "SPY puts, QQQ puts, put spreads, collars",
-          does: "Define piso, custo, prazo e participaÃ§Ã£o na alta.",
-          use: "ProteÃ§Ã£o sob medida em SPY, QQQ ou Ã­ndices lÃ­quidos.",
-          limit: "Custa prÃªmio, vende upside ou limita a proteÃ§Ã£o.",
-          reading: "Mais precisÃ£o, mais trade-off.",
-          examples: ["Protective put: seguro direto", "Put spread: proteÃ§Ã£o parcial", "Collar: put + call vendida", "Put spread financiado por call: custo menor, alta limitada"],
+          does: "Define piso, custo, prazo e participação na alta.",
+          use: "Proteção sob medida em SPY, QQQ ou índices líquidos.",
+          limit: "Custa prêmio, vende upside ou limita a proteção.",
+          reading: "Mais precisão, mais trade-off.",
+          examples: ["Protective put: seguro direto", "Put spread: proteção parcial", "Collar: put + call vendida", "Put spread financiado por call: custo menor, alta limitada"],
         },
       ];
 
       function HedgeModule() {
         const [filters, setFilters] = useState({ objective: "all" });
-        const [selectedTheme, setSelectedTheme] = useState("Income de opÃ§Ãµes");
+        const [selectedTheme, setSelectedTheme] = useState("Income de opções");
         const toneOrder = { "sat-risk-high": 0, "sat-risk-medium": 1, "sat-risk-defensive": 2 };
         const filtered = HEDGE_STRATEGIES.filter((item) =>
           Object.entries(filters).every(([key, value]) => value === "all" || item[key] === value)
@@ -6903,7 +6903,7 @@
             React.createElement(
               "div",
               { className: "section-head" },
-              React.createElement("div", null, React.createElement("span", { className: "control-title" }, "EstratÃ©gias de hedge"), React.createElement("h2", null, "Payoff, beta, volatilidade e moeda"))
+              React.createElement("div", null, React.createElement("span", { className: "control-title" }, "Estratégias de hedge"), React.createElement("h2", null, "Payoff, beta, volatilidade e moeda"))
             ),
             React.createElement(
               "div",
@@ -6912,9 +6912,9 @@
               React.createElement(
                 "div",
                 { className: "risk-legend" },
-                React.createElement("span", { className: "sat-risk-high" }, "TÃ¡tico / alto custo de carregamento"),
+                React.createElement("span", { className: "sat-risk-high" }, "Tático / alto custo de carregamento"),
                 React.createElement("span", { className: "sat-risk-medium" }, "Payoff / income"),
-                React.createElement("span", { className: "sat-risk-defensive" }, "ReduÃ§Ã£o de beta")
+                React.createElement("span", { className: "sat-risk-defensive" }, "Redução de beta")
               )
             ),
             React.createElement(
@@ -6945,11 +6945,11 @@
               React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Instrumentos"), React.createElement("strong", null, active.instruments)),
               React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "O que faz"), React.createElement("strong", null, active.does)),
               React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Uso correto"), React.createElement("strong", null, active.use)),
-              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "LimitaÃ§Ã£o"), React.createElement("strong", null, active.limit))
+              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Limitação"), React.createElement("strong", null, active.limit))
             ),
             React.createElement("p", null, active.reading),
             React.createElement("ul", { className: "satellite-list" }, active.examples.map((point) => React.createElement("li", { key: point }, point))),
-            React.createElement("p", { className: "data-note" }, "Base: instrumentos lÃ­quidos e estruturas comuns, junho/2026. Produtos tÃ¡ticos exigem checagem de prazo, liquidez, custo e regra diÃ¡ria.")
+            React.createElement("p", { className: "data-note" }, "Base: instrumentos líquidos e estruturas comuns, junho/2026. Produtos táticos exigem checagem de prazo, liquidez, custo e regra diária.")
           )
         );
       }
@@ -7004,7 +7004,7 @@
             React.createElement(
               "article",
               { className: "panel" },
-              React.createElement("div", { className: "section-head" }, React.createElement("div", null, React.createElement("span", { className: "control-title" }, "Matriz de implementaÃ§Ã£o"))),
+              React.createElement("div", { className: "section-head" }, React.createElement("div", null, React.createElement("span", { className: "control-title" }, "Matriz de implementação"))),
               React.createElement(
                 "div",
                 { className: "core-legend-row" },
@@ -7015,7 +7015,7 @@
                     ? React.createElement(React.Fragment, null,
                         React.createElement("span", { className: "etf-token etf-fixed" }, "Treasuries USD Acc"),
                         React.createElement("span", { className: "etf-token etf-fixed" }, "TIPS USD Acc"),
-                        React.createElement("span", { className: "etf-token etf-fixed" }, "CrÃ©dito / bonds")
+                        React.createElement("span", { className: "etf-token etf-fixed" }, "Crédito / bonds")
                       )
                     : React.createElement(React.Fragment, null,
                         React.createElement("span", { className: "etf-token etf-us" }, "EUA"),
@@ -7061,7 +7061,7 @@
                 ? React.createElement(
                     "div",
                     { className: "mini-country-chart" },
-                    React.createElement("h3", null, "ComposiÃ§Ã£o geogrÃ¡fica aprox."),
+                    React.createElement("h3", null, "Composição geográfica aprox."),
                     countryWeights.map(([country, weight]) =>
                       React.createElement(
                         "div",
@@ -7076,7 +7076,7 @@
                       { className: "data-note" },
                       geography
                         ? `Fonte: ${geography.source}.`
-                        : "Pesos aproximados por paÃ­s. Base: lÃ¢minas dos provedores e benchmarks, junho/2026."
+                        : "Pesos aproximados por país. Base: lâminas dos provedores e benchmarks, junho/2026."
                     )
                   )
                 : null,
@@ -7091,17 +7091,17 @@
       }
 
       const SECTOR_GICS_ETFS = [
-        { ticker: "XLK", sector: "Information Technology", icon: "chip", tone: "sat-risk-high", role: "Growth / qualidade", why: "Software, semicondutores e infraestrutura digital.", limit: "Alta concentraÃ§Ã£o e mÃºltiplos mais sensÃ­veis Ã  revisÃ£o de crescimento.", points: ["Proxy mais direto de tecnologia no S&P 500.", "Carrega parte relevante da lideranÃ§a estrutural do Ã­ndice.", "Bom para testar prÃªmio de growth contra o benchmark."] },
-        { ticker: "XLC", sector: "Communication Services", icon: "phone", tone: "sat-risk-high", role: "Plataformas / mÃ­dia", why: "Mega plataformas digitais, mÃ­dia, streaming e telecom.", limit: "Mistura negÃ³cios muito diferentes e pode ficar concentrado em poucos nomes.", points: ["Ãštil para separar plataformas digitais de tecnologia pura.", "Conversa com publicidade, conteÃºdo e distribuiÃ§Ã£o.", "NÃ£o Ã© defensivo apesar de incluir telecom."] },
-        { ticker: "XLY", sector: "Consumer Discretionary", icon: "diamond", tone: "sat-risk-high", role: "Consumo cÃ­clico", why: "E-commerce, autos, varejo e consumo sensÃ­vel Ã  renda.", limit: "Carrega ciclo econÃ´mico, confianÃ§a do consumidor e concentraÃ§Ã£o em lÃ­deres.", points: ["Bom termÃ´metro de apetite ao risco domÃ©stico.", "Pode capturar consumo premium e plataformas de varejo.", "Sofre mais em desaceleraÃ§Ã£o e juros altos."] },
-        { ticker: "XLB", sector: "Materials", icon: "factory", tone: "sat-risk-medium", role: "Ciclo / commodities", why: "QuÃ­micos, metais, materiais e insumos industriais.", limit: "Muito ligado a ciclo global, dÃ³lar e demanda por commodities.", points: ["Funciona como leitura de ciclo industrial.", "Complementa energia e industriais.", "NÃ£o substitui exposiÃ§Ã£o direta a commodities."] },
-        { ticker: "XLE", sector: "Energy", icon: "oil", tone: "sat-risk-medium", role: "Energia tradicional", why: "PetrÃ³leo, gÃ¡s, majors e geraÃ§Ã£o de caixa do setor energÃ©tico.", limit: "SensÃ­vel a preÃ§o de petrÃ³leo, geopolÃ­tica e disciplina de CAPEX.", points: ["Hedge parcial contra choque energÃ©tico.", "Carrega dividendos e buybacks do setor.", "Ã‰ mais energia tradicional do que transiÃ§Ã£o energÃ©tica."] },
-        { ticker: "XLF", sector: "Financials", icon: "money", tone: "sat-risk-medium", role: "Juros / crÃ©dito", why: "Bancos, seguros, cartÃµes, brokers e mercado de capitais.", limit: "Depende de curva de juros, crÃ©dito e ciclo de inadimplÃªncia.", points: ["Boa leitura de ciclo financeiro americano.", "Pode se beneficiar de curva mais inclinada.", "Risco aumenta quando crÃ©dito deteriora."] },
-        { ticker: "XLI", sector: "Industrials", icon: "factory", tone: "sat-risk-medium", role: "Ciclo / CAPEX", why: "IndÃºstria, transporte, defesa, mÃ¡quinas e infraestrutura.", limit: "ETF amplo dilui teses especÃ­ficas como defesa ou reindustrializaÃ§Ã£o.", points: ["Bom bloco para ciclo fÃ­sico e CAPEX.", "Conversa com onshoring e infraestrutura.", "Para tese precisa, cesta pode ser melhor."] },
-        { ticker: "XLP", sector: "Consumer Staples", icon: "home", tone: "sat-risk-defensive", role: "Defensivo / consumo essencial", why: "Marcas, alimentos, bebidas, higiene e varejo essencial.", limit: "Pode ficar para trÃ¡s em bull market de growth.", points: ["Reduz ciclicidade dentro de equity.", "Boa proxy de estabilidade de margem.", "SensÃ­vel a custos e elasticidade de preÃ§o."] },
-        { ticker: "XLV", sector: "Health Care", icon: "pulse", tone: "sat-risk-defensive", role: "Qualidade defensiva", why: "Pharma, serviÃ§os, equipamentos mÃ©dicos e managed care.", limit: "Mistura defensividade com risco regulatÃ³rio e pipeline de inovaÃ§Ã£o.", points: ["Boa camada de qualidade menos cÃ­clica.", "Combina demografia, inovaÃ§Ã£o e escala.", "NÃ£o Ã© uma tese pura de biotech ou pharma."] },
-        { ticker: "XLRE", sector: "Real Estate", icon: "home", tone: "sat-risk-defensive", role: "ImobiliÃ¡rio listado", why: "REITs e ativos imobiliÃ¡rios listados.", limit: "SensÃ­vel a juros, crÃ©dito, cap rates e vacÃ¢ncia.", points: ["Ãštil para exposiÃ§Ã£o imobiliÃ¡ria lÃ­quida.", "Mais duration e crÃ©dito do que growth.", "NÃ£o substitui real estate privado."] },
-        { ticker: "XLU", sector: "Utilities", icon: "faucet", tone: "sat-risk-defensive", role: "Defensivo / duration", why: "Utilities reguladas, eletricidade e infraestrutura essencial.", limit: "SensÃ­vel a juros e regulaÃ§Ã£o; nÃ£o Ã© a mesma coisa que grid especÃ­fico.", points: ["Defensivo clÃ¡ssico dentro de equity.", "Conversa com eletrificaÃ§Ã£o e demanda de data centers.", "Para grid/IA, pode precisar cesta complementar."] },
+        { ticker: "XLK", sector: "Information Technology", icon: "chip", tone: "sat-risk-high", role: "Growth / qualidade", why: "Software, semicondutores e infraestrutura digital.", limit: "Alta concentração e múltiplos mais sensíveis à revisão de crescimento.", points: ["Proxy mais direto de tecnologia no S&P 500.", "Carrega parte relevante da liderança estrutural do índice.", "Bom para testar prêmio de growth contra o benchmark."] },
+        { ticker: "XLC", sector: "Communication Services", icon: "phone", tone: "sat-risk-high", role: "Plataformas / mídia", why: "Mega plataformas digitais, mídia, streaming e telecom.", limit: "Mistura negócios muito diferentes e pode ficar concentrado em poucos nomes.", points: ["Útil para separar plataformas digitais de tecnologia pura.", "Conversa com publicidade, conteúdo e distribuição.", "Não é defensivo apesar de incluir telecom."] },
+        { ticker: "XLY", sector: "Consumer Discretionary", icon: "diamond", tone: "sat-risk-high", role: "Consumo cíclico", why: "E-commerce, autos, varejo e consumo sensível à renda.", limit: "Carrega ciclo econômico, confiança do consumidor e concentração em líderes.", points: ["Bom termômetro de apetite ao risco doméstico.", "Pode capturar consumo premium e plataformas de varejo.", "Sofre mais em desaceleração e juros altos."] },
+        { ticker: "XLB", sector: "Materials", icon: "factory", tone: "sat-risk-medium", role: "Ciclo / commodities", why: "Químicos, metais, materiais e insumos industriais.", limit: "Muito ligado a ciclo global, dólar e demanda por commodities.", points: ["Funciona como leitura de ciclo industrial.", "Complementa energia e industriais.", "Não substitui exposição direta a commodities."] },
+        { ticker: "XLE", sector: "Energy", icon: "oil", tone: "sat-risk-medium", role: "Energia tradicional", why: "Petróleo, gás, majors e geração de caixa do setor energético.", limit: "Sensível a preço de petróleo, geopolítica e disciplina de CAPEX.", points: ["Hedge parcial contra choque energético.", "Carrega dividendos e buybacks do setor.", "É mais energia tradicional do que transição energética."] },
+        { ticker: "XLF", sector: "Financials", icon: "money", tone: "sat-risk-medium", role: "Juros / crédito", why: "Bancos, seguros, cartões, brokers e mercado de capitais.", limit: "Depende de curva de juros, crédito e ciclo de inadimplência.", points: ["Boa leitura de ciclo financeiro americano.", "Pode se beneficiar de curva mais inclinada.", "Risco aumenta quando crédito deteriora."] },
+        { ticker: "XLI", sector: "Industrials", icon: "factory", tone: "sat-risk-medium", role: "Ciclo / CAPEX", why: "Indústria, transporte, defesa, máquinas e infraestrutura.", limit: "ETF amplo dilui teses específicas como defesa ou reindustrialização.", points: ["Bom bloco para ciclo físico e CAPEX.", "Conversa com onshoring e infraestrutura.", "Para tese precisa, cesta pode ser melhor."] },
+        { ticker: "XLP", sector: "Consumer Staples", icon: "home", tone: "sat-risk-defensive", role: "Defensivo / consumo essencial", why: "Marcas, alimentos, bebidas, higiene e varejo essencial.", limit: "Pode ficar para trás em bull market de growth.", points: ["Reduz ciclicidade dentro de equity.", "Boa proxy de estabilidade de margem.", "Sensível a custos e elasticidade de preço."] },
+        { ticker: "XLV", sector: "Health Care", icon: "pulse", tone: "sat-risk-defensive", role: "Qualidade defensiva", why: "Pharma, serviços, equipamentos médicos e managed care.", limit: "Mistura defensividade com risco regulatório e pipeline de inovação.", points: ["Boa camada de qualidade menos cíclica.", "Combina demografia, inovação e escala.", "Não é uma tese pura de biotech ou pharma."] },
+        { ticker: "XLRE", sector: "Real Estate", icon: "home", tone: "sat-risk-defensive", role: "Imobiliário listado", why: "REITs e ativos imobiliários listados.", limit: "Sensível a juros, crédito, cap rates e vacância.", points: ["Útil para exposição imobiliária líquida.", "Mais duration e crédito do que growth.", "Não substitui real estate privado."] },
+        { ticker: "XLU", sector: "Utilities", icon: "faucet", tone: "sat-risk-defensive", role: "Defensivo / duration", why: "Utilities reguladas, eletricidade e infraestrutura essencial.", limit: "Sensível a juros e regulação; não é a mesma coisa que grid específico.", points: ["Defensivo clássico dentro de equity.", "Conversa com eletrificação e demanda de data centers.", "Para grid/IA, pode precisar cesta complementar."] },
       ];
 
       function SectorGicsModule() {
@@ -7122,8 +7122,8 @@
             React.createElement(
               "div",
               { className: "risk-legend" },
-              React.createElement("span", { className: "sat-risk-high" }, "Growth / concentraÃ§Ã£o"),
-              React.createElement("span", { className: "sat-risk-medium" }, "CÃ­clico / macro"),
+              React.createElement("span", { className: "sat-risk-high" }, "Growth / concentração"),
+              React.createElement("span", { className: "sat-risk-medium" }, "Cíclico / macro"),
               React.createElement("span", { className: "sat-risk-defensive" }, "Defensivo / juros")
             ),
             React.createElement(
@@ -7163,7 +7163,7 @@
                 )
               )
             ),
-            React.createElement("p", { className: "data-note" }, "Proxy setorial: SPDR Select Sector ETFs. Dados numÃ©ricos ficam no Data Lab.")
+            React.createElement("p", { className: "data-note" }, "Proxy setorial: SPDR Select Sector ETFs. Dados numéricos ficam no Data Lab.")
           ),
           React.createElement(
             "aside",
@@ -7174,9 +7174,9 @@
             React.createElement(
               "div",
               { className: "detail-grid" },
-              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "FunÃ§Ã£o"), React.createElement("strong", null, activeMeta.role)),
+              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Função"), React.createElement("strong", null, activeMeta.role)),
               React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "O que captura"), React.createElement("strong", null, activeMeta.why)),
-              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "LimitaÃ§Ã£o"), React.createElement("strong", null, activeMeta.limit))
+              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Limitação"), React.createElement("strong", null, activeMeta.limit))
             ),
             React.createElement("ul", { className: "satellite-list" }, activeMeta.points.map((point) => React.createElement("li", { key: point }, point)))
           )
@@ -7187,8 +7187,8 @@
         ["fixed", "Fixed Income"],
         ["core", "Core Equities"],
         ["sectors", "Setoriais"],
-        ["satellites", "SatÃ©lites EUA"],
-        ["europe", "Europa EstratÃ©gica"],
+        ["satellites", "Satélites EUA"],
+        ["europe", "Europa Estratégica"],
         ["china", "China / China+1"],
         ["hedges", "Hedge"],
       ];
@@ -7210,7 +7210,7 @@
           { className: "etf-shell" },
           React.createElement(
             "nav",
-            { className: "panel etf-subtabs", "aria-label": "SubmÃ³dulos de ETFs" },
+            { className: "panel etf-subtabs", "aria-label": "Submódulos de ETFs" },
             ETF_SUBMODULES.map(([key, label]) =>
               React.createElement(
                 "button",
@@ -7246,7 +7246,7 @@
             React.createElement(
               "div",
               null,
-              React.createElement("h2", null, "Dashboard de alocaÃ§Ã£o global")
+              React.createElement("h2", null, "Dashboard de alocação global")
             ),
             React.createElement(
               "div",
@@ -7282,7 +7282,7 @@
                   React.createElement("h3", null, title),
                   React.createElement("p", null, text)
                 ),
-                React.createElement("small", null, "Abrir mÃ³dulo")
+                React.createElement("small", null, "Abrir módulo")
               )
             )
           )
@@ -7313,7 +7313,7 @@
           React.createElement(
             "section",
             { className: "panel controls" },
-            React.createElement("div", { className: "control-title" }, "VisÃ£o"),
+            React.createElement("div", { className: "control-title" }, "Visão"),
             React.createElement(
               "div",
               {
@@ -7337,7 +7337,7 @@
                     "aria-pressed": mode === key,
                     onClick: () => setMode(key),
                   },
-                  key === "inflation" ? "ImplÃ­cita" : CURVES[key].short
+                  key === "inflation" ? "Implícita" : CURVES[key].short
                 )
               )
             )
@@ -7375,7 +7375,7 @@
             React.createElement(
               "article",
               { className: "panel mobile-summary-card" },
-              React.createElement("h2", null, `${current.label} Â· 5 vÃ©rtices`),
+              React.createElement("h2", null, `${current.label} · 5 vértices`),
               React.createElement(
                 "ul",
                 null,
@@ -7436,7 +7436,7 @@
             React.createElement(
               "div",
               { className: "mobile-brand" },
-              React.createElement("span", null, mobileModule ? "MÃ³dulo" : "Dashboard"),
+              React.createElement("span", null, mobileModule ? "Módulo" : "Dashboard"),
               React.createElement("strong", null, mobileModule ? MOBILE_MODULES.find(([key]) => key === selectedModule)?.[1] : "Dashboard")
             ),
             React.createElement(
@@ -7470,8 +7470,8 @@
                 React.createElement(
                   "section",
                   { className: "mobile-hero" },
-                  React.createElement("h1", null, "Dashboard de alocaÃ§Ã£o global"),
-                  React.createElement("p", null, "VersÃ£o mobile em modo consulta: escolha uma tese, abra os detalhes e navegue sem tentar espremer o slide desktop na tela.")
+                  React.createElement("h1", null, "Dashboard de alocação global"),
+                  React.createElement("p", null, "Versão mobile em modo consulta: escolha uma tese, abra os detalhes e navegue sem tentar espremer o slide desktop na tela.")
                 ),
                 React.createElement(
                   "section",
@@ -7615,7 +7615,7 @@
               null,
               React.createElement(
                 "nav",
-                { className: "view-tabs", "aria-label": "MÃ³dulos do dashboard" },
+                { className: "view-tabs", "aria-label": "Módulos do dashboard" },
                 MAIN_NAV.map(([key, label]) =>
                   React.createElement(
                     "button",
@@ -7662,13 +7662,13 @@
               { className: "controls panel" },
               React.createElement(
                 "div",
-                { className: "country-subtabs", "aria-label": "PaÃ­s da curva" },
+                { className: "country-subtabs", "aria-label": "País da curva" },
                 React.createElement("button", { type: "button", "aria-pressed": true }, "EUA")
               ),
               React.createElement(
                 "div",
                 { className: "control-block" },
-                React.createElement("div", { className: "control-title" }, "VisÃ£o"),
+                React.createElement("div", { className: "control-title" }, "Visão"),
                 React.createElement(
                   "div",
                   {
@@ -7692,7 +7692,7 @@
                         "aria-pressed": mode === key,
                         onClick: () => setMode(key),
                       },
-                      key === "inflation" ? "InflaÃ§Ã£o ImplÃ­cita" : CURVES[key].short
+                      key === "inflation" ? "Inflação Implícita" : CURVES[key].short
                     )
                   )
                 )
@@ -7727,7 +7727,7 @@
               React.createElement(
                 "div",
                 { className: "control-block" },
-                React.createElement("div", { className: "control-title" }, "VariaÃ§Ã£o"),
+                React.createElement("div", { className: "control-title" }, "Variação"),
                 React.createElement(
                   "div",
                   {
@@ -7785,7 +7785,7 @@
                     React.createElement(
                       "div",
                       null,
-                      React.createElement("h2", null, `${CURVES[mode].label} Â· 5 vÃ©rtices`)
+                      React.createElement("h2", null, `${CURVES[mode].label} · 5 vértices`)
                     )
                   ),
                   React.createElement(
@@ -7833,7 +7833,7 @@
                     React.createElement(
                       "div",
                       null,
-                      React.createElement("span", { className: "control-title" }, "InclinaÃ§Ãµes"),
+                      React.createElement("span", { className: "control-title" }, "Inclinações"),
                       React.createElement("h2", null, "Spreads em bps")
                     )
                   ),
@@ -7878,7 +7878,7 @@
                     React.createElement(
                       "div",
                       null,
-                      React.createElement("span", { className: "control-title" }, "VariaÃ§Ã£o"),
+                      React.createElement("span", { className: "control-title" }, "Variação"),
                       React.createElement("h2", null, `Atual vs ${DELTA_PERIODS.find((item) => item.key === deltaPeriod)?.label} em bps`)
                     )
                   ),
@@ -7931,7 +7931,7 @@
                       "div",
                       null,
                       React.createElement("span", { className: "control-title" }, "Tabela conectada"),
-                      React.createElement("h2", null, selected ? `VÃ©rtice selecionado: ${selected}` : "Todos os vÃ©rtices")
+                      React.createElement("h2", null, selected ? `Vértice selecionado: ${selected}` : "Todos os vértices")
                     )
                   ),
                   React.createElement(
@@ -7979,8 +7979,8 @@
                   React.createElement(
                     "div",
                     null,
-                    React.createElement("span", { className: "control-title" }, "DiagnÃ³stico"),
-                    React.createElement("h2", null, "ImplicaÃ§Ãµes para alocaÃ§Ã£o")
+                    React.createElement("span", { className: "control-title" }, "Diagnóstico"),
+                    React.createElement("h2", null, "Implicações para alocação")
                   )
                 ),
                 React.createElement(
@@ -8008,8 +8008,8 @@
                     React.createElement(
                       "div",
                       null,
-                      React.createElement("span", { className: "control-title" }, "ConclusÃ£o"),
-                      React.createElement("h2", null, "TIPS de curta duraÃ§Ã£o, 0-5 anos")
+                      React.createElement("span", { className: "control-title" }, "Conclusão"),
+                      React.createElement("h2", null, "TIPS de curta duração, 0-5 anos")
                     )
                   ),
                   React.createElement(
@@ -8019,7 +8019,7 @@
                       React.createElement(
                         "div",
                         { className: "benefit", key: benefit },
-                        React.createElement("b", null, "âœ“"),
+                        React.createElement("b", null, "✓"),
                         React.createElement("span", null, benefit)
                       )
                     )
@@ -8035,17 +8035,17 @@
                     React.createElement(
                       "p",
                       null,
-                      "Exemplo ilustrativo. NÃ£o constitui recomendaÃ§Ã£o de investimento."
+                      "Exemplo ilustrativo. Não constitui recomendação de investimento."
                     )
                   ),
                   React.createElement(
                     "div",
                     { className: "callout" },
-                    React.createElement("h3", null, "Por que nÃ£o duration longa"),
+                    React.createElement("h3", null, "Por que não duration longa"),
                     React.createElement(
                       "p",
                       null,
-                      `Treasuries e TIPS longos dependem de compressÃ£o relevante dos juros reais. Hoje, o spread 30s10s nominal estÃ¡ em ${bps(nominalLongPremium)} e o real em ${bps(realLongPremium)}, evidenciando prÃªmio concentrado na ponta longa.`
+                      `Treasuries e TIPS longos dependem de compressão relevante dos juros reais. Hoje, o spread 30s10s nominal está em ${bps(nominalLongPremium)} e o real em ${bps(realLongPremium)}, evidenciando prêmio concentrado na ponta longa.`
                     )
                   )
                 )
