@@ -382,6 +382,33 @@
         line-height: 1.45;
       }
 
+      .theme-file-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 16px;
+      }
+
+      .theme-file-actions a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 38px;
+        padding: 0 14px;
+        border: 1px solid var(--line-strong);
+        border-radius: 8px;
+        color: var(--text);
+        background: rgba(79, 124, 255, 0.12);
+        font-size: 13px;
+        font-weight: 900;
+        text-decoration: none;
+      }
+
+      .theme-file-actions a:hover {
+        border-color: rgba(79, 124, 255, 0.68);
+        background: rgba(79, 124, 255, 0.2);
+      }
+
       .image-lightbox {
         position: fixed;
         inset: 0;
@@ -5407,6 +5434,26 @@
 
       const THEME_BRIEFINGS = [
         {
+          key: "ai-stress",
+          date: "27/07",
+          label: "IA Stress",
+          title: "Big Tech, IA e estresse de capital",
+          summary: "Capex de IA, compromissos fora do balanço e fluxo de caixa livre: o risco é real, mas precisa ser separado de exagero narrativo.",
+          tags: ["IA", "CAPEX", "FCF"],
+          images: [
+            {
+              src: "assets/themes/ai-stress-overview.png",
+              title: "Big Tech, IA e passivos ocultos",
+              comment: "A leitura separa compromisso contratual, dívida financeira e risco econômico. O ponto central é que CAPEX e obrigações futuras aumentam a pressão, mas não significam automaticamente crise de balanço.",
+            },
+            {
+              src: "assets/themes/ai-stress-google.png",
+              title: "Alphabet: FCF negativo no 2T26",
+              comment: "O FCF negativo veio do CAPEX superando a geração operacional no trimestre. A operação continuou forte; a mudança relevante é a migração para um modelo mais intensivo em capital.",
+            },
+          ],
+        },
+        {
           key: "ai-ecosystem",
           date: "20/07",
           label: "Ecossistema de IA",
@@ -5746,7 +5793,18 @@
                   { className: "panel themes-preview-head" },
                   React.createElement("span", { className: "control-title" }, activeTheme.label),
                   React.createElement("h2", null, activeTheme.title),
-                  React.createElement("p", null, activeTheme.summary)
+                  React.createElement("p", null, activeTheme.summary),
+                  activeTheme.pdf
+                    ? React.createElement(
+                        "div",
+                        { className: "theme-file-actions" },
+                        React.createElement(
+                          "a",
+                          { href: activeTheme.pdf.href, target: "_blank", rel: "noreferrer" },
+                          activeTheme.pdf.label
+                        )
+                      )
+                    : null
                 ),
                 activeTheme.images
                   ? React.createElement(
