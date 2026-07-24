@@ -235,6 +235,15 @@
         line-height: 1.45;
       }
 
+      .brand-credit {
+        justify-self: end;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 850;
+        letter-spacing: 0;
+        opacity: 0.68;
+      }
+
       .home-notes {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -7329,7 +7338,8 @@
                 React.createElement("small", null, "Abrir módulo")
               )
             )
-          )
+          ),
+          React.createElement("span", { className: "brand-credit" }, "Designed by General Channels Co.")
         );
       }
 
@@ -7538,7 +7548,8 @@
                       )
                     )
                   )
-                )
+                ),
+                React.createElement("span", { className: "brand-credit" }, "Designed by General Channels Co.")
               )
         );
       }
