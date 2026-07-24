@@ -7557,7 +7557,7 @@
                 source: payload.source || DEFAULT_CURVE_META.source,
                 asOf: payload.asOf || DEFAULT_CURVE_META.asOf,
                 updatedAt: payload.updatedAt,
-                componentAsOf: payload.componentAsOf,
+                componentAsOf: payload.componentAsOf || payload.comparisons?.current?.componentAsOf,
               });
               setCurveComparisons(payload.comparisons || defaultCurveComparisons());
             })
