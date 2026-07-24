@@ -256,12 +256,232 @@
         line-height: 1.5;
       }
 
+      .themes-layout {
+        display: grid;
+        grid-template-columns: minmax(320px, 0.45fr) minmax(0, 1fr);
+        gap: 18px;
+        align-items: start;
+      }
+
+      .themes-feed {
+        display: grid;
+        gap: 12px;
+        padding: 16px;
+      }
+
+      .theme-news-card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 16px;
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--ink);
+        text-align: left;
+        display: grid;
+        gap: 12px;
+      }
+
+      body.theme-light .theme-news-card {
+        background: rgba(10, 32, 55, 0.04);
+      }
+
+      .theme-news-card[aria-pressed="true"] {
+        border-color: var(--focus);
+        box-shadow: inset 0 -3px 0 var(--focus);
+      }
+
+      .theme-news-card small {
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
+      .theme-news-card h3 {
+        margin: 0;
+        font-size: 22px;
+      }
+
+      .theme-news-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .theme-news-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .theme-news-meta span {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 5px 8px;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
+      .themes-preview {
+        display: grid;
+        gap: 16px;
+      }
+
+      .themes-preview-head {
+        padding: 18px;
+      }
+
+      .themes-preview-head h2 {
+        margin: 0;
+        font-size: clamp(28px, 3vw, 46px);
+        line-height: 1;
+      }
+
+      .theme-image-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 16px;
+      }
+
+      .theme-image-card {
+        overflow: hidden;
+        cursor: zoom-in;
+        text-align: left;
+      }
+
+      .theme-image-card img {
+        display: block;
+        width: 100%;
+        height: clamp(180px, 26vw, 320px);
+        object-fit: contain;
+        background: rgba(255, 255, 255, 0.92);
+      }
+
+      .theme-image-card.is-tall img {
+        height: clamp(420px, 56vw, 760px);
+        background: #07111d;
+      }
+
+      .theme-image-caption {
+        padding: 14px 16px;
+      }
+
+      .theme-image-caption strong {
+        display: block;
+        color: var(--ink);
+        font-size: 15px;
+        margin-bottom: 6px;
+      }
+
+      .theme-image-caption p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 1.45;
+      }
+
+      .image-lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background: rgba(1, 10, 20, 0.82);
+        backdrop-filter: blur(10px);
+      }
+
+      .image-lightbox-inner {
+        width: min(98vw, 1560px);
+        max-height: 92vh;
+        display: grid;
+        gap: 12px;
+      }
+
+      .image-lightbox-stage {
+        max-height: 82vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        border-radius: 8px;
+        background: #fff;
+      }
+
+      .image-lightbox img {
+        width: 100%;
+        height: auto;
+        object-fit: initial;
+        border-radius: 8px;
+        background: #fff;
+        transform-origin: top left;
+        transition: width 0.18s ease;
+      }
+
+      .image-lightbox-caption {
+        color: #f6fbff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .image-lightbox-caption strong {
+        display: block;
+        font-size: 16px;
+      }
+
+      .image-lightbox-caption span {
+        color: rgba(246, 251, 255, 0.75);
+        font-size: 13px;
+      }
+
+      .image-lightbox button {
+        border: 1px solid rgba(255, 255, 255, 0.32);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        padding: 8px 12px;
+        font-weight: 850;
+        cursor: pointer;
+      }
+
+      .image-lightbox button:disabled {
+        cursor: not-allowed;
+        opacity: 0.45;
+      }
+
+      .image-zoom-controls {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .image-zoom-controls span {
+        min-width: 46px;
+        color: rgba(246, 251, 255, 0.82);
+        font-size: 12px;
+        font-weight: 900;
+        text-align: center;
+      }
+
+      .themes-preview-head p {
+        margin: 10px 0 0;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
       @media (max-width: 1180px) {
         .home-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
         .home-notes {
+          grid-template-columns: 1fr;
+        }
+
+        .themes-layout {
           grid-template-columns: 1fr;
         }
       }
@@ -273,6 +493,27 @@
 
         .home-grid {
           grid-template-columns: 1fr;
+        }
+
+        .theme-image-gallery {
+          grid-template-columns: 1fr;
+        }
+
+        .theme-image-card img {
+          height: 220px;
+        }
+
+        .theme-image-card.is-tall img {
+          height: 440px;
+        }
+
+        .image-lightbox {
+          padding: 14px;
+        }
+
+        .image-lightbox-caption {
+          align-items: flex-start;
+          flex-direction: column;
         }
       }
 
@@ -446,6 +687,24 @@
 
       .data-lab-instruments {
         display: grid;
+        gap: 14px;
+      }
+
+      .data-lab-subgroup {
+        display: grid;
+        gap: 8px;
+      }
+
+      .data-lab-subgroup-title {
+        color: var(--ink);
+        font-size: 12px;
+        font-weight: 950;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .data-lab-chip-grid {
+        display: grid;
         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         gap: 10px;
       }
@@ -462,6 +721,20 @@
 
       body.theme-light .data-lab-chip {
         background: rgba(10, 32, 55, 0.04);
+      }
+
+      .data-lab-chip[data-subgroup-tone] {
+        border-color: color-mix(in srgb, var(--subgroup-color, var(--focus)) 38%, var(--line));
+        background:
+          linear-gradient(135deg, color-mix(in srgb, var(--subgroup-color, var(--focus)) 17%, transparent), transparent 72%),
+          rgba(255, 255, 255, 0.04);
+      }
+
+      body.theme-light .data-lab-chip[data-subgroup-tone] {
+        border-color: color-mix(in srgb, var(--subgroup-color, var(--focus)) 42%, var(--line));
+        background:
+          linear-gradient(135deg, color-mix(in srgb, var(--subgroup-color, var(--focus)) 18%, transparent), transparent 72%),
+          rgba(10, 32, 55, 0.035);
       }
 
       .data-lab-chip[aria-pressed="true"] {
@@ -1413,6 +1686,241 @@
         font-size: 22px;
       }
 
+      .valuation-context {
+        display: grid;
+        gap: 14px;
+        padding: 16px;
+      }
+
+      .valuation-context h2 {
+        margin: 0;
+        font-size: 24px;
+      }
+
+      .valuation-metric-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .valuation-metric {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.028);
+      }
+
+      body.theme-light .valuation-metric {
+        background: rgba(23, 48, 77, 0.05);
+      }
+
+      .valuation-metric span {
+        display: block;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .valuation-metric strong {
+        display: block;
+        margin-top: 6px;
+        color: var(--ink);
+        font-size: 24px;
+      }
+
+      .forward-average-chart {
+        display: grid;
+        gap: 12px;
+      }
+
+      .forward-bar-grid {
+        min-height: 190px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        align-items: end;
+        padding: 10px 4px 0;
+      }
+
+      .forward-bar-item {
+        display: grid;
+        grid-template-rows: 26px 140px auto;
+        gap: 8px;
+        align-items: end;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 850;
+        text-align: center;
+      }
+
+      .forward-bar-value {
+        color: var(--ink);
+        font-size: 18px;
+        font-weight: 950;
+      }
+
+      .forward-bar-track {
+        height: 140px;
+        display: flex;
+        align-items: flex-end;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.035);
+        overflow: hidden;
+      }
+
+      body.theme-light .forward-bar-track {
+        background: rgba(23, 48, 77, 0.065);
+      }
+
+      .forward-bar-fill {
+        width: 100%;
+        border-radius: 7px 7px 0 0;
+        background: linear-gradient(180deg, var(--tone), color-mix(in srgb, var(--tone) 62%, transparent));
+      }
+
+      .forward-chart-note {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 750;
+        line-height: 1.4;
+      }
+
+      .pe-history-chart {
+        display: grid;
+        gap: 14px;
+        padding: 16px;
+      }
+
+      .pe-history-chart h2 {
+        margin: 0;
+        font-size: 24px;
+      }
+
+      .pe-history-chart p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .pe-history-svg {
+        width: 100%;
+        height: 300px;
+        overflow: visible;
+      }
+
+      .pe-history-gridline {
+        stroke: var(--line);
+        stroke-width: 1;
+      }
+
+      .pe-history-axis-label {
+        fill: var(--muted);
+        font-size: 11px;
+        font-weight: 800;
+      }
+
+      .pe-history-line {
+        fill: none;
+        stroke: #48d6e9;
+        stroke-width: 2.4;
+      }
+
+      .pe-history-average {
+        stroke: #ffae6b;
+        stroke-width: 1.8;
+        stroke-dasharray: 7 6;
+      }
+
+      .pe-history-median {
+        stroke: #8ea0b8;
+        stroke-width: 1.8;
+        stroke-dasharray: 3 5;
+      }
+
+      .pe-history-latest {
+        fill: #4f7cff;
+        stroke: #fff;
+        stroke-width: 2;
+      }
+
+      .pe-history-kpis {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .pe-history-legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 850;
+      }
+
+      .pe-history-legend span {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .pe-history-legend i {
+        width: 24px;
+        height: 0;
+        border-top: 2px solid currentColor;
+      }
+
+      .pe-history-legend .avg {
+        color: #ffae6b;
+      }
+
+      .pe-history-legend .med {
+        color: #8ea0b8;
+      }
+
+      .pe-history-legend .med i {
+        border-top-style: dotted;
+        border-top-width: 3px;
+      }
+
+      .valuation-source-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .valuation-source-box {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.026);
+      }
+
+      body.theme-light .valuation-source-box {
+        background: rgba(23, 48, 77, 0.045);
+      }
+
+      .valuation-source-box span {
+        display: block;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .valuation-source-box p {
+        margin: 7px 0 0;
+        color: var(--ink);
+        font-size: 13px;
+        font-weight: 750;
+        line-height: 1.35;
+      }
+
       .source-card {
         display: grid;
         align-content: start;
@@ -1490,7 +1998,7 @@
 
       .mega-table td:nth-child(2) {
         white-space: nowrap;
-        font-weight: 850;
+        font-weight: 400;
       }
 
       .mega-table tr.benchmark-row td {
@@ -3278,7 +3786,11 @@
       }
 
       function curveSourceText(meta) {
-        return `Base: ${meta.source || DEFAULT_CURVE_META.source}, ${formatDatePtBr(meta.asOf || DEFAULT_CURVE_META.asOf)}.`;
+        const asOf = formatDatePtBr(meta.asOf || DEFAULT_CURVE_META.asOf);
+        const updatedAt = meta.updatedAt ? formatDatePtBr(meta.updatedAt.slice(0, 10)) : null;
+        return updatedAt
+          ? `Dados até ${asOf} | atualizado em ${updatedAt}. Base: ${meta.source || DEFAULT_CURVE_META.source}.`
+          : `Dados até ${asOf}. Base: ${meta.source || DEFAULT_CURVE_META.source}.`;
       }
 
       const DEFAULT_FED_POLICY = {
@@ -3594,28 +4106,100 @@
         { name: "S&P 600 SmallCap", value: 16.0, tone: "#ffae6b", note: "Desconto com maior ciclicidade." },
       ];
 
+      const EQUITY_PE_META = {
+        "Magnificent 7": { tone: "#4f7cff", note: "Principal fonte do prêmio." },
+        "S&P 500 Information Technology": { tone: "#5bbcff", note: "Setor de tecnologia do S&P 500." },
+        "S&P 500": { tone: "#48d6e9", note: "Benchmark do índice cheio." },
+        "S&P 400 MidCap": { tone: "#ffae6b", note: "Valuation mais moderado." },
+        "S&P 600 SmallCap": { tone: "#8ea0b8", note: "Desconto com maior ciclicidade." },
+      };
+
+      function normalizeEquityPeData(payload) {
+        const items = payload?.items?.map((item) => {
+          const value = Number(item.forwardPE ?? item.value);
+          if (!item.name || !Number.isFinite(value)) return null;
+          const meta = EQUITY_PE_META[item.name] || {};
+          return {
+            name: item.name,
+            value,
+            tone: item.tone || meta.tone || "#48d6e9",
+            note: item.note || meta.note || "Forward P/E aproximado.",
+          };
+        }).filter(Boolean);
+        if (!items?.length) return null;
+        return {
+          items,
+          asOf: payload.asOf,
+          source: payload.source,
+          methodology: payload.methodology,
+        };
+      }
+
+      function normalizeSp500ValuationData(payload) {
+        const sp500 = payload?.sp500 || {};
+        const cleanNumber = (value) => {
+          if (value === null || value === undefined || value === "") return null;
+          const numeric = Number(value);
+          return Number.isFinite(numeric) ? numeric : null;
+        };
+        return {
+          asOf: payload?.asOf || null,
+          source: payload?.source || "FactSet Earnings Insight",
+          methodology: payload?.methodology || "Atualização manual a partir do relatório semanal.",
+          sp500: {
+            forwardPE: cleanNumber(sp500.forwardPE),
+            forwardEPS: cleanNumber(sp500.forwardEPS),
+            trailingPE: cleanNumber(sp500.trailingPE),
+            averages: {
+              "5y": cleanNumber(sp500.averages?.["5y"]),
+              "10y": cleanNumber(sp500.averages?.["10y"]),
+              "15y": cleanNumber(sp500.averages?.["15y"]),
+              "20y": cleanNumber(sp500.averages?.["20y"]),
+              "25y": cleanNumber(sp500.averages?.["25y"]),
+            },
+          },
+        };
+      }
+
       function formatMultiple(value) {
         return `${value.toFixed(1).replace(".", ",")}x`;
       }
 
-      function EquityPeChart() {
-        const maxPe = Math.max(...EQUITY_PE.map((item) => item.value));
-        const mag7 = EQUITY_PE[0].value;
-        const tech = EQUITY_PE[1].value;
-        const sp500 = EQUITY_PE[2].value;
-        const midcap = EQUITY_PE[3].value;
-        const smallcap = EQUITY_PE[4].value;
+      function formatOptionalMultiple(value) {
+        return Number.isFinite(value) ? formatMultiple(value) : "preencher";
+      }
+
+      function formatOptionalNumber(value) {
+        return Number.isFinite(value) ? value.toFixed(1).replace(".", ",") : "preencher";
+      }
+
+      function formatMarketCap(value) {
+        if (!Number.isFinite(value)) return "n.d.";
+        if (value >= 1_000_000_000_000) return `US$ ${(value / 1_000_000_000_000).toFixed(2).replace(".", ",")} tri`;
+        if (value >= 1_000_000_000) return `US$ ${(value / 1_000_000_000).toFixed(0).replace(".", ",")} bi`;
+        return `US$ ${value.toFixed(0).replace(".", ",")}`;
+      }
+
+      function EquityPeChart({ valuationData }) {
+        const activeItems = valuationData?.items?.length ? valuationData.items : EQUITY_PE;
+        const maxPe = Math.max(...activeItems.map((item) => item.value));
+        const mag7 = activeItems.find((item) => item.name === "Magnificent 7")?.value || activeItems[0]?.value;
         const premium = (base) => Math.round(((mag7 / base) - 1) * 100);
+        const premiumItems = activeItems
+          .filter((item) => item.name !== "Magnificent 7")
+          .map((item) => [`Prêmio vs ${item.name.replace("S&P 500 Information Technology", "Tecnologia").replace("S&P 400 ", "").replace("S&P 600 ", "")}`, `+${premium(item.value)}%`, item.tone]);
+        const sourceText = valuationData?.source
+          ? `Base: ${valuationData.source}, ${valuationData.asOf || "data não informada"}. Valores aproximados; gráfico próprio.`
+          : "Base: Yardeni Research, LSEG Datastream e S&P, 22/06/26. Valores aproximados; gráfico próprio.";
 
         return React.createElement(
           "div",
           { className: "equity-pe-chart" },
-          React.createElement("h2", null, "Forward P/E aproximado por bloco"),
-          React.createElement("p", { className: "chart-subtitle" }, "A leitura agregada do S&P 500 esconde uma dispersão relevante entre mega caps, índice cheio e mercado por baixo."),
+          React.createElement("h2", null, "Base A: Forward P/E por bloco"),
           React.createElement(
             "div",
             { className: "pe-bars" },
-            EQUITY_PE.map((item) =>
+            activeItems.map((item) =>
               React.createElement(
                 "div",
                 { className: "pe-bar-row", key: item.name, style: { "--tone": item.tone } },
@@ -3631,12 +4215,7 @@
           React.createElement(
             "div",
             { className: "pe-premium-grid" },
-            [
-              ["Prêmio vs Tecnologia", `+${premium(tech)}%`, "#5bbcff"],
-              ["Prêmio vs S&P 500", `+${premium(sp500)}%`, "#48d6e9"],
-              ["Prêmio vs MidCap", `+${premium(midcap)}%`, "#ffae6b"],
-              ["Prêmio vs SmallCap", `+${premium(smallcap)}%`, "#ffae6b"],
-            ].map(([label, value, tone]) =>
+            premiumItems.map(([label, value, tone]) =>
               React.createElement(
                 "div",
                 { className: "pe-premium", key: label, style: { "--tone": tone } },
@@ -3645,7 +4224,163 @@
               )
             )
           ),
-          React.createElement("p", { className: "data-note" }, "Base: Yardeni Research, LSEG Datastream e S&P, 22/06/26. Valores aproximados; gráfico próprio.")
+          React.createElement("p", { className: "data-note" }, sourceText)
+        );
+      }
+
+      function Sp500ValuationContext({ data, relativeData }) {
+        const fallbackSp500 = (relativeData?.items || EQUITY_PE).find((item) => item.name === "S&P 500")?.value || null;
+        const sp500 = data?.sp500 || {};
+        const forwardPE = Number.isFinite(sp500.forwardPE) ? sp500.forwardPE : fallbackSp500;
+        const averages = Object.entries(sp500.averages || {}).filter(([, value]) => Number.isFinite(value));
+        const barItems = [
+          { label: "Atual", value: forwardPE, tone: "#4f7cff" },
+          { label: "Média 5Y", value: sp500.averages?.["5y"], tone: "#48d6e9" },
+          { label: "Média 10Y", value: sp500.averages?.["10y"], tone: "#8ea0b8" },
+        ].filter((item) => Number.isFinite(item.value));
+        const maxBar = Math.max(...barItems.map((item) => item.value), 1);
+        const averageComparisons = averages.map(([label, value]) => {
+          const spread = Number.isFinite(forwardPE) ? forwardPE - value : null;
+          const spreadPct = Number.isFinite(forwardPE) ? ((forwardPE / value) - 1) * 100 : null;
+          const direction = spread >= 0 ? "acima" : "abaixo";
+          return {
+            label,
+            value,
+            spread,
+            spreadPct,
+            direction,
+            text: Number.isFinite(spread)
+              ? `${Math.abs(spread).toFixed(1).replace(".", ",")}x ${direction} (${spreadPct >= 0 ? "+" : "-"}${Math.abs(spreadPct).toFixed(1).replace(".", ",")}%)`
+              : formatMultiple(value),
+          };
+        });
+        const sourceText = data?.asOf
+          ? `Base: ${data.source}, ${data.asOf}. Yardeni e FactSet podem divergir por data, universo e metodologia.`
+          : "Base FactSet ainda não preenchida; usando S&P 500 do valuation manual como referência temporária.";
+
+        return React.createElement(
+          "div",
+          { className: "valuation-context" },
+          React.createElement("span", { className: "control-title" }, "S&P 500 em contexto"),
+          React.createElement("h2", null, "Base B: Forward P/E vs médias"),
+          React.createElement(
+            "div",
+            { className: "forward-average-chart" },
+            React.createElement(
+              "div",
+              { className: "forward-bar-grid" },
+              barItems.map((item) =>
+                React.createElement(
+                  "div",
+                  { className: "forward-bar-item", key: item.label, style: { "--tone": item.tone } },
+                  React.createElement("strong", { className: "forward-bar-value" }, formatMultiple(item.value)),
+                  React.createElement("div", { className: "forward-bar-track" }, React.createElement("div", { className: "forward-bar-fill", style: { height: `${Math.max(8, (item.value / maxBar) * 100)}%` } })),
+                  React.createElement("span", null, item.label)
+                )
+              )
+            ),
+            averageComparisons.length
+              ? React.createElement(
+                  "div",
+                  { className: "forward-chart-note" },
+                  averageComparisons.map((item) =>
+                    React.createElement("span", { key: item.label }, `Vs média ${item.label.toUpperCase()}: ${item.text}. `)
+                  )
+                )
+              : React.createElement("p", { className: "data-note" }, "Médias históricas ainda não disponíveis no JSON FactSet.")
+          ),
+          Number.isFinite(sp500.forwardEPS)
+            ? React.createElement(
+                "div",
+                { className: "valuation-metric" },
+                React.createElement("span", null, "Forward EPS"),
+                React.createElement("strong", null, formatOptionalNumber(sp500.forwardEPS))
+              )
+            : null,
+          React.createElement("p", { className: "data-note" }, sourceText)
+        );
+      }
+
+      function Sp500PeHistoryChart({ data }) {
+        const series = data?.yearEnd?.filter((point) => point.date >= "1926-01-01" && Number.isFinite(point.pe)) || [];
+        if (!series.length) {
+          return React.createElement(
+            "section",
+            { className: "panel pe-history-chart" },
+            React.createElement("span", { className: "control-title" }, "P/E histórico"),
+            React.createElement("h2", null, "Histórico ainda não carregado"),
+            React.createElement("p", null, "O gráfico aparece quando data/sp500-pe-history.json estiver disponível.")
+          );
+        }
+
+        const width = 920;
+        const height = 300;
+        const pad = { left: 44, right: 20, top: 18, bottom: 34 };
+        const maxPe = Math.max(40, Math.ceil(Math.max(...series.map((point) => point.pe)) / 10) * 10);
+        const minYear = Number(series[0].date.slice(0, 4));
+        const maxYear = Number(series[series.length - 1].date.slice(0, 4));
+        const xFor = (date) => {
+          const year = Number(date.slice(0, 4));
+          return pad.left + ((year - minYear) / Math.max(1, maxYear - minYear)) * (width - pad.left - pad.right);
+        };
+        const yFor = (value) => pad.top + (1 - value / maxPe) * (height - pad.top - pad.bottom);
+        const path = series.map((point, index) => `${index ? "L" : "M"} ${xFor(point.date).toFixed(1)} ${yFor(point.pe).toFixed(1)}`).join(" ");
+        const average = data?.stats?.averageSince1950 || data?.stats?.longTermAverage;
+        const median = data?.stats?.medianSince1950;
+        const latest = series[series.length - 1];
+        const yTicks = [10, 20, 30, 40, 50, 60].filter((tick) => tick <= maxPe);
+        const xTicks = [1930, 1950, 1970, 1990, 2010, maxYear].filter((tick, index, arr) => tick >= minYear && arr.indexOf(tick) === index);
+
+        return React.createElement(
+          "section",
+          { className: "panel pe-history-chart" },
+          React.createElement("span", { className: "control-title" }, "P/E histórico TTM"),
+          React.createElement("h2", null, "S&P 500: P/E atualizado"),
+          React.createElement(
+            "div",
+            { className: "pe-history-kpis" },
+            [
+              ["Último", formatMultiple(latest.pe)],
+              ["Desde", String(minYear)],
+              ["Até", latest.date.slice(0, 7)],
+              ["Média desde 1950", formatMultiple(data?.stats?.averageSince1950 || average)],
+              Number.isFinite(median) ? ["Mediana desde 1950", formatMultiple(median)] : null,
+            ].filter(Boolean).map(([label, value]) =>
+              React.createElement(
+                "div",
+                { className: "valuation-metric", key: label },
+                React.createElement("span", null, label),
+                React.createElement("strong", null, value)
+              )
+            )
+          ),
+          React.createElement(
+            "div",
+            { className: "pe-history-legend" },
+            Number.isFinite(average) ? React.createElement("span", { className: "avg" }, React.createElement("i", null), `Média desde 1950: ${formatMultiple(average)}`) : null,
+            Number.isFinite(median) ? React.createElement("span", { className: "med" }, React.createElement("i", null), `Mediana desde 1950: ${formatMultiple(median)}`) : null
+          ),
+          React.createElement(
+            "svg",
+            { className: "pe-history-svg", viewBox: `0 0 ${width} ${height}`, role: "img", "aria-label": "Histórico do P/E TTM do S&P 500" },
+            yTicks.map((tick) =>
+              React.createElement(
+                React.Fragment,
+                { key: `y-${tick}` },
+                React.createElement("line", { className: "pe-history-gridline", x1: pad.left, x2: width - pad.right, y1: yFor(tick), y2: yFor(tick) }),
+                React.createElement("text", { className: "pe-history-axis-label", x: 10, y: yFor(tick) + 4 }, `${tick}x`)
+              )
+            ),
+            xTicks.map((tick) =>
+              React.createElement("text", { className: "pe-history-axis-label", key: `x-${tick}`, x: xFor(`${tick}-01-01`), y: height - 8, textAnchor: "middle" }, tick)
+            ),
+            Number.isFinite(average) ? React.createElement("line", { className: "pe-history-average", x1: pad.left, x2: width - pad.right, y1: yFor(average), y2: yFor(average) }) : null,
+            Number.isFinite(median) ? React.createElement("line", { className: "pe-history-median", x1: pad.left, x2: width - pad.right, y1: yFor(median), y2: yFor(median) }) : null,
+            React.createElement("path", { className: "pe-history-line", d: path }),
+            React.createElement("circle", { className: "pe-history-latest", cx: xFor(latest.date), cy: yFor(latest.pe), r: 5 }),
+            React.createElement("text", { className: "pe-history-axis-label", x: xFor(latest.date) - 8, y: yFor(latest.pe) - 10, textAnchor: "end" }, formatMultiple(latest.pe))
+          ),
+          React.createElement("p", null, `Base: ${data?.source || "Multpl"}. P/E trailing/reportado; não é Forward P/E. O valor mais recente pode ser estimado pela fonte.`)
         );
       }
 
@@ -3730,8 +4465,101 @@
         },
       ];
 
+      const MAG7_VALUATION_FALLBACK = {
+        asOf: "2026-07-23",
+        status: "snapshot",
+        source: "Yahoo Finance via yfinance",
+        group: { marketCap: 21744600088576, trailingPE: 26.82, forwardPE: 22.05 },
+        companies: [
+          { ticker: "NVDA", company: "Nvidia", weight: 23.25, trailingPE: 31.97, forwardPE: 16.22, marketCap: 5056375554048 },
+          { ticker: "MSFT", company: "Microsoft", weight: 13.04, trailingPE: 22.74, forwardPE: 19.69, marketCap: 2834542100480 },
+          { ticker: "AAPL", company: "Apple", weight: 21.73, trailingPE: 38.99, forwardPE: 33.36, marketCap: 4724335050752 },
+          { ticker: "AMZN", company: "Amazon", weight: 11.56, trailingPE: 27.98, forwardPE: 23.56, marketCap: 2513506402304 },
+          { ticker: "GOOGL", company: "Alphabet", weight: 17.83, trailingPE: 15.93, forwardPE: 21.53, marketCap: 3876635279360 },
+          { ticker: "META", company: "Meta", weight: 7.08, trailingPE: 22.06, forwardPE: 16.38, marketCap: 1538538340352 },
+          { ticker: "TSLA", company: "Tesla", weight: 5.52, trailingPE: 296.01, forwardPE: 142.48, marketCap: 1200667361280 },
+        ],
+      };
+
       function EquityValuationModule() {
         const [equityView, setEquityView] = useState("broad");
+        const [valuationData, setValuationData] = useState(null);
+        const [sp500ValuationData, setSp500ValuationData] = useState(null);
+        const [peHistoryData, setPeHistoryData] = useState(null);
+        const [mag7ValuationData, setMag7ValuationData] = useState(null);
+
+        useEffect(() => {
+          let cancelled = false;
+          fetch(`data/equity-valuation.json?v=${Date.now()}`)
+            .then((response) => {
+              if (!response.ok) throw new Error(`HTTP ${response.status}`);
+              return response.json();
+            })
+            .then((payload) => {
+              const normalized = normalizeEquityPeData(payload);
+              if (!cancelled && normalized) setValuationData(normalized);
+            })
+            .catch(() => {
+              if (!cancelled) setValuationData(null);
+            });
+          return () => {
+            cancelled = true;
+          };
+        }, []);
+
+        useEffect(() => {
+          let cancelled = false;
+          fetch(`data/sp500-valuation.json?v=${Date.now()}`)
+            .then((response) => {
+              if (!response.ok) throw new Error(`HTTP ${response.status}`);
+              return response.json();
+            })
+            .then((payload) => {
+              if (!cancelled) setSp500ValuationData(normalizeSp500ValuationData(payload));
+            })
+            .catch(() => {
+              if (!cancelled) setSp500ValuationData(null);
+            });
+          return () => {
+            cancelled = true;
+          };
+        }, []);
+
+        useEffect(() => {
+          let cancelled = false;
+          fetch(`data/sp500-pe-history.json?v=${Date.now()}`)
+            .then((response) => {
+              if (!response.ok) throw new Error(`HTTP ${response.status}`);
+              return response.json();
+            })
+            .then((payload) => {
+              if (!cancelled) setPeHistoryData(payload);
+            })
+            .catch(() => {
+              if (!cancelled) setPeHistoryData(null);
+            });
+          return () => {
+            cancelled = true;
+          };
+        }, []);
+
+        useEffect(() => {
+          let cancelled = false;
+          fetch(`data/mag7-valuation.json?v=${Date.now()}`)
+            .then((response) => {
+              if (!response.ok) throw new Error(`HTTP ${response.status}`);
+              return response.json();
+            })
+            .then((payload) => {
+              if (!cancelled) setMag7ValuationData(payload);
+            })
+            .catch(() => {
+              if (!cancelled) setMag7ValuationData(null);
+            });
+          return () => {
+            cancelled = true;
+          };
+        }, []);
 
         const filter = React.createElement(
           "section",
@@ -3763,6 +4591,7 @@
         const broadView = React.createElement(
           React.Fragment,
           null,
+          React.createElement(Sp500PeHistoryChart, { data: peHistoryData }),
           React.createElement(
             "section",
             { className: "equity-grid" },
@@ -3778,51 +4607,35 @@
                   React.createElement("span", { className: "control-title" }, "Valuation relativo")
                 )
               ),
-              React.createElement(EquityPeChart)
+              React.createElement(EquityPeChart, { valuationData })
             ),
             React.createElement(
               "article",
               { className: "panel" },
-              React.createElement(
-                "div",
-                { className: "section-head" },
-                React.createElement(
-                  "div",
-                  null,
-                  React.createElement("span", { className: "control-title" }, "Diagnóstico"),
-                  React.createElement("h2", null, "Onde está o excesso")
-                )
-              ),
-              React.createElement(
-                "div",
-                { className: "equity-cards" },
-                EQUITY_CARDS.map((card) =>
-                  React.createElement(
-                    "article",
-                    { className: "equity-card", key: card.title, style: { "--tone": card.tone } },
-                    React.createElement("h3", null, card.title),
-                    React.createElement(
-                      "ul",
-                      null,
-                      card.bullets.map((bullet) => React.createElement("li", { key: bullet }, bullet))
-                    ),
-                    React.createElement("p", null, card.message)
-                  )
-                )
-              )
-            )
-          ),
-          React.createElement(
-            "section",
-            { className: "panel equity-summary" },
-            React.createElement("h2", null, "Leitura"),
-            React.createElement(
-              "p",
-              null,
-              "O prêmio não está distribuído de forma homogênea: a Magnificent 7 negocia acima do S&P 500 e também acima do próprio setor de tecnologia do índice."
+              React.createElement(Sp500ValuationContext, { data: sp500ValuationData, relativeData: valuationData })
             )
           )
         );
+
+        const activeMag7Valuation = mag7ValuationData?.companies?.length ? mag7ValuationData : MAG7_VALUATION_FALLBACK;
+        const mag7Companies = activeMag7Valuation.companies;
+        const mag7TableRows = activeMag7Valuation?.group?.forwardPE
+          ? [
+              {
+                company: "Magnificent 7",
+                ticker: "",
+                weight: 100,
+                trailingPE: activeMag7Valuation.group.trailingPE,
+                forwardPE: activeMag7Valuation.group.forwardPE,
+                read: "Múltiplo agregado calculado por market cap dividido por lucro implícito do grupo.",
+                benchmark: true,
+              },
+              ...mag7Companies,
+            ]
+          : mag7Companies;
+        const mag7SourceText = activeMag7Valuation.status === "ok"
+          ? `Base: ${activeMag7Valuation.source}, ${activeMag7Valuation.asOf}. P/E TTM e Forward P/E por empresa; agregado calculado pelo dashboard.`
+          : `Snapshot local: ${activeMag7Valuation.source}, ${activeMag7Valuation.asOf}. Atualização automática entra quando data/mag7-valuation.json carregar.`;
 
         const megaView = React.createElement(
           React.Fragment,
@@ -3853,56 +4666,28 @@
                     "tr",
                     null,
                     React.createElement("th", null, "Empresa"),
+                    React.createElement("th", null, "P/E TTM"),
                     React.createElement("th", null, "Forward P/E"),
-                    React.createElement("th", null, "Realizado recente"),
-                    React.createElement("th", null, "Perspectiva"),
                     React.createElement("th", null, "Leitura")
                   )
                 ),
                 React.createElement(
                   "tbody",
                   null,
-                  MAGNIFICENT_ROWS.map((row) =>
+                  mag7TableRows.map((row) =>
                     React.createElement(
                       "tr",
-                      { key: row.company, className: row.benchmark ? "benchmark-row" : undefined },
+                      { key: row.ticker || row.company, className: row.benchmark ? "benchmark-row" : undefined },
                       React.createElement("td", null, row.company),
-                      React.createElement("td", null, row.pe),
-                      React.createElement("td", null, row.recent),
-                      React.createElement("td", null, row.outlook),
-                      React.createElement("td", null, row.read)
+                      React.createElement("td", null, Number.isFinite(row.trailingPE) ? formatMultiple(row.trailingPE) : "n.d."),
+                      React.createElement("td", null, Number.isFinite(row.forwardPE) ? formatMultiple(row.forwardPE) : (row.pe || "n.d.")),
+                      React.createElement("td", null, row.read || (row.marketCap ? `Market cap: ${formatMarketCap(row.marketCap)}.` : "Atualizar após robô rodar."))
                     )
                   )
                 )
               )
             ),
-            React.createElement("p", { className: "data-note" }, "Base: estimativas públicas recentes. Múltiplos e crescimento devem ser comparados na mesma metodologia: NTM P/E e EPS growth 2026E.")
-          ),
-          React.createElement(
-            "section",
-            { className: "panel equity-summary" },
-            React.createElement("h2", null, "O prêmio vem com crescimento, mas exige seleção."),
-            React.createElement(
-              "p",
-              null,
-              "FactSet/IBD reportou +63,2% YoY de lucro no 1T para a Magnificent 7, contra +17,4% para o restante do S&P 500. Goldman ainda vê crescimento superior nas mega caps, mas a dispersão dentro do grupo importa."
-            )
-          ),
-          React.createElement(
-            "section",
-            { className: "panel equity-summary" },
-            React.createElement("h2", null, "Nifty Fifty: analogia útil, mas imperfeita."),
-            React.createElement(
-              "p",
-              null,
-              "Nos anos 70, IBM, Coca-Cola, McDonald's, Xerox e Polaroid eram vistas como empresas excepcionais, capazes de crescer por muito tempo. A tese era parecida: qualidade tão alta que valuation parecia secundário."
-            ),
-            React.createElement(
-              "p",
-              null,
-              "A Magnificent 7 atual tem escala global, software, cloud, efeitos de rede, IA e geração de caixa em outro patamar. O risco não é que todas virem uma Polaroid; é pagar múltiplos que já embutem crescimento perfeito."
-            ),
-            React.createElement("p", null, "Empresas melhores não tornam qualquer preço aceitável.")
+            React.createElement("p", { className: "data-note" }, mag7SourceText)
           )
         );
 
@@ -3916,8 +4701,8 @@
 
       const MODULE_COPY = {
         home: {
-          title: "General Channels Dashboard",
-          lead: "Camadas de leitura para macro, valuation, temas, ETFs e dados.",
+          title: "Dashboard",
+          lead: "",
           thesis: "Dashboard",
           subtitle: "Macro, valuation, temas e dados",
         },
@@ -3928,16 +4713,16 @@
           subtitle: "Duration moderada (2.3y)",
         },
         equity: {
-          title: "Valuation do mercado americano",
-          lead: "O S&P 500 negocia caro, mas o prêmio está concentrado principalmente na Magnificent 7.",
+          title: "Stock Market Valuation",
+          lead: "",
           thesis: "Concentração",
           subtitle: "Prêmio na Magnificent 7",
         },
         tech: {
-          title: "Todo grande ciclo tecnológico começa com excesso de capital",
-          lead: "Ferrovias, eletrificação, internet e IA seguem uma lógica comum: CAPEX agressivo, excesso, seleção e concentração dos ganhos.",
-          thesis: "IA é CAPEX",
-          subtitle: "Narrativa, excesso e seleção",
+          title: "Temas",
+          lead: "Páginas temáticas para acompanhar teses atuais, mapas setoriais, ciclos tecnológicos e mudanças estruturais.",
+          thesis: "Temas",
+          subtitle: "Páginas atuais",
         },
         core: {
           title: "O veículo define a exposição real da carteira",
@@ -3990,21 +4775,37 @@
       };
 
       const HOME_CARDS = [
-        ["curve", "Macro", "Yield Curves", "Curvas nominais, reais, inflação implícita, Fed Funds e inclinações.", "#48d6e9"],
+        ["curve", "Rates", "Yield Curves", "Curvas nominais, reais, inflação implícita, Fed Funds e inclinações.", "#48d6e9"],
         ["equity", "Valuation", "Equity Valuation", "Múltiplos, Magnificent 7, dispersão e prêmio relativo do mercado americano.", "#6ee7b7"],
-        ["tech", "Temas", "Matriz de Ciclos", "Ciclos tecnológicos, CAPEX, gargalos econômicos e papel do Estado.", "#ffae6b"],
         ["etfs", "Veículos", "ETFs", "Core equities, renda fixa, setoriais, satélites, China, Europa e hedge.", "#8db7ff"],
         ["dataLab", "Dados", "Data Lab", "Retorno, volatilidade, drawdown, beta, correlação e benchmark dos ETFs.", "#6ee7b7"],
+        ["tech", "Temas", "Páginas temáticas", "Teses atuais, mapas setoriais, ciclos tecnológicos e gargalos econômicos.", "#ffae6b"],
       ];
 
       const MAIN_NAV = [
         ["home", "Home"],
-        ["curve", "Macro"],
+        ["curve", "Rates"],
         ["equity", "Valuation"],
-        ["tech", "Temas"],
         ["etfs", "ETFs"],
         ["dataLab", "Data Lab"],
+        ["tech", "Temas"],
       ];
+
+      const MODULE_KEYS = new Set(MAIN_NAV.map(([key]) => key));
+
+      function hashParts() {
+        return window.location.hash.replace(/^#/, "").split("/").filter(Boolean);
+      }
+
+      function moduleFromHash() {
+        const [module] = hashParts();
+        return MODULE_KEYS.has(module) ? module : "home";
+      }
+
+      function themeFromHash() {
+        const [module, theme] = hashParts();
+        return module === "tech" && theme ? theme : null;
+      }
 
       const DATA_LAB_METRICS = [
         ["valuation.peRatio", "P/E"],
@@ -4017,27 +4818,152 @@
         ["beta1yVsSp500", "Beta 1 ano"],
       ];
 
-      const DATA_LAB_GROUPS = ["Core Equities", "Fixed Income", "Setoriais", "Satélites EUA", "Europa Estratégica", "China / China+1", "Hedge"];
+      const DATA_LAB_GROUPS = ["Fixed Income", "Core Equities", "Setoriais", "Satélites EUA", "Europa Estratégica", "China / China+1", "Hedge"];
 
       const dataLabGroupFor = (item) => {
         const category = (item?.category || "").toLowerCase();
         if (category.includes("gics sector")) return "Setoriais";
         if (category.includes("covered call") || category.includes("minimum volatility") || category.includes("vix") || category.includes("inverse") || category.includes("concentration hedge") || category.includes("gold") || category.includes("swiss franc")) return "Hedge";
         if (category.includes("treasuries") || category.includes("treasury bills") || category.includes("inflation usd") || category.includes("credit") || category.includes("high yield") || category.includes("core bond")) return "Fixed Income";
-        if (category.includes("china") || category.includes("em ex-china") || category.includes("china+1") || category.includes("asia technology")) return "China / China+1";
-        if (category.includes("luxury") || category.includes("europe healthcare")) return "Europa Estratégica";
+        if (category.includes("china") || category.includes("em ex-china") || category.includes("china+1") || category.includes("asia technology") || category.includes("copper miners") || category.includes("metals and mining")) return "China / China+1";
+        if (category.includes("luxury") || category.includes("europe healthcare") || category.includes("global healthcare")) return "Europa Estratégica";
         if (category.startsWith("core") || category.includes("s&p 500 benchmark") || category.includes("us growth") || category.includes("nasdaq-100")) return "Core Equities";
         return "Satélites EUA";
+      };
+
+      const DATA_LAB_SUBGROUP_ORDER = {
+        "Fixed Income": ["Liquidez USD", "Treasuries por duration", "TIPS / inflação", "Crédito USD", "Core bond global"],
+        "Core Equities": ["EUA amplo", "Growth / Nasdaq", "Core global desenvolvido", "Developed ex-US", "Europa core", "Emergentes"],
+        Setoriais: ["Growth / comunicação", "Cíclicos", "Defensivos / yield", "Outros setores"],
+        "Satélites EUA": ["IA / semicondutores", "Segurança / defesa", "Infraestrutura / energia", "Onshoring / reindustrialização", "Opcionalidade tecnológica", "Economia restrita"],
+        "Europa Estratégica": ["Defesa", "Luxo / China indireta", "Pharma / healthcare", "Industriais / eletrificação", "Soberania digital"],
+        "China / China+1": ["China direta", "China indireta", "China+1", "EM ex-China"],
+        Hedge: ["Option income", "Redução de beta", "Volatilidade", "Hedge direcional", "Desconcentração", "Macro"],
+      };
+
+      const dataLabSubgroupFor = (item) => {
+        const category = (item?.category || "").toLowerCase();
+        const ticker = item?.ticker || "";
+        const group = dataLabGroupFor(item);
+
+        if (group === "Fixed Income") {
+          if (category.includes("treasury bills") || category.includes("liquidity")) return "Liquidez USD";
+          if (category.includes("treasuries")) return "Treasuries por duration";
+          if (category.includes("inflation")) return "TIPS / inflação";
+          if (category.includes("credit") || category.includes("high yield")) return "Crédito USD";
+          return "Core bond global";
+        }
+
+        if (group === "Core Equities") {
+          if (category.includes("s&p 500 benchmark") || category.includes("core us equity")) return "EUA amplo";
+          if (category.includes("nasdaq") || category.includes("us growth")) return "Growth / Nasdaq";
+          if (category.includes("global developed")) return "Core global desenvolvido";
+          if (category.includes("developed ex-us")) return "Developed ex-US";
+          if (category.includes("core europe")) return "Europa core";
+          if (category.includes("emerging")) return "Emergentes";
+          return "EUA amplo";
+        }
+
+        if (group === "Setoriais") {
+          if (["XLK", "XLC", "XLY"].includes(ticker)) return "Growth / comunicação";
+          if (["XLF", "XLI", "XLB", "XLE"].includes(ticker)) return "Cíclicos";
+          if (["XLV", "XLP", "XLU", "XLRE"].includes(ticker)) return "Defensivos / yield";
+          return "Outros setores";
+        }
+
+        if (group === "Satélites EUA") {
+          if (category.includes("semiconductor") || category.includes("ai")) return "IA / semicondutores";
+          if (category.includes("defense") || category.includes("cyber")) return "Segurança / defesa";
+          if (category.includes("grid") || category.includes("infrastructure") || category.includes("energy")) return "Infraestrutura / energia";
+          if (category.includes("onshoring") || category.includes("reindustrialization")) return "Onshoring / reindustrialização";
+          if (category.includes("robot") || category.includes("quantum")) return "Opcionalidade tecnológica";
+          return "Economia restrita";
+        }
+
+        if (group === "Europa Estratégica") {
+          if (category.includes("defense")) return "Defesa";
+          if (category.includes("luxury")) return "Luxo / China indireta";
+          if (category.includes("healthcare")) return "Pharma / healthcare";
+          if (category.includes("industrial") || category.includes("electrification")) return "Industriais / eletrificação";
+          return "Soberania digital";
+        }
+
+        if (group === "China / China+1") {
+          if (category.includes("direct") || category.includes("china equity")) return "China direta";
+          if (category.includes("china+1")) return "China+1";
+          if (category.includes("ex-china")) return "EM ex-China";
+          if (category.includes("copper") || category.includes("metals and mining")) return "China indireta";
+          return "China indireta";
+        }
+
+        if (group === "Hedge") {
+          if (category.includes("covered call")) return "Option income";
+          if (category.includes("minimum volatility")) return "Redução de beta";
+          if (category.includes("vix")) return "Volatilidade";
+          if (category.includes("inverse")) return "Hedge direcional";
+          if (category.includes("concentration")) return "Desconcentração";
+          return "Macro";
+        }
+
+        return "Outros";
+      };
+
+      const dataLabSubgroupTone = (subgroup) => {
+        const tones = {
+          "Liquidez USD": "#42d1b7",
+          "Treasuries por duration": "#7fb8ff",
+          "TIPS / inflação": "#77d38b",
+          "Crédito USD": "#9ea7ff",
+          "Core bond global": "#8bc7ff",
+          "EUA amplo": "#54b6ff",
+          "Growth / Nasdaq": "#6f8cff",
+          "Core global desenvolvido": "#3cc7d6",
+          "Developed ex-US": "#7ac6ff",
+          "Europa core": "#86a8ff",
+          "Emergentes": "#4fd6a8",
+          "Growth / comunicação": "#5d8cff",
+          "Cíclicos": "#4eb7e8",
+          "Defensivos / yield": "#55c891",
+          "Outros setores": "#9da8b8",
+          "IA / semicondutores": "#5d8cff",
+          "Segurança / defesa": "#50c7d8",
+          "Infraestrutura / energia": "#58c489",
+          "Onshoring / reindustrialização": "#7aa7ff",
+          "Opcionalidade tecnológica": "#8c7dff",
+          "Economia restrita": "#4ec0a8",
+          "Defesa": "#54b5d8",
+          "Luxo / China indireta": "#c5a35a",
+          "Pharma / healthcare": "#5ec08b",
+          "Industriais / eletrificação": "#62b6d8",
+          "Soberania digital": "#8a9cff",
+          "China direta": "#5d8cff",
+          "China indireta": "#63c7d2",
+          "China+1": "#65bf8b",
+          "EM ex-China": "#8aa4ff",
+          "Option income": "#7fa8ff",
+          "Redução de beta": "#62c2d8",
+          "Volatilidade": "#9d8cff",
+          "Hedge direcional": "#e08585",
+          "Desconcentração": "#6cc4a0",
+          "Macro": "#c8a85a",
+        };
+        return tones[subgroup] || "#7fb8ff";
       };
 
       const dataLabMetricsFor = (item) => {
         const assetClass = item?.assetClass || "";
         const category = (item?.category || "").toLowerCase();
-        const isMacro = ["commodity", "currency", "volatility", "inverse_equity"].includes(assetClass);
+        const isMacro = ["commodity", "currency", "inverse_equity"].includes(assetClass);
         const isFixedIncome = assetClass === "fixed_income";
         const isHedge = dataLabGroupFor(item) === "Hedge";
         const baseMetrics = DATA_LAB_METRICS.filter(([key]) => key !== "beta1yVsSp500" && key !== "valuation.peRatio");
-        if (isFixedIncome || isMacro || isHedge || category.includes("gold") || category.includes("swiss franc")) {
+        if (isFixedIncome) {
+          return [...baseMetrics, ["correlation1yVsCash", "Correlação vs Fed Funds"]];
+        }
+        if (assetClass === "volatility") {
+          return baseMetrics;
+        }
+        if (isMacro || isHedge || category.includes("gold") || category.includes("swiss franc")) {
           return [...baseMetrics, ["correlation1yVsSp500", "Correlação vs S&P 500"]];
         }
         return DATA_LAB_METRICS;
@@ -4045,13 +4971,15 @@
 
       const dataLabBenchmarkLabel = (item) => {
         if (item?.assetClass === "fixed_income") return "US Treasury 0-1y Index";
-        if (["commodity", "currency", "volatility", "inverse_equity"].includes(item?.assetClass)) return "S&P 500";
+        if (item?.assetClass === "volatility") return "";
+        if (["commodity", "currency", "inverse_equity"].includes(item?.assetClass)) return "S&P 500";
         return "S&P 500";
       };
 
       const dataLabReferenceLabel = (item) => {
         if (item?.assetClass === "fixed_income") return "Fed Funds";
-        if (["commodity", "currency", "volatility", "inverse_equity"].includes(item?.assetClass)) return "Correlação";
+        if (item?.assetClass === "volatility") return "";
+        if (["commodity", "currency", "inverse_equity"].includes(item?.assetClass)) return "Correlação";
         return "Beta";
       };
 
@@ -4078,8 +5006,11 @@
 
       function DataLabLineChart({ active }) {
         const points = active?.performanceChart?.points || [];
-        const hasBenchmark = active?.assetClass !== "fixed_income" && points.some((point) => typeof point.sp500 === "number");
-        const values = points.flatMap((point) => [point.etf, hasBenchmark ? point.sp500 : null]).filter((value) => typeof value === "number" && Number.isFinite(value));
+        const fixedIncomeBenchmarkKey = points.some((point) => typeof point.cash === "number") ? "cash" : "sp500";
+        const benchmarkKey = active?.assetClass === "volatility" ? null : active?.assetClass === "fixed_income" ? fixedIncomeBenchmarkKey : "sp500";
+        const benchmarkLabel = benchmarkKey ? (active?.assetClass === "fixed_income" && benchmarkKey === "cash" ? "Fed Funds" : "S&P 500") : "";
+        const hasBenchmark = benchmarkKey ? points.some((point) => typeof point[benchmarkKey] === "number") : false;
+        const values = points.flatMap((point) => [point.etf, hasBenchmark ? point[benchmarkKey] : null]).filter((value) => typeof value === "number" && Number.isFinite(value));
         const minValue = Math.floor(Math.min(...values, 95) / 5) * 5;
         const maxValue = Math.ceil(Math.max(...values, 105) / 5) * 5;
         const width = 720;
@@ -4111,8 +5042,8 @@
           const [year, month] = value.split("-");
           return `${month}/${year.slice(2)}`;
         };
-        const excessValue = hasBenchmark && endPoint ? endPoint.etf - endPoint.sp500 : null;
-        const excessText = typeof excessValue === "number" && Number.isFinite(excessValue) ? `Excesso: ${fmtMetric(excessValue)} vs S&P 500` : null;
+        const excessValue = hasBenchmark && endPoint ? endPoint.etf - endPoint[benchmarkKey] : null;
+        const excessText = typeof excessValue === "number" && Number.isFinite(excessValue) ? `Excesso: ${fmtMetric(excessValue)} vs ${benchmarkLabel}` : null;
 
         return React.createElement(
           "article",
@@ -4120,18 +5051,18 @@
           React.createElement(
             "div",
             { className: "data-lab-chart-head" },
-            React.createElement("h3", null, hasBenchmark ? `Evolução: ${active.ticker || "ETF"} vs S&P 500` : `Evolução: ${active.ticker || "ETF"}`),
+            React.createElement("h3", null, hasBenchmark ? `Evolução: ${active.ticker || "ETF"} vs ${benchmarkLabel}` : `Evolução: ${active.ticker || "ETF"}`),
             React.createElement(
               "div",
               { className: "data-lab-legend" },
               React.createElement("span", { className: "is-etf" }, active.ticker || "ETF"),
-              hasBenchmark ? React.createElement("span", { className: "is-spy" }, "S&P 500") : null
+              hasBenchmark ? React.createElement("span", { className: "is-spy" }, benchmarkLabel) : null
             )
           ),
           points.length > 1
             ? React.createElement(
                 "svg",
-                { className: "data-lab-line-chart", viewBox: `0 0 ${width} ${height}`, role: "img", "aria-label": `Grafico de ${active.ticker || "ETF"} contra S&P 500` },
+                { className: "data-lab-line-chart", viewBox: `0 0 ${width} ${height}`, role: "img", "aria-label": hasBenchmark ? `Grafico de ${active.ticker || "ETF"} contra ${benchmarkLabel}` : `Grafico de ${active.ticker || "ETF"}` },
                 yTicks.map((tick) =>
                   React.createElement(
                     "g",
@@ -4149,35 +5080,40 @@
                   )
                 ),
                 React.createElement("path", { d: pathFor("etf"), className: "data-lab-line is-etf" }),
-                hasBenchmark ? React.createElement("path", { d: pathFor("sp500"), className: "data-lab-line is-spy" }) : null,
+                hasBenchmark ? React.createElement("path", { d: pathFor(benchmarkKey), className: "data-lab-line is-spy" }) : null,
                 endPoint ? React.createElement("circle", { cx: x(points.length - 1), cy: y(endPoint.etf), r: 4.5, className: "data-lab-dot is-etf" }) : null,
-                hasBenchmark && endPoint.sp500 ? React.createElement("circle", { cx: x(points.length - 1), cy: y(endPoint.sp500), r: 4.5, className: "data-lab-dot is-spy" }) : null,
+                hasBenchmark && endPoint[benchmarkKey] ? React.createElement("circle", { cx: x(points.length - 1), cy: y(endPoint[benchmarkKey]), r: 4.5, className: "data-lab-dot is-spy" }) : null,
                 endPoint
                   ? React.createElement(
                       "g",
                       { transform: `translate(${pad.left + 8} ${pad.top + 8})` },
                       React.createElement("rect", { className: "data-lab-result-card", width: 184, height: hasBenchmark ? 78 : 48, rx: 8 }),
                       React.createElement("text", { x: 12, y: 22, className: "data-lab-end-label" }, `${active.ticker}: ${fmtMetric(endPoint.etf - 100)}`),
-                      hasBenchmark && endPoint.sp500 ? React.createElement("text", { x: 12, y: 43, className: "data-lab-end-label" }, `S&P 500: ${fmtMetric(endPoint.sp500 - 100)}`) : null,
+                      hasBenchmark && endPoint[benchmarkKey] ? React.createElement("text", { x: 12, y: 43, className: "data-lab-end-label" }, `${benchmarkLabel}: ${fmtMetric(endPoint[benchmarkKey] - 100)}`) : null,
                       excessText ? React.createElement("text", { x: 12, y: 64, className: "data-lab-end-label" }, `Excesso: ${fmtMetric(excessValue)}`) : null
                     )
                   : null
               )
-            : React.createElement("p", { className: "data-note" }, "Série histórica ainda não disponível para este instrumento.")
+            : React.createElement("p", { className: "data-note" }, "Série histórica ainda não disponível para este instrumento."),
+          React.createElement("p", { className: "data-note" }, "Retorno total aproximado via adjusted close.")
         );
       }
 
       function DataLabModule() {
         const [data, setData] = useState(null);
         const [error, setError] = useState("");
-        const [selectedTicker, setSelectedTicker] = useState("SPY");
-        const [selectedGroup, setSelectedGroup] = useState("Core Equities");
+        const [selectedTicker, setSelectedTicker] = useState("IB01");
+        const [selectedGroup, setSelectedGroup] = useState("Fixed Income");
 
         useEffect(() => {
           let cancelled = false;
           const sources = [
             `data/etf-performance.json?v=${Date.now()}`,
             `https://raw.githubusercontent.com/cloretti55-hue/analysis_dashboard_v3/main/data/etf-performance.json?v=${Date.now()}`,
+          ];
+          const fixedIncomeSources = [
+            `data/fixed-income-performance.json?v=${Date.now()}`,
+            `https://raw.githubusercontent.com/cloretti55-hue/analysis_dashboard_v3/main/data/fixed-income-performance.json?v=${Date.now()}`,
           ];
 
           const loadPerformanceData = async () => {
@@ -4196,11 +5132,34 @@
             throw lastError || new Error("Falha ao carregar dados.");
           };
 
+          const mergeFixedIncomeFallback = async (payload) => {
+            for (const source of fixedIncomeSources) {
+              try {
+                const response = await fetch(source, { cache: "no-store" });
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const text = await response.text();
+                if (text.trim().length < 1000) throw new Error(`arquivo vazio ou incompleto (${text.length} bytes)`);
+                const fallback = JSON.parse(text);
+                const byTicker = new Map((fallback.instruments || []).map((item) => [item.ticker, item]));
+                return {
+                  ...payload,
+                  instruments: (payload.instruments || []).map((item) => {
+                    const replacement = byTicker.get(item.ticker);
+                    const needsFallback = dataLabGroupFor(item) === "Fixed Income" && (!item.performanceChart?.points?.length || item.status !== "ok");
+                    return needsFallback && replacement ? { ...item, ...replacement } : item;
+                  }),
+                };
+              } catch (err) {}
+            }
+            return payload;
+          };
+
           loadPerformanceData()
+            .then(mergeFixedIncomeFallback)
             .then((payload) => {
               if (cancelled) return;
               setData(payload);
-              const firstOk = payload.instruments.find((item) => item.status === "ok" && dataLabGroupFor(item) === "Core Equities") || payload.instruments.find((item) => item.status === "ok") || payload.instruments?.[0];
+              const firstOk = payload.instruments.find((item) => item.status === "ok" && dataLabGroupFor(item) === "Fixed Income" && item.performanceChart?.points?.length > 1) || payload.instruments.find((item) => item.status === "ok" && item.performanceChart?.points?.length > 1) || payload.instruments?.[0];
               if (firstOk) setSelectedTicker(firstOk.ticker);
             })
             .catch((err) => {
@@ -4218,15 +5177,34 @@
           acc[group] = instruments.filter((item) => dataLabGroupFor(item) === group).length;
           return acc;
         }, {});
+        const subgroupMap = filteredInstruments.reduce((acc, item) => {
+          const subgroup = dataLabSubgroupFor(item);
+          if (!acc[subgroup]) acc[subgroup] = [];
+          acc[subgroup].push(item);
+          return acc;
+        }, {});
+        const subgroupOrder = DATA_LAB_SUBGROUP_ORDER[selectedGroup] || [];
+        const subgroupEntries = Object.entries(subgroupMap).sort(([a], [b]) => {
+          const aIndex = subgroupOrder.indexOf(a);
+          const bIndex = subgroupOrder.indexOf(b);
+          if (aIndex === -1 && bIndex === -1) return a.localeCompare(b);
+          if (aIndex === -1) return 1;
+          if (bIndex === -1) return -1;
+          return aIndex - bIndex;
+        });
 
         useEffect(() => {
           if (!filteredInstruments.length) return;
-          if (!filteredInstruments.some((item) => item.ticker === selectedTicker)) {
-            setSelectedTicker(filteredInstruments[0].ticker);
+          const selectedInGroup = filteredInstruments.find((item) => item.ticker === selectedTicker);
+          if (!selectedInGroup || !selectedInGroup.performanceChart?.points?.length) {
+            const firstWithChart = filteredInstruments.find((item) => item.performanceChart?.points?.length > 1) || filteredInstruments[0];
+            setSelectedTicker(firstWithChart.ticker);
           }
         }, [selectedGroup, data]);
 
         const active = instruments.find((item) => item.ticker === selectedTicker) || instruments[0];
+        const activeBenchmarkLabel = dataLabBenchmarkLabel(active);
+        const activeReferenceLabel = dataLabReferenceLabel(active);
 
         return React.createElement(
           "main",
@@ -4267,18 +5245,31 @@
             React.createElement(
               "div",
               { className: "data-lab-instruments" },
-              filteredInstruments.map((item) =>
+              subgroupEntries.map(([subgroup, items]) =>
                 React.createElement(
-                  "button",
-                  {
-                    className: "data-lab-chip",
-                    type: "button",
-                    key: item.ticker,
-                    "aria-pressed": active.ticker === item.ticker,
-                    onClick: () => setSelectedTicker(item.ticker),
-                  },
-                  React.createElement("strong", null, item.ticker),
-                  React.createElement("span", null, item.status === "ok" ? item.category : "manual")
+                  "section",
+                  { className: "data-lab-subgroup", key: subgroup },
+                  React.createElement("span", { className: "data-lab-subgroup-title" }, subgroup),
+                  React.createElement(
+                    "div",
+                    { className: "data-lab-chip-grid" },
+                    items.map((item) =>
+                      React.createElement(
+                        "button",
+                        {
+                          className: "data-lab-chip",
+                          type: "button",
+                          key: item.ticker,
+                          "data-subgroup-tone": subgroup,
+                          style: { "--subgroup-color": dataLabSubgroupTone(subgroup) },
+                          "aria-pressed": active.ticker === item.ticker,
+                          onClick: () => setSelectedTicker(item.ticker),
+                        },
+                        React.createElement("strong", null, item.ticker),
+                        React.createElement("span", null, item.status === "ok" ? item.category : "manual")
+                      )
+                    )
+                  )
                 )
               )
             ),
@@ -4303,8 +5294,8 @@
                     { className: "data-lab-badges" },
                     React.createElement("span", null, "Veículo", React.createElement("b", null, active.wrapper || "n/d")),
                     React.createElement("span", null, "Moeda", React.createElement("b", null, active.currency || "n/d")),
-                    React.createElement("span", null, "Benchmark", React.createElement("b", null, dataLabBenchmarkLabel(active))),
-                    React.createElement("span", null, "ReferÃªncia", React.createElement("b", null, dataLabReferenceLabel(active))),
+                    activeBenchmarkLabel ? React.createElement("span", null, "Benchmark", React.createElement("b", null, activeBenchmarkLabel)) : null,
+                    activeReferenceLabel ? React.createElement("span", null, "ReferÃªncia", React.createElement("b", null, activeReferenceLabel)) : null,
                     active.assetClass === "equity" && dataLabGroupFor(active) !== "Hedge" && active.valuation?.source ? React.createElement("span", null, "P/E", React.createElement("b", null, active.valuation.asOf || "manual")) : null,
                     active.performanceChart?.startDate ? React.createElement("span", null, "Histórico", React.createElement("b", null, active.performanceChart.startDate)) : null,
                     active.status !== "ok" ? React.createElement("span", null, "Status", React.createElement("b", null, "manual")) : null
@@ -4312,7 +5303,7 @@
                   React.createElement(
                     "div",
                     { className: "data-lab-metrics" },
-                    dataLabMetricsFor(active).filter(([key]) => key !== "correlation1yVsSp500" || valueAtPath(active, key) !== undefined).map(([key, label]) =>
+                    dataLabMetricsFor(active).filter(([key]) => !key.startsWith("correlation") || valueAtPath(active, key) !== undefined).map(([key, label]) =>
                       React.createElement(
                         "div",
                         { className: "data-lab-metric", key },
@@ -4412,6 +5403,58 @@
         ["Data centers / energia", "FERC, DOE, terrenos federais, grid", "IA precisa de eletricidade, conexão e licenciamento."],
         ["Defesa / segurança nacional", "Pentagon, cloud, IA militar, ciber", "Demanda estatal para tecnologias dual-use."],
         ["Pesquisa básica", "NSF, DARPA, DOE, universidades", "Estado financia a base científica antes da monetização privada."],
+      ];
+
+      const THEME_BRIEFINGS = [
+        {
+          key: "ai-ecosystem",
+          date: "20/07",
+          label: "Ecossistema de IA",
+          title: "Ecossistema de IA e Semicondutores",
+          summary: "Extensão da tese de ciclos: formação bruta de capital fixo, CAPEX, hyperscalers, data centers, chips, memória e infraestrutura física da IA.",
+          tags: ["IA", "Semicondutores", "Infraestrutura"],
+          images: [
+            {
+              src: "assets/themes/ai-capex-fbcf.png",
+              title: "Formação bruta de capital fixo como ponto de partida",
+              comment: "O gráfico parte da FBCF/PIB para mostrar quando a economia transforma narrativa em investimento real. A IA entra nessa leitura como novo ciclo de capital físico: data centers, energia, chips e infraestrutura antes da monetização final em aplicações.",
+            },
+            {
+              src: "assets/themes/ai-ecosystem.png",
+              title: "Arquitetura do ecossistema de IA",
+              comment: "A demanda nasce na camada de modelos e aplicações, mas desce para hyperscalers, operadores de data centers, servidores, chips, foundries e memória.",
+            },
+            {
+              src: "assets/themes/semiconductor-ecosystem.png",
+              title: "Semicondutores como cadeia crítica",
+              comment: "A IA depende de uma cadeia especializada: design, IP, fabricação, packaging avançado, memória e montagem de sistemas. Não é apenas Nvidia.",
+            },
+          ],
+        },
+        {
+          key: "corporate-revenue",
+          date: "26/06",
+          label: "Economia americana",
+          title: "Receitas corporativas como retrato da economia americana",
+          summary: "O mapa das maiores receitas americanas mostra uma economia pós-industrial: saúde, consumo online, tecnologia, energia, finanças e logística.",
+          tags: ["Receitas", "EUA", "Setores"],
+          images: [
+            {
+              src: "assets/themes/us-largest-companies-2025-original.png",
+              title: "Receita corporativa como retrato da economia americana",
+              layout: "tall",
+              comment: "O gráfico mostra a base econômica sobre a qual os novos ciclos se encaixam: população envelhecendo gradualmente, consumo online, saúde em escala, tecnologia como infraestrutura cotidiana, logística nacional, energia e finanças profundas. Dados: Fortune via 50Pros; referência visual: Voronoi / Visual Capitalist; visual próprio.",
+            },
+          ],
+        },
+        {
+          key: "tech-cycles",
+          date: "26/06",
+          label: "Ciclo tecnológico",
+          title: "Matriz de Ciclos Tecnológicos",
+          summary: "Ferrovias, eletrificação, dotcom e IA: primeiro vem CAPEX, depois excesso, seleção e concentração dos ganhos.",
+          tags: ["IA", "CAPEX", "Semicondutores"],
+        },
       ];
 
       function TechCycleModule() {
@@ -4603,6 +5646,174 @@
               )
             )
           )
+        );
+      }
+
+      function ThemesModule() {
+        const [selectedTheme, setSelectedTheme] = useState(() => themeFromHash() || THEME_BRIEFINGS[0].key);
+        const [expandedImage, setExpandedImage] = useState(null);
+        const [imageZoom, setImageZoom] = useState(1);
+        const activeTheme = THEME_BRIEFINGS.find((item) => item.key === selectedTheme) || THEME_BRIEFINGS[0];
+
+        useEffect(() => {
+          const syncThemeFromHistory = () => {
+            const parts = hashParts();
+            const nextTheme = parts[0] === "tech" ? parts[1] : null;
+            const nextThemeRecord = THEME_BRIEFINGS.find((item) => item.key === nextTheme) || THEME_BRIEFINGS[0];
+            setSelectedTheme(nextThemeRecord.key);
+
+            const imageMatch = /^image-(\d+)$/.exec(parts[2] || "");
+            const imageIndex = imageMatch ? Number(imageMatch[1]) : -1;
+            setExpandedImage(nextThemeRecord.images?.[imageIndex] || null);
+            setImageZoom(1);
+          };
+
+          window.addEventListener("popstate", syncThemeFromHistory);
+          return () => window.removeEventListener("popstate", syncThemeFromHistory);
+        }, []);
+
+        const selectTheme = (key) => {
+          setSelectedTheme(key);
+          setExpandedImage(null);
+          setImageZoom(1);
+          window.history.pushState({ module: "tech", theme: key }, "", `#tech/${key}`);
+        };
+
+        const openImage = (image, index) => {
+          setExpandedImage(image);
+          setImageZoom(1);
+          window.history.pushState({ module: "tech", theme: activeTheme.key, image: index }, "", `#tech/${activeTheme.key}/image-${index}`);
+        };
+
+        const closeImage = () => {
+          if (hashParts()[2]?.startsWith("image-")) {
+            window.history.back();
+            return;
+          }
+          setExpandedImage(null);
+          setImageZoom(1);
+        };
+
+        const adjustImageZoom = (delta) => {
+          setImageZoom((value) => Math.min(2.5, Math.max(1, Number((value + delta).toFixed(2)))));
+        };
+
+        return React.createElement(
+          React.Fragment,
+            null,
+            React.createElement(
+              "main",
+              { className: "themes-layout" },
+              React.createElement(
+                "aside",
+                { className: "panel themes-feed" },
+                React.createElement(
+                  "div",
+                  { className: "section-head" },
+                  React.createElement(
+                    "div",
+                    null,
+                    React.createElement("span", { className: "control-title" }, "Biblioteca"),
+                    React.createElement("h2", null, "Páginas temáticas")
+                  )
+                ),
+                THEME_BRIEFINGS.map((item) =>
+                  React.createElement(
+                    "button",
+                    {
+                      className: "theme-news-card",
+                      type: "button",
+                      key: item.key,
+                      "aria-pressed": activeTheme.key === item.key,
+                      onClick: () => selectTheme(item.key),
+                    },
+                    React.createElement("small", null, item.date),
+                    React.createElement("h3", null, item.title),
+                    React.createElement("p", null, item.summary),
+                    React.createElement(
+                      "div",
+                      { className: "theme-news-meta" },
+                      item.tags.map((tag) => React.createElement("span", { key: tag }, tag))
+                    )
+                  )
+                )
+              ),
+              React.createElement(
+                "section",
+                { className: "themes-preview" },
+                React.createElement(
+                  "article",
+                  { className: "panel themes-preview-head" },
+                  React.createElement("span", { className: "control-title" }, activeTheme.label),
+                  React.createElement("h2", null, activeTheme.title),
+                  React.createElement("p", null, activeTheme.summary)
+                ),
+                activeTheme.images
+                  ? React.createElement(
+                      "div",
+                      { className: "theme-image-gallery" },
+                      activeTheme.images.map((image, index) =>
+                        React.createElement(
+                          "button",
+                          {
+                            className: `panel theme-image-card ${image.layout === "tall" ? "is-tall" : ""}`,
+                            key: image.src,
+                            type: "button",
+                            onClick: () => openImage(image, index),
+                          },
+                          React.createElement("img", { src: image.src, alt: image.title }),
+                          React.createElement(
+                            "div",
+                            { className: "theme-image-caption" },
+                            React.createElement("strong", null, image.title),
+                            React.createElement("p", null, image.comment)
+                          )
+                        )
+                      )
+                    )
+                  : null,
+                activeTheme.key === "tech-cycles" ? React.createElement(TechCycleModule) : null
+              )
+            ),
+            expandedImage
+              ? React.createElement(
+                  "div",
+                  { className: "image-lightbox", role: "dialog", "aria-modal": true, onClick: closeImage },
+                  React.createElement(
+                    "div",
+                    { className: "image-lightbox-inner", onClick: (event) => event.stopPropagation() },
+                    React.createElement(
+                      "div",
+                      { className: "image-lightbox-stage" },
+                      React.createElement("img", {
+                        src: expandedImage.src,
+                        alt: expandedImage.title,
+                        "data-zoomed": imageZoom > 1,
+                        style: { width: `${imageZoom * 100}%` },
+                      })
+                    ),
+                    React.createElement(
+                      "div",
+                      { className: "image-lightbox-caption" },
+                      React.createElement(
+                        "div",
+                        null,
+                        React.createElement("strong", null, expandedImage.title),
+                        React.createElement("span", null, expandedImage.comment)
+                      ),
+                      React.createElement(
+                        "div",
+                        { className: "image-zoom-controls", "aria-label": "Controles de zoom da imagem" },
+                        React.createElement("button", { type: "button", onClick: () => adjustImageZoom(-0.25), disabled: imageZoom <= 1 }, "-"),
+                        React.createElement("span", null, `${Math.round(imageZoom * 100)}%`),
+                        React.createElement("button", { type: "button", onClick: () => adjustImageZoom(0.25), disabled: imageZoom >= 2.5 }, "+"),
+                        React.createElement("button", { type: "button", onClick: () => setImageZoom(1) }, "100%")
+                      ),
+                      React.createElement("button", { type: "button", onClick: closeImage }, "Fechar")
+                    )
+                  )
+                )
+              : null
         );
       }
 
@@ -5959,8 +7170,8 @@
       }
 
       const ETF_SUBMODULES = [
-        ["core", "Core Equities"],
         ["fixed", "Fixed Income"],
+        ["core", "Core Equities"],
         ["sectors", "Setoriais"],
         ["satellites", "Satélites EUA"],
         ["europe", "Europa Estratégica"],
@@ -5969,7 +7180,7 @@
       ];
 
       function EtfsModule() {
-        const [activeEtfTab, setActiveEtfTab] = useState("core");
+        const [activeEtfTab, setActiveEtfTab] = useState("fixed");
         const renderActive = () => {
           if (activeEtfTab === "core") return React.createElement(CoreModule);
           if (activeEtfTab === "fixed") return React.createElement(FixedIncomeModule);
@@ -6004,14 +7215,14 @@
       }
 
       const MOBILE_MODULES = [
-        ["curve", "Yield Curves", "#48d6e9"],
+        ["curve", "Rates", "#48d6e9"],
         ["equity", "Equity Valuation", "#6ee7b7"],
-        ["tech", "Matriz de Ciclos", "#ffae6b"],
         ["etfs", "ETFs", "#8db7ff"],
         ["dataLab", "Data Lab", "#6ee7b7"],
+        ["tech", "Temas", "#ffae6b"],
       ];
 
-      function HomeModule({ setActiveModule }) {
+      function HomeModule({ setActiveModule, theme, setTheme }) {
         return React.createElement(
           "main",
           { className: "home-layout" },
@@ -6021,11 +7232,21 @@
             React.createElement(
               "div",
               null,
-              React.createElement("span", { className: "control-title" }, "General Channels"),
-              React.createElement("h2", null, "Dashboard de alocação global"),
-              React.createElement("p", null, "Uma camada de navegação para separar macro, valuation, temas, implementação via ETFs e dados automatizados. A ideia é consulta permanente, não apenas apresentação estática.")
+              React.createElement("h2", null, "Dashboard de alocação global")
             ),
-            React.createElement("div", { className: "home-stamp" }, "v3 data lab")
+            React.createElement(
+              "div",
+              { className: "theme-switch" },
+              React.createElement("span", null, "Tema"),
+              React.createElement(
+                "button",
+                {
+                  type: "button",
+                  onClick: () => setTheme(theme === "dark" ? "light" : "dark"),
+                },
+                theme === "dark" ? "Claro" : "Escuro"
+              )
+            )
           ),
           React.createElement(
             "section",
@@ -6050,13 +7271,6 @@
                 React.createElement("small", null, "Abrir módulo")
               )
             )
-          ),
-          React.createElement(
-            "section",
-            { className: "home-notes" },
-            React.createElement("article", { className: "panel home-note" }, React.createElement("h3", null, "Onde olhar primeiro"), React.createElement("p", null, "Use Macro para juros e carrego; Data Lab para comparar instrumentos; ETFs para decidir veículo e função.")),
-            React.createElement("article", { className: "panel home-note" }, React.createElement("h3", null, "O que mudou"), React.createElement("p", null, "A base agora separa equity, renda fixa, hedge e temas, com métricas automáticas e filtros compatíveis.")),
-            React.createElement("article", { className: "panel home-note" }, React.createElement("h3", null, "Próxima camada"), React.createElement("p", null, "Portfólio pode entrar depois como uma aba própria, conectando pesos, risco, carrego e exposição por tese."))
           )
         );
       }
@@ -6147,7 +7361,7 @@
             React.createElement(
               "article",
               { className: "panel mobile-summary-card" },
-              React.createElement("h2", null, current.label),
+              React.createElement("h2", null, `${current.label} · 5 vértices`),
               React.createElement(
                 "ul",
                 null,
@@ -6177,7 +7391,7 @@
           return React.createElement(MobileCurveModule, { mode, setMode, theme, curveMeta, fedPolicy });
         }
         if (activeModule === "equity") return React.createElement(EquityValuationModule);
-        if (activeModule === "tech") return React.createElement(TechCycleModule);
+        if (activeModule === "tech") return React.createElement(ThemesModule);
         if (activeModule === "etfs") return React.createElement(EtfsModule);
         if (activeModule === "dataLab") return React.createElement(DataLabModule);
         return React.createElement(EtfsModule);
@@ -6209,7 +7423,7 @@
               "div",
               { className: "mobile-brand" },
               React.createElement("span", null, mobileModule ? "Módulo" : "Dashboard"),
-              React.createElement("strong", null, mobileModule ? MOBILE_MODULES.find(([key]) => key === selectedModule)?.[1] : "General Channels")
+              React.createElement("strong", null, mobileModule ? MOBILE_MODULES.find(([key]) => key === selectedModule)?.[1] : "Dashboard")
             ),
             React.createElement(
               "div",
@@ -6272,7 +7486,7 @@
       }
 
       function App() {
-        const [activeModule, setActiveModule] = useState("home");
+        const [activeModule, setActiveModuleState] = useState(() => moduleFromHash());
         const [theme, setTheme] = useState("light");
         const [mode, setMode] = useState("nominal");
         const [curveMeta, setCurveMeta] = useState(DEFAULT_CURVE_META);
@@ -6281,6 +7495,19 @@
         const [deltaPeriod, setDeltaPeriod] = useState("1m");
         const [fedPolicy, setFedPolicy] = useState(DEFAULT_FED_POLICY);
         const isMobile = useIsMobile();
+
+        const setActiveModule = (key) => {
+          setActiveModuleState(key);
+          window.history.pushState({ module: key }, "", key === "home" ? `${window.location.pathname}${window.location.search}` : `#${key}`);
+        };
+
+        useEffect(() => {
+          const syncModuleFromHistory = () => {
+            setActiveModuleState(moduleFromHash());
+          };
+          window.addEventListener("popstate", syncModuleFromHistory);
+          return () => window.removeEventListener("popstate", syncModuleFromHistory);
+        }, []);
 
         useEffect(() => {
           document.body.classList.toggle("theme-light", theme === "light");
@@ -6302,6 +7529,7 @@
               setCurveMeta({
                 source: payload.source || DEFAULT_CURVE_META.source,
                 asOf: payload.asOf || DEFAULT_CURVE_META.asOf,
+                updatedAt: payload.updatedAt,
               });
               setCurveComparisons(payload.comparisons || defaultCurveComparisons());
             })
@@ -6364,7 +7592,7 @@
         return React.createElement(
           "div",
           { className: "app" },
-          React.createElement(
+          activeModule === "home" ? null : React.createElement(
             "header",
             { className: "topbar" },
             React.createElement(
@@ -6409,7 +7637,7 @@
             )
           ),
           activeModule === "home"
-            ? React.createElement(HomeModule, { setActiveModule })
+            ? React.createElement(HomeModule, { setActiveModule, theme, setTheme })
             : activeModule === "curve"
             ? React.createElement(
             "main",
@@ -6542,10 +7770,8 @@
                     React.createElement(
                       "div",
                       null,
-                      React.createElement("span", { className: "control-title" }, "O que o mercado está dizendo"),
-                      React.createElement("h2", null, CURVES[mode].label)
-                    ),
-                    React.createElement("span", { className: "mini-label" }, `${filteredMaturities.length} vértices no gráfico`)
+                      React.createElement("h2", null, `${CURVES[mode].label} · 5 vértices`)
+                    )
                   ),
                   React.createElement(
                     "div",
@@ -6624,7 +7850,7 @@
                               className: "spread-value",
                               style: { "--tone": value >= 0 ? "var(--positive)" : "var(--negative)" },
                             },
-                            bps(value)
+                            `${Math.round(value * 100) > 0 ? "+" : ""}${Math.round(value * 100)}`
                           )
                         );
                       })
@@ -6638,7 +7864,7 @@
                       "div",
                       null,
                       React.createElement("span", { className: "control-title" }, "Variação"),
-                      React.createElement("h2", null, `Atual vs ${DELTA_PERIODS.find((item) => item.key === deltaPeriod)?.label}`)
+                      React.createElement("h2", null, `Atual vs ${DELTA_PERIODS.find((item) => item.key === deltaPeriod)?.label} em bps`)
                     )
                   ),
                   React.createElement(
@@ -6814,7 +8040,7 @@
             : activeModule === "equity"
               ? React.createElement(EquityValuationModule)
               : activeModule === "tech"
-                ? React.createElement(TechCycleModule)
+                ? React.createElement(ThemesModule)
                 : activeModule === "etfs"
                   ? React.createElement(EtfsModule)
                   : activeModule === "dataLab"
