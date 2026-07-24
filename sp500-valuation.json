@@ -1,0 +1,20 @@
+{
+  "asOf": "2026-07-17",
+  "updatedAt": "2026-07-23",
+  "status": "ok",
+  "source": "FactSet Earnings Insight",
+  "sourceUrl": "https://insight.factset.com/sp-500-earnings-season-update-july-17-2026",
+  "methodology": "Automated extraction from public FactSet Insight earnings posts. Fields not available in the post are preserved from the previous JSON when present.",
+  "sp500": {
+    "forwardPE": 20.3,
+    "forwardEPS": null,
+    "trailingPE": null,
+    "averages": {
+      "5y": 19.9,
+      "10y": 19.0,
+      "15y": null,
+      "20y": null,
+      "25y": null
+    }
+  }
+}

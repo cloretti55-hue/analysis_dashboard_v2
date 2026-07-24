@@ -1,0 +1,15 @@
+{
+  "source": "Yardeni Research / LSEG Datastream",
+  "methodology": "Forward P/E aproximado lido manualmente da figura pública Forward P/E Ratios: LargeCap, MidCap, SmallCap & Mag-7. Série construída pelo dashboard a partir de atualizações manuais.",
+  "series": [
+    {
+      "asOf": "2026-07-21",
+      "items": {
+        "Magnificent 7": 24.7,
+        "S&P 500": 19.9,
+        "S&P 400 MidCap": 16.2,
+        "S&P 600 SmallCap": 15.9
+      }
+    }
+  ]
+}

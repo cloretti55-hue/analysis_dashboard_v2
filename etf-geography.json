@@ -1,0 +1,423 @@
+{
+  "version": 1,
+  "generatedAt": "2026-07-22T11:30:40+00:00",
+  "methodology": "Country weights are refreshed monthly from public provider pages when parsing succeeds. If provider layout blocks parsing, the script preserves dashboard seed weights as an explicit fallback.",
+  "instruments": {
+    "VEA": {
+      "weights": [
+        [
+          "Japão",
+          21.0
+        ],
+        [
+          "Reino Unido",
+          12.0
+        ],
+        [
+          "Canadá",
+          9.0
+        ],
+        [
+          "França",
+          8.0
+        ],
+        [
+          "Suíça",
+          7.5
+        ],
+        [
+          "Alemanha",
+          7.0
+        ]
+      ],
+      "source": "Vanguard",
+      "sourceUrl": "https://investor.vanguard.com/investment-products/etfs/profile/vea",
+      "status": "seed_fallback",
+      "error": null
+    },
+    "IEFA": {
+      "weights": [
+        [
+          "Japão",
+          25.7
+        ],
+        [
+          "Reino Unido",
+          13.9
+        ],
+        [
+          "França",
+          9.0
+        ],
+        [
+          "Suíça",
+          8.7
+        ],
+        [
+          "Alemanha",
+          8.0
+        ],
+        [
+          "Austrália",
+          7.1
+        ]
+      ],
+      "source": "iShares",
+      "sourceUrl": "https://www.ishares.com/us/products/244049/ishares-core-msci-eafe-etf",
+      "status": "seed_fallback",
+      "error": null
+    },
+    "IWDA": {
+      "weights": [
+        [
+          "EUA",
+          72.0
+        ],
+        [
+          "Japão",
+          5.5
+        ],
+        [
+          "Reino Unido",
+          3.5
+        ],
+        [
+          "Canadá",
+          3.0
+        ],
+        [
+          "França",
+          2.8
+        ],
+        [
+          "Suíça",
+          2.6
+        ]
+      ],
+      "source": "iShares UCITS",
+      "sourceUrl": "https://www.ishares.com/uk/individual/en/products/251882/ishares-msci-world-ucits-etf-acc-fund",
+      "status": "seed_fallback",
+      "error": null
+    },
+    "SWDA": {
+      "weights": [
+        [
+          "EUA",
+          72.0
+        ],
+        [
+          "Japão",
+          5.5
+        ],
+        [
+          "Reino Unido",
+          3.5
+        ],
+        [
+          "Canadá",
+          3.0
+        ],
+        [
+          "França",
+          2.8
+        ],
+        [
+          "Suíça",
+          2.6
+        ]
+      ],
+      "source": "iShares UCITS",
+      "sourceUrl": "https://www.ishares.com/uk/individual/en/products/251882/ishares-msci-world-ucits-etf-acc-fund",
+      "status": "seed_fallback",
+      "error": null
+    },
+    "VGK": {
+      "weights": [
+        [
+          "Reino Unido",
+          23.0
+        ],
+        [
+          "França",
+          17.0
+        ],
+        [
+          "Suíça",
+          15.0
+        ],
+        [
+          "Alemanha",
+          13.0
+        ],
+        [
+          "Holanda",
+          7.0
+        ],
+        [
+          "Suécia",
+          6.0
+        ]
+      ],
+      "source": "Vanguard",
+      "sourceUrl": "https://investor.vanguard.com/investment-products/etfs/profile/vgk",
+      "status": "seed_fallback",
+      "error": "HTTP Error 404: Not Found"
+    },
+    "IEUR": {
+      "weights": [
+        [
+          "Reino Unido",
+          23.07
+        ],
+        [
+          "França",
+          14.41
+        ],
+        [
+          "Suíça",
+          14.26
+        ],
+        [
+          "Alemanha",
+          12.87
+        ],
+        [
+          "Holanda",
+          8.53
+        ],
+        [
+          "Suécia",
+          5.8
+        ]
+      ],
+      "source": "iShares",
+      "sourceUrl": "https://www.ishares.com/us/products/264617/ishares-core-msci-europe-etf",
+      "status": "seed_fallback",
+      "error": null
+    },
+    "FEZ": {
+      "weights": [
+        [
+          "França",
+          34.0
+        ],
+        [
+          "Alemanha",
+          31.0
+        ],
+        [
+          "Holanda",
+          14.0
+        ],
+        [
+          "Espanha",
+          8.0
+        ],
+        [
+          "Itália",
+          7.0
+        ],
+        [
+          "Bélgica",
+          3.0
+        ]
+      ],
+      "source": "SPDR",
+      "sourceUrl": "https://www.ssga.com/us/en/intermediary/etfs/spdr-euro-stoxx-50-etf-fez",
+      "status": "seed_fallback",
+      "error": null
+    },
+    "IMEU": {
+      "weights": [
+        [
+          "Reino Unido",
+          22.0
+        ],
+        [
+          "França",
+          18.0
+        ],
+        [
+          "Suíça",
+          16.2
+        ],
+        [
+          "Alemanha",
+          13.8
+        ],
+        [
+          "Holanda",
+          7.2
+        ],
+        [
+          "Dinamarca",
+          5.1
+        ]
+      ],
+      "source": "iShares UCITS",
+      "sourceUrl": "https://www.ishares.com/uk/individual/en/products/251862/ishares-msci-europe-ucits-etf-inc-fund",
+      "status": "seed_fallback",
+      "error": "HTTP Error 404: Not Found"
+    },
+    "VWO": {
+      "weights": [
+        [
+          "Taiwan",
+          29.0
+        ],
+        [
+          "China",
+          29.0
+        ],
+        [
+          "Índia",
+          19.0
+        ],
+        [
+          "Brasil",
+          4.0
+        ],
+        [
+          "Arábia Saudita",
+          3.0
+        ],
+        [
+          "África do Sul",
+          3.0
+        ]
+      ],
+      "source": "Vanguard",
+      "sourceUrl": "https://investor.vanguard.com/investment-products/etfs/profile/vwo",
+      "status": "seed_fallback",
+      "error": "HTTP Error 404: Not Found"
+    },
+    "IEMG": {
+      "weights": [
+        [
+          "Taiwan",
+          26.36
+        ],
+        [
+          "Coreia do Sul",
+          19.7
+        ],
+        [
+          "China",
+          19.42
+        ],
+        [
+          "Índia",
+          12.96
+        ],
+        [
+          "Brasil",
+          4.03
+        ],
+        [
+          "África do Sul",
+          3.11
+        ]
+      ],
+      "source": "iShares",
+      "sourceUrl": "https://www.ishares.com/us/products/244050/ishares-core-msci-emerging-markets-etf",
+      "status": "seed_fallback",
+      "error": null
+    },
+    "EIMI": {
+      "weights": [
+        [
+          "Taiwan",
+          28.0
+        ],
+        [
+          "Coreia do Sul",
+          21.5
+        ],
+        [
+          "China",
+          18.0
+        ],
+        [
+          "Índia",
+          12.0
+        ],
+        [
+          "Brasil",
+          3.7
+        ],
+        [
+          "África do Sul",
+          3.0
+        ]
+      ],
+      "source": "iShares UCITS",
+      "sourceUrl": "https://www.ishares.com/uk/individual/en/products/264659/ishares-core-msci-em-imi-ucits-etf",
+      "status": "seed_fallback",
+      "error": null
+    },
+    "EMXC": {
+      "weights": [
+        [
+          "Taiwan",
+          33.85
+        ],
+        [
+          "Coreia do Sul",
+          25.19
+        ],
+        [
+          "Índia",
+          15.05
+        ],
+        [
+          "Brasil",
+          5.28
+        ],
+        [
+          "África do Sul",
+          3.85
+        ],
+        [
+          "Arábia Saudita",
+          3.26
+        ]
+      ],
+      "source": "iShares",
+      "sourceUrl": "https://www.ishares.com/us/products/288504/ishares-msci-emerging-markets-ex-china-etf",
+      "status": "seed_fallback",
+      "error": null
+    },
+    "EXCH": {
+      "weights": [
+        [
+          "Taiwan",
+          34.5
+        ],
+        [
+          "Coreia do Sul",
+          28.0
+        ],
+        [
+          "Índia",
+          13.5
+        ],
+        [
+          "Brasil",
+          4.5
+        ],
+        [
+          "África do Sul",
+          3.5
+        ],
+        [
+          "Arábia Saudita",
+          3.0
+        ]
+      ],
+      "source": "iShares UCITS",
+      "sourceUrl": "https://www.ishares.com/ch/individual/en/products/315592/",
+      "status": "seed_fallback",
+      "error": "HTTP Error 403: Forbidden"
+    }
+  }
+}
