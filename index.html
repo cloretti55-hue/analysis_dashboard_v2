@@ -4114,6 +4114,32 @@
         "S&P 600 SmallCap": { tone: "#8ea0b8", note: "Desconto com maior ciclicidade." },
       };
 
+      const EQUITY_VALUATION_SNAPSHOT = {
+        asOf: "2026-07-21",
+        source: "Yardeni Research / LSEG Datastream",
+        methodology: "Forward P/E aproximado lido manualmente da figura p?blica Forward P/E Ratios: LargeCap, MidCap, SmallCap & Mag-7.",
+        items: [
+          { name: "Magnificent 7", forwardPE: 24.7 },
+          { name: "S&P 500", forwardPE: 19.9 },
+          { name: "S&P 400 MidCap", forwardPE: 16.2 },
+          { name: "S&P 600 SmallCap", forwardPE: 15.9 },
+        ],
+      };
+
+      const SP500_VALUATION_SNAPSHOT = {
+        asOf: "2026-07-17",
+        updatedAt: "2026-07-23",
+        status: "ok",
+        source: "FactSet Earnings Insight",
+        methodology: "Automated extraction from public FactSet Insight earnings posts.",
+        sp500: {
+          forwardPE: 20.3,
+          forwardEPS: null,
+          trailingPE: null,
+          averages: { "5y": 19.9, "10y": 19.0, "15y": null, "20y": null, "25y": null },
+        },
+      };
+
       function normalizeEquityPeData(payload) {
         const items = payload?.items?.map((item) => {
           const value = Number(item.forwardPE ?? item.value);
@@ -4483,10 +4509,10 @@
 
       function EquityValuationModule() {
         const [equityView, setEquityView] = useState("broad");
-        const [valuationData, setValuationData] = useState(null);
-        const [sp500ValuationData, setSp500ValuationData] = useState(null);
+        const [valuationData, setValuationData] = useState(() => normalizeEquityPeData(EQUITY_VALUATION_SNAPSHOT));
+        const [sp500ValuationData, setSp500ValuationData] = useState(() => normalizeSp500ValuationData(SP500_VALUATION_SNAPSHOT));
         const [peHistoryData, setPeHistoryData] = useState(null);
-        const [mag7ValuationData, setMag7ValuationData] = useState(null);
+        const [mag7ValuationData, setMag7ValuationData] = useState(MAG7_VALUATION_FALLBACK);
 
         useEffect(() => {
           let cancelled = false;
