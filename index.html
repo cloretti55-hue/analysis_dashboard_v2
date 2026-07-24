@@ -4099,11 +4099,10 @@
       }
 
       const EQUITY_PE = [
-        { name: "Magnificent 7", value: 24.4, tone: "#4f7cff", note: "Principal fonte do prêmio." },
-        { name: "S&P 500 Information Technology", value: 22.2, tone: "#5bbcff", note: "Setor de tecnologia do S&P 500." },
-        { name: "S&P 500", value: 20.5, tone: "#48d6e9", note: "Benchmark do índice cheio." },
-        { name: "S&P 400 MidCap", value: 16.4, tone: "#ffae6b", note: "Valuation mais moderado." },
-        { name: "S&P 600 SmallCap", value: 16.0, tone: "#ffae6b", note: "Desconto com maior ciclicidade." },
+        { name: "Magnificent 7", value: 24.7, tone: "#4f7cff", note: "Principal fonte do pr?mio." },
+        { name: "S&P 500", value: 19.9, tone: "#48d6e9", note: "Benchmark do ?ndice cheio." },
+        { name: "S&P 400 MidCap", value: 16.2, tone: "#ffae6b", note: "Valuation mais moderado." },
+        { name: "S&P 600 SmallCap", value: 15.9, tone: "#8ea0b8", note: "Desconto com maior ciclicidade." },
       ];
 
       const EQUITY_PE_META = {
@@ -4526,7 +4525,7 @@
               if (!cancelled && normalized) setValuationData(normalized);
             })
             .catch(() => {
-              if (!cancelled) setValuationData(null);
+              if (!cancelled) setValuationData(normalizeEquityPeData(EQUITY_VALUATION_SNAPSHOT));
             });
           return () => {
             cancelled = true;
@@ -4544,7 +4543,7 @@
               if (!cancelled) setSp500ValuationData(normalizeSp500ValuationData(payload));
             })
             .catch(() => {
-              if (!cancelled) setSp500ValuationData(null);
+              if (!cancelled) setSp500ValuationData(normalizeSp500ValuationData(SP500_VALUATION_SNAPSHOT));
             });
           return () => {
             cancelled = true;
@@ -4580,7 +4579,7 @@
               if (!cancelled) setMag7ValuationData(payload);
             })
             .catch(() => {
-              if (!cancelled) setMag7ValuationData(null);
+              if (!cancelled) setMag7ValuationData(MAG7_VALUATION_FALLBACK);
             });
           return () => {
             cancelled = true;
