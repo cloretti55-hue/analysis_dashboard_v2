@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-24T11:37:44+00:00",
+  "generatedAt": "2026-07-24T14:51:02+00:00",
   "methodology": "Country weights are refreshed monthly from public provider pages when parsing succeeds. If provider layout blocks parsing, the script preserves dashboard seed weights as an explicit fallback.",
   "instruments": {
     "VEA": {
