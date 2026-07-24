@@ -4186,6 +4186,11 @@
         };
       }
 
+      function isAtLeastDate(value, minimum) {
+        if (!value || !minimum) return false;
+        return String(value) >= String(minimum);
+      }
+
       function formatMultiple(value) {
         return `${value.toFixed(1).replace(".", ",")}x`;
       }
@@ -4329,13 +4334,7 @@
       function Sp500PeHistoryChart({ data }) {
         const series = data?.yearEnd?.filter((point) => point.date >= "1926-01-01" && Number.isFinite(point.pe)) || [];
         if (!series.length) {
-          return React.createElement(
-            "section",
-            { className: "panel pe-history-chart" },
-            React.createElement("span", { className: "control-title" }, "P/E histórico"),
-            React.createElement("h2", null, "Histórico ainda não carregado"),
-            React.createElement("p", null, "O gráfico aparece quando data/sp500-pe-history.json estiver disponível.")
-          );
+          return null;
         }
 
         const width = 920;
@@ -4522,7 +4521,7 @@
             })
             .then((payload) => {
               const normalized = normalizeEquityPeData(payload);
-              if (!cancelled && normalized) setValuationData(normalized);
+              if (!cancelled && normalized && isAtLeastDate(normalized.asOf, EQUITY_VALUATION_SNAPSHOT.asOf)) setValuationData(normalized);
             })
             .catch(() => {
               if (!cancelled) setValuationData(normalizeEquityPeData(EQUITY_VALUATION_SNAPSHOT));
@@ -4540,7 +4539,8 @@
               return response.json();
             })
             .then((payload) => {
-              if (!cancelled) setSp500ValuationData(normalizeSp500ValuationData(payload));
+              const normalized = normalizeSp500ValuationData(payload);
+              if (!cancelled && isAtLeastDate(normalized.asOf, SP500_VALUATION_SNAPSHOT.asOf)) setSp500ValuationData(normalized);
             })
             .catch(() => {
               if (!cancelled) setSp500ValuationData(normalizeSp500ValuationData(SP500_VALUATION_SNAPSHOT));
