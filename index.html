@@ -4514,80 +4514,66 @@
         const [sp500ValuationData, setSp500ValuationData] = useState(() => normalizeSp500ValuationData(SP500_VALUATION_SNAPSHOT));
         const [peHistoryData, setPeHistoryData] = useState(null);
         const [mag7ValuationData, setMag7ValuationData] = useState(MAG7_VALUATION_FALLBACK);
+        const [valuationReady, setValuationReady] = useState(false);
 
         useEffect(() => {
           let cancelled = false;
-          fetch(`data/equity-valuation.json?v=${Date.now()}`)
-            .then((response) => {
+          const version = Date.now();
+          const loadJson = (path) =>
+            fetch(`${path}?v=${version}`).then((response) => {
               if (!response.ok) throw new Error(`HTTP ${response.status}`);
               return response.json();
-            })
-            .then((payload) => {
-              const normalized = normalizeEquityPeData(payload);
-              if (!cancelled && normalized && isAtLeastDate(normalized.asOf, EQUITY_VALUATION_SNAPSHOT.asOf)) setValuationData(normalized);
-            })
-            .catch(() => {
-              if (!cancelled) setValuationData(normalizeEquityPeData(EQUITY_VALUATION_SNAPSHOT));
             });
+
+          Promise.allSettled([
+            loadJson("data/equity-valuation.json"),
+            loadJson("data/sp500-valuation.json"),
+            loadJson("data/sp500-pe-history.json"),
+            loadJson("data/mag7-valuation.json"),
+          ]).then(([equityResult, sp500Result, historyResult, mag7Result]) => {
+            if (cancelled) return;
+
+            if (equityResult.status === "fulfilled") {
+              const normalized = normalizeEquityPeData(equityResult.value);
+              setValuationData(
+                normalized && isAtLeastDate(normalized.asOf, EQUITY_VALUATION_SNAPSHOT.asOf)
+                  ? normalized
+                  : normalizeEquityPeData(EQUITY_VALUATION_SNAPSHOT)
+              );
+            }
+
+            if (sp500Result.status === "fulfilled") {
+              const normalized = normalizeSp500ValuationData(sp500Result.value);
+              setSp500ValuationData(
+                isAtLeastDate(normalized.asOf, SP500_VALUATION_SNAPSHOT.asOf)
+                  ? normalized
+                  : normalizeSp500ValuationData(SP500_VALUATION_SNAPSHOT)
+              );
+            }
+
+            setPeHistoryData(historyResult.status === "fulfilled" ? historyResult.value : null);
+            setMag7ValuationData(
+              mag7Result.status === "fulfilled" && mag7Result.value?.companies?.length
+                ? mag7Result.value
+                : MAG7_VALUATION_FALLBACK
+            );
+            setValuationReady(true);
+          });
+
           return () => {
             cancelled = true;
           };
         }, []);
 
-        useEffect(() => {
-          let cancelled = false;
-          fetch(`data/sp500-valuation.json?v=${Date.now()}`)
-            .then((response) => {
-              if (!response.ok) throw new Error(`HTTP ${response.status}`);
-              return response.json();
-            })
-            .then((payload) => {
-              const normalized = normalizeSp500ValuationData(payload);
-              if (!cancelled && isAtLeastDate(normalized.asOf, SP500_VALUATION_SNAPSHOT.asOf)) setSp500ValuationData(normalized);
-            })
-            .catch(() => {
-              if (!cancelled) setSp500ValuationData(normalizeSp500ValuationData(SP500_VALUATION_SNAPSHOT));
-            });
-          return () => {
-            cancelled = true;
-          };
-        }, []);
-
-        useEffect(() => {
-          let cancelled = false;
-          fetch(`data/sp500-pe-history.json?v=${Date.now()}`)
-            .then((response) => {
-              if (!response.ok) throw new Error(`HTTP ${response.status}`);
-              return response.json();
-            })
-            .then((payload) => {
-              if (!cancelled) setPeHistoryData(payload);
-            })
-            .catch(() => {
-              if (!cancelled) setPeHistoryData(null);
-            });
-          return () => {
-            cancelled = true;
-          };
-        }, []);
-
-        useEffect(() => {
-          let cancelled = false;
-          fetch(`data/mag7-valuation.json?v=${Date.now()}`)
-            .then((response) => {
-              if (!response.ok) throw new Error(`HTTP ${response.status}`);
-              return response.json();
-            })
-            .then((payload) => {
-              if (!cancelled) setMag7ValuationData(payload);
-            })
-            .catch(() => {
-              if (!cancelled) setMag7ValuationData(MAG7_VALUATION_FALLBACK);
-            });
-          return () => {
-            cancelled = true;
-          };
-        }, []);
+        if (!valuationReady) {
+          return React.createElement(
+            "section",
+            { className: "panel source-card" },
+            React.createElement("span", { className: "control-title" }, "Valuation"),
+            React.createElement("h2", null, "Carregando dados de valuation"),
+            React.createElement("p", { className: "data-note" }, "Atualizando bases locais antes de montar a tela.")
+          );
+        }
 
         const filter = React.createElement(
           "section",
