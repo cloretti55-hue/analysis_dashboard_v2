@@ -1,13 +1,13 @@
 {
-  "asOf": "2026-07-23",
-  "updatedAt": "2026-07-23",
+  "asOf": "2026-07-24",
+  "updatedAt": "2026-07-24",
   "status": "ok",
   "source": "Yahoo Finance via yfinance",
   "methodology": "Forward P/E and trailing P/E for individual Magnificent 7 stocks. Group multiples are calculated as total market cap divided by implied aggregate earnings.",
   "group": {
-    "marketCap": 21744600088576.0,
-    "trailingPE": 26.82,
-    "forwardPE": 22.05
+    "marketCap": 21815256547328.0,
+    "trailingPE": 27.02,
+    "forwardPE": 22.1
   },
   "companies": [
     {
@@ -21,85 +21,85 @@
       "forwardEPS": 12.87,
       "impliedTrailingEarnings": 158163127833.0,
       "impliedForwardEarnings": 311700766930.0,
-      "weight": 23.25
+      "weight": 23.18
     },
     {
       "ticker": "MSFT",
       "company": "Microsoft",
       "price": 381.58,
       "marketCap": 2834542100480.0,
-      "trailingPE": 22.74,
+      "trailingPE": 22.73,
       "forwardPE": 19.69,
-      "trailingEPS": 16.78,
+      "trailingEPS": 16.79,
       "forwardEPS": 19.38,
-      "impliedTrailingEarnings": 124649138466.0,
+      "impliedTrailingEarnings": 124723423502.0,
       "impliedForwardEarnings": 143954235395.0,
-      "weight": 13.04
+      "weight": 12.99
     },
     {
       "ticker": "AAPL",
       "company": "Apple",
       "price": 321.66,
       "marketCap": 4724335050752.0,
-      "trailingPE": 38.99,
+      "trailingPE": 38.89,
       "forwardPE": 33.36,
-      "trailingEPS": 8.25,
+      "trailingEPS": 8.27,
       "forwardEPS": 9.64,
-      "impliedTrailingEarnings": 121170692898.0,
+      "impliedTrailingEarnings": 121464438710.0,
       "impliedForwardEarnings": 141604465354.0,
-      "weight": 21.73
+      "weight": 21.66
     },
     {
       "ticker": "AMZN",
       "company": "Amazon",
       "price": 233.66,
       "marketCap": 2513506402304.0,
-      "trailingPE": 27.98,
-      "forwardPE": 23.56,
-      "trailingEPS": 8.35,
-      "forwardEPS": 9.92,
-      "impliedTrailingEarnings": 89821876269.0,
-      "impliedForwardEarnings": 106675686888.0,
-      "weight": 11.56
+      "trailingPE": 29.32,
+      "forwardPE": 23.59,
+      "trailingEPS": 7.97,
+      "forwardEPS": 9.91,
+      "impliedTrailingEarnings": 85734164744.0,
+      "impliedForwardEarnings": 106571549302.0,
+      "weight": 11.52
     },
     {
       "ticker": "GOOGL",
       "company": "Alphabet",
       "price": 317.69,
-      "marketCap": 3876635279360.0,
-      "trailingPE": 15.93,
-      "forwardPE": 21.53,
-      "trailingEPS": 19.94,
-      "forwardEPS": 14.75,
-      "impliedTrailingEarnings": 243319295351.0,
-      "impliedForwardEarnings": 180025282969.0,
-      "weight": 17.83
+      "marketCap": 3885328236544.0,
+      "trailingPE": 15.95,
+      "forwardPE": 21.51,
+      "trailingEPS": 19.92,
+      "forwardEPS": 14.77,
+      "impliedTrailingEarnings": 243620304250.0,
+      "impliedForwardEarnings": 180610707174.0,
+      "weight": 17.81
     },
     {
       "ticker": "META",
       "company": "Meta",
       "price": 606.1,
       "marketCap": 1538538340352.0,
-      "trailingPE": 22.06,
+      "trailingPE": 22.02,
       "forwardPE": 16.38,
-      "trailingEPS": 27.47,
+      "trailingEPS": 27.52,
       "forwardEPS": 37.01,
-      "impliedTrailingEarnings": 69730486730.0,
+      "impliedTrailingEarnings": 69857413169.0,
       "impliedForwardEarnings": 93952076069.0,
-      "weight": 7.08
+      "weight": 7.05
     },
     {
       "ticker": "TSLA",
       "company": "Tesla",
       "price": 319.69,
-      "marketCap": 1200667361280.0,
-      "trailingPE": 296.01,
-      "forwardPE": 142.48,
-      "trailingEPS": 1.08,
+      "marketCap": 1262630862848.0,
+      "trailingPE": 343.75,
+      "forwardPE": 142.72,
+      "trailingEPS": 0.93,
       "forwardEPS": 2.24,
-      "impliedTrailingEarnings": 4056181897.0,
-      "impliedForwardEarnings": 8427206046.0,
-      "weight": 5.52
+      "impliedTrailingEarnings": 3673079114.0,
+      "impliedForwardEarnings": 8846868161.0,
+      "weight": 5.79
     }
   ]
 }
