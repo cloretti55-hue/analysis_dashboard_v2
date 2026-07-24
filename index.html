@@ -3788,9 +3788,11 @@
       function curveSourceText(meta) {
         const asOf = formatDatePtBr(meta.asOf || DEFAULT_CURVE_META.asOf);
         const updatedAt = meta.updatedAt ? formatDatePtBr(meta.updatedAt.slice(0, 10)) : null;
+        const real2yAsOf = meta.componentAsOf?.real?.["2Y"] ? formatDatePtBr(meta.componentAsOf.real["2Y"]) : null;
+        const componentNote = real2yAsOf && real2yAsOf !== asOf ? `Nominal at? ${asOf}; real 2Y/TIPSPY02 at? ${real2yAsOf}.` : `Dados at? ${asOf}.`;
         return updatedAt
-          ? `Dados até ${asOf} | atualizado em ${updatedAt}. Base: ${meta.source || DEFAULT_CURVE_META.source}.`
-          : `Dados até ${asOf}. Base: ${meta.source || DEFAULT_CURVE_META.source}.`;
+          ? `${componentNote} Atualizado em ${updatedAt}. Base: ${meta.source || DEFAULT_CURVE_META.source}.`
+          : `${componentNote} Base: ${meta.source || DEFAULT_CURVE_META.source}.`;
       }
 
       const DEFAULT_FED_POLICY = {
@@ -4432,7 +4434,7 @@
       const MAGNIFICENT_ROWS = [
         {
           company: "S&P 500",
-          pe: "20,5x",
+          pe: "19,9x",
           recent: "Lucro Q1 2026 entre ~27%-29% YoY.",
           outlook: "Goldman vê EPS 2026 +24%; Wells Fargo e UBS elevaram projeções.",
           read: "Benchmark: lucro forte, mas parte relevante vem de IA, semis, energia e megacaps.",
@@ -7555,6 +7557,7 @@
                 source: payload.source || DEFAULT_CURVE_META.source,
                 asOf: payload.asOf || DEFAULT_CURVE_META.asOf,
                 updatedAt: payload.updatedAt,
+                componentAsOf: payload.componentAsOf,
               });
               setCurveComparisons(payload.comparisons || defaultCurveComparisons());
             })
