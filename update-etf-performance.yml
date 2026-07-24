@@ -1,0 +1,37 @@
+name: Update ETF performance data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 11 * * 1-5"
+
+permissions:
+  contents: write
+
+jobs:
+  update-etf-performance:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Update ETF performance JSON
+        run: python scripts/update-etf-performance.py
+
+      - name: Commit updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/etf-performance.json
+          if git diff --cached --quiet; then
+            echo "No data changes to commit."
+          else
+            git commit -m "Update ETF performance data"
+            git push
+          fi
