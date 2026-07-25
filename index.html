@@ -244,6 +244,26 @@
         opacity: 0.68;
       }
 
+      .disclaimer-panel {
+        padding: 14px 16px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 720;
+        line-height: 1.45;
+      }
+
+      .home-layout .disclaimer-panel {
+        max-width: 980px;
+      }
+
+      .disclaimer-panel strong {
+        display: block;
+        margin-bottom: 5px;
+        color: var(--ink);
+        font-size: 12px;
+        text-transform: uppercase;
+      }
+
       .home-notes {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -864,6 +884,10 @@
         font-size: 11px;
         font-weight: 850;
         text-transform: uppercase;
+      }
+
+      .data-lab-metric span span {
+        display: block;
       }
 
       .data-lab-metric strong {
@@ -4249,6 +4273,9 @@
         return `US$ ${value.toFixed(0).replace(".", ",")}`;
       }
 
+      const FORWARD_PE_METHOD_NOTE =
+        "Forward P/E pode variar entre provedores por diferenças de data-base, universo, tratamento de lucros não recorrentes, ponderação e definição de consenso de EPS projetado.";
+
       function EquityPeChart({ valuationData }) {
         const activeItems = valuationData?.items?.length ? valuationData.items : EQUITY_PE;
         const maxPe = Math.max(...activeItems.map((item) => item.value));
@@ -4264,7 +4291,7 @@
         return React.createElement(
           "div",
           { className: "equity-pe-chart" },
-          React.createElement("h2", null, "Base A: Forward P/E por bloco"),
+          React.createElement("h2", null, "Leitura Relativa: Segmentos de Mercado"),
           React.createElement(
             "div",
             { className: "pe-bars" },
@@ -4293,7 +4320,8 @@
               )
             )
           ),
-          React.createElement("p", { className: "data-note" }, sourceText)
+          React.createElement("p", { className: "data-note" }, sourceText),
+          React.createElement("p", { className: "data-note" }, FORWARD_PE_METHOD_NOTE)
         );
       }
 
@@ -4324,14 +4352,14 @@
           };
         });
         const sourceText = data?.asOf
-          ? `Base: ${data.source}, ${data.asOf}. Yardeni e FactSet podem divergir por data, universo e metodologia.`
+          ? `Base: ${data.source}, ${data.asOf}. Provedores podem divergir por data, universo e metodologia.`
           : "Base FactSet ainda não preenchida; usando S&P 500 do valuation manual como referência temporária.";
 
         return React.createElement(
           "div",
           { className: "valuation-context" },
           React.createElement("span", { className: "control-title" }, "S&P 500 em contexto"),
-          React.createElement("h2", null, "Base B: Forward P/E vs médias"),
+          React.createElement("h2", null, "Leitura Histórica: S&P 500"),
           React.createElement(
             "div",
             { className: "forward-average-chart" },
@@ -4366,7 +4394,8 @@
                 React.createElement("strong", null, formatOptionalNumber(sp500.forwardEPS))
               )
             : null,
-          React.createElement("p", { className: "data-note" }, sourceText)
+          React.createElement("p", { className: "data-note" }, sourceText),
+          React.createElement("p", { className: "data-note" }, FORWARD_PE_METHOD_NOTE)
         );
       }
 
@@ -4670,8 +4699,8 @@
         const activeMag7Valuation = mag7ValuationData?.companies?.length ? mag7ValuationData : MAG7_VALUATION_FALLBACK;
         const mag7TableRows = activeMag7Valuation.companies;
         const mag7SourceText = activeMag7Valuation.status === "ok"
-          ? `Base: ${activeMag7Valuation.source}, ${activeMag7Valuation.asOf}. P/E TTM e Forward P/E por empresa; agregado calculado pelo dashboard.`
-          : `Snapshot local: ${activeMag7Valuation.source}, ${activeMag7Valuation.asOf}. Atualização automática entra quando data/mag7-valuation.json carregar.`;
+          ? `Base: ${activeMag7Valuation.source}, ${activeMag7Valuation.asOf}. P/E TTM e Forward P/E por empresa; agregado calculado pelo dashboard. ${FORWARD_PE_METHOD_NOTE}`
+          : `Snapshot local: ${activeMag7Valuation.source}, ${activeMag7Valuation.asOf}. Atualização automática entra quando data/mag7-valuation.json carregar. ${FORWARD_PE_METHOD_NOTE}`;
 
         const megaView = React.createElement(
           React.Fragment,
@@ -4853,6 +4882,11 @@
         ["maxDrawdown1yPct", "Max Drawdown 1 ano"],
         ["beta1yVsSp500", "Beta 1 ano"],
       ];
+
+      const renderMetricLabel = (label) =>
+        label === "Volatilidade anualizada 1 ano"
+          ? React.createElement(React.Fragment, null, "Volatilidade anualizada", React.createElement("span", null, "1 ano"))
+          : label;
 
       const DATA_LAB_GROUPS = ["Fixed Income", "Core Equities", "Setoriais", "Satélites EUA", "Temas Europeus", "China / China+1", "Hedge"];
 
@@ -5131,7 +5165,7 @@
                   : null
               )
             : React.createElement("p", { className: "data-note" }, "Série histórica ainda não disponível para este instrumento."),
-          React.createElement("p", { className: "data-note" }, "Retorno total aproximado via adjusted close.")
+          React.createElement("p", { className: "data-note" }, "Retorno total aproximado via adjusted close; dados sujeitos a atraso e revisão.")
         );
       }
 
@@ -5343,7 +5377,7 @@
                       React.createElement(
                         "div",
                         { className: "data-lab-metric", key },
-                        React.createElement("span", null, label),
+                        React.createElement("span", null, renderMetricLabel(label)),
                         React.createElement("strong", null, fmtDataLabMetric(key, valueAtPath(active, key)))
                       )
                     )
@@ -6473,8 +6507,8 @@
                   React.createElement("ul", { className: "satellite-list" }, active.extraCompanies.map((point) => React.createElement("li", { key: point }, point)))
                 )
               : null,
-            React.createElement("div", { className: "detail-box proxy-box" }, React.createElement("span", null, "Nomes / proxies"), React.createElement("strong", null, active.names.join(" · "))),
-            React.createElement("p", { className: "data-note" }, "Base: exemplos e proxies setoriais, junho/2026. Cestas não são exaustivas.")
+            React.createElement("div", { className: "detail-box proxy-box" }, React.createElement("span", null, "Exemplos"), React.createElement("strong", null, active.names.join(" · "))),
+            React.createElement("p", { className: "data-note" }, "Base: exemplos e proxies setoriais, junho/2026. Lista não exaustiva.")
           )
         );
       }
@@ -6617,7 +6651,7 @@
             React.createElement("p", null, active.thesis),
             React.createElement("ul", { className: "satellite-list" }, active.points.map((point) => React.createElement("li", { key: point }, point))),
             React.createElement("div", { className: "detail-box proxy-box" }, React.createElement("span", null, "Exemplos"), React.createElement("strong", null, active.names.join(" · "))),
-            React.createElement("p", { className: "data-note" }, "Base: exemplos de ETFs/proxies e cestas estratégicas, junho/2026. Lista não exaustiva.")
+            React.createElement("p", { className: "data-note" }, "Base: exemplos de ETFs e proxies, junho/2026. Lista não exaustiva.")
           )
         );
       }
@@ -6804,7 +6838,7 @@
             React.createElement("p", null, active.reading),
             React.createElement("ul", { className: "satellite-list" }, active.points.map((point) => React.createElement("li", { key: point }, point))),
             React.createElement("div", { className: "detail-box proxy-box" }, React.createElement("span", null, "Exemplos"), React.createElement("strong", null, active.names.join(" · "))),
-            React.createElement("p", { className: "data-note" }, "Base: exemplos de canais e instrumentos, junho/2026. Pesos e composição devem ser checados no provedor antes da execução.")
+            React.createElement("p", { className: "data-note" }, "Base: exemplos de canais e instrumentos, junho/2026. Composição deve ser checada no provedor.")
           )
         );
       }
@@ -7007,7 +7041,7 @@
         );
       }
 
-      function CoreModule({ functions = CORE_EQUITY_FUNCTIONS, initialEtf = "VOO", legendMode = "equity" } = {}) {
+      function CoreModule({ functions = CORE_EQUITY_FUNCTIONS, initialEtf = "VOO", legendMode = "equity", showUcitsToggle = true } = {}) {
         const [selectedEtf, setSelectedEtf] = useState(initialEtf);
         const [ucitsView, setUcitsView] = useState("all");
         const [geoData, setGeoData] = useState(null);
@@ -7077,12 +7111,14 @@
                         React.createElement("span", { className: "etf-token etf-emerging" }, "Emergentes")
                       )
                 ),
-                React.createElement(
-                  "div",
-                  { className: "ucits-toggle", "aria-label": "Destaque UCITS" },
-                  React.createElement("button", { type: "button", "aria-pressed": ucitsView === "all", onClick: () => setCoreUcitsView("all") }, "Todos"),
-                  React.createElement("button", { type: "button", "aria-pressed": ucitsView === "ucits", onClick: () => setCoreUcitsView("ucits") }, "UCITS")
-                )
+                showUcitsToggle
+                  ? React.createElement(
+                      "div",
+                      { className: "ucits-toggle", "aria-label": "Destaque UCITS" },
+                      React.createElement("button", { type: "button", "aria-pressed": ucitsView === "all", onClick: () => setCoreUcitsView("all") }, "Todos"),
+                      React.createElement("button", { type: "button", "aria-pressed": ucitsView === "ucits", onClick: () => setCoreUcitsView("ucits") }, "UCITS")
+                    )
+                  : null
               ),
               React.createElement(
                 "div",
@@ -7140,7 +7176,7 @@
       }
 
       function FixedIncomeModule() {
-        return React.createElement(CoreModule, { functions: FIXED_INCOME_FUNCTIONS, initialEtf: "IB01", legendMode: "fixed" });
+        return React.createElement(CoreModule, { functions: FIXED_INCOME_FUNCTIONS, initialEtf: "IB01", legendMode: "fixed", showUcitsToggle: false });
       }
 
       const SECTOR_GICS_ETFS = [
@@ -7289,6 +7325,24 @@
         ["tech", "Temas", "#ffae6b"],
       ];
 
+      const FULL_DISCLAIMER =
+        "Dados e análises para fins informativos e educacionais. Não constituem recomendação de investimento, consultoria financeira, tributária ou legal. Informações podem conter atrasos, aproximações ou divergências entre provedores. Verifique fontes, preços, custos, riscos e adequação antes de qualquer decisão.";
+
+      const SHORT_DISCLAIMER =
+        "Conteúdo informativo e educacional. Não constitui recomendação de investimento ou tributária. Dados podem estar defasados, aproximados ou sujeitos a revisão.";
+
+      const DATALAB_DISCLAIMER_EXTRA =
+        "Retorno total aproximado via adjusted close; dados sujeitos a atraso e revisão.";
+
+      function Disclaimer({ full = false, dataLab = false }) {
+        return React.createElement(
+          "section",
+          { className: "panel disclaimer-panel" },
+          full ? React.createElement("strong", null, "Disclaimer") : null,
+          React.createElement("span", null, full ? FULL_DISCLAIMER : `${SHORT_DISCLAIMER}${dataLab ? ` ${DATALAB_DISCLAIMER_EXTRA}` : ""}`)
+        );
+      }
+
       function HomeModule({ setActiveModule, theme, setTheme }) {
         return React.createElement(
           "main",
@@ -7299,7 +7353,8 @@
             React.createElement(
               "div",
               null,
-              React.createElement("h2", null, "Dashboard de alocação global")
+              React.createElement("h2", null, "Arquitetura Global"),
+              React.createElement("p", null, "Macro, valuation, temas e veículos em uma única leitura.")
             ),
             React.createElement(
               "div",
@@ -7339,6 +7394,7 @@
               )
             )
           ),
+          React.createElement(Disclaimer, { full: true }),
           React.createElement("span", { className: "brand-credit" }, "Designed by General Channels Co.")
         );
       }
@@ -7516,7 +7572,8 @@
                   React.createElement("h1", null, selectedCopy.title),
                   React.createElement("p", null, selectedCopy.lead)
                 ),
-                React.createElement(MobileModuleContent, { activeModule: selectedModule, mode, setMode, theme, curveMeta, fedPolicy })
+                React.createElement(MobileModuleContent, { activeModule: selectedModule, mode, setMode, theme, curveMeta, fedPolicy }),
+                React.createElement(Disclaimer, { dataLab: selectedModule === "dataLab" })
               )
             : React.createElement(
                 React.Fragment,
@@ -7524,8 +7581,8 @@
                 React.createElement(
                   "section",
                   { className: "mobile-hero" },
-                  React.createElement("h1", null, "Dashboard de alocação global"),
-                  React.createElement("p", null, "Versão mobile em modo consulta: escolha uma tese, abra os detalhes e navegue sem tentar espremer o slide desktop na tela.")
+                  React.createElement("h1", null, "Arquitetura Global"),
+                  React.createElement("p", null, "Macro, valuation, temas e veículos em uma única leitura.")
                 ),
                 React.createElement(
                   "section",
@@ -7549,6 +7606,7 @@
                     )
                   )
                 ),
+                React.createElement(Disclaimer, { full: true }),
                 React.createElement("span", { className: "brand-credit" }, "Designed by General Channels Co.")
               )
         );
@@ -8115,7 +8173,8 @@
                   ? React.createElement(EtfsModule)
                   : activeModule === "dataLab"
                     ? React.createElement(DataLabModule)
-                    : React.createElement(EtfsModule)
+                    : React.createElement(EtfsModule),
+          activeModule === "home" ? null : React.createElement(Disclaimer, { dataLab: activeModule === "dataLab" })
         );
       }
 
