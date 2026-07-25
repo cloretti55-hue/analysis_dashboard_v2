@@ -264,6 +264,14 @@
         text-transform: uppercase;
       }
 
+      .disclaimer-panel .method-note {
+        display: block;
+        margin-bottom: 12px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--line);
+        color: var(--muted);
+      }
+
       .home-notes {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -4320,8 +4328,7 @@
               )
             )
           ),
-          React.createElement("p", { className: "data-note" }, sourceText),
-          React.createElement("p", { className: "data-note" }, FORWARD_PE_METHOD_NOTE)
+          React.createElement("p", { className: "data-note" }, sourceText)
         );
       }
 
@@ -4394,8 +4401,7 @@
                 React.createElement("strong", null, formatOptionalNumber(sp500.forwardEPS))
               )
             : null,
-          React.createElement("p", { className: "data-note" }, sourceText),
-          React.createElement("p", { className: "data-note" }, FORWARD_PE_METHOD_NOTE)
+          React.createElement("p", { className: "data-note" }, sourceText)
         );
       }
 
@@ -7334,10 +7340,11 @@
       const DATALAB_DISCLAIMER_EXTRA =
         "Retorno total aproximado via adjusted close; dados sujeitos a atraso e revisão.";
 
-      function Disclaimer({ full = false, dataLab = false }) {
+      function Disclaimer({ full = false, dataLab = false, methodNote = null }) {
         return React.createElement(
           "section",
           { className: "panel disclaimer-panel" },
+          methodNote ? React.createElement("span", { className: "method-note" }, methodNote) : null,
           full ? React.createElement("strong", null, "Disclaimer") : null,
           React.createElement("span", null, full ? FULL_DISCLAIMER : `${SHORT_DISCLAIMER}${dataLab ? ` ${DATALAB_DISCLAIMER_EXTRA}` : ""}`)
         );
@@ -7573,7 +7580,7 @@
                   React.createElement("p", null, selectedCopy.lead)
                 ),
                 React.createElement(MobileModuleContent, { activeModule: selectedModule, mode, setMode, theme, curveMeta, fedPolicy }),
-                React.createElement(Disclaimer, { dataLab: selectedModule === "dataLab" })
+                React.createElement(Disclaimer, { dataLab: selectedModule === "dataLab", methodNote: selectedModule === "equity" ? FORWARD_PE_METHOD_NOTE : null })
               )
             : React.createElement(
                 React.Fragment,
@@ -8174,7 +8181,7 @@
                   : activeModule === "dataLab"
                     ? React.createElement(DataLabModule)
                     : React.createElement(EtfsModule),
-          activeModule === "home" ? null : React.createElement(Disclaimer, { dataLab: activeModule === "dataLab" })
+          activeModule === "home" ? null : React.createElement(Disclaimer, { dataLab: activeModule === "dataLab", methodNote: activeModule === "equity" ? FORWARD_PE_METHOD_NOTE : null })
         );
       }
 
