@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Arquitetura de Mercado | Yield Curves</title>
+    <title>Dashboard - Arquitetura</title>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <style>
@@ -4779,7 +4779,7 @@
         title: "Na Europa, o core compra o continente — a cesta compra a tese",
         lead: "A exposição ampla diversifica. As melhores teses exigem seleção: defesa, luxo, pharma, soberania digital e industriais.",
         thesis: "Seleção",
-        subtitle: "Europa estratégica",
+          subtitle: "Temas europeus",
       };
 
       MODULE_COPY.china = {
@@ -4847,14 +4847,14 @@
         ["valuation.peRatio", "P/E"],
         ["returnYtdPct", "YTD"],
         ["return1yPct", "1 ano"],
-        ["return3yAnnPct", "3 anos anual."],
-        ["return5yAnnPct", "5 anos anual."],
-        ["vol1yAnnPct", "Vol. 1 ano"],
+        ["return3yAnnPct", "Retorno anualizado 3 anos"],
+        ["return5yAnnPct", "Retorno anualizado 5 anos"],
+        ["vol1yAnnPct", "Volatilidade anualizada 1 ano"],
         ["maxDrawdown1yPct", "Max Drawdown 1 ano"],
         ["beta1yVsSp500", "Beta 1 ano"],
       ];
 
-      const DATA_LAB_GROUPS = ["Fixed Income", "Core Equities", "Setoriais", "Satélites EUA", "Europa Estratégica", "China / China+1", "Hedge"];
+      const DATA_LAB_GROUPS = ["Fixed Income", "Core Equities", "Setoriais", "Satélites EUA", "Temas Europeus", "China / China+1", "Hedge"];
 
       const dataLabGroupFor = (item) => {
         const category = (item?.category || "").toLowerCase();
@@ -4862,7 +4862,7 @@
         if (category.includes("covered call") || category.includes("minimum volatility") || category.includes("vix") || category.includes("inverse") || category.includes("concentration hedge") || category.includes("gold") || category.includes("swiss franc")) return "Hedge";
         if (category.includes("treasuries") || category.includes("treasury bills") || category.includes("inflation usd") || category.includes("credit") || category.includes("high yield") || category.includes("core bond")) return "Fixed Income";
         if (category.includes("china") || category.includes("em ex-china") || category.includes("china+1") || category.includes("asia technology") || category.includes("copper miners") || category.includes("metals and mining")) return "China / China+1";
-        if (category.includes("luxury") || category.includes("europe healthcare") || category.includes("global healthcare")) return "Europa Estratégica";
+        if (category.includes("luxury") || category.includes("europe healthcare") || category.includes("global healthcare")) return "Temas Europeus";
         if (category.startsWith("core") || category.includes("s&p 500 benchmark") || category.includes("us growth") || category.includes("nasdaq-100")) return "Core Equities";
         return "Satélites EUA";
       };
@@ -4872,7 +4872,7 @@
         "Core Equities": ["EUA amplo", "Growth / Nasdaq", "Core global desenvolvido", "Developed ex-US", "Europa core", "Emergentes"],
         Setoriais: ["Growth / comunicação", "Cíclicos", "Defensivos / yield", "Outros setores"],
         "Satélites EUA": ["IA / semicondutores", "Segurança / defesa", "Infraestrutura / energia", "Onshoring / reindustrialização", "Opcionalidade tecnológica", "Economia restrita"],
-        "Europa Estratégica": ["Defesa", "Luxo / China indireta", "Pharma / healthcare", "Industriais / eletrificação", "Soberania digital"],
+        "Temas Europeus": ["Defesa", "Luxo / China indireta", "Pharma / healthcare", "Industriais / eletrificação", "Soberania digital"],
         "China / China+1": ["China direta", "China indireta", "China+1", "EM ex-China"],
         Hedge: ["Option income", "Redução de beta", "Volatilidade", "Hedge direcional", "Desconcentração", "Macro"],
       };
@@ -4916,7 +4916,7 @@
           return "Economia restrita";
         }
 
-        if (group === "Europa Estratégica") {
+        if (group === "Temas Europeus") {
           if (category.includes("defense")) return "Defesa";
           if (category.includes("luxury")) return "Luxo / China indireta";
           if (category.includes("healthcare")) return "Pharma / healthcare";
@@ -6460,7 +6460,7 @@
               "div",
               { className: "detail-grid" },
               React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "ETF possível"), React.createElement("strong", null, active.etfs)),
-              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Implementação"), React.createElement("strong", null, active.implementation)),
+              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Alternativa"), React.createElement("strong", null, active.implementation)),
               React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Qualidade do ETF"), React.createElement("strong", null, active.quality))
             ),
             React.createElement("p", null, active.reading),
@@ -6483,7 +6483,7 @@
           theme: "Defesa europeia",
           icon: "shield",
           status: "Não",
-          quality: "Cesta superior",
+          quality: "Não há ETF",
           tone: "sat-risk-high",
           implementation: "Cesta",
           etfs: "ETF amplo europeu dilui a tese",
@@ -6497,7 +6497,7 @@
           theme: "Soberania digital",
           icon: "network",
           status: "Não",
-          quality: "Cesta superior",
+          quality: "Não há ETF",
           tone: "sat-risk-high",
           implementation: "Cesta",
           etfs: "Sem ETF limpo para a tese",
@@ -6550,7 +6550,7 @@
           points: ["Conversa com IA, energia e data centers.", "ETF industrial amplo dilui qualidade.", "Cesta captura melhor equipamentos e automação."],
         },
         {
-          theme: "Semis europeus",
+          theme: "Semicondutores europeus",
           icon: "chip",
           status: "Parcial",
           quality: "ETF parcial",
@@ -6610,13 +6610,13 @@
               "div",
               { className: "detail-grid" },
               React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "ETF amplo"), React.createElement("strong", null, active.status)),
-              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Implementação"), React.createElement("strong", null, active.implementation)),
+              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Alternativa"), React.createElement("strong", null, active.implementation)),
               React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Leitura do veículo"), React.createElement("strong", null, active.quality)),
               React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Primeira camada"), React.createElement("strong", null, active.etfs))
             ),
             React.createElement("p", null, active.thesis),
             React.createElement("ul", { className: "satellite-list" }, active.points.map((point) => React.createElement("li", { key: point }, point))),
-            React.createElement("div", { className: "detail-box proxy-box" }, React.createElement("span", null, "Cesta possível"), React.createElement("strong", null, active.names.join(" · "))),
+            React.createElement("div", { className: "detail-box proxy-box" }, React.createElement("span", null, "Exemplos"), React.createElement("strong", null, active.names.join(" · "))),
             React.createElement("p", { className: "data-note" }, "Base: exemplos de ETFs/proxies e cestas estratégicas, junho/2026. Lista não exaustiva.")
           )
         );
@@ -6997,7 +6997,7 @@
               { className: "detail-grid" },
               React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Instrumentos"), React.createElement("strong", null, active.instruments)),
               React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "O que faz"), React.createElement("strong", null, active.does)),
-              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Uso t?pico"), React.createElement("strong", null, active.use)),
+              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Uso típico"), React.createElement("strong", null, active.use)),
               React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Limitação"), React.createElement("strong", null, active.limit))
             ),
             React.createElement("p", null, active.reading),
@@ -7241,7 +7241,7 @@
         ["core", "Core Equities"],
         ["sectors", "Setoriais"],
         ["satellites", "Satélites EUA"],
-        ["europe", "Europa Estratégica"],
+        ["europe", "Temas Europeus"],
         ["china", "China / China+1"],
         ["hedges", "Hedge"],
       ];
