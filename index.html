@@ -5036,6 +5036,9 @@
         const isFixedIncome = assetClass === "fixed_income";
         const isHedge = dataLabGroupFor(item) === "Hedge";
         const baseMetrics = DATA_LAB_METRICS.filter(([key]) => key !== "beta1yVsSp500" && key !== "valuation.peRatio");
+        if (item?.ticker === "ITPE") {
+          return baseMetrics;
+        }
         if (isFixedIncome) {
           return [...baseMetrics, ["correlation1yVsCash", "Correlação vs Fed Funds"]];
         }
@@ -5049,6 +5052,7 @@
       };
 
       const dataLabBenchmarkLabel = (item) => {
+        if (item?.ticker === "ITPE") return "";
         if (item?.assetClass === "fixed_income") return "US Treasury 0-1y Index";
         if (item?.assetClass === "volatility") return "";
         if (["commodity", "currency", "inverse_equity"].includes(item?.assetClass)) return "S&P 500";
@@ -5056,6 +5060,7 @@
       };
 
       const dataLabReferenceLabel = (item) => {
+        if (item?.ticker === "ITPE") return "";
         if (item?.assetClass === "fixed_income") return "Fed Funds";
         if (item?.assetClass === "volatility") return "";
         if (["commodity", "currency", "inverse_equity"].includes(item?.assetClass)) return "Correlação";
@@ -5086,7 +5091,7 @@
       function DataLabLineChart({ active }) {
         const rawPoints = active?.performanceChart?.points || [];
         const fixedIncomeBenchmarkKey = rawPoints.some((point) => typeof point.cash === "number") ? "cash" : "sp500";
-        const benchmarkKey = active?.assetClass === "volatility" ? null : active?.assetClass === "fixed_income" ? fixedIncomeBenchmarkKey : "sp500";
+        const benchmarkKey = active?.ticker === "ITPE" || active?.assetClass === "volatility" ? null : active?.assetClass === "fixed_income" ? fixedIncomeBenchmarkKey : "sp500";
         const benchmarkLabel = benchmarkKey ? (active?.assetClass === "fixed_income" && benchmarkKey === "cash" ? "Fed Funds" : "S&P 500") : "";
         const hasBenchmark = benchmarkKey ? rawPoints.some((point) => typeof point[benchmarkKey] === "number") : false;
         const points = rawPoints.filter((point) => {
