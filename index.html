@@ -4898,6 +4898,7 @@
           : label;
 
       const DATA_LAB_GROUPS = ["Fixed Income", "Core Equities", "Setoriais", "Satélites EUA", "Temas Europeus", "China / China+1", "Hedge"];
+      const NASDAQ_BENCHMARK_TICKERS = new Set(["JEPQ", "QYLD", "QQEW", "PSQ", "QID", "SQQQ"]);
 
       const dataLabGroupFor = (item) => {
         const category = (item?.category || "").toLowerCase();
@@ -5046,7 +5047,7 @@
           return baseMetrics;
         }
         if (isMacro || isHedge || category.includes("gold") || category.includes("swiss franc")) {
-          return [...baseMetrics, ["correlation1yVsSp500", "Correlação vs S&P 500"]];
+          return [...baseMetrics, ["correlation1yVsSp500", NASDAQ_BENCHMARK_TICKERS.has(item?.ticker) ? "Correlação vs Nasdaq-100" : "Correlação vs S&P 500"]];
         }
         return DATA_LAB_METRICS;
       };
@@ -5055,6 +5056,7 @@
         if (item?.ticker === "ITPE") return "";
         if (item?.assetClass === "fixed_income") return "US Treasury 0-1y Index";
         if (item?.assetClass === "volatility") return "";
+        if (NASDAQ_BENCHMARK_TICKERS.has(item?.ticker)) return "Nasdaq-100";
         if (["commodity", "currency", "inverse_equity"].includes(item?.assetClass)) return "S&P 500";
         return "S&P 500";
       };
@@ -5091,8 +5093,8 @@
       function DataLabLineChart({ active }) {
         const rawPoints = active?.performanceChart?.points || [];
         const fixedIncomeBenchmarkKey = rawPoints.some((point) => typeof point.cash === "number") ? "cash" : "sp500";
-        const benchmarkKey = active?.ticker === "ITPE" || active?.assetClass === "volatility" ? null : active?.assetClass === "fixed_income" ? fixedIncomeBenchmarkKey : "sp500";
-        const benchmarkLabel = benchmarkKey ? (active?.assetClass === "fixed_income" && benchmarkKey === "cash" ? "Fed Funds" : "S&P 500") : "";
+        const benchmarkKey = active?.ticker === "ITPE" || active?.assetClass === "volatility" ? null : active?.assetClass === "fixed_income" ? fixedIncomeBenchmarkKey : NASDAQ_BENCHMARK_TICKERS.has(active?.ticker) ? "qqq" : "sp500";
+        const benchmarkLabel = benchmarkKey ? (active?.assetClass === "fixed_income" && benchmarkKey === "cash" ? "Fed Funds" : benchmarkKey === "qqq" ? "Nasdaq-100" : "S&P 500") : "";
         const hasBenchmark = benchmarkKey ? rawPoints.some((point) => typeof point[benchmarkKey] === "number") : false;
         const points = rawPoints.filter((point) => {
           const hasEtf = typeof point.etf === "number" && Number.isFinite(point.etf);
@@ -7359,7 +7361,7 @@
         "Conteúdo informativo e educacional. Não constitui recomendação de investimento ou tributária. Dados podem estar defasados, aproximados ou sujeitos a revisão.";
 
       const DATALAB_DISCLAIMER_EXTRA =
-        "Retorno total aproximado via adjusted close; dados sujeitos a atraso e revisão.";
+        "Retorno total aproximado via adjusted close; S&P 500 aproximado por SPY e Nasdaq-100 aproximado por QQQ; dados sujeitos a atraso e revisão.";
 
       function Disclaimer({ full = false, dataLab = false, methodNote = null }) {
         return React.createElement(
