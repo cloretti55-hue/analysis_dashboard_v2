@@ -4769,7 +4769,7 @@
       };
 
       MODULE_COPY.satellites = {
-        title: "Satélites devem combinar convexidade, veículo correto e tamanho de risco",
+        title: "Satélites combinam convexidade, veículo e tamanho de risco",
         lead: "A alocação satélite não é lista de temas: cada tese precisa casar motor econômico, instrumento e risco de implementação.",
         thesis: "Convexidade",
         subtitle: "ETF vs cesta",
@@ -5331,7 +5331,7 @@
                     React.createElement("span", null, "Veículo", React.createElement("b", null, active.wrapper || "n/d")),
                     React.createElement("span", null, "Moeda", React.createElement("b", null, active.currency || "n/d")),
                     activeBenchmarkLabel ? React.createElement("span", null, "Benchmark", React.createElement("b", null, activeBenchmarkLabel)) : null,
-                    activeReferenceLabel ? React.createElement("span", null, "Refer?ncia", React.createElement("b", null, activeReferenceLabel)) : null,
+                    activeReferenceLabel ? React.createElement("span", null, "Referência", React.createElement("b", null, activeReferenceLabel)) : null,
                     active.assetClass === "equity" && dataLabGroupFor(active) !== "Hedge" && active.valuation?.source ? React.createElement("span", null, "P/E", React.createElement("b", null, active.valuation.asOf || "manual")) : null,
                     active.performanceChart?.startDate ? React.createElement("span", null, "Histórico", React.createElement("b", null, active.performanceChart.startDate)) : null,
                     active.status !== "ok" ? React.createElement("span", null, "Status", React.createElement("b", null, "manual")) : null
@@ -5885,9 +5885,9 @@
       }
 
       const CORE_FUNCTIONS = [
-        { fn: "Beta estrutural EUA", why: "Baixo custo, replicação eficiente e longo prazo.", tickers: ["VOO", "CSPX", "VUAA"], note: "Preferir UCITS Acc para offshore não-US quando fiscalmente adequado." },
-        { fn: "Execução / hedge EUA", why: "Liquidez, opções e profundidade de mercado.", tickers: ["SPY"], note: "Melhor para puts, collars, overlays e rebalanceamento tático." },
-        { fn: "Growth estrutural", why: "Nasdaq-100 com menor custo ou versão UCITS.", tickers: ["QQQM", "CNDX", "EQQQ"], note: "QQQ executa melhor; QQQM/UCITS carregam melhor." },
+        { fn: "Beta estrutural EUA", why: "Baixo custo, replicação eficiente e longo prazo.", tickers: ["VOO", "CSPX", "VUAA"], note: "UCITS Acc pode fazer sentido para offshore não-US quando fiscalmente adequado." },
+        { fn: "Execução / hedge EUA", why: "Liquidez, opções e profundidade de mercado.", tickers: ["SPY"], note: "Usado com frequência em puts, collars, overlays e rebalanceamento tático." },
+        { fn: "Growth estrutural", why: "Nasdaq-100 com menor custo ou versão UCITS.", tickers: ["QQQM", "CNDX", "EQQQ"], note: "QQQ tende a ser mais ligado à execução; QQQM/UCITS tendem ao carregamento." },
         { fn: "Growth tático / hedge", why: "Opções profundas e liquidez superior.", tickers: ["QQQ"], note: "Instrumento de trading, não necessariamente melhor veículo fiscal." },
         { fn: "Redução de concentração", why: "Reduz dominância das mega caps.", tickers: ["RSP"], note: "Aumenta exposição a cíclicas e risco de juros." },
         { fn: "Core global desenvolvido", why: "MSCI World com peso relevante em EUA.", tickers: ["IWDA", "SWDA"], note: "Serve para simplificar core global, não para reduzir EUA." },
@@ -6112,11 +6112,11 @@
         IBTM: ["Duration média", "iShares $ Treasury Bond 7-10yr UCITS ETF USD Acc.", "Hedge parcial contra queda de juros.", ["Mais sensível ao ciclo de política monetária.", "Pode ajudar quando a tese pede queda de juros.", "Exige mais convicção do que os vértices curtos."]],
         DTLA: ["Duration longa", "iShares $ Treasury Bond 20+yr UCITS ETF USD Acc.", "Posição direcional em queda de juros.", ["Alta sensibilidade a juros longos.", "Potencial de ganho maior se yields comprimirem.", "Volatilidade relevante; não é simples caixa remunerado."]],
         TIP5: ["Inflação curta", "iShares $ TIPS 0-5 UCITS ETF USD Acc.", "Proteção inflacionária com duration menor.", ["Combina juro real positivo com menor duration.", "Mais alinhado a carrego real do que a aposta em juros longos.", "Evita misturar inflação com duration excessiva."]],
-        ITPS: ["Inflação ampla", "iShares $ TIPS UCITS ETF Acc.", "Inflação americana com mais duration.", ["Protege contra inflação realizada em uma cesta mais ampla.", "Traz mais sensibilidade a juros reais.", "Útil quando a carteira aceita mais duration."]],
+        ITPS: ["Inflação ampla", "iShares $ TIPS UCITS ETF Acc.", "Inflação americana com mais duration.", ["Oferece exposição à inflação realizada em uma cesta mais ampla.", "Traz mais sensibilidade a juros reais.", "Pode compor carteiras que aceitam mais duration."]],
         ITPE: ["Inflação ampla", "iShares $ TIPS UCITS ETF Acc.", "Inflação americana com mais duration.", ["Alternativa para exposição ampla a TIPS.", "A escolha final depende da bolsa/listagem e política operacional.", "Comparar custo, tracking e moeda de negociação."]],
         LQDA: ["Crédito IG USD", "iShares $ Corp Bond UCITS ETF USD Acc.", "Spread corporativo investment grade.", ["Adiciona prêmio de crédito com qualidade maior.", "Não substitui Treasury como hedge de crise.", "Sensível a spread, duration e ciclo corporativo."]],
-        IHYA: ["High Yield USD", "iShares $ High Yield Corp Bond UCITS ETF USD Acc.", "Crédito mais arriscado e yield maior.", ["Carrega mais spread e mais risco de default.", "Funciona melhor quando crédito e ciclo estão construtivos.", "Não deve ser tratado como renda fixa defensiva."]],
-        AGGU: ["Core bond global", "iShares Core Global Aggregate Bond UCITS ETF USD Acc.", "Diversificação global em bonds.", ["Combina governos e crédito global.", "Útil como peça ampla de renda fixa.", "Checar hedge cambial, duration e composição antes de usar como core."]],
+        IHYA: ["High Yield USD", "iShares $ High Yield Corp Bond UCITS ETF USD Acc.", "Crédito mais arriscado e yield maior.", ["Carrega mais spread e mais risco de default.", "Tende a se comportar melhor quando crédito e ciclo estão construtivos.", "Não costuma ser tratado como renda fixa defensiva."]],
+        AGGU: ["Core bond global", "iShares Core Global Aggregate Bond UCITS ETF USD Acc.", "Diversificação global em bonds.", ["Combina governos e crédito global.", "Pode funcionar como peça ampla de renda fixa.", "Hedge cambial, duration e composição mudam a leitura como core."]],
         GLD: ["Hedge macro", "SPDR Gold Shares.", "ETF de ouro físico com alta liquidez.", ["Funciona como ativo real/monetário.", "Ajuda em choques de confiança e regimes adversos.", "Mais usado quando liquidez e profundidade importam."]],
         IAU: ["Hedge macro", "iShares Gold Trust.", "ETF de ouro físico com custo competitivo.", ["Alternativa eficiente para carregar exposição a ouro.", "Útil como diversificador macro de longo prazo.", "Menor foco em trading pesado do que GLD."]],
         "FXF / CHF": ["Hedge macro", "Invesco CurrencyShares Swiss Franc Trust.", "Exposição ao franco suíço contra o dólar.", ["Refúgio histórico em choques de confiança.", "Baixo carrego, liquidez menor que grandes ETFs e risco de intervenção do SNB.", "Dólar é o hedge natural contra Brasil. Franco suíço é hedge de qualidade monetária. Ouro é hedge de regime."]],
@@ -6201,7 +6201,7 @@
           implementation: "ETF",
           reading: "Demanda estrutural, recorrente e menos dependente de CAPEX físico.",
           names: ["Palo Alto", "CrowdStrike", "Fortinet", "Zscaler"],
-          points: ["ETF funciona, mas a composição deve ser monitorada.", "Tema recorrente dentro de segurança digital.", "Menos binário do que quantum ou data centers físicos."],
+          points: ["ETF representa o tema, mas a composição merece acompanhamento.", "Tema recorrente dentro de segurança digital.", "Menos binário do que quantum ou data centers físicos."],
         },
         {
           theme: "Robotics / automação",
@@ -6341,7 +6341,7 @@
           implementation: "Cesta pequena",
           reading: "Opcionalidade alta, baixa previsibilidade e dispersão extrema de resultados.",
           names: ["IBM", "IonQ", "Rigetti", "D-Wave", "Microsoft"],
-          points: ["Tamanho inicial deve ser controlado.", "O tema ainda está escolhendo vencedores.", "ETF pode misturar empresas pouco expostas ao motor real."],
+          points: ["A exposição inicial costuma ser tratada com parcimônia.", "O tema ainda está escolhendo vencedores.", "ETF pode misturar empresas pouco expostas ao motor real."],
         },
       ];
 
@@ -6829,7 +6829,7 @@
           does: "Combina reserva de valor, moeda forte e proteção de regime.",
           use: "Diversificar risco de moeda, confiança institucional e choques macro.",
           limit: "Não é hedge perfeito de queda de bolsa; pode ficar parado em bull market.",
-          reading: "Dólar protege contra Brasil. Franco suíço protege qualidade monetária. Ouro protege regime.",
+          reading: "Dólar é referência de proteção contra Brasil. Franco suíço expressa qualidade monetária. Ouro funciona como hedge de regime.",
           examples: ["GLD: ouro físico com alta liquidez", "IAU: ouro físico com custo competitivo", "FXF / CHF: exposição ao franco suíço"],
         },
         {
@@ -6865,7 +6865,7 @@
           does: "Ganha quando a volatilidade implícita dispara.",
           use: "Stress curto, evento específico ou proteção tática.",
           limit: "Decay e rolagem tornam o carregamento caro.",
-          reading: "Funciona melhor como proteção de emergência.",
+          reading: "Tende a funcionar como proteção de emergência.",
           examples: ["VIXY: futuros curtos de VIX", "VXX: ETN de futuros curtos", "UVXY: alavancado", "UCITS: alternativa offshore"],
         },
         {
@@ -6900,7 +6900,7 @@
           instruments: "RSP, QQEW, USMV",
           does: "Reduz dependência de mega caps e liderança estreita.",
           use: "Quando o risco principal é concentração em poucos nomes.",
-          limit: "Não protege queda geral do mercado.",
+          limit: "Não costuma mitigar queda geral do mercado.",
           reading: "Hedge de concentração, não de crash.",
           examples: ["RSP: S&P 500 equal weight", "QQEW: Nasdaq 100 equal weight", "USMV: min-vol com viés defensivo"],
         },
@@ -6997,7 +6997,7 @@
               { className: "detail-grid" },
               React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Instrumentos"), React.createElement("strong", null, active.instruments)),
               React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "O que faz"), React.createElement("strong", null, active.does)),
-              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Uso correto"), React.createElement("strong", null, active.use)),
+              React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Uso t?pico"), React.createElement("strong", null, active.use)),
               React.createElement("div", { className: "detail-box" }, React.createElement("span", null, "Limitação"), React.createElement("strong", null, active.limit))
             ),
             React.createElement("p", null, active.reading),
