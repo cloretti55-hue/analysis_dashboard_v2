@@ -5394,12 +5394,19 @@
                     "div",
                     { className: "data-lab-metrics" },
                     dataLabMetricsFor(active).filter(([key]) => !key.startsWith("correlation") || valueAtPath(active, key) !== undefined).map(([key, label]) =>
-                      React.createElement(
-                        "div",
-                        { className: "data-lab-metric", key },
-                        React.createElement("span", null, renderMetricLabel(label)),
-                        React.createElement("strong", null, fmtDataLabMetric(key, valueAtPath(active, key)))
-                      )
+                      {
+                        const metricValue =
+                          (active?.ticker === "ITPE" && ["return3yAnnPct", "return5yAnnPct"].includes(key)) ||
+                          (active?.ticker === "JEPQ" && key === "return5yAnnPct")
+                            ? undefined
+                            : valueAtPath(active, key);
+                        return React.createElement(
+                          "div",
+                          { className: "data-lab-metric", key },
+                          React.createElement("span", null, renderMetricLabel(label)),
+                          React.createElement("strong", null, fmtDataLabMetric(key, metricValue))
+                        );
+                      }
                     )
                   ),
                   React.createElement(
