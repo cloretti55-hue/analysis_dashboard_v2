@@ -248,7 +248,8 @@
         padding: 14px 16px;
         color: var(--muted);
         font-size: 12px;
-        font-weight: 720;
+        font-weight: 400;
+        font-style: italic;
         line-height: 1.45;
       }
 
@@ -262,6 +263,8 @@
         color: var(--ink);
         font-size: 12px;
         text-transform: uppercase;
+        font-style: normal;
+        font-weight: 720;
       }
 
       .disclaimer-panel .method-note {
@@ -5081,11 +5084,17 @@
         path.split(".").reduce((acc, key) => (acc && acc[key] !== undefined ? acc[key] : undefined), object);
 
       function DataLabLineChart({ active }) {
-        const points = active?.performanceChart?.points || [];
-        const fixedIncomeBenchmarkKey = points.some((point) => typeof point.cash === "number") ? "cash" : "sp500";
+        const rawPoints = active?.performanceChart?.points || [];
+        const fixedIncomeBenchmarkKey = rawPoints.some((point) => typeof point.cash === "number") ? "cash" : "sp500";
         const benchmarkKey = active?.assetClass === "volatility" ? null : active?.assetClass === "fixed_income" ? fixedIncomeBenchmarkKey : "sp500";
         const benchmarkLabel = benchmarkKey ? (active?.assetClass === "fixed_income" && benchmarkKey === "cash" ? "Fed Funds" : "S&P 500") : "";
-        const hasBenchmark = benchmarkKey ? points.some((point) => typeof point[benchmarkKey] === "number") : false;
+        const hasBenchmark = benchmarkKey ? rawPoints.some((point) => typeof point[benchmarkKey] === "number") : false;
+        const points = rawPoints.filter((point) => {
+          const hasEtf = typeof point.etf === "number" && Number.isFinite(point.etf);
+          if (!hasEtf) return false;
+          if (!hasBenchmark) return true;
+          return typeof point[benchmarkKey] === "number" && Number.isFinite(point[benchmarkKey]);
+        });
         const values = points.flatMap((point) => [point.etf, hasBenchmark ? point[benchmarkKey] : null]).filter((value) => typeof value === "number" && Number.isFinite(value));
         const minValue = Math.floor(Math.min(...values, 95) / 5) * 5;
         const maxValue = Math.ceil(Math.max(...values, 105) / 5) * 5;
