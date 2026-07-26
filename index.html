@@ -152,16 +152,53 @@
       }
 
       .home-layout {
+        position: relative;
         display: grid;
         gap: 18px;
+        padding: 0;
+        isolation: isolate;
+      }
+
+      .home-layout::before {
+        content: "";
+        position: absolute;
+        inset: -18px;
+        z-index: -2;
+        border-radius: 14px;
+        background:
+          linear-gradient(90deg, rgba(5, 13, 25, 0.74), rgba(5, 13, 25, 0.24) 48%, rgba(5, 13, 25, 0.04)),
+          url("assets/themes/home-market-background.png") center / cover no-repeat;
+        opacity: 0.9;
+      }
+
+      body.theme-light .home-layout::before {
+        background:
+          linear-gradient(90deg, rgba(244, 247, 251, 0.9), rgba(244, 247, 251, 0.58) 48%, rgba(244, 247, 251, 0.08)),
+          url("assets/themes/home-market-background.png") center / cover no-repeat;
+        opacity: 1;
       }
 
       .home-hero {
+        position: relative;
+        overflow: hidden;
         padding: 24px;
         display: grid;
         grid-template-columns: minmax(0, 1fr) auto;
         gap: 18px;
         align-items: end;
+      }
+
+      .home-hero::before {
+        content: none;
+      }
+
+      body.theme-light .home-hero::before {
+        content: none;
+      }
+
+      .home-hero > * {
+        position: relative;
+        z-index: 1;
       }
 
       .home-hero h2 {
@@ -196,10 +233,11 @@
 
       .home-card {
         min-height: 220px;
-        border: 1px solid var(--line);
+        border: 1px solid rgba(255, 255, 255, 0.24);
         border-radius: 8px;
         padding: 18px;
-        background: rgba(255, 255, 255, 0.04);
+        background: rgba(7, 17, 29, 0.46);
+        backdrop-filter: blur(12px);
         color: var(--ink);
         text-align: left;
         display: grid;
@@ -208,7 +246,8 @@
       }
 
       body.theme-light .home-card {
-        background: rgba(10, 32, 55, 0.04);
+        border-color: rgba(23, 48, 77, 0.24);
+        background: rgba(255, 255, 255, 0.58);
       }
 
       .home-card:hover {
@@ -237,11 +276,11 @@
 
       .brand-credit {
         justify-self: end;
-        color: var(--muted);
+        color: #000;
         font-size: 11px;
         font-weight: 850;
         letter-spacing: 0;
-        opacity: 0.68;
+        opacity: 0.82;
       }
 
       .disclaimer-panel {
@@ -692,6 +731,43 @@
         display: grid;
         grid-template-columns: 300px minmax(0, 1fr);
         gap: 18px;
+      }
+
+      .work-surface {
+        position: relative;
+        isolation: isolate;
+      }
+
+      .work-surface::before {
+        content: "";
+        position: absolute;
+        inset: -18px;
+        z-index: -1;
+        pointer-events: none;
+        border-radius: 14px;
+        background:
+          linear-gradient(110deg, rgba(72, 214, 233, 0.055) 1px, transparent 1px),
+          linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.025)),
+          radial-gradient(circle at 88% 8%, rgba(72, 214, 233, 0.1), transparent 24%);
+        background-size: 54px 54px, auto, auto;
+        opacity: 0.7;
+      }
+
+      body.theme-light .work-surface::before {
+        background:
+          linear-gradient(110deg, rgba(23, 48, 77, 0.052) 1px, transparent 1px),
+          linear-gradient(180deg, transparent, rgba(23, 48, 77, 0.026)),
+          radial-gradient(circle at 88% 8%, rgba(4, 122, 148, 0.09), transparent 24%);
+        background-size: 54px 54px, auto, auto;
+        opacity: 0.82;
+      }
+
+      .work-surface .panel {
+        border-color: rgba(116, 151, 190, 0.32);
+      }
+
+      body.theme-light .work-surface .panel {
+        border-color: rgba(23, 48, 77, 0.18);
       }
 
       .panel {
@@ -1879,7 +1955,7 @@
 
       .pe-history-svg {
         width: 100%;
-        height: 300px;
+        height: 240px;
         overflow: visible;
       }
 
@@ -1920,8 +1996,22 @@
 
       .pe-history-kpis {
         display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 10px;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .pe-history-kpis .valuation-metric {
+        padding: 8px 10px;
+      }
+
+      .pe-history-kpis .valuation-metric span {
+        font-size: 10px;
+        letter-spacing: 0.02em;
+      }
+
+      .pe-history-kpis .valuation-metric strong {
+        margin-top: 4px;
+        font-size: 18px;
       }
 
       .pe-history-legend {
@@ -4302,7 +4392,7 @@
         return React.createElement(
           "div",
           { className: "equity-pe-chart" },
-          React.createElement("h2", null, "Leitura Relativa: Segmentos de Mercado"),
+          React.createElement("h2", null, "Segmentos de mercado"),
           React.createElement(
             "div",
             { className: "pe-bars" },
@@ -4368,8 +4458,8 @@
         return React.createElement(
           "div",
           { className: "valuation-context" },
-          React.createElement("span", { className: "control-title" }, "S&P 500 em contexto"),
-          React.createElement("h2", null, "Leitura Histórica: S&P 500"),
+          React.createElement("span", { className: "control-title" }, "Histórico de Forward P/E"),
+          React.createElement("h2", null, "S&P 500 vs médias"),
           React.createElement(
             "div",
             { className: "forward-average-chart" },
@@ -4692,7 +4782,7 @@
                 React.createElement(
                   "div",
                   null,
-                  React.createElement("span", { className: "control-title" }, "Valuation relativo")
+                  React.createElement("span", { className: "control-title" }, "Forward P/E")
                 )
               ),
               React.createElement(EquityPeChart, { valuationData })
@@ -4767,7 +4857,7 @@
 
         return React.createElement(
           "main",
-          { className: "equity-layout" },
+          { className: "equity-layout work-surface" },
           filter,
           equityView === "broad" ? broadView : megaView
         );
@@ -5300,7 +5390,7 @@
 
         return React.createElement(
           "main",
-          { className: "data-lab-layout" },
+          { className: "data-lab-layout work-surface" },
           React.createElement(
             "section",
             { className: "panel data-lab-list" },
@@ -7340,7 +7430,7 @@
 
         return React.createElement(
           "main",
-          { className: "etf-shell" },
+          { className: "etf-shell work-surface" },
           React.createElement(
             "nav",
             { className: "panel etf-subtabs", "aria-label": "Submódulos de ETFs" },
@@ -7814,7 +7904,7 @@
             : activeModule === "curve"
             ? React.createElement(
             "main",
-            { className: "layout" },
+            { className: "layout work-surface" },
             React.createElement(
               "aside",
               { className: "controls panel" },
