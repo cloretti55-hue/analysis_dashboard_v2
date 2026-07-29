@@ -24,7 +24,7 @@
       "30Y": "2026-07-28"
     }
   },
-  "updatedAt": "2026-07-29T16:31:38+00:00",
+  "updatedAt": "2026-07-29T18:17:40+00:00",
   "source": "U.S. Treasury / Federal Reserve GSW TIPS model",
   "methodology": "Nominal yields use the U.S. Treasury Daily Treasury Par Yield Curve Rates. Real yields use the U.S. Treasury Daily Treasury Real Yield Curve Rates for 5Y, 7Y, 10Y and 30Y; 2Y real uses TIPSPY02 from the Federal Reserve Gürkaynak-Sack-Wright TIPS yield curve model. Implied inflation is calculated with Fisher: (1+nominal)/(1+real)-1.",
   "series": {
