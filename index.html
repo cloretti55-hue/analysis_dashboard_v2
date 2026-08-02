@@ -448,6 +448,15 @@
         background: #07111d;
       }
 
+      .theme-image-card.is-wide {
+        grid-column: 1 / -1;
+      }
+
+      .theme-image-card.is-wide img {
+        height: clamp(420px, 48vw, 680px);
+        object-fit: contain;
+      }
+
       .theme-image-caption {
         padding: 14px 16px;
       }
@@ -617,6 +626,10 @@
 
         .theme-image-card.is-tall img {
           height: 440px;
+        }
+
+        .theme-image-card.is-wide img {
+          height: 300px;
         }
 
         .image-lightbox {
@@ -5642,6 +5655,7 @@
             {
               src: "assets/themes/commodities-sp500-10y.png",
               title: "Commodities e S&P 500: desempenho relativo",
+              layout: "wide",
               comment: "O gráfico compara commodities, S&P 500 e CPI em base 100 e eixo logarítmico. A mensagem central é que commodities não se movem como um bloco único: correlação, volatilidade e regime importam mais do que o rótulo da classe.",
             },
           ],
@@ -6052,7 +6066,7 @@
                         React.createElement(
                           "button",
                           {
-                            className: `panel theme-image-card ${image.layout === "tall" ? "is-tall" : ""}`,
+                            className: `panel theme-image-card ${image.layout === "tall" ? "is-tall" : ""} ${image.layout === "wide" ? "is-wide" : ""}`,
                             key: image.src,
                             type: "button",
                             onClick: () => openImage(image, index),
