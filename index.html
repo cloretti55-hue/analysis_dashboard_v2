@@ -525,8 +525,10 @@
       }
 
       .image-lightbox img {
+        display: block;
         width: 100%;
         height: auto;
+        margin: 0 auto;
         object-fit: initial;
         border-radius: 8px;
         background: #fff;
@@ -5989,7 +5991,7 @@
         };
 
         const adjustImageZoom = (delta) => {
-          setImageZoom((value) => Math.min(2.5, Math.max(1, Number((value + delta).toFixed(2)))));
+          setImageZoom((value) => Math.min(2.5, Math.max(0.5, Number((value + delta).toFixed(2)))));
         };
 
         return React.createElement(
@@ -6109,7 +6111,7 @@
                       React.createElement(
                         "div",
                         { className: "image-zoom-controls", "aria-label": "Controles de zoom da imagem" },
-                        React.createElement("button", { type: "button", onClick: () => adjustImageZoom(-0.25), disabled: imageZoom <= 1 }, "-"),
+                        React.createElement("button", { type: "button", onClick: () => adjustImageZoom(-0.25), disabled: imageZoom <= 0.5 }, "-"),
                         React.createElement("span", null, `${Math.round(imageZoom * 100)}%`),
                         React.createElement("button", { type: "button", onClick: () => adjustImageZoom(0.25), disabled: imageZoom >= 2.5 }, "+"),
                         React.createElement("button", { type: "button", onClick: () => setImageZoom(1) }, "100%")
