@@ -5005,7 +5005,6 @@
       }
 
       const DATA_LAB_METRICS = [
-        ["valuation.peRatio", "P/E"],
         ["returnYtdPct", "YTD"],
         ["return1yPct", "1 ano"],
         ["return3yAnnPct", "Retorno anualizado 3 anos"],
@@ -5159,7 +5158,7 @@
         const isMacro = ["commodity", "currency", "inverse_equity"].includes(assetClass);
         const isFixedIncome = assetClass === "fixed_income";
         const isHedge = dataLabGroupFor(item) === "Hedge";
-        const baseMetrics = DATA_LAB_METRICS.filter(([key]) => key !== "beta1yVsSp500" && key !== "valuation.peRatio");
+        const baseMetrics = DATA_LAB_METRICS.filter(([key]) => key !== "beta1yVsSp500");
         if (item?.ticker === "ITPE") {
           return baseMetrics;
         }
@@ -5511,7 +5510,6 @@
                     React.createElement("span", null, "Moeda", React.createElement("b", null, active.currency || "n/d")),
                     activeBenchmarkLabel ? React.createElement("span", null, "Benchmark", React.createElement("b", null, activeBenchmarkLabel)) : null,
                     activeReferenceLabel ? React.createElement("span", null, "Referência", React.createElement("b", null, activeReferenceLabel)) : null,
-                    active.assetClass === "equity" && dataLabGroupFor(active) !== "Hedge" && active.valuation?.source ? React.createElement("span", null, "P/E", React.createElement("b", null, formatDatePtBr(active.valuation.asOf) || "manual")) : null,
                     active.performanceChart?.startDate ? React.createElement("span", null, "Histórico", React.createElement("b", null, formatDatePtBr(active.performanceChart.startDate))) : null,
                     active.status !== "ok" ? React.createElement("span", null, "Status", React.createElement("b", null, "manual")) : null
                   ),
