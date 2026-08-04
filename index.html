@@ -538,10 +538,17 @@
 
       .image-lightbox-caption {
         color: #f6fbff;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: end;
+        gap: 16px;
+      }
+
+      .image-lightbox-actions {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        gap: 16px;
+        justify-content: flex-end;
+        gap: 10px;
         flex-wrap: wrap;
       }
 
@@ -635,7 +642,11 @@
 
         .image-lightbox-caption {
           align-items: flex-start;
-          flex-direction: column;
+          grid-template-columns: 1fr;
+        }
+
+        .image-lightbox-actions {
+          justify-content: flex-start;
         }
       }
 
@@ -5645,7 +5656,7 @@
               comment: "Exposição física, futuros e ações de produtoras não são equivalentes. Para medir a commodity, o veículo precisa capturar o preço físico ou futuro; para investir nas empresas, o risco passa a ser também operacional e acionário.",
             },
             {
-              src: "assets/themes/gold-silver-ratio.png",
+              src: "assets/themes/gold-silver-ratio2.png",
               title: "Ouro vs. prata: o que o ratio mede",
               comment: "O Gold/Silver Ratio é uma leitura de liderança relativa e regime, não uma régua fixa de valuation. A média depende da janela, dos fundamentos e da estabilidade estatística da relação.",
             },
@@ -5979,6 +5990,29 @@
           return () => window.removeEventListener("popstate", syncThemeFromHistory);
         }, []);
 
+        useEffect(() => {
+          if (!expandedImage) return undefined;
+
+          const body = document.body;
+          const root = document.documentElement;
+          const previousBodyStyles = {
+            overflow: body.style.overflow,
+            paddingRight: body.style.paddingRight,
+          };
+          const previousRootOverflow = root.style.overflow;
+          const scrollbarWidth = window.innerWidth - root.clientWidth;
+
+          root.style.overflow = "hidden";
+          body.style.overflow = "hidden";
+          if (scrollbarWidth > 0) body.style.paddingRight = `${scrollbarWidth}px`;
+
+          return () => {
+            root.style.overflow = previousRootOverflow;
+            body.style.overflow = previousBodyStyles.overflow;
+            body.style.paddingRight = previousBodyStyles.paddingRight;
+          };
+        }, [expandedImage]);
+
         const selectTheme = (key) => {
           setSelectedTheme(key);
           setExpandedImage(null);
@@ -6121,13 +6155,17 @@
                       ),
                       React.createElement(
                         "div",
-                        { className: "image-zoom-controls", "aria-label": "Controles de zoom da imagem" },
-                        React.createElement("button", { type: "button", onClick: () => adjustImageZoom(-0.25), disabled: imageZoom <= 0.5 }, "-"),
-                        React.createElement("span", null, `${Math.round(imageZoom * 100)}%`),
-                        React.createElement("button", { type: "button", onClick: () => adjustImageZoom(0.25), disabled: imageZoom >= 2.5 }, "+"),
-                        React.createElement("button", { type: "button", onClick: () => setImageZoom(1) }, "100%")
-                      ),
-                      React.createElement("button", { type: "button", onClick: closeImage }, "Fechar")
+                        { className: "image-lightbox-actions" },
+                        React.createElement(
+                          "div",
+                          { className: "image-zoom-controls", "aria-label": "Controles de zoom da imagem" },
+                          React.createElement("button", { type: "button", onClick: () => adjustImageZoom(-0.25), disabled: imageZoom <= 0.5 }, "-"),
+                          React.createElement("span", null, `${Math.round(imageZoom * 100)}%`),
+                          React.createElement("button", { type: "button", onClick: () => adjustImageZoom(0.25), disabled: imageZoom >= 2.5 }, "+"),
+                          React.createElement("button", { type: "button", onClick: () => setImageZoom(1) }, "100%")
+                        ),
+                        React.createElement("button", { type: "button", onClick: closeImage }, "Fechar")
+                      )
                     )
                   )
                 )
