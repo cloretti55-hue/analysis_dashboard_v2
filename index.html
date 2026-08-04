@@ -3120,62 +3120,6 @@
         line-height: 1.45;
       }
 
-      .dataset-status-stack {
-        display: grid;
-        gap: 8px;
-        margin: 0;
-      }
-
-      .dataset-status-line {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 7px;
-        padding: 8px 10px;
-        border: 1px solid rgba(222, 233, 247, 0.12);
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.025);
-        color: var(--muted);
-        font-size: 11px;
-        line-height: 1.4;
-      }
-
-      .dataset-status-line strong {
-        color: var(--ink);
-      }
-
-      .dataset-status-badge {
-        display: inline-flex;
-        align-items: center;
-        min-height: 22px;
-        padding: 2px 7px;
-        border: 1px solid rgba(72, 214, 233, 0.28);
-        border-radius: 999px;
-        color: var(--nominal);
-        font-size: 10px;
-        font-weight: 850;
-        letter-spacing: 0.02em;
-        text-transform: uppercase;
-      }
-
-      .dataset-status-badge[data-status="stale"],
-      .dataset-status-badge[data-status="partial"],
-      .dataset-status-badge[data-status="manual"] {
-        border-color: rgba(255, 174, 107, 0.35);
-        color: var(--inflation);
-      }
-
-      .dataset-status-badge[data-status="error"],
-      .dataset-status-badge[data-status="unavailable"] {
-        border-color: rgba(255, 107, 138, 0.38);
-        color: var(--negative);
-      }
-
-      .dataset-status-message {
-        flex-basis: 100%;
-        color: var(--negative);
-      }
-
       .satellite-list {
         display: grid;
         gap: 8px;
@@ -4036,214 +3980,14 @@
           : String(text).replace(/\b(\d{4})-(\d{2})-(\d{2})\b/g, (_, year, month, day) => `${day}/${month}/${year}`);
       }
 
-      const DATASET_DEFINITIONS = {
-        "curve-us": { path: "data/curve-us.json", validate: (payload) => Boolean(payload?.curves) },
-        "fed-policy": { path: "data/fed-policy.json", validate: (payload) => Boolean(payload?.targetRange && payload?.marketProbability) },
-        "equity-valuation": { path: "data/equity-valuation.json", validate: (payload) => Array.isArray(payload?.items) },
-        "sp500-valuation": { path: "data/sp500-valuation.json", validate: (payload) => Boolean(payload?.sp500) },
-        "sp500-pe-history": { path: "data/sp500-pe-history.json", validate: (payload) => Array.isArray(payload?.monthly) },
-        "mag7-valuation": { path: "data/mag7-valuation.json", validate: (payload) => Array.isArray(payload?.companies) },
-        "etf-performance": { path: "data/etf-performance.json", validate: (payload) => Array.isArray(payload?.instruments) },
-        "fixed-income-performance": { path: "data/fixed-income-performance.json", validate: (payload) => Array.isArray(payload?.instruments) },
-        "etf-geography": { path: "data/etf-geography.json", validate: (payload) => Boolean(payload?.instruments) },
-      };
-
-      function datasetDateValue(value) {
-        const time = value ? Date.parse(value) : NaN;
-        return Number.isFinite(time) ? time : null;
-      }
-
-      function payloadIsNewerThanManifest(data, manifestEntry) {
-        if (!manifestEntry) return false;
-        const payloadDate = datasetDateValue(data?.asOf || data?.updatedAt || data?.generatedAt);
-        const manifestDate = datasetDateValue(manifestEntry.asOf);
-        return payloadDate !== null && manifestDate !== null && payloadDate > manifestDate;
-      }
-
-      function deriveDatasetStatus(data, manifestEntry) {
-        const instruments = Array.isArray(data?.instruments) ? data.instruments : [];
-        if (instruments.length) {
-          const errorCount = instruments.filter((item) => item.status === "error").length;
-          const staleCount = instruments.filter((item) => item.status === "stale").length;
-          if (errorCount > 0) return "partial";
-          if (staleCount === instruments.length) return "stale";
-          if (staleCount > 0) return "partial";
-        }
-
-        const asOf = datasetDateValue(data?.asOf);
-        const maxAgeDays = manifestEntry?.maxAgeDays;
-        if (asOf !== null && Number.isFinite(maxAgeDays)) {
-          const ageDays = Math.floor((Date.now() - asOf) / 86400000);
-          if (ageDays > maxAgeDays) return "stale";
-        }
-        return data?.status || "ok";
-      }
-
-      const DataClient = (() => {
-        let manifestPromise = null;
-        const datasetPromises = new Map();
-
-        const fetchJson = async (path) => {
-          const separator = path.includes("?") ? "&" : "?";
-          const response = await fetch(`${path}${separator}v=${Date.now()}`, { cache: "no-store" });
-          if (!response.ok) throw new Error(`HTTP ${response.status}`);
-          const contentType = response.headers.get("content-type") || "";
-          if (contentType && !contentType.includes("json")) throw new Error(`conteúdo inesperado: ${contentType}`);
-          return response.json();
-        };
-
-        const loadManifest = () => {
-          if (!manifestPromise) {
-            manifestPromise = fetchJson("data/manifest.json")
-              .then((data) => ({ data, error: null }))
-              .catch((error) => ({ data: null, error }));
-          }
-          return manifestPromise;
-        };
-
-        const load = (id) => {
-          if (datasetPromises.has(id)) return datasetPromises.get(id);
-
-          const promise = (async () => {
-            const definition = DATASET_DEFINITIONS[id];
-            if (!definition) {
-              return {
-                id,
-                ok: false,
-                data: null,
-                meta: { id, path: null, status: "unavailable", asOf: null, source: null, methodology: null, issues: [] },
-                error: new Error(`Dataset não registrado: ${id}`),
-              };
-            }
-
-            const manifestResult = await loadManifest();
-            const manifestEntry = manifestResult.data?.datasets?.find((item) => item.id === id) || null;
-            const path = manifestEntry?.path || definition.path;
-            const baseMeta = {
-              id,
-              path,
-              status: manifestEntry?.status || "unknown",
-              asOf: manifestEntry?.asOf || null,
-              source: manifestEntry?.producer || path,
-              methodology: null,
-              generatedAt: manifestResult.data?.generatedAt || null,
-              maxAgeDays: manifestEntry?.maxAgeDays ?? null,
-              issues: manifestEntry?.issues || [],
-              manifestAvailable: Boolean(manifestResult.data),
-            };
-
-            try {
-              const data = await fetchJson(path);
-              if (!definition.validate(data)) throw new Error("estrutura incompatível com o contrato do dataset");
-              const newerThanManifest = payloadIsNewerThanManifest(data, manifestEntry);
-              return {
-                id,
-                ok: true,
-                data,
-                meta: {
-                  ...baseMeta,
-                  status: newerThanManifest
-                    ? deriveDatasetStatus(data, manifestEntry)
-                    : (manifestEntry?.status || (manifestResult.data ? (data.status || "ok") : "unknown")),
-                  asOf: data.asOf || manifestEntry?.asOf || null,
-                  source: data.source || manifestEntry?.producer || path,
-                  methodology: data.methodology || null,
-                  generatedAt: data.generatedAt || data.updatedAt || baseMeta.generatedAt,
-                  issues: newerThanManifest
-                    ? []
-                    : manifestResult.error
-                    ? [{ severity: "warning", code: "manifest_unavailable", message: `Manifesto indisponível: ${manifestResult.error.message}` }]
-                    : baseMeta.issues,
-                  manifestOutdated: newerThanManifest,
-                },
-                error: manifestResult.error,
-              };
-            } catch (error) {
-              return {
-                id,
-                ok: false,
-                data: null,
-                meta: { ...baseMeta, status: "unavailable" },
-                error,
-              };
-            }
-          })();
-
-          datasetPromises.set(id, promise);
-          return promise;
-        };
-
-        const loadMany = async (ids) => Promise.all(ids.map((id) => load(id)));
-
-        return { load, loadMany, loadManifest };
-      })();
-
-      const DATASET_STATUS_LABELS = {
-        ok: "Atual",
-        stale: "Defasado",
-        partial: "Parcial",
-        manual: "Manual",
-        error: "Erro",
-        unavailable: "Indisponível",
-        unknown: "Sem manifesto",
-      };
-
-      function DatasetStatusLine({ result, label }) {
-        if (!result) {
-          return React.createElement(
-            "div",
-            { className: "dataset-status-line" },
-            React.createElement("strong", null, label),
-            React.createElement("span", null, "Carregando metadados...")
-          );
-        }
-
-        const meta = result.meta || {};
-        const status = result.ok ? (meta.status || "unknown") : "unavailable";
-        const issue = meta.issues?.[0]?.message;
-        const errorMessage = !result.ok ? result.error?.message : null;
-        return React.createElement(
-          "div",
-          { className: "dataset-status-line" },
-          React.createElement("strong", null, label || meta.id),
-          React.createElement("span", { className: "dataset-status-badge", "data-status": status }, DATASET_STATUS_LABELS[status] || status),
-          meta.asOf ? React.createElement("span", null, `Dados de ${formatDatePtBr(meta.asOf)}`) : null,
-          meta.source ? React.createElement("span", null, `Fonte: ${meta.source}`) : null,
-          errorMessage || issue
-            ? React.createElement("span", { className: "dataset-status-message" }, formatDatesInText(errorMessage || issue))
-            : null
-        );
-      }
-
-      function datasetFallbackResult(result, data, reason) {
-        return {
-          ...(result || {}),
-          ok: true,
-          data,
-          fallback: true,
-          meta: {
-            ...(result?.meta || {}),
-            status: "stale",
-            asOf: data?.asOf || result?.meta?.asOf || null,
-            source: `Snapshot embarcado (${result?.meta?.path || "interface"})`,
-            issues: [{ severity: "warning", code: "runtime_fallback", message: reason }],
-          },
-          error: result?.error || null,
-        };
-      }
-
       function curveSourceText(meta) {
         const asOf = formatDatePtBr(meta.asOf || DEFAULT_CURVE_META.asOf);
         const updatedAt = meta.updatedAt ? formatDatePtBr(meta.updatedAt.slice(0, 10)) : null;
         const real2yAsOf = meta.componentAsOf?.real?.["2Y"] ? formatDatePtBr(meta.componentAsOf.real["2Y"]) : null;
         const componentNote = real2yAsOf && real2yAsOf !== asOf ? `Nominal ate ${asOf}; real 2Y/TIPSPY02 ate ${real2yAsOf}.` : `Dados ate ${asOf}.`;
-        const state = meta.datasetStatus && meta.datasetStatus !== "ok"
-          ? ` Estado: ${DATASET_STATUS_LABELS[meta.datasetStatus] || meta.datasetStatus}.`
-          : "";
-        const error = meta.datasetError ? ` Falha no arquivo local: ${meta.datasetError}.` : "";
         return updatedAt
-          ? `${componentNote} Atualizado em ${updatedAt}. Base: ${meta.source || DEFAULT_CURVE_META.source}.${state}${error}`
-          : `${componentNote} Base: ${meta.source || DEFAULT_CURVE_META.source}.${state}${error}`;
+          ? `${componentNote} Atualizado em ${updatedAt}. Base: ${meta.source || DEFAULT_CURVE_META.source}.`
+          : `${componentNote} Base: ${meta.source || DEFAULT_CURVE_META.source}.`;
       }
 
       const DEFAULT_FED_POLICY = {
@@ -4967,55 +4711,49 @@
         const [sp500ValuationData, setSp500ValuationData] = useState(() => normalizeSp500ValuationData(SP500_VALUATION_SNAPSHOT));
         const [peHistoryData, setPeHistoryData] = useState(null);
         const [mag7ValuationData, setMag7ValuationData] = useState(MAG7_VALUATION_FALLBACK);
-        const [valuationResults, setValuationResults] = useState({});
         const [valuationReady, setValuationReady] = useState(false);
 
         useEffect(() => {
           let cancelled = false;
+          const version = Date.now();
+          const loadJson = (path) =>
+            fetch(`${path}?v=${version}`).then((response) => {
+              if (!response.ok) throw new Error(`HTTP ${response.status}`);
+              return response.json();
+            });
 
-          DataClient.loadMany([
-            "equity-valuation",
-            "sp500-valuation",
-            "sp500-pe-history",
-            "mag7-valuation",
+          Promise.allSettled([
+            loadJson("data/equity-valuation.json"),
+            loadJson("data/sp500-valuation.json"),
+            loadJson("data/sp500-pe-history.json"),
+            loadJson("data/mag7-valuation.json"),
           ]).then(([equityResult, sp500Result, historyResult, mag7Result]) => {
             if (cancelled) return;
 
-            let effectiveEquityResult = equityResult;
-            if (equityResult.ok) {
-              const normalized = normalizeEquityPeData(equityResult.data);
-              const useRemote = normalized && isAtLeastDate(normalized.asOf, EQUITY_VALUATION_SNAPSHOT.asOf);
+            if (equityResult.status === "fulfilled") {
+              const normalized = normalizeEquityPeData(equityResult.value);
               setValuationData(
-                useRemote ? normalized : normalizeEquityPeData(EQUITY_VALUATION_SNAPSHOT)
+                normalized && isAtLeastDate(normalized.asOf, EQUITY_VALUATION_SNAPSHOT.asOf)
+                  ? normalized
+                  : normalizeEquityPeData(EQUITY_VALUATION_SNAPSHOT)
               );
-              if (!useRemote) effectiveEquityResult = datasetFallbackResult(equityResult, EQUITY_VALUATION_SNAPSHOT, "O arquivo local é anterior ao snapshot embarcado.");
-            } else {
-              effectiveEquityResult = datasetFallbackResult(equityResult, EQUITY_VALUATION_SNAPSHOT, "O arquivo local não pôde ser carregado.");
             }
 
-            let effectiveSp500Result = sp500Result;
-            if (sp500Result.ok) {
-              const normalized = normalizeSp500ValuationData(sp500Result.data);
-              const useRemote = isAtLeastDate(normalized.asOf, SP500_VALUATION_SNAPSHOT.asOf);
+            if (sp500Result.status === "fulfilled") {
+              const normalized = normalizeSp500ValuationData(sp500Result.value);
               setSp500ValuationData(
-                useRemote ? normalized : normalizeSp500ValuationData(SP500_VALUATION_SNAPSHOT)
+                isAtLeastDate(normalized.asOf, SP500_VALUATION_SNAPSHOT.asOf)
+                  ? normalized
+                  : normalizeSp500ValuationData(SP500_VALUATION_SNAPSHOT)
               );
-              if (!useRemote) effectiveSp500Result = datasetFallbackResult(sp500Result, SP500_VALUATION_SNAPSHOT, "O arquivo local é anterior ao snapshot embarcado.");
-            } else {
-              effectiveSp500Result = datasetFallbackResult(sp500Result, SP500_VALUATION_SNAPSHOT, "O arquivo local não pôde ser carregado.");
             }
 
-            setPeHistoryData(historyResult.ok ? historyResult.data : null);
-            const effectiveMag7Result = mag7Result.ok && mag7Result.data?.companies?.length
-              ? mag7Result
-              : datasetFallbackResult(mag7Result, MAG7_VALUATION_FALLBACK, "O arquivo local não pôde ser carregado ou não contém empresas.");
-            setMag7ValuationData(effectiveMag7Result.data);
-            setValuationResults({
-              equity: effectiveEquityResult,
-              sp500: effectiveSp500Result,
-              history: historyResult,
-              mag7: effectiveMag7Result,
-            });
+            setPeHistoryData(historyResult.status === "fulfilled" ? historyResult.value : null);
+            setMag7ValuationData(
+              mag7Result.status === "fulfilled" && mag7Result.value?.companies?.length
+                ? mag7Result.value
+                : MAG7_VALUATION_FALLBACK
+            );
             setValuationReady(true);
           });
 
@@ -5154,13 +4892,6 @@
           "main",
           { className: "equity-layout work-surface" },
           filter,
-          React.createElement(
-            "section",
-            { className: "dataset-status-stack", "aria-label": "Estado das bases de valuation" },
-            React.createElement(DatasetStatusLine, { result: valuationResults.equity, label: "Valuation relativo" }),
-            React.createElement(DatasetStatusLine, { result: valuationResults.sp500, label: "S&P 500" }),
-            React.createElement(DatasetStatusLine, { result: equityView === "broad" ? valuationResults.history : valuationResults.mag7, label: equityView === "broad" ? "Histórico de P/E" : "Magnificent 7" })
-          ),
           equityView === "broad" ? broadView : megaView
         );
       }
@@ -5586,54 +5317,70 @@
       function DataLabModule() {
         const [data, setData] = useState(null);
         const [error, setError] = useState("");
-        const [performanceResult, setPerformanceResult] = useState(null);
-        const [fixedIncomeResult, setFixedIncomeResult] = useState(null);
         const [selectedTicker, setSelectedTicker] = useState("IB01");
         const [selectedGroup, setSelectedGroup] = useState("Fixed Income");
 
         useEffect(() => {
           let cancelled = false;
-          DataClient.loadMany(["etf-performance", "fixed-income-performance"])
-            .then(([mainResult, fixedResult]) => {
-              if (cancelled) return;
-              setPerformanceResult(mainResult);
-              setFixedIncomeResult(fixedResult);
+          const sources = [
+            `data/etf-performance.json?v=${Date.now()}`,
+            `https://raw.githubusercontent.com/cloretti55-hue/analysis_dashboard_v3/main/data/etf-performance.json?v=${Date.now()}`,
+          ];
+          const fixedIncomeSources = [
+            `data/fixed-income-performance.json?v=${Date.now()}`,
+            `https://raw.githubusercontent.com/cloretti55-hue/analysis_dashboard_v3/main/data/fixed-income-performance.json?v=${Date.now()}`,
+          ];
 
-              if (!mainResult.ok) {
-                setError(mainResult.error?.message || "Falha ao carregar o dataset principal.");
-                return;
+          const loadPerformanceData = async () => {
+            let lastError = null;
+            for (const source of sources) {
+              try {
+                const response = await fetch(source, { cache: "no-store" });
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const text = await response.text();
+                if (text.trim().length < 1000) throw new Error(`arquivo vazio ou incompleto (${text.length} bytes)`);
+                return JSON.parse(text);
+              } catch (err) {
+                lastError = err;
               }
+            }
+            throw lastError || new Error("Falha ao carregar dados.");
+          };
 
-              const fixedByTicker = new Map((fixedResult.ok ? fixedResult.data?.instruments : []).map((item) => [item.ticker, item]));
-              const payload = {
-                ...mainResult.data,
-                instruments: (mainResult.data.instruments || []).map((item) => {
-                  const replacement = fixedByTicker.get(item.ticker);
-                  const needsFallback = dataLabGroupFor(item) === "Fixed Income" && (!item.performanceChart?.points?.length || item.status !== "ok");
-                  if (!needsFallback || !replacement) {
-                    return {
-                      ...item,
-                      dataStatus: item.status || mainResult.meta.status,
-                      dataSource: item.quoteSource || mainResult.meta.source,
-                      dataAsOf: item.asOf || mainResult.meta.asOf,
-                    };
-                  }
-                  return {
-                    ...item,
-                    ...replacement,
-                    status: fixedResult.meta.status === "ok" ? "ok" : "stale",
-                    dataStatus: fixedResult.meta.status,
-                    dataSource: fixedResult.meta.source,
-                    dataAsOf: replacement.asOf || fixedResult.meta.asOf,
-                    fallbackDataset: "fixed-income-performance",
-                  };
-                }),
-              };
+          const mergeFixedIncomeFallback = async (payload) => {
+            for (const source of fixedIncomeSources) {
+              try {
+                const response = await fetch(source, { cache: "no-store" });
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const text = await response.text();
+                if (text.trim().length < 1000) throw new Error(`arquivo vazio ou incompleto (${text.length} bytes)`);
+                const fallback = JSON.parse(text);
+                const byTicker = new Map((fallback.instruments || []).map((item) => [item.ticker, item]));
+                return {
+                  ...payload,
+                  instruments: (payload.instruments || []).map((item) => {
+                    const replacement = byTicker.get(item.ticker);
+                    const needsFallback = dataLabGroupFor(item) === "Fixed Income" && (!item.performanceChart?.points?.length || item.status !== "ok");
+                    return needsFallback && replacement ? { ...item, ...replacement } : item;
+                  }),
+                };
+              } catch (err) {}
+            }
+            return payload;
+          };
 
+          loadPerformanceData()
+            .then(mergeFixedIncomeFallback)
+            .then((payload) => {
+              if (cancelled) return;
               setData(payload);
               const firstOk = payload.instruments.find((item) => item.status === "ok" && dataLabGroupFor(item) === "Fixed Income" && item.performanceChart?.points?.length > 1) || payload.instruments.find((item) => item.status === "ok" && item.performanceChart?.points?.length > 1) || payload.instruments?.[0];
               if (firstOk) setSelectedTicker(firstOk.ticker);
             })
+            .catch((err) => {
+              if (cancelled) return;
+              setError(err.message || "Falha ao carregar dados.");
+            });
           return () => {
             cancelled = true;
           };
@@ -5691,12 +5438,6 @@
               ),
               React.createElement("span", { className: "mini-label" }, data?.asOf ? `Atualizado em ${formatDatePtBr(data.asOf)}` : "JSON")
             ),
-            React.createElement(
-              "div",
-              { className: "dataset-status-stack", "aria-label": "Proveniência do Data Lab" },
-              React.createElement(DatasetStatusLine, { result: performanceResult, label: "Base principal" }),
-              React.createElement(DatasetStatusLine, { result: fixedIncomeResult, label: "Renda fixa de contingência" })
-            ),
             error ? React.createElement("p", { className: "data-note" }, `Não foi possível carregar data/etf-performance.json: ${error}`) : null,
             !data && !error ? React.createElement("p", { className: "data-note" }, "Carregando dados...") : null,
             React.createElement(
@@ -5740,7 +5481,7 @@
                           onClick: () => setSelectedTicker(item.ticker),
                         },
                         React.createElement("strong", null, item.ticker),
-                        React.createElement("span", null, item.status === "ok" ? item.category : (DATASET_STATUS_LABELS[item.dataStatus || item.status] || item.status || "indisponível"))
+                        React.createElement("span", null, item.status === "ok" ? item.category : "manual")
                       )
                     )
                   )
@@ -5772,10 +5513,8 @@
                     activeReferenceLabel ? React.createElement("span", null, "Referência", React.createElement("b", null, activeReferenceLabel)) : null,
                     active.assetClass === "equity" && dataLabGroupFor(active) !== "Hedge" && active.valuation?.source ? React.createElement("span", null, "P/E", React.createElement("b", null, formatDatePtBr(active.valuation.asOf) || "manual")) : null,
                     active.performanceChart?.startDate ? React.createElement("span", null, "Histórico", React.createElement("b", null, formatDatePtBr(active.performanceChart.startDate))) : null,
-                    React.createElement("span", null, "Dados", React.createElement("b", null, active.dataAsOf ? formatDatePtBr(active.dataAsOf) : "n/d")),
-                    React.createElement("span", null, "Status", React.createElement("b", null, DATASET_STATUS_LABELS[active.dataStatus || active.status] || active.dataStatus || active.status || "n/d"))
+                    active.status !== "ok" ? React.createElement("span", null, "Status", React.createElement("b", null, "manual")) : null
                   ),
-                  React.createElement("p", { className: "data-note" }, `Fonte do instrumento: ${active.dataSource || data?.source || "n/d"}.`),
                   React.createElement(
                     "div",
                     { className: "data-lab-metrics" },
@@ -5923,7 +5662,7 @@
               comment: "Exposição física, futuros e ações de produtoras não são equivalentes. Para medir a commodity, o veículo precisa capturar o preço físico ou futuro; para investir nas empresas, o risco passa a ser também operacional e acionário.",
             },
             {
-              src: "assets/themes/gold-silver-ratio2.png",
+              src: "assets/themes/gold-silver-ratio.png",
               title: "Ouro vs. prata: o que o ratio mede",
               comment: "O Gold/Silver Ratio é uma leitura de liderança relativa e regime, não uma régua fixa de valuation. A média depende da janela, dos fundamentos e da estabilidade estatística da relação.",
             },
@@ -7575,14 +7314,15 @@
         const [selectedEtf, setSelectedEtf] = useState(initialEtf);
         const [ucitsView, setUcitsView] = useState("all");
         const [geoData, setGeoData] = useState(null);
-        const [geoResult, setGeoResult] = useState(null);
         useEffect(() => {
           let cancelled = false;
-          DataClient.load("etf-geography")
-            .then((result) => {
-              if (cancelled) return;
-              setGeoResult(result);
-              setGeoData(result.ok ? result.data : null);
+          fetch("data/etf-geography.json", { cache: "no-store" })
+            .then((response) => (response.ok ? response.json() : null))
+            .then((payload) => {
+              if (!cancelled) setGeoData(payload);
+            })
+            .catch(() => {
+              if (!cancelled) setGeoData(null);
             });
           return () => {
             cancelled = true;
@@ -7675,7 +7415,6 @@
               React.createElement("span", { className: "detail-role" }, detail[0]),
               React.createElement("p", null, detail[1]),
               React.createElement("p", null, detail[2]),
-              React.createElement(DatasetStatusLine, { result: geoResult, label: "Composição geográfica" }),
               countryWeights
                 ? React.createElement(
                     "div",
@@ -8028,11 +7767,7 @@
               { className: "panel mobile-summary-card" },
               React.createElement("h2", null, `Fed Funds ${fedPolicy.marketProbability.label}`),
               React.createElement("strong", null, fedPolicy.targetRange.label),
-              React.createElement(
-                "p",
-                null,
-                `Dados de ${formatDatePtBr(fedPolicy.targetRange.asOf)} · Fonte: ${fedPolicy.source || fedPolicy._datasetMeta?.source || "n/d"} · ${DATASET_STATUS_LABELS[fedPolicy._datasetMeta?.status] || fedPolicy._datasetMeta?.status || "Atual"}${fedPolicy._datasetMeta?.error ? ` · ${fedPolicy._datasetMeta.error}` : ""}`
-              ),
+              React.createElement("p", null, `Atualizado em ${formatDatePtBr(fedPolicy.targetRange.asOf)}`),
               React.createElement(
                 "div",
                 { className: "kpi-probs" },
@@ -8179,18 +7914,10 @@
         useEffect(() => {
           let cancelled = false;
 
-          DataClient.load("curve-us")
-            .then((result) => {
-              if (cancelled) return;
-              if (!result.ok) {
-                setCurveMeta({
-                  ...DEFAULT_CURVE_META,
-                  datasetStatus: "unavailable",
-                  datasetError: result.error?.message || "falha desconhecida",
-                });
-                return;
-              }
-              const payload = result.data;
+          fetch("data/curve-us.json", { cache: "no-store" })
+            .then((response) => (response.ok ? response.json() : null))
+            .then((payload) => {
+              if (cancelled || !payload?.curves) return;
               ["nominal", "real", "inflation"].forEach((key) => {
                 if (payload.curves[key]) {
                   CURVES[key].values = { ...CURVES[key].values, ...payload.curves[key] };
@@ -8201,11 +7928,10 @@
                 asOf: payload.asOf || DEFAULT_CURVE_META.asOf,
                 updatedAt: payload.updatedAt,
                 componentAsOf: payload.componentAsOf || payload.comparisons?.current?.componentAsOf,
-                datasetStatus: result.meta.status,
-                datasetError: null,
               });
               setCurveComparisons(payload.comparisons || defaultCurveComparisons());
-            });
+            })
+            .catch(() => {});
 
           return () => {
             cancelled = true;
@@ -8215,22 +7941,13 @@
         useEffect(() => {
           let cancelled = false;
 
-          DataClient.load("fed-policy")
-            .then((result) => {
-              if (cancelled) return;
-              if (!result.ok) {
-                setFedPolicy({
-                  ...DEFAULT_FED_POLICY,
-                  _datasetMeta: {
-                    ...result.meta,
-                    status: "unavailable",
-                    error: result.error?.message || "falha desconhecida",
-                  },
-                });
-                return;
-              }
-              setFedPolicy({ ...result.data, _datasetMeta: result.meta });
-            });
+          fetch("data/fed-policy.json", { cache: "no-store" })
+            .then((response) => (response.ok ? response.json() : null))
+            .then((payload) => {
+              if (cancelled || !payload?.targetRange || !payload?.marketProbability) return;
+              setFedPolicy(payload);
+            })
+            .catch(() => {});
 
           return () => {
             cancelled = true;
@@ -8429,11 +8146,7 @@
                   { className: "kpi panel" },
                   React.createElement("span", null, `Fed Funds (${fedPolicy.marketProbability.label})`),
                   React.createElement("strong", null, fedPolicy.targetRange.label),
-                  React.createElement(
-                    "p",
-                    null,
-                    `Dados de ${formatDatePtBr(fedPolicy.targetRange.asOf)} · Fonte: ${fedPolicy.source || fedPolicy._datasetMeta?.source || "n/d"} · ${DATASET_STATUS_LABELS[fedPolicy._datasetMeta?.status] || fedPolicy._datasetMeta?.status || "Atual"}${fedPolicy._datasetMeta?.error ? ` · ${fedPolicy._datasetMeta.error}` : ""}`
-                  ),
+                  React.createElement("p", null, `Atualizado em ${formatDatePtBr(fedPolicy.targetRange.asOf)}`),
                   React.createElement(
                     "div",
                     { className: "kpi-probs" },
