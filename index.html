@@ -7763,9 +7763,14 @@
             React.createElement(
               "article",
               { className: "panel mobile-summary-card" },
-              React.createElement("h2", null, `Fed Funds ${fedPolicy.marketProbability.label}`),
+              React.createElement("h2", null, "Fed Funds atual"),
               React.createElement("strong", null, fedPolicy.targetRange.label),
-              React.createElement("p", null, `Atualizado em ${formatDatePtBr(fedPolicy.targetRange.asOf)}`),
+              React.createElement("p", null, `Faixa definida em ${formatDatePtBr(fedPolicy.targetRange.asOf)}`),
+              React.createElement(
+                "p",
+                null,
+                `Probabilidades para ${fedPolicy.marketProbability.label} · Dados de ${formatDatePtBr(fedPolicy.marketProbability.asOf)}`
+              ),
               React.createElement(
                 "div",
                 { className: "kpi-probs" },
@@ -8142,9 +8147,14 @@
                 React.createElement(
                   "article",
                   { className: "kpi panel" },
-                  React.createElement("span", null, `Fed Funds (${fedPolicy.marketProbability.label})`),
+                  React.createElement("span", null, "Fed Funds atual"),
                   React.createElement("strong", null, fedPolicy.targetRange.label),
-                  React.createElement("p", null, `Atualizado em ${formatDatePtBr(fedPolicy.targetRange.asOf)}`),
+                  React.createElement("p", null, `Faixa definida em ${formatDatePtBr(fedPolicy.targetRange.asOf)}`),
+                  React.createElement(
+                    "p",
+                    null,
+                    `Probabilidades para ${fedPolicy.marketProbability.label} · Dados de ${formatDatePtBr(fedPolicy.marketProbability.asOf)}`
+                  ),
                   React.createElement(
                     "div",
                     { className: "kpi-probs" },
