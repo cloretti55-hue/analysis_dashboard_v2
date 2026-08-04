@@ -1356,6 +1356,14 @@
         font-size: 15px;
       }
 
+      .fed-source-note {
+        margin-top: 12px !important;
+        color: var(--muted);
+        font-size: 11px !important;
+        line-height: 1.35 !important;
+        opacity: 0.82;
+      }
+
       .main-grid {
         display: grid;
         grid-template-columns: minmax(0, 1.42fr) minmax(330px, 0.78fr);
@@ -7777,6 +7785,11 @@
                 React.createElement("div", null, React.createElement("span", null, "Rate hike"), React.createElement("b", null, pctOne(fedPolicy.marketProbability.hike))),
                 React.createElement("div", null, React.createElement("span", null, "Steady"), React.createElement("b", null, pctOne(fedPolicy.marketProbability.steady))),
                 React.createElement("div", null, React.createElement("span", null, "Rate cut"), React.createElement("b", null, pctOne(fedPolicy.marketProbability.cut)))
+              ),
+              React.createElement(
+                "p",
+                { className: "fed-source-note" },
+                `Fonte: ${fedPolicy.source || "Federal Reserve FOMC statement / Atlanta Fed Market Probability Tracker"} · Atual`
               )
             )
           )
@@ -8161,6 +8174,11 @@
                     React.createElement("div", null, React.createElement("span", null, "Rate hike"), React.createElement("b", null, pctOne(fedPolicy.marketProbability.hike))),
                     React.createElement("div", null, React.createElement("span", null, "Steady"), React.createElement("b", null, pctOne(fedPolicy.marketProbability.steady))),
                     React.createElement("div", null, React.createElement("span", null, "Rate cut"), React.createElement("b", null, pctOne(fedPolicy.marketProbability.cut)))
+                  ),
+                  React.createElement(
+                    "p",
+                    { className: "fed-source-note" },
+                    `Fonte: ${fedPolicy.source || "Federal Reserve FOMC statement / Atlanta Fed Market Probability Tracker"} · Atual`
                   )
                 )
               ),
