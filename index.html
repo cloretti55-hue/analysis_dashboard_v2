@@ -5968,6 +5968,7 @@
       }
 
       function ThemesModule() {
+        const imageZoomLevels = [0.5, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.5];
         const [selectedTheme, setSelectedTheme] = useState(() => themeFromHash() || THEME_BRIEFINGS[0].key);
         const [expandedImage, setExpandedImage] = useState(null);
         const [imageZoom, setImageZoom] = useState(1);
@@ -6035,8 +6036,15 @@
           setImageZoom(1);
         };
 
-        const adjustImageZoom = (delta) => {
-          setImageZoom((value) => Math.min(2.5, Math.max(0.5, Number((value + delta).toFixed(2)))));
+        const adjustImageZoom = (direction) => {
+          setImageZoom((value) => {
+            const currentIndex = imageZoomLevels.findIndex((level) => Math.abs(level - value) < 0.001);
+            const nextIndex = Math.min(
+              imageZoomLevels.length - 1,
+              Math.max(0, currentIndex + direction)
+            );
+            return imageZoomLevels[nextIndex];
+          });
         };
 
         return React.createElement(
@@ -6159,9 +6167,9 @@
                         React.createElement(
                           "div",
                           { className: "image-zoom-controls", "aria-label": "Controles de zoom da imagem" },
-                          React.createElement("button", { type: "button", onClick: () => adjustImageZoom(-0.25), disabled: imageZoom <= 0.5 }, "-"),
+                          React.createElement("button", { type: "button", onClick: () => adjustImageZoom(-1), disabled: imageZoom <= 0.5 }, "-"),
                           React.createElement("span", null, `${Math.round(imageZoom * 100)}%`),
-                          React.createElement("button", { type: "button", onClick: () => adjustImageZoom(0.25), disabled: imageZoom >= 2.5 }, "+"),
+                          React.createElement("button", { type: "button", onClick: () => adjustImageZoom(1), disabled: imageZoom >= 2.5 }, "+"),
                           React.createElement("button", { type: "button", onClick: () => setImageZoom(1) }, "100%")
                         ),
                         React.createElement("button", { type: "button", onClick: closeImage }, "Fechar")
