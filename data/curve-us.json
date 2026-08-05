@@ -11,10 +11,10 @@
     },
     "real": {
       "2Y": "2026-07-31",
-      "5Y": "2026-08-04",
-      "7Y": "2026-08-04",
-      "10Y": "2026-08-04",
-      "30Y": "2026-08-04"
+      "5Y": "2026-08-05",
+      "7Y": "2026-08-05",
+      "10Y": "2026-08-05",
+      "30Y": "2026-08-05"
     },
     "inflation": {
       "2Y": "2026-07-31",
@@ -24,7 +24,7 @@
       "30Y": "2026-08-04"
     }
   },
-  "updatedAt": "2026-08-05T13:22:03+00:00",
+  "updatedAt": "2026-08-05T22:32:22+00:00",
   "source": "U.S. Treasury / Federal Reserve GSW TIPS model",
   "methodology": "Nominal yields use the U.S. Treasury Daily Treasury Par Yield Curve Rates. Real yields use the U.S. Treasury Daily Treasury Real Yield Curve Rates for 5Y, 7Y, 10Y and 30Y; 2Y real uses TIPSPY02 from the Federal Reserve Gürkaynak-Sack-Wright TIPS yield curve model. Implied inflation is calculated with Fisher: (1+nominal)/(1+real)-1.",
   "series": {
@@ -48,16 +48,16 @@
     },
     "real": {
       "2Y": 2.3,
-      "5Y": 2.14,
-      "7Y": 2.26,
-      "10Y": 2.4,
+      "5Y": 2.15,
+      "7Y": 2.27,
+      "10Y": 2.41,
       "30Y": 2.96
     },
     "inflation": {
       "2Y": 1.86,
-      "5Y": 2.14,
-      "7Y": 2.16,
-      "10Y": 2.18,
+      "5Y": 2.13,
+      "7Y": 2.15,
+      "10Y": 2.17,
       "30Y": 2.16
     }
   },
@@ -75,10 +75,10 @@
         },
         "real": {
           "2Y": "2026-07-31",
-          "5Y": "2026-08-04",
-          "7Y": "2026-08-04",
-          "10Y": "2026-08-04",
-          "30Y": "2026-08-04"
+          "5Y": "2026-08-05",
+          "7Y": "2026-08-05",
+          "10Y": "2026-08-05",
+          "30Y": "2026-08-05"
         },
         "inflation": {
           "2Y": "2026-07-31",
@@ -98,16 +98,16 @@
         },
         "real": {
           "2Y": 2.3,
-          "5Y": 2.14,
-          "7Y": 2.26,
-          "10Y": 2.4,
+          "5Y": 2.15,
+          "7Y": 2.27,
+          "10Y": 2.41,
           "30Y": 2.96
         },
         "inflation": {
           "2Y": 1.86,
-          "5Y": 2.14,
-          "7Y": 2.16,
-          "10Y": 2.18,
+          "5Y": 2.13,
+          "7Y": 2.15,
+          "10Y": 2.17,
           "30Y": 2.16
         }
       }
