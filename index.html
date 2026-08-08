@@ -7776,20 +7776,8 @@
               React.createElement("p", null, `Faixa definida em ${formatDatePtBr(fedPolicy.targetRange.asOf)}`),
               React.createElement(
                 "p",
-                null,
-                `Probabilidades para a reunião de ${fedPolicy.marketProbability.label.replace(/^até\s+/i, "")} · Dados de ${formatDatePtBr(fedPolicy.marketProbability.asOf)}`
-              ),
-              React.createElement(
-                "div",
-                { className: "kpi-probs" },
-                React.createElement("div", null, React.createElement("span", null, "Rate hike"), React.createElement("b", null, pctOne(fedPolicy.marketProbability.hike))),
-                React.createElement("div", null, React.createElement("span", null, "Steady"), React.createElement("b", null, pctOne(fedPolicy.marketProbability.steady))),
-                React.createElement("div", null, React.createElement("span", null, "Rate cut"), React.createElement("b", null, pctOne(fedPolicy.marketProbability.cut)))
-              ),
-              React.createElement(
-                "p",
                 { className: "fed-source-note" },
-                `Fonte: ${fedPolicy.source || "Federal Reserve FOMC statement / Atlanta Fed Market Probability Tracker"} · Atual`
+                "Fonte: Federal Reserve FOMC statement · Atual"
               )
             )
           )
@@ -8165,20 +8153,8 @@
                   React.createElement("p", null, `Faixa definida em ${formatDatePtBr(fedPolicy.targetRange.asOf)}`),
                   React.createElement(
                     "p",
-                    null,
-                    `Probabilidades para a reunião de ${fedPolicy.marketProbability.label.replace(/^até\s+/i, "")} · Dados de ${formatDatePtBr(fedPolicy.marketProbability.asOf)}`
-                  ),
-                  React.createElement(
-                    "div",
-                    { className: "kpi-probs" },
-                    React.createElement("div", null, React.createElement("span", null, "Rate hike"), React.createElement("b", null, pctOne(fedPolicy.marketProbability.hike))),
-                    React.createElement("div", null, React.createElement("span", null, "Steady"), React.createElement("b", null, pctOne(fedPolicy.marketProbability.steady))),
-                    React.createElement("div", null, React.createElement("span", null, "Rate cut"), React.createElement("b", null, pctOne(fedPolicy.marketProbability.cut)))
-                  ),
-                  React.createElement(
-                    "p",
                     { className: "fed-source-note" },
-                    `Fonte: ${fedPolicy.source || "Federal Reserve FOMC statement / Atlanta Fed Market Probability Tracker"} · Atual`
+                    "Fonte: Federal Reserve FOMC statement · Atual"
                   )
                 )
               ),
