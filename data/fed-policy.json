@@ -1,6 +1,6 @@
 {
-  "asOf": "2026-08-11",
-  "updatedAt": "2026-08-13T12:53:43+00:00",
+  "asOf": "2026-08-12",
+  "updatedAt": "2026-08-14T12:48:24+00:00",
   "source": "Federal Reserve FOMC statement / Atlanta Fed Market Probability Tracker",
   "targetRange": {
     "lower": 3.5,
@@ -12,10 +12,10 @@
   "marketProbability": {
     "referenceStart": "2026-09-16",
     "label": "até 16/09/26",
-    "asOf": "2026-08-11",
-    "hike": 72.5,
-    "steady": 26.4,
-    "cut": 1.1,
+    "asOf": "2026-08-12",
+    "hike": 68.3,
+    "steady": 30.5,
+    "cut": 1.2,
     "targetRangeAtObservation": "350bps - 375bps",
     "sourceDataset": "Atlanta Fed mpt_histdata.xlsx"
   }
