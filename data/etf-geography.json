@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-25T21:41:04+00:00",
+  "generatedAt": "2026-08-20T11:56:06+00:00",
   "methodology": "Country weights are refreshed monthly from public provider pages when parsing succeeds. If provider layout blocks parsing, the script preserves dashboard seed weights as an explicit fallback.",
   "instruments": {
     "VEA": {
@@ -257,7 +257,7 @@
       "source": "iShares UCITS",
       "sourceUrl": "https://www.ishares.com/uk/individual/en/products/251862/ishares-msci-europe-ucits-etf-inc-fund",
       "status": "seed_fallback",
-      "error": "HTTP Error 404: Not Found"
+      "error": "HTTP Error 500: Internal Server Error"
     },
     "VWO": {
       "weights": [
