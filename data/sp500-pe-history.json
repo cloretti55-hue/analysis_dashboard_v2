@@ -1,14 +1,14 @@
 {
-  "asOf": "2026-07-31",
-  "updatedAt": "2026-08-02",
+  "asOf": "2026-09-01",
+  "updatedAt": "2026-09-02",
   "status": "ok",
   "source": "Multpl",
   "sourceUrl": "https://www.multpl.com/s-p-500-pe-ratio/table/by-month",
   "methodology": "Historical trailing P/E for the S&P 500. This is trailing/reported P/E, not forward P/E. Multpl is used as the primary current public table; DataHub/Shiller is used only as fallback.",
   "stats": {
     "firstDate": "1871-01-01",
-    "lastDate": "2026-07-31",
-    "latestPE": 28.84,
+    "lastDate": "2026-09-01",
+    "latestPE": 29.42,
     "longTermAverage": 16.12,
     "averageSince1950": 18.63,
     "medianSince1950": 17.67,
@@ -7476,8 +7476,8 @@
       "pe": 28.71
     },
     {
-      "date": "2026-07-31",
-      "pe": 28.84
+      "date": "2026-09-01",
+      "pe": 29.42
     }
   ],
   "yearEnd": [
@@ -8102,8 +8102,8 @@
       "pe": 28.48
     },
     {
-      "date": "2026-07-31",
-      "pe": 28.84
+      "date": "2026-09-01",
+      "pe": 29.42
     }
   ]
 }
