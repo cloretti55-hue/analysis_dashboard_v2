@@ -1,7 +1,7 @@
 {
   "version": 1,
   "asOf": "2026-09-04",
-  "generatedAt": "2026-09-04T15:06:57+00:00",
+  "generatedAt": "2026-09-04T17:01:51+00:00",
   "source": "Yahoo Finance chart adjusted close where available; manual_required for unmapped instruments.",
   "methodology": "Return metrics use adjusted close from Yahoo Finance chart data when available. 3Y and 5Y returns are annualized. Volatility is annualized from trailing daily returns. Public/free data may differ from licensed index-provider total return data.",
   "benchmarkPolicy": "Equity instruments are compared against S&P 500 proxy SPY when relevant; fixed income charts use accrued Fed Funds from FRED DFF as a cash benchmark.",
@@ -25,12 +25,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 769.44,
-      "returnYtdPct": 13.23,
-      "return1yPct": 19.85,
-      "return3yAnnPct": 21.14,
-      "return5yAnnPct": 12.78,
-      "vol1yAnnPct": 12.79,
+      "lastClose": 771.125,
+      "returnYtdPct": 13.47,
+      "return1yPct": 20.11,
+      "return3yAnnPct": 21.23,
+      "return5yAnnPct": 12.83,
+      "vol1yAnnPct": 12.78,
       "maxDrawdown1yPct": -8.88,
       "performanceChart": {
         "base": 100,
@@ -520,7 +520,7 @@
           },
           {
             "date": "2025-09-10",
-            "etf": 149.05
+            "etf": 149.04
           },
           {
             "date": "2025-09-16",
@@ -756,7 +756,7 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 177.78
+            "etf": 178.17
           }
         ]
       },
@@ -782,11 +782,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 707.325,
-      "returnYtdPct": 13.26,
-      "return1yPct": 19.96,
-      "return3yAnnPct": 21.23,
-      "return5yAnnPct": 12.85,
+      "lastClose": 708.875,
+      "returnYtdPct": 13.51,
+      "return1yPct": 20.22,
+      "return3yAnnPct": 21.32,
+      "return5yAnnPct": 12.9,
       "vol1yAnnPct": 12.72,
       "maxDrawdown1yPct": -8.9,
       "performanceChart": {
@@ -1123,7 +1123,7 @@
           {
             "date": "2024-10-04",
             "etf": 129.84,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -1692,8 +1692,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 178.17,
-            "sp500": 177.78
+            "etf": 178.56,
+            "sp500": 178.17
           }
         ]
       },
@@ -1704,7 +1704,7 @@
         "return1yVsBenchmarkPct": 0.11,
         "return3yAnnVsBenchmarkPct": 0.09,
         "return5yAnnVsBenchmarkPct": 0.07,
-        "vol1yAnnVsBenchmarkPct": -0.07
+        "vol1yAnnVsBenchmarkPct": -0.06
       }
     },
     {
@@ -1726,11 +1726,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 717.86,
-      "returnYtdPct": 17.36,
-      "return1yPct": 25.4,
-      "return3yAnnPct": 24.55,
-      "return5yAnnPct": 14.14,
+      "lastClose": 719.38,
+      "returnYtdPct": 17.61,
+      "return1yPct": 25.66,
+      "return3yAnnPct": 24.63,
+      "return5yAnnPct": 14.19,
       "vol1yAnnPct": 19.58,
       "maxDrawdown1yPct": -11.96,
       "performanceChart": {
@@ -2067,7 +2067,7 @@
           {
             "date": "2024-10-04",
             "etf": 129.97,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -2636,8 +2636,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 193.19,
-            "sp500": 177.78
+            "etf": 193.6,
+            "sp500": 178.17
           }
         ]
       },
@@ -2646,9 +2646,9 @@
       "activeVsBenchmark": {
         "returnYtdVsBenchmarkPct": 4.13,
         "return1yVsBenchmarkPct": 5.55,
-        "return3yAnnVsBenchmarkPct": 3.41,
+        "return3yAnnVsBenchmarkPct": 3.4,
         "return5yAnnVsBenchmarkPct": 1.36,
-        "vol1yAnnVsBenchmarkPct": 6.79
+        "vol1yAnnVsBenchmarkPct": 6.8
       }
     },
     {
@@ -2670,12 +2670,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 219.02,
-      "returnYtdPct": 14.49,
-      "return1yPct": 18.29,
-      "return3yAnnPct": 15.66,
-      "return5yAnnPct": 8.89,
-      "vol1yAnnPct": 11.57,
+      "lastClose": 219.57,
+      "returnYtdPct": 14.78,
+      "return1yPct": 18.59,
+      "return3yAnnPct": 15.76,
+      "return5yAnnPct": 8.94,
+      "vol1yAnnPct": 11.56,
       "maxDrawdown1yPct": -7.85,
       "performanceChart": {
         "base": 100,
@@ -2915,7 +2915,7 @@
           },
           {
             "date": "2024-06-12",
-            "etf": 112.5,
+            "etf": 112.49,
             "sp500": 121.8
           },
           {
@@ -3011,7 +3011,7 @@
           {
             "date": "2024-10-04",
             "etf": 122.57,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -3580,17 +3580,17 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 154.73,
-            "sp500": 177.78
+            "etf": 155.12,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 0.7,
       "correlation1yVsSp500": 0.77,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": 1.26,
-        "return1yVsBenchmarkPct": -1.56,
-        "return3yAnnVsBenchmarkPct": -5.48,
+        "returnYtdVsBenchmarkPct": 1.3,
+        "return1yVsBenchmarkPct": -1.52,
+        "return3yAnnVsBenchmarkPct": -5.47,
         "return5yAnnVsBenchmarkPct": -3.89,
         "vol1yAnnVsBenchmarkPct": -1.22
       }
@@ -3614,12 +3614,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 134.292,
-      "returnYtdPct": 14.37,
-      "return1yPct": 21.15,
-      "return3yAnnPct": 20.05,
-      "return5yAnnPct": 12.14,
-      "vol1yAnnPct": 10.71,
+      "lastClose": 134.55,
+      "returnYtdPct": 14.59,
+      "return1yPct": 21.38,
+      "return3yAnnPct": 20.12,
+      "return5yAnnPct": 12.18,
+      "vol1yAnnPct": 10.69,
       "maxDrawdown1yPct": -7.76,
       "performanceChart": {
         "base": 100,
@@ -3955,7 +3955,7 @@
           {
             "date": "2024-10-04",
             "etf": 127.69,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -4524,19 +4524,19 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 173.0,
-            "sp500": 177.78
+            "etf": 173.33,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 0.7,
       "correlation1yVsSp500": 0.84,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": 1.14,
-        "return1yVsBenchmarkPct": 1.3,
-        "return3yAnnVsBenchmarkPct": -1.09,
-        "return5yAnnVsBenchmarkPct": -0.64,
-        "vol1yAnnVsBenchmarkPct": -2.08
+        "returnYtdVsBenchmarkPct": 1.11,
+        "return1yVsBenchmarkPct": 1.27,
+        "return3yAnnVsBenchmarkPct": -1.11,
+        "return5yAnnVsBenchmarkPct": -0.65,
+        "vol1yAnnVsBenchmarkPct": -2.09
       }
     },
     {
@@ -4558,12 +4558,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 565.46,
-      "returnYtdPct": 51.48,
-      "return1yPct": 95.69,
-      "return3yAnnPct": 54.12,
-      "return5yAnnPct": 33.75,
-      "vol1yAnnPct": 39.28,
+      "lastClose": 567.11,
+      "returnYtdPct": 51.92,
+      "return1yPct": 96.26,
+      "return3yAnnPct": 54.27,
+      "return5yAnnPct": 33.83,
+      "vol1yAnnPct": 39.29,
       "maxDrawdown1yPct": -24.62,
       "performanceChart": {
         "base": 100,
@@ -4899,7 +4899,7 @@
           {
             "date": "2024-10-04",
             "etf": 159.22,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -5468,19 +5468,19 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 366.05,
-            "sp500": 177.78
+            "etf": 367.12,
+            "sp500": 178.17
           }
         ]
       },
-      "beta1yVsSp500": 2.37,
+      "beta1yVsSp500": 2.38,
       "correlation1yVsSp500": 0.77,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": 38.25,
-        "return1yVsBenchmarkPct": 75.84,
-        "return3yAnnVsBenchmarkPct": 32.98,
-        "return5yAnnVsBenchmarkPct": 20.97,
-        "vol1yAnnVsBenchmarkPct": 26.49
+        "returnYtdVsBenchmarkPct": 38.44,
+        "return1yVsBenchmarkPct": 76.15,
+        "return3yAnnVsBenchmarkPct": 33.04,
+        "return5yAnnVsBenchmarkPct": 21.0,
+        "vol1yAnnVsBenchmarkPct": 26.51
       }
     },
     {
@@ -5502,12 +5502,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 517.46,
-      "returnYtdPct": 65.14,
-      "return1yPct": 112.92,
-      "return3yAnnPct": 45.72,
-      "return5yAnnPct": 28.09,
-      "vol1yAnnPct": 45.34,
+      "lastClose": 519.37,
+      "returnYtdPct": 65.75,
+      "return1yPct": 113.7,
+      "return3yAnnPct": 45.9,
+      "return5yAnnPct": 28.18,
+      "vol1yAnnPct": 45.37,
       "maxDrawdown1yPct": -29.01,
       "performanceChart": {
         "base": 100,
@@ -5843,7 +5843,7 @@
           {
             "date": "2024-10-04",
             "etf": 136.84,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -6252,7 +6252,7 @@
           },
           {
             "date": "2026-02-23",
-            "etf": 213.13,
+            "etf": 213.12,
             "sp500": 156.84
           },
           {
@@ -6412,19 +6412,19 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 309.41,
-            "sp500": 177.78
+            "etf": 310.55,
+            "sp500": 178.17
           }
         ]
       },
-      "beta1yVsSp500": 2.59,
+      "beta1yVsSp500": 2.6,
       "correlation1yVsSp500": 0.73,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": 51.91,
-        "return1yVsBenchmarkPct": 93.07,
-        "return3yAnnVsBenchmarkPct": 24.58,
-        "return5yAnnVsBenchmarkPct": 15.31,
-        "vol1yAnnVsBenchmarkPct": 32.55
+        "returnYtdVsBenchmarkPct": 52.27,
+        "return1yVsBenchmarkPct": 93.59,
+        "return3yAnnVsBenchmarkPct": 24.67,
+        "return5yAnnVsBenchmarkPct": 15.35,
+        "vol1yAnnVsBenchmarkPct": 32.59
       }
     },
     {
@@ -6446,12 +6446,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 95.007,
-      "returnYtdPct": 34.77,
-      "return1yPct": 32.02,
-      "return3yAnnPct": 26.68,
-      "return5yAnnPct": 13.36,
-      "vol1yAnnPct": 28.26,
+      "lastClose": 94.945,
+      "returnYtdPct": 34.68,
+      "return1yPct": 31.94,
+      "return3yAnnPct": 26.66,
+      "return5yAnnPct": 13.34,
+      "vol1yAnnPct": 28.27,
       "maxDrawdown1yPct": -21.99,
       "performanceChart": {
         "base": 100,
@@ -6787,7 +6787,7 @@
           {
             "date": "2024-10-04",
             "etf": 126.92,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -7356,19 +7356,19 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 203.31,
-            "sp500": 177.78
+            "etf": 203.18,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 1.16,
       "correlation1yVsSp500": 0.52,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": 21.54,
-        "return1yVsBenchmarkPct": 12.17,
-        "return3yAnnVsBenchmarkPct": 5.54,
-        "return5yAnnVsBenchmarkPct": 0.58,
-        "vol1yAnnVsBenchmarkPct": 15.47
+        "returnYtdVsBenchmarkPct": 21.2,
+        "return1yVsBenchmarkPct": 11.83,
+        "return3yAnnVsBenchmarkPct": 5.43,
+        "return5yAnnVsBenchmarkPct": 0.51,
+        "vol1yAnnVsBenchmarkPct": 15.49
       }
     },
     {
@@ -7390,11 +7390,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 224.8,
-      "returnYtdPct": 1.39,
-      "return1yPct": 13.81,
-      "return3yAnnPct": 26.01,
-      "return5yAnnPct": 17.67,
+      "lastClose": 225.62,
+      "returnYtdPct": 1.76,
+      "return1yPct": 14.23,
+      "return3yAnnPct": 26.17,
+      "return5yAnnPct": 17.76,
       "vol1yAnnPct": 23.18,
       "maxDrawdown1yPct": -15.82,
       "performanceChart": {
@@ -7731,7 +7731,7 @@
           {
             "date": "2024-10-04",
             "etf": 133.7,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -8300,19 +8300,19 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 200.11,
-            "sp500": 177.78
+            "etf": 200.84,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 1.03,
       "correlation1yVsSp500": 0.57,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": -11.84,
-        "return1yVsBenchmarkPct": -6.04,
-        "return3yAnnVsBenchmarkPct": 4.87,
-        "return5yAnnVsBenchmarkPct": 4.89,
-        "vol1yAnnVsBenchmarkPct": 10.39
+        "returnYtdVsBenchmarkPct": -11.72,
+        "return1yVsBenchmarkPct": -5.88,
+        "return3yAnnVsBenchmarkPct": 4.94,
+        "return5yAnnVsBenchmarkPct": 4.93,
+        "vol1yAnnVsBenchmarkPct": 10.4
       }
     },
     {
@@ -8329,12 +8329,12 @@
       "valuation": null,
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 405.84,
-      "returnYtdPct": 1.9,
-      "return1yPct": 24.23,
-      "return3yAnnPct": 31.46,
-      "return5yAnnPct": 19.36,
-      "vol1yAnnPct": 29.17,
+      "lastClose": 406.82,
+      "returnYtdPct": 2.14,
+      "return1yPct": 24.53,
+      "return3yAnnPct": 31.57,
+      "return5yAnnPct": 19.41,
+      "vol1yAnnPct": 29.16,
       "maxDrawdown1yPct": -26.4,
       "performanceChart": {
         "base": 100,
@@ -8670,7 +8670,7 @@
           {
             "date": "2024-10-04",
             "etf": 137.15,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -9239,8 +9239,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 227.18,
-            "sp500": 177.78
+            "etf": 227.73,
+            "sp500": 178.17
           }
         ]
       },
@@ -9266,12 +9266,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 186.87,
-      "returnYtdPct": 29.82,
-      "return1yPct": 43.05,
-      "return3yAnnPct": 29.18,
-      "return5yAnnPct": 19.5,
-      "vol1yAnnPct": 26.24,
+      "lastClose": 187.46,
+      "returnYtdPct": 30.23,
+      "return1yPct": 43.5,
+      "return3yAnnPct": 29.32,
+      "return5yAnnPct": 19.57,
+      "vol1yAnnPct": 26.25,
       "maxDrawdown1yPct": -15.92,
       "performanceChart": {
         "base": 100,
@@ -9607,7 +9607,7 @@
           {
             "date": "2024-10-04",
             "etf": 128.63,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -10176,19 +10176,19 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 215.59,
-            "sp500": 177.78
+            "etf": 216.27,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 1.75,
       "correlation1yVsSp500": 0.85,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": 16.59,
-        "return1yVsBenchmarkPct": 23.2,
-        "return3yAnnVsBenchmarkPct": 8.04,
-        "return5yAnnVsBenchmarkPct": 6.72,
-        "vol1yAnnVsBenchmarkPct": 13.45
+        "returnYtdVsBenchmarkPct": 16.75,
+        "return1yVsBenchmarkPct": 23.39,
+        "return3yAnnVsBenchmarkPct": 8.09,
+        "return5yAnnVsBenchmarkPct": 6.74,
+        "vol1yAnnVsBenchmarkPct": 13.47
       }
     },
     {
@@ -10210,12 +10210,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 112.07,
-      "returnYtdPct": -3.58,
-      "return1yPct": -0.53,
-      "return3yAnnPct": 20.0,
-      "return5yAnnPct": 6.62,
-      "vol1yAnnPct": 15.22,
+      "lastClose": 112.21,
+      "returnYtdPct": -3.46,
+      "return1yPct": -0.4,
+      "return3yAnnPct": 20.05,
+      "return5yAnnPct": 6.64,
+      "vol1yAnnPct": 15.21,
       "maxDrawdown1yPct": -11.73,
       "performanceChart": {
         "base": 100,
@@ -10551,7 +10551,7 @@
           {
             "date": "2024-10-04",
             "etf": 137.28,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -11120,18 +11120,18 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 172.79,
-            "sp500": 177.78
+            "etf": 173.0,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 0.67,
       "correlation1yVsSp500": 0.57,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": -16.81,
-        "return1yVsBenchmarkPct": -20.38,
-        "return3yAnnVsBenchmarkPct": -1.14,
-        "return5yAnnVsBenchmarkPct": -6.16,
+        "returnYtdVsBenchmarkPct": -16.94,
+        "return1yVsBenchmarkPct": -20.51,
+        "return3yAnnVsBenchmarkPct": -1.18,
+        "return5yAnnVsBenchmarkPct": -6.19,
         "vol1yAnnVsBenchmarkPct": 2.43
       }
     },
@@ -11154,12 +11154,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 114.61,
-      "returnYtdPct": -2.77,
-      "return1yPct": -1.77,
-      "return3yAnnPct": 11.43,
-      "return5yAnnPct": 5.36,
-      "vol1yAnnPct": 19.44,
+      "lastClose": 114.83,
+      "returnYtdPct": -2.59,
+      "return1yPct": -1.58,
+      "return3yAnnPct": 11.5,
+      "return5yAnnPct": 5.4,
+      "vol1yAnnPct": 19.42,
       "maxDrawdown1yPct": -14.98,
       "performanceChart": {
         "base": 100,
@@ -11495,7 +11495,7 @@
           {
             "date": "2024-10-04",
             "etf": 117.88,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -12064,19 +12064,19 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 138.34,
-            "sp500": 177.78
+            "etf": 138.61,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 1.16,
       "correlation1yVsSp500": 0.76,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": -16.0,
-        "return1yVsBenchmarkPct": -21.62,
-        "return3yAnnVsBenchmarkPct": -9.71,
-        "return5yAnnVsBenchmarkPct": -7.42,
-        "vol1yAnnVsBenchmarkPct": 6.65
+        "returnYtdVsBenchmarkPct": -16.07,
+        "return1yVsBenchmarkPct": -21.69,
+        "return3yAnnVsBenchmarkPct": -9.73,
+        "return5yAnnVsBenchmarkPct": -7.43,
+        "vol1yAnnVsBenchmarkPct": 6.64
       }
     },
     {
@@ -12098,12 +12098,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 171.415,
-      "returnYtdPct": 11.17,
-      "return1yPct": 26.91,
-      "return3yAnnPct": 10.89,
-      "return5yAnnPct": 6.45,
-      "vol1yAnnPct": 16.02,
+      "lastClose": 171.71,
+      "returnYtdPct": 11.36,
+      "return1yPct": 27.13,
+      "return3yAnnPct": 10.95,
+      "return5yAnnPct": 6.48,
+      "vol1yAnnPct": 16.01,
       "maxDrawdown1yPct": -10.47,
       "performanceChart": {
         "base": 100,
@@ -12439,7 +12439,7 @@
           {
             "date": "2024-10-04",
             "etf": 117.01,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -12518,7 +12518,7 @@
           },
           {
             "date": "2025-01-14",
-            "etf": 108.51,
+            "etf": 108.52,
             "sp500": 132.25
           },
           {
@@ -13008,18 +13008,18 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 136.36,
-            "sp500": 177.78
+            "etf": 136.59,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 0.28,
       "correlation1yVsSp500": 0.22,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": -2.06,
-        "return1yVsBenchmarkPct": 7.06,
-        "return3yAnnVsBenchmarkPct": -10.25,
-        "return5yAnnVsBenchmarkPct": -6.33,
+        "returnYtdVsBenchmarkPct": -2.12,
+        "return1yVsBenchmarkPct": 7.02,
+        "return3yAnnVsBenchmarkPct": -10.28,
+        "return5yAnnVsBenchmarkPct": -6.35,
         "vol1yAnnVsBenchmarkPct": 3.23
       }
     },
@@ -13042,12 +13042,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 57.955,
-      "returnYtdPct": 6.42,
-      "return1yPct": 8.87,
-      "return3yAnnPct": 20.96,
-      "return5yAnnPct": 10.82,
-      "vol1yAnnPct": 14.66,
+      "lastClose": 58.22,
+      "returnYtdPct": 6.91,
+      "return1yPct": 9.37,
+      "return3yAnnPct": 21.14,
+      "return5yAnnPct": 10.92,
+      "vol1yAnnPct": 14.64,
       "maxDrawdown1yPct": -14.79,
       "performanceChart": {
         "base": 100,
@@ -13383,7 +13383,7 @@
           {
             "date": "2024-10-04",
             "etf": 135.72,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -13952,19 +13952,19 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 176.97,
-            "sp500": 177.78
+            "etf": 177.78,
+            "sp500": 178.17
           }
         ]
       },
-      "beta1yVsSp500": 0.62,
+      "beta1yVsSp500": 0.61,
       "correlation1yVsSp500": 0.54,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": -6.81,
-        "return1yVsBenchmarkPct": -10.98,
-        "return3yAnnVsBenchmarkPct": -0.18,
-        "return5yAnnVsBenchmarkPct": -1.96,
-        "vol1yAnnVsBenchmarkPct": 1.87
+        "returnYtdVsBenchmarkPct": -6.57,
+        "return1yVsBenchmarkPct": -10.74,
+        "return3yAnnVsBenchmarkPct": -0.09,
+        "return5yAnnVsBenchmarkPct": -1.91,
+        "vol1yAnnVsBenchmarkPct": 1.86
       }
     },
     {
@@ -13986,12 +13986,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 175.0482,
-      "returnYtdPct": 11.39,
-      "return1yPct": 17.04,
-      "return3yAnnPct": 19.55,
-      "return5yAnnPct": 12.95,
-      "vol1yAnnPct": 17.11,
+      "lastClose": 175.2858,
+      "returnYtdPct": 11.54,
+      "return1yPct": 17.2,
+      "return3yAnnPct": 19.61,
+      "return5yAnnPct": 12.98,
+      "vol1yAnnPct": 17.12,
       "maxDrawdown1yPct": -12.21,
       "performanceChart": {
         "base": 100,
@@ -14327,7 +14327,7 @@
           {
             "date": "2024-10-04",
             "etf": 129.15,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -14896,19 +14896,19 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 170.87,
-            "sp500": 177.78
+            "etf": 171.1,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 0.95,
       "correlation1yVsSp500": 0.71,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": -1.84,
-        "return1yVsBenchmarkPct": -2.81,
-        "return3yAnnVsBenchmarkPct": -1.59,
-        "return5yAnnVsBenchmarkPct": 0.17,
-        "vol1yAnnVsBenchmarkPct": 4.32
+        "returnYtdVsBenchmarkPct": -1.94,
+        "return1yVsBenchmarkPct": -2.91,
+        "return3yAnnVsBenchmarkPct": -1.62,
+        "return5yAnnVsBenchmarkPct": 0.15,
+        "vol1yAnnVsBenchmarkPct": 4.34
       }
     },
     {
@@ -14930,11 +14930,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 64.25,
-      "returnYtdPct": 42.69,
-      "return1yPct": 48.75,
-      "return3yAnnPct": 15.75,
-      "return5yAnnPct": 26.14,
+      "lastClose": 64.23,
+      "returnYtdPct": 42.64,
+      "return1yPct": 48.7,
+      "return3yAnnPct": 15.74,
+      "return5yAnnPct": 26.13,
       "vol1yAnnPct": 21.7,
       "maxDrawdown1yPct": -14.98,
       "performanceChart": {
@@ -15271,7 +15271,7 @@
           {
             "date": "2024-10-04",
             "etf": 106.44,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -15840,19 +15840,19 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 155.08,
-            "sp500": 177.78
+            "etf": 155.03,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": -0.3,
       "correlation1yVsSp500": -0.18,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": 29.46,
-        "return1yVsBenchmarkPct": 28.9,
-        "return3yAnnVsBenchmarkPct": -5.39,
-        "return5yAnnVsBenchmarkPct": 13.36,
-        "vol1yAnnVsBenchmarkPct": 8.91
+        "returnYtdVsBenchmarkPct": 29.16,
+        "return1yVsBenchmarkPct": 28.59,
+        "return3yAnnVsBenchmarkPct": -5.49,
+        "return5yAnnVsBenchmarkPct": 13.3,
+        "vol1yAnnVsBenchmarkPct": 8.92
       }
     },
     {
@@ -15874,12 +15874,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 84.905,
-      "returnYtdPct": 10.66,
-      "return1yPct": 8.21,
-      "return3yAnnPct": 8.8,
-      "return5yAnnPct": 6.13,
-      "vol1yAnnPct": 14.35,
+      "lastClose": 84.935,
+      "returnYtdPct": 10.7,
+      "return1yPct": 8.25,
+      "return3yAnnPct": 8.81,
+      "return5yAnnPct": 6.14,
+      "vol1yAnnPct": 14.34,
       "maxDrawdown1yPct": -9.69,
       "performanceChart": {
         "base": 100,
@@ -16215,7 +16215,7 @@
           {
             "date": "2024-10-04",
             "etf": 117.91,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -16784,18 +16784,18 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 128.8,
-            "sp500": 177.78
+            "etf": 128.84,
+            "sp500": 178.17
           }
         ]
       },
-      "beta1yVsSp500": -0.07,
+      "beta1yVsSp500": -0.08,
       "correlation1yVsSp500": -0.07,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": -2.57,
-        "return1yVsBenchmarkPct": -11.64,
-        "return3yAnnVsBenchmarkPct": -12.34,
-        "return5yAnnVsBenchmarkPct": -6.65,
+        "returnYtdVsBenchmarkPct": -2.78,
+        "return1yVsBenchmarkPct": -11.86,
+        "return3yAnnVsBenchmarkPct": -12.42,
+        "return5yAnnVsBenchmarkPct": -6.69,
         "vol1yAnnVsBenchmarkPct": 1.56
       }
     },
@@ -16818,12 +16818,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 43.145,
-      "returnYtdPct": 1.26,
-      "return1yPct": 5.93,
-      "return3yAnnPct": 15.26,
-      "return5yAnnPct": 7.91,
-      "vol1yAnnPct": 15.18,
+      "lastClose": 43.08,
+      "returnYtdPct": 1.11,
+      "return1yPct": 5.77,
+      "return3yAnnPct": 15.2,
+      "return5yAnnPct": 7.88,
+      "vol1yAnnPct": 15.17,
       "maxDrawdown1yPct": -10.34,
       "performanceChart": {
         "base": 100,
@@ -17159,7 +17159,7 @@
           {
             "date": "2024-10-04",
             "etf": 137.27,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -17728,18 +17728,18 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 153.11,
-            "sp500": 177.78
+            "etf": 152.88,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 0.14,
       "correlation1yVsSp500": 0.12,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": -11.97,
-        "return1yVsBenchmarkPct": -13.92,
-        "return3yAnnVsBenchmarkPct": -5.88,
-        "return5yAnnVsBenchmarkPct": -4.87,
+        "returnYtdVsBenchmarkPct": -12.37,
+        "return1yVsBenchmarkPct": -14.34,
+        "return3yAnnVsBenchmarkPct": -6.03,
+        "return5yAnnVsBenchmarkPct": -4.95,
         "vol1yAnnVsBenchmarkPct": 2.39
       }
     },
@@ -17762,11 +17762,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 52.51,
-      "returnYtdPct": 14.79,
-      "return1yPct": 17.1,
-      "return3yAnnPct": 10.58,
-      "return5yAnnPct": 6.46,
+      "lastClose": 52.6078,
+      "returnYtdPct": 15.0,
+      "return1yPct": 17.32,
+      "return3yAnnPct": 10.65,
+      "return5yAnnPct": 6.5,
       "vol1yAnnPct": 17.88,
       "maxDrawdown1yPct": -12.38,
       "performanceChart": {
@@ -18103,7 +18103,7 @@
           {
             "date": "2024-10-04",
             "etf": 118.56,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -18672,19 +18672,19 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 135.23,
-            "sp500": 177.78
+            "etf": 135.48,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 0.74,
       "correlation1yVsSp500": 0.53,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": 1.56,
-        "return1yVsBenchmarkPct": -2.75,
-        "return3yAnnVsBenchmarkPct": -10.56,
-        "return5yAnnVsBenchmarkPct": -6.32,
-        "vol1yAnnVsBenchmarkPct": 5.09
+        "returnYtdVsBenchmarkPct": 1.52,
+        "return1yVsBenchmarkPct": -2.79,
+        "return3yAnnVsBenchmarkPct": -10.58,
+        "return5yAnnVsBenchmarkPct": -6.33,
+        "vol1yAnnVsBenchmarkPct": 5.1
       }
     },
     {
@@ -18706,7 +18706,7 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 44.1713,
+      "lastClose": 44.17,
       "returnYtdPct": 11.09,
       "return1yPct": 9.42,
       "return3yAnnPct": 10.13,
@@ -19047,7 +19047,7 @@
           {
             "date": "2024-10-04",
             "etf": 123.96,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -19391,7 +19391,7 @@
           },
           {
             "date": "2025-12-03",
-            "etf": 120.99,
+            "etf": 120.98,
             "sp500": 156.72
           },
           {
@@ -19616,19 +19616,19 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 133.59,
-            "sp500": 177.78
+            "etf": 133.58,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 0.26,
       "correlation1yVsSp500": 0.24,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": -2.14,
-        "return1yVsBenchmarkPct": -10.43,
-        "return3yAnnVsBenchmarkPct": -11.01,
-        "return5yAnnVsBenchmarkPct": -11.16,
-        "vol1yAnnVsBenchmarkPct": 1.22
+        "returnYtdVsBenchmarkPct": -2.39,
+        "return1yVsBenchmarkPct": -10.69,
+        "return3yAnnVsBenchmarkPct": -11.1,
+        "return5yAnnVsBenchmarkPct": -11.21,
+        "vol1yAnnVsBenchmarkPct": 1.23
       }
     },
     {
@@ -19650,11 +19650,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 73.585,
-      "returnYtdPct": 17.24,
-      "return1yPct": 29.03,
-      "return3yAnnPct": 21.18,
-      "return5yAnnPct": 10.04,
+      "lastClose": 73.795,
+      "returnYtdPct": 17.58,
+      "return1yPct": 29.39,
+      "return3yAnnPct": 21.29,
+      "return5yAnnPct": 10.1,
       "vol1yAnnPct": 17.32,
       "maxDrawdown1yPct": -11.63,
       "performanceChart": {
@@ -19991,7 +19991,7 @@
           {
             "date": "2024-10-04",
             "etf": 119.29,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -20560,8 +20560,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 177.94,
-            "sp500": 177.78
+            "etf": 178.45,
+            "sp500": 178.17
           }
         ]
       },
@@ -20587,11 +20587,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 100.915,
-      "returnYtdPct": 13.52,
-      "return1yPct": 22.42,
-      "return3yAnnPct": 18.93,
-      "return5yAnnPct": 8.75,
+      "lastClose": 101.165,
+      "returnYtdPct": 13.8,
+      "return1yPct": 22.72,
+      "return3yAnnPct": 19.03,
+      "return5yAnnPct": 8.81,
       "vol1yAnnPct": 15.57,
       "maxDrawdown1yPct": -11.5,
       "performanceChart": {
@@ -20928,7 +20928,7 @@
           {
             "date": "2024-10-04",
             "etf": 119.89,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -21497,8 +21497,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 168.22,
-            "sp500": 177.78
+            "etf": 168.63,
+            "sp500": 178.17
           }
         ]
       },
@@ -21524,12 +21524,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 148.25,
-      "returnYtdPct": 13.38,
-      "return1yPct": 20.96,
-      "return3yAnnPct": 20.43,
-      "return5yAnnPct": 11.1,
-      "vol1yAnnPct": 12.25,
+      "lastClose": 148.09,
+      "returnYtdPct": 13.26,
+      "return1yPct": 20.83,
+      "return3yAnnPct": 20.39,
+      "return5yAnnPct": 11.07,
+      "vol1yAnnPct": 12.24,
       "maxDrawdown1yPct": -8.31,
       "performanceChart": {
         "base": 100,
@@ -21865,7 +21865,7 @@
           {
             "date": "2024-10-04",
             "etf": 125.65,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-10",
@@ -22434,12 +22434,12 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 174.68,
-            "sp500": 177.78
+            "etf": 174.49,
+            "sp500": 178.17
           }
         ]
       },
-      "beta1yVsSp500": 0.63,
+      "beta1yVsSp500": 0.64,
       "correlation1yVsSp500": 0.66
     },
     {
@@ -22461,12 +22461,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 10964.0,
-      "returnYtdPct": 13.17,
-      "return1yPct": 20.15,
-      "return3yAnnPct": 17.51,
-      "return5yAnnPct": 11.59,
-      "vol1yAnnPct": 43.45,
+      "lastClose": 10953.0,
+      "returnYtdPct": 13.06,
+      "return1yPct": 20.03,
+      "return3yAnnPct": 17.48,
+      "return5yAnnPct": 11.57,
+      "vol1yAnnPct": 43.44,
       "maxDrawdown1yPct": -27.42,
       "performanceChart": {
         "base": 100,
@@ -22802,7 +22802,7 @@
           {
             "date": "2024-10-04",
             "etf": 120.54,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-10",
@@ -23371,8 +23371,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 162.29,
-            "sp500": 177.78
+            "etf": 162.12,
+            "sp500": 178.17
           }
         ]
       },
@@ -23398,11 +23398,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 91.66,
-      "returnYtdPct": 10.39,
-      "return1yPct": 20.83,
-      "return3yAnnPct": 18.88,
-      "return5yAnnPct": 9.08,
+      "lastClose": 91.885,
+      "returnYtdPct": 10.66,
+      "return1yPct": 21.12,
+      "return3yAnnPct": 18.98,
+      "return5yAnnPct": 9.14,
       "vol1yAnnPct": 15.65,
       "maxDrawdown1yPct": -12.09,
       "performanceChart": {
@@ -23739,7 +23739,7 @@
           {
             "date": "2024-10-04",
             "etf": 120.25,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -23848,7 +23848,7 @@
           },
           {
             "date": "2025-02-20",
-            "etf": 122.57,
+            "etf": 122.58,
             "sp500": 138.66
           },
           {
@@ -24308,8 +24308,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 168.02,
-            "sp500": 177.78
+            "etf": 168.43,
+            "sp500": 178.17
           }
         ]
       },
@@ -24335,11 +24335,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 77.51,
-      "returnYtdPct": 10.36,
-      "return1yPct": 20.44,
-      "return3yAnnPct": 18.55,
-      "return5yAnnPct": 8.85,
+      "lastClose": 77.675,
+      "returnYtdPct": 10.6,
+      "return1yPct": 20.69,
+      "return3yAnnPct": 18.63,
+      "return5yAnnPct": 8.89,
       "vol1yAnnPct": 15.58,
       "maxDrawdown1yPct": -12.04,
       "performanceChart": {
@@ -24676,7 +24676,7 @@
           {
             "date": "2024-10-04",
             "etf": 120.44,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -25245,8 +25245,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 166.61,
-            "sp500": 177.78
+            "etf": 166.97,
+            "sp500": 178.17
           }
         ]
       },
@@ -25272,11 +25272,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 70.6,
-      "returnYtdPct": 9.91,
-      "return1yPct": 21.79,
-      "return3yAnnPct": 20.49,
-      "return5yAnnPct": 11.21,
+      "lastClose": 70.755,
+      "returnYtdPct": 10.15,
+      "return1yPct": 22.05,
+      "return3yAnnPct": 20.58,
+      "return5yAnnPct": 11.26,
       "vol1yAnnPct": 18.11,
       "maxDrawdown1yPct": -13.63,
       "performanceChart": {
@@ -25613,7 +25613,7 @@
           {
             "date": "2024-10-04",
             "etf": 122.74,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -26182,8 +26182,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 174.93,
-            "sp500": 177.78
+            "etf": 175.32,
+            "sp500": 178.17
           }
         ]
       },
@@ -26209,12 +26209,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 3471.0,
-      "returnYtdPct": 7.63,
-      "return1yPct": 17.15,
-      "return3yAnnPct": 12.71,
+      "lastClose": 3470.5,
+      "returnYtdPct": 7.62,
+      "return1yPct": 17.14,
+      "return3yAnnPct": 12.7,
       "return5yAnnPct": 6.88,
-      "vol1yAnnPct": 12.5,
+      "vol1yAnnPct": 12.49,
       "maxDrawdown1yPct": -10.59,
       "performanceChart": {
         "base": 100,
@@ -26550,7 +26550,7 @@
           {
             "date": "2024-10-04",
             "etf": 111.44,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-10",
@@ -27119,13 +27119,13 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 143.18,
-            "sp500": 177.78
+            "etf": 143.16,
+            "sp500": 178.17
           }
         ]
       },
-      "beta1yVsSp500": 0.45,
-      "correlation1yVsSp500": 0.46
+      "beta1yVsSp500": 0.46,
+      "correlation1yVsSp500": 0.47
     },
     {
       "ticker": "VWO",
@@ -27146,12 +27146,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 61.335,
-      "returnYtdPct": 11.79,
-      "return1yPct": 22.5,
-      "return3yAnnPct": 18.14,
-      "return5yAnnPct": 6.1,
-      "vol1yAnnPct": 17.53,
+      "lastClose": 61.505,
+      "returnYtdPct": 12.1,
+      "return1yPct": 22.84,
+      "return3yAnnPct": 18.25,
+      "return5yAnnPct": 6.16,
+      "vol1yAnnPct": 17.54,
       "maxDrawdown1yPct": -11.17,
       "performanceChart": {
         "base": 100,
@@ -27487,7 +27487,7 @@
           {
             "date": "2024-10-04",
             "etf": 125.01,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -28056,8 +28056,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 164.89,
-            "sp500": 177.78
+            "etf": 165.35,
+            "sp500": 178.17
           }
         ]
       },
@@ -28083,12 +28083,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 83.14,
-      "returnYtdPct": 21.46,
-      "return1yPct": 37.43,
-      "return3yAnnPct": 22.59,
-      "return5yAnnPct": 8.05,
-      "vol1yAnnPct": 24.05,
+      "lastClose": 83.515,
+      "returnYtdPct": 22.01,
+      "return1yPct": 38.05,
+      "return3yAnnPct": 22.77,
+      "return5yAnnPct": 8.15,
+      "vol1yAnnPct": 24.07,
       "maxDrawdown1yPct": -13.78,
       "performanceChart": {
         "base": 100,
@@ -28424,7 +28424,7 @@
           {
             "date": "2024-10-04",
             "etf": 122.28,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -28993,8 +28993,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 184.21,
-            "sp500": 177.78
+            "etf": 185.04,
+            "sp500": 178.17
           }
         ]
       },
@@ -29020,12 +29020,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 55.98,
-      "returnYtdPct": 21.75,
-      "return1yPct": 37.78,
-      "return3yAnnPct": 22.56,
-      "return5yAnnPct": 8.19,
-      "vol1yAnnPct": 22.67,
+      "lastClose": 56.04,
+      "returnYtdPct": 21.88,
+      "return1yPct": 37.93,
+      "return3yAnnPct": 22.6,
+      "return5yAnnPct": 8.21,
+      "vol1yAnnPct": 22.68,
       "maxDrawdown1yPct": -13.67,
       "performanceChart": {
         "base": 100,
@@ -29361,7 +29361,7 @@
           {
             "date": "2024-10-04",
             "etf": 122.26,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-10",
@@ -29930,8 +29930,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 184.08,
-            "sp500": 177.78
+            "etf": 184.28,
+            "sp500": 178.17
           }
         ]
       },
@@ -29957,12 +29957,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 100.46,
-      "returnYtdPct": 35.79,
-      "return1yPct": 61.31,
-      "return3yAnnPct": 28.18,
-      "return5yAnnPct": 12.43,
-      "vol1yAnnPct": 28.18,
+      "lastClose": 100.9599,
+      "returnYtdPct": 36.47,
+      "return1yPct": 62.11,
+      "return3yAnnPct": 28.39,
+      "return5yAnnPct": 12.55,
+      "vol1yAnnPct": 28.2,
       "maxDrawdown1yPct": -18.43,
       "performanceChart": {
         "base": 100,
@@ -30298,7 +30298,7 @@
           {
             "date": "2024-10-04",
             "etf": 119.54,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -30867,8 +30867,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 210.59,
-            "sp500": 177.78
+            "etf": 211.64,
+            "sp500": 178.17
           }
         ]
       },
@@ -31235,7 +31235,7 @@
           {
             "date": "2024-10-04",
             "etf": 97.41,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-10",
@@ -31831,12 +31831,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 228.9,
-      "returnYtdPct": -10.1,
-      "return1yPct": -4.96,
-      "return3yAnnPct": 1.42,
-      "return5yAnnPct": -0.71,
-      "vol1yAnnPct": 22.05,
+      "lastClose": 228.15,
+      "returnYtdPct": -10.4,
+      "return1yPct": -5.27,
+      "return3yAnnPct": 1.31,
+      "return5yAnnPct": -0.77,
+      "vol1yAnnPct": 22.06,
       "maxDrawdown1yPct": -16.54,
       "performanceChart": {
         "base": 100,
@@ -32172,7 +32172,7 @@
           {
             "date": "2024-10-04",
             "etf": 99.65,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-10",
@@ -32741,8 +32741,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 104.32,
-            "sp500": 177.78
+            "etf": 103.98,
+            "sp500": 178.17
           }
         ]
       },
@@ -32763,9 +32763,9 @@
       "valuation": null,
       "status": "error",
       "asOf": "2026-09-04",
-      "lastClose": 121.76,
-      "returnYtdPct": 2.42,
-      "return1yPct": 3.78,
+      "lastClose": 121.74,
+      "returnYtdPct": 2.41,
+      "return1yPct": 3.77,
       "return3yAnnPct": 4.61,
       "return5yAnnPct": 3.58,
       "vol1yAnnPct": 0.33,
@@ -32791,11 +32791,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 832.15,
-      "returnYtdPct": 13.45,
-      "return1yPct": 20.34,
-      "return3yAnnPct": 20.92,
-      "return5yAnnPct": 12.46,
+      "lastClose": 831.04,
+      "returnYtdPct": 13.29,
+      "return1yPct": 20.18,
+      "return3yAnnPct": 20.86,
+      "return5yAnnPct": 12.43,
       "vol1yAnnPct": 12.28,
       "maxDrawdown1yPct": -8.17,
       "performanceChart": {
@@ -33132,7 +33132,7 @@
           {
             "date": "2024-10-04",
             "etf": 128.33,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-10",
@@ -33701,19 +33701,19 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 176.79,
-            "sp500": 177.78
+            "etf": 176.55,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 0.63,
       "correlation1yVsSp500": 0.66,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": 0.22,
-        "return1yVsBenchmarkPct": 0.49,
-        "return3yAnnVsBenchmarkPct": -0.22,
-        "return5yAnnVsBenchmarkPct": -0.32,
-        "vol1yAnnVsBenchmarkPct": -0.51
+        "returnYtdVsBenchmarkPct": -0.19,
+        "return1yVsBenchmarkPct": 0.07,
+        "return3yAnnVsBenchmarkPct": -0.37,
+        "return5yAnnVsBenchmarkPct": -0.4,
+        "vol1yAnnVsBenchmarkPct": -0.5
       }
     },
     {
@@ -33735,12 +33735,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 149.24,
-      "returnYtdPct": 13.37,
-      "return1yPct": 20.34,
-      "return3yAnnPct": 20.92,
-      "return5yAnnPct": 12.47,
-      "vol1yAnnPct": 12.22,
+      "lastClose": 149.02,
+      "returnYtdPct": 13.2,
+      "return1yPct": 20.16,
+      "return3yAnnPct": 20.86,
+      "return5yAnnPct": 12.43,
+      "vol1yAnnPct": 12.21,
       "maxDrawdown1yPct": -8.18,
       "performanceChart": {
         "base": 100,
@@ -34076,7 +34076,7 @@
           {
             "date": "2024-10-04",
             "etf": 128.35,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-10",
@@ -34645,18 +34645,18 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 176.8,
-            "sp500": 177.78
+            "etf": 176.54,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 0.63,
       "correlation1yVsSp500": 0.66,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": 0.14,
-        "return1yVsBenchmarkPct": 0.49,
-        "return3yAnnVsBenchmarkPct": -0.22,
-        "return5yAnnVsBenchmarkPct": -0.31,
+        "returnYtdVsBenchmarkPct": -0.28,
+        "return1yVsBenchmarkPct": 0.05,
+        "return3yAnnVsBenchmarkPct": -0.37,
+        "return5yAnnVsBenchmarkPct": -0.4,
         "vol1yAnnVsBenchmarkPct": -0.57
       }
     },
@@ -34679,11 +34679,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 295.605,
-      "returnYtdPct": 17.4,
-      "return1yPct": 25.47,
-      "return3yAnnPct": 24.63,
-      "return5yAnnPct": 14.22,
+      "lastClose": 296.1601,
+      "returnYtdPct": 17.62,
+      "return1yPct": 25.7,
+      "return3yAnnPct": 24.71,
+      "return5yAnnPct": 14.26,
       "vol1yAnnPct": 19.43,
       "maxDrawdown1yPct": -11.96,
       "performanceChart": {
@@ -35009,7 +35009,7 @@
           },
           {
             "date": "2024-09-24",
-            "etf": 129.56,
+            "etf": 129.57,
             "sp500": 129.34
           },
           {
@@ -35020,7 +35020,7 @@
           {
             "date": "2024-10-04",
             "etf": 130.1,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -35589,19 +35589,19 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 193.59,
-            "sp500": 177.78
+            "etf": 193.95,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 1.41,
       "correlation1yVsSp500": 0.93,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": 4.17,
-        "return1yVsBenchmarkPct": 5.62,
-        "return3yAnnVsBenchmarkPct": 3.49,
-        "return5yAnnVsBenchmarkPct": 1.44,
-        "vol1yAnnVsBenchmarkPct": 6.64
+        "returnYtdVsBenchmarkPct": 4.14,
+        "return1yVsBenchmarkPct": 5.59,
+        "return3yAnnVsBenchmarkPct": 3.48,
+        "return5yAnnVsBenchmarkPct": 1.43,
+        "vol1yAnnVsBenchmarkPct": 6.65
       }
     },
     {
@@ -35623,12 +35623,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 1694.8,
-      "returnYtdPct": 15.88,
-      "return1yPct": 25.88,
-      "return3yAnnPct": 24.33,
-      "return5yAnnPct": 13.85,
-      "vol1yAnnPct": 18.46,
+      "lastClose": 1692.6,
+      "returnYtdPct": 15.73,
+      "return1yPct": 25.71,
+      "return3yAnnPct": 24.27,
+      "return5yAnnPct": 13.82,
+      "vol1yAnnPct": 18.45,
       "maxDrawdown1yPct": -11.0,
       "performanceChart": {
         "base": 100,
@@ -36533,18 +36533,18 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 192.17,
-            "sp500": 177.78
+            "etf": 191.92,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 0.96,
-      "correlation1yVsSp500": 0.66,
+      "correlation1yVsSp500": 0.67,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": 2.65,
-        "return1yVsBenchmarkPct": 6.03,
-        "return3yAnnVsBenchmarkPct": 3.19,
-        "return5yAnnVsBenchmarkPct": 1.07,
+        "returnYtdVsBenchmarkPct": 2.25,
+        "return1yVsBenchmarkPct": 5.6,
+        "return3yAnnVsBenchmarkPct": 3.04,
+        "return5yAnnVsBenchmarkPct": 0.99,
         "vol1yAnnVsBenchmarkPct": 5.67
       }
     },
@@ -36567,12 +36567,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 53351.3242,
-      "returnYtdPct": 16.77,
-      "return1yPct": 24.69,
-      "return3yAnnPct": 20.91,
-      "return5yAnnPct": 13.93,
-      "vol1yAnnPct": 17.35,
+      "lastClose": 53279.0,
+      "returnYtdPct": 16.61,
+      "return1yPct": 24.52,
+      "return3yAnnPct": 20.86,
+      "return5yAnnPct": 13.9,
+      "vol1yAnnPct": 17.34,
       "maxDrawdown1yPct": -11.08,
       "performanceChart": {
         "base": 100,
@@ -36908,7 +36908,7 @@
           {
             "date": "2024-10-04",
             "etf": 122.92,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-10",
@@ -37477,18 +37477,18 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 176.78,
-            "sp500": 177.78
+            "etf": 176.54,
+            "sp500": 178.17
           }
         ]
       },
-      "beta1yVsSp500": 0.79,
-      "correlation1yVsSp500": 0.58,
+      "beta1yVsSp500": 0.8,
+      "correlation1yVsSp500": 0.59,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": 3.54,
-        "return1yVsBenchmarkPct": 4.84,
-        "return3yAnnVsBenchmarkPct": -0.23,
-        "return5yAnnVsBenchmarkPct": 1.15,
+        "returnYtdVsBenchmarkPct": 3.13,
+        "return1yVsBenchmarkPct": 4.41,
+        "return3yAnnVsBenchmarkPct": -0.37,
+        "return5yAnnVsBenchmarkPct": 1.07,
         "vol1yAnnVsBenchmarkPct": 4.56
       }
     },
@@ -37511,12 +37511,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 83.185,
-      "returnYtdPct": 1.99,
-      "return1yPct": 24.32,
-      "return3yAnnPct": 31.62,
-      "return5yAnnPct": 19.53,
-      "vol1yAnnPct": 28.96,
+      "lastClose": 83.395,
+      "returnYtdPct": 2.25,
+      "return1yPct": 24.64,
+      "return3yAnnPct": 31.73,
+      "return5yAnnPct": 19.59,
+      "vol1yAnnPct": 28.95,
       "maxDrawdown1yPct": -26.36,
       "performanceChart": {
         "base": 100,
@@ -37852,7 +37852,7 @@
           {
             "date": "2024-10-04",
             "etf": 137.28,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -38421,8 +38421,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 228.03,
-            "sp500": 177.78
+            "etf": 228.6,
+            "sp500": 178.17
           }
         ]
       },
@@ -38448,11 +38448,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 108.775,
-      "returnYtdPct": -2.51,
-      "return1yPct": -1.05,
-      "return3yAnnPct": 2.86,
-      "return5yAnnPct": 2.07,
+      "lastClose": 108.87,
+      "returnYtdPct": -2.43,
+      "return1yPct": -0.96,
+      "return3yAnnPct": 2.89,
+      "return5yAnnPct": 2.09,
       "vol1yAnnPct": 7.48,
       "maxDrawdown1yPct": -7.27,
       "performanceChart": {
@@ -38789,7 +38789,7 @@
           {
             "date": "2024-10-04",
             "etf": 103.6,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -39358,8 +39358,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 108.84,
-            "sp500": 177.78
+            "etf": 108.94,
+            "sp500": 178.17
           }
         ]
       },
@@ -39385,9 +39385,9 @@
       },
       "status": "error",
       "asOf": "2026-09-04",
-      "lastClose": 5.974,
-      "returnYtdPct": 1.05,
-      "return1yPct": 2.47,
+      "lastClose": 5.975,
+      "returnYtdPct": 1.07,
+      "return1yPct": 2.49,
       "return3yAnnPct": 4.33,
       "return5yAnnPct": 1.97,
       "vol1yAnnPct": 1.18,
@@ -39413,10 +39413,10 @@
       },
       "status": "error",
       "asOf": "2026-09-04",
-      "lastClose": 142.4,
-      "returnYtdPct": -0.52,
-      "return1yPct": 0.49,
-      "return3yAnnPct": 4.1,
+      "lastClose": 142.43,
+      "returnYtdPct": -0.5,
+      "return1yPct": 0.52,
+      "return3yAnnPct": 4.11,
       "return5yAnnPct": 0.23,
       "vol1yAnnPct": 2.86,
       "maxDrawdown1yPct": -2.5,
@@ -39441,11 +39441,11 @@
       },
       "status": "error",
       "asOf": "2026-09-04",
-      "lastClose": 124.96,
-      "returnYtdPct": -1.47,
-      "return1yPct": -0.6,
-      "return3yAnnPct": 1.02,
-      "return5yAnnPct": -1.09,
+      "lastClose": 124.83,
+      "returnYtdPct": -1.58,
+      "return1yPct": -0.7,
+      "return3yAnnPct": 0.99,
+      "return5yAnnPct": -1.11,
       "vol1yAnnPct": 6.14,
       "maxDrawdown1yPct": -5.58,
       "error": "The read operation timed out"
@@ -39469,11 +39469,11 @@
       },
       "status": "error",
       "asOf": "2026-09-04",
-      "lastClose": 4.4765,
-      "returnYtdPct": -2.57,
-      "return1yPct": -0.7,
-      "return3yAnnPct": 0.09,
-      "return5yAnnPct": -7.77,
+      "lastClose": 4.4725,
+      "returnYtdPct": -2.66,
+      "return1yPct": -0.79,
+      "return3yAnnPct": 0.06,
+      "return5yAnnPct": -7.79,
       "vol1yAnnPct": 9.32,
       "maxDrawdown1yPct": -8.11,
       "error": "The read operation timed out"
@@ -39497,11 +39497,11 @@
       },
       "status": "error",
       "asOf": "2026-09-04",
-      "lastClose": 4.9015,
-      "returnYtdPct": 1.45,
-      "return1yPct": 1.61,
-      "return3yAnnPct": 4.32,
-      "return5yAnnPct": 2.54,
+      "lastClose": 4.8975,
+      "returnYtdPct": 1.37,
+      "return1yPct": 1.52,
+      "return3yAnnPct": 4.29,
+      "return5yAnnPct": 2.52,
       "vol1yAnnPct": 3.8,
       "maxDrawdown1yPct": -3.02,
       "error": "The read operation timed out"
@@ -39525,11 +39525,11 @@
       },
       "status": "error",
       "asOf": "2026-09-04",
-      "lastClose": 189.8861,
-      "returnYtdPct": 0.66,
-      "return1yPct": 0.52,
-      "return3yAnnPct": 1.66,
-      "return5yAnnPct": 0.61,
+      "lastClose": 189.52,
+      "returnYtdPct": 0.47,
+      "return1yPct": 0.33,
+      "return3yAnnPct": 1.6,
+      "return5yAnnPct": 0.58,
       "vol1yAnnPct": 5.91,
       "maxDrawdown1yPct": -5.26,
       "error": "The read operation timed out"
@@ -39581,12 +39581,12 @@
       },
       "status": "error",
       "asOf": "2026-09-04",
-      "lastClose": 6.216,
-      "returnYtdPct": -1.11,
-      "return1yPct": 0.31,
-      "return3yAnnPct": 4.95,
-      "return5yAnnPct": -0.93,
-      "vol1yAnnPct": 5.58,
+      "lastClose": 6.202,
+      "returnYtdPct": -1.34,
+      "return1yPct": 0.08,
+      "return3yAnnPct": 4.87,
+      "return5yAnnPct": -0.97,
+      "vol1yAnnPct": 5.57,
       "maxDrawdown1yPct": -3.51,
       "error": "The read operation timed out"
     },
@@ -39609,12 +39609,12 @@
       },
       "status": "error",
       "asOf": "2026-09-04",
-      "lastClose": 7.519,
-      "returnYtdPct": 1.94,
-      "return1yPct": 4.16,
-      "return3yAnnPct": 8.01,
-      "return5yAnnPct": 3.7,
-      "vol1yAnnPct": 3.66,
+      "lastClose": 7.509,
+      "returnYtdPct": 1.8,
+      "return1yPct": 4.02,
+      "return3yAnnPct": 7.96,
+      "return5yAnnPct": 3.67,
+      "vol1yAnnPct": 3.67,
       "maxDrawdown1yPct": -2.82,
       "error": "The read operation timed out"
     },
@@ -39637,10 +39637,10 @@
       },
       "status": "error",
       "asOf": "2026-09-04",
-      "lastClose": 5.813,
-      "returnYtdPct": 0.38,
-      "return1yPct": 1.54,
-      "return3yAnnPct": 4.32,
+      "lastClose": 5.814,
+      "returnYtdPct": 0.4,
+      "return1yPct": 1.55,
+      "return3yAnnPct": 4.33,
       "return5yAnnPct": 0.28,
       "vol1yAnnPct": 3.21,
       "maxDrawdown1yPct": -2.24,
@@ -39665,12 +39665,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 165.06,
-      "returnYtdPct": 2.53,
-      "return1yPct": 12.55,
-      "return3yAnnPct": 25.97,
-      "return5yAnnPct": 18.54,
-      "vol1yAnnPct": 21.56,
+      "lastClose": 165.49,
+      "returnYtdPct": 2.8,
+      "return1yPct": 12.84,
+      "return3yAnnPct": 26.08,
+      "return5yAnnPct": 18.6,
+      "vol1yAnnPct": 21.55,
       "maxDrawdown1yPct": -13.71,
       "performanceChart": {
         "base": 100,
@@ -40006,7 +40006,7 @@
           {
             "date": "2024-10-04",
             "etf": 139.77,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -40575,18 +40575,18 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 199.88,
-            "sp500": 177.78
+            "etf": 200.4,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 1.03,
       "correlation1yVsSp500": 0.61,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": -10.7,
-        "return1yVsBenchmarkPct": -7.3,
-        "return3yAnnVsBenchmarkPct": 4.83,
-        "return5yAnnVsBenchmarkPct": 5.76,
+        "returnYtdVsBenchmarkPct": -10.68,
+        "return1yVsBenchmarkPct": -7.27,
+        "return3yAnnVsBenchmarkPct": 4.85,
+        "return5yAnnVsBenchmarkPct": 5.77,
         "vol1yAnnVsBenchmarkPct": 8.77
       }
     },
@@ -40609,11 +40609,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 110.95,
-      "returnYtdPct": 39.93,
-      "return1yPct": 33.18,
-      "return3yAnnPct": 27.88,
-      "return5yAnnPct": 11.34,
+      "lastClose": 111.11,
+      "returnYtdPct": 40.13,
+      "return1yPct": 33.37,
+      "return3yAnnPct": 27.95,
+      "return5yAnnPct": 11.37,
       "vol1yAnnPct": 29.84,
       "maxDrawdown1yPct": -20.67,
       "performanceChart": {
@@ -40950,7 +40950,7 @@
           {
             "date": "2024-10-04",
             "etf": 129.09,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -41519,19 +41519,19 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 209.15,
-            "sp500": 177.78
+            "etf": 209.45,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 1.14,
       "correlation1yVsSp500": 0.49,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": 26.7,
-        "return1yVsBenchmarkPct": 13.33,
-        "return3yAnnVsBenchmarkPct": 6.74,
-        "return5yAnnVsBenchmarkPct": -1.44,
-        "vol1yAnnVsBenchmarkPct": 17.05
+        "returnYtdVsBenchmarkPct": 26.65,
+        "return1yVsBenchmarkPct": 13.26,
+        "return3yAnnVsBenchmarkPct": 6.72,
+        "return5yAnnVsBenchmarkPct": -1.46,
+        "vol1yAnnVsBenchmarkPct": 17.06
       }
     },
     {
@@ -41553,11 +41553,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 35.81,
-      "returnYtdPct": -2.4,
-      "return1yPct": 8.22,
-      "return3yAnnPct": 10.77,
-      "return5yAnnPct": -1.39,
+      "lastClose": 35.85,
+      "returnYtdPct": -2.29,
+      "return1yPct": 8.34,
+      "return3yAnnPct": 10.81,
+      "return5yAnnPct": -1.37,
       "vol1yAnnPct": 26.75,
       "maxDrawdown1yPct": -19.34,
       "performanceChart": {
@@ -41894,7 +41894,7 @@
           {
             "date": "2024-10-04",
             "etf": 120.84,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -42463,19 +42463,19 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 135.92,
-            "sp500": 177.78
+            "etf": 136.07,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 1.72,
       "correlation1yVsSp500": 0.82,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": -15.63,
-        "return1yVsBenchmarkPct": -11.63,
-        "return3yAnnVsBenchmarkPct": -10.37,
-        "return5yAnnVsBenchmarkPct": -14.17,
-        "vol1yAnnVsBenchmarkPct": 13.96
+        "returnYtdVsBenchmarkPct": -15.77,
+        "return1yVsBenchmarkPct": -11.77,
+        "return3yAnnVsBenchmarkPct": -10.42,
+        "return5yAnnVsBenchmarkPct": -14.2,
+        "vol1yAnnVsBenchmarkPct": 13.97
       }
     },
     {
@@ -42497,12 +42497,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 80.2128,
-      "returnYtdPct": 13.44,
-      "return1yPct": 27.49,
-      "return3yAnnPct": 14.27,
-      "return5yAnnPct": 3.07,
-      "vol1yAnnPct": 26.96,
+      "lastClose": 80.57,
+      "returnYtdPct": 13.94,
+      "return1yPct": 28.06,
+      "return3yAnnPct": 14.43,
+      "return5yAnnPct": 3.16,
+      "vol1yAnnPct": 26.98,
       "maxDrawdown1yPct": -17.35,
       "performanceChart": {
         "base": 100,
@@ -42838,7 +42838,7 @@
           {
             "date": "2024-10-04",
             "etf": 104.84,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -43407,19 +43407,19 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 149.19,
-            "sp500": 177.78
+            "etf": 149.86,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 1.78,
       "correlation1yVsSp500": 0.84,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": 0.21,
-        "return1yVsBenchmarkPct": 7.64,
-        "return3yAnnVsBenchmarkPct": -6.87,
-        "return5yAnnVsBenchmarkPct": -9.71,
-        "vol1yAnnVsBenchmarkPct": 14.17
+        "returnYtdVsBenchmarkPct": 0.46,
+        "return1yVsBenchmarkPct": 7.95,
+        "return3yAnnVsBenchmarkPct": -6.8,
+        "return5yAnnVsBenchmarkPct": -9.67,
+        "vol1yAnnVsBenchmarkPct": 14.2
       }
     },
     {
@@ -43441,11 +43441,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 178.77,
-      "returnYtdPct": 15.26,
-      "return1yPct": 26.39,
-      "return3yAnnPct": 22.73,
-      "return5yAnnPct": 13.83,
+      "lastClose": 178.875,
+      "returnYtdPct": 15.33,
+      "return1yPct": 26.47,
+      "return3yAnnPct": 22.76,
+      "return5yAnnPct": 13.84,
       "vol1yAnnPct": 23.29,
       "maxDrawdown1yPct": -15.82,
       "performanceChart": {
@@ -43782,7 +43782,7 @@
           {
             "date": "2024-10-04",
             "etf": 127.19,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -44176,7 +44176,7 @@
           },
           {
             "date": "2026-02-04",
-            "etf": 172.03,
+            "etf": 172.02,
             "sp500": 157.71
           },
           {
@@ -44351,19 +44351,19 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 184.88,
-            "sp500": 177.78
+            "etf": 184.99,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 1.43,
       "correlation1yVsSp500": 0.78,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": 2.03,
-        "return1yVsBenchmarkPct": 6.54,
-        "return3yAnnVsBenchmarkPct": 1.59,
-        "return5yAnnVsBenchmarkPct": 1.05,
-        "vol1yAnnVsBenchmarkPct": 10.5
+        "returnYtdVsBenchmarkPct": 1.85,
+        "return1yVsBenchmarkPct": 6.36,
+        "return3yAnnVsBenchmarkPct": 1.53,
+        "return5yAnnVsBenchmarkPct": 1.01,
+        "vol1yAnnVsBenchmarkPct": 10.51
       }
     },
     {
@@ -44385,11 +44385,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 55.085,
-      "returnYtdPct": 12.96,
-      "return1yPct": 19.14,
-      "return3yAnnPct": 21.03,
-      "return5yAnnPct": 16.3,
+      "lastClose": 55.135,
+      "returnYtdPct": 13.06,
+      "return1yPct": 19.25,
+      "return3yAnnPct": 21.07,
+      "return5yAnnPct": 16.32,
       "vol1yAnnPct": 20.44,
       "maxDrawdown1yPct": -11.91,
       "performanceChart": {
@@ -44726,7 +44726,7 @@
           {
             "date": "2024-10-04",
             "etf": 130.14,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -45295,19 +45295,19 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 177.3,
-            "sp500": 177.78
+            "etf": 177.46,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 1.12,
       "correlation1yVsSp500": 0.7,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": -0.27,
-        "return1yVsBenchmarkPct": -0.71,
-        "return3yAnnVsBenchmarkPct": -0.11,
-        "return5yAnnVsBenchmarkPct": 3.52,
-        "vol1yAnnVsBenchmarkPct": 7.65
+        "returnYtdVsBenchmarkPct": -0.42,
+        "return1yVsBenchmarkPct": -0.86,
+        "return3yAnnVsBenchmarkPct": -0.16,
+        "return5yAnnVsBenchmarkPct": 3.49,
+        "vol1yAnnVsBenchmarkPct": 7.66
       }
     },
     {
@@ -45329,11 +45329,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 93.61,
-      "returnYtdPct": -3.64,
-      "return1yPct": -17.48,
-      "return3yAnnPct": 4.85,
-      "return5yAnnPct": 6.22,
+      "lastClose": 94.12,
+      "returnYtdPct": -3.11,
+      "return1yPct": -17.03,
+      "return3yAnnPct": 5.04,
+      "return5yAnnPct": 6.34,
       "vol1yAnnPct": 29.27,
       "maxDrawdown1yPct": -26.04,
       "performanceChart": {
@@ -45670,7 +45670,7 @@
           {
             "date": "2024-10-04",
             "etf": 149.1,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -46239,19 +46239,19 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 115.28,
-            "sp500": 177.78
+            "etf": 115.9,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 0.97,
       "correlation1yVsSp500": 0.42,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": -16.87,
-        "return1yVsBenchmarkPct": -37.33,
-        "return3yAnnVsBenchmarkPct": -16.29,
-        "return5yAnnVsBenchmarkPct": -6.56,
-        "vol1yAnnVsBenchmarkPct": 16.48
+        "returnYtdVsBenchmarkPct": -16.59,
+        "return1yVsBenchmarkPct": -37.14,
+        "return3yAnnVsBenchmarkPct": -16.19,
+        "return5yAnnVsBenchmarkPct": -6.49,
+        "vol1yAnnVsBenchmarkPct": 16.49
       }
     },
     {
@@ -46273,12 +46273,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 102.7,
-      "returnYtdPct": -1.33,
-      "return1yPct": -11.71,
-      "return3yAnnPct": 9.05,
-      "return5yAnnPct": 6.79,
-      "vol1yAnnPct": 27.82,
+      "lastClose": 103.32,
+      "returnYtdPct": -0.73,
+      "return1yPct": -11.18,
+      "return3yAnnPct": 9.27,
+      "return5yAnnPct": 6.91,
+      "vol1yAnnPct": 27.83,
       "maxDrawdown1yPct": -21.6,
       "performanceChart": {
         "base": 100,
@@ -46614,7 +46614,7 @@
           {
             "date": "2024-10-04",
             "etf": 151.09,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -47183,19 +47183,19 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 129.7,
-            "sp500": 177.78
+            "etf": 130.48,
+            "sp500": 178.17
           }
         ]
       },
-      "beta1yVsSp500": 1.11,
+      "beta1yVsSp500": 1.12,
       "correlation1yVsSp500": 0.51,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": -14.56,
-        "return1yVsBenchmarkPct": -31.56,
-        "return3yAnnVsBenchmarkPct": -12.09,
-        "return5yAnnVsBenchmarkPct": -5.99,
-        "vol1yAnnVsBenchmarkPct": 15.03
+        "returnYtdVsBenchmarkPct": -14.21,
+        "return1yVsBenchmarkPct": -31.29,
+        "return3yAnnVsBenchmarkPct": -11.96,
+        "return5yAnnVsBenchmarkPct": -5.92,
+        "vol1yAnnVsBenchmarkPct": 15.05
       }
     },
     {
@@ -47217,12 +47217,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 97.045,
-      "returnYtdPct": 2.26,
-      "return1yPct": 5.16,
-      "return3yAnnPct": 21.92,
-      "return5yAnnPct": 14.25,
-      "vol1yAnnPct": 24.85,
+      "lastClose": 97.17,
+      "returnYtdPct": 2.39,
+      "return1yPct": 5.29,
+      "return3yAnnPct": 21.97,
+      "return5yAnnPct": 14.28,
+      "vol1yAnnPct": 24.86,
       "maxDrawdown1yPct": -16.66,
       "performanceChart": {
         "base": 100,
@@ -47558,7 +47558,7 @@
           {
             "date": "2024-10-04",
             "etf": 146.73,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -48127,19 +48127,19 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 181.23,
-            "sp500": 177.78
+            "etf": 181.46,
+            "sp500": 178.17
           }
         ]
       },
-      "beta1yVsSp500": 1.35,
+      "beta1yVsSp500": 1.36,
       "correlation1yVsSp500": 0.7,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": -10.97,
-        "return1yVsBenchmarkPct": -14.69,
-        "return3yAnnVsBenchmarkPct": 0.78,
-        "return5yAnnVsBenchmarkPct": 1.47,
-        "vol1yAnnVsBenchmarkPct": 12.06
+        "returnYtdVsBenchmarkPct": -11.09,
+        "return1yVsBenchmarkPct": -14.82,
+        "return3yAnnVsBenchmarkPct": 0.74,
+        "return5yAnnVsBenchmarkPct": 1.45,
+        "vol1yAnnVsBenchmarkPct": 12.08
       }
     },
     {
@@ -48161,12 +48161,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 30.525,
-      "returnYtdPct": 8.44,
-      "return1yPct": 5.08,
-      "return3yAnnPct": 5.79,
-      "return5yAnnPct": -3.99,
-      "vol1yAnnPct": 17.82,
+      "lastClose": 30.64,
+      "returnYtdPct": 8.85,
+      "return1yPct": 5.48,
+      "return3yAnnPct": 5.92,
+      "return5yAnnPct": -3.92,
+      "vol1yAnnPct": 17.83,
       "maxDrawdown1yPct": -15.01,
       "performanceChart": {
         "base": 100,
@@ -48502,7 +48502,7 @@
           {
             "date": "2024-10-04",
             "etf": 116.45,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -49071,19 +49071,19 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 118.4,
-            "sp500": 177.78
+            "etf": 118.85,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 0.83,
       "correlation1yVsSp500": 0.59,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": -4.79,
-        "return1yVsBenchmarkPct": -14.77,
-        "return3yAnnVsBenchmarkPct": -15.35,
-        "return5yAnnVsBenchmarkPct": -16.77,
-        "vol1yAnnVsBenchmarkPct": 5.03
+        "returnYtdVsBenchmarkPct": -4.63,
+        "return1yVsBenchmarkPct": -14.63,
+        "return3yAnnVsBenchmarkPct": -15.31,
+        "return5yAnnVsBenchmarkPct": -16.75,
+        "vol1yAnnVsBenchmarkPct": 5.05
       }
     },
     {
@@ -49271,7 +49271,7 @@
           {
             "date": "2024-01-17",
             "etf": 102.69,
-            "sp500": 104.78
+            "sp500": 104.77
           },
           {
             "date": "2024-01-23",
@@ -50023,11 +50023,11 @@
       "beta1yVsSp500": 1.37,
       "correlation1yVsSp500": 0.71,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": 12.06,
-        "return1yVsBenchmarkPct": 23.93,
-        "return3yAnnVsBenchmarkPct": 6.19,
-        "return5yAnnVsBenchmarkPct": -2.29,
-        "vol1yAnnVsBenchmarkPct": 11.44
+        "returnYtdVsBenchmarkPct": 11.81,
+        "return1yVsBenchmarkPct": 23.67,
+        "return3yAnnVsBenchmarkPct": 6.1,
+        "return5yAnnVsBenchmarkPct": -2.34,
+        "vol1yAnnVsBenchmarkPct": 11.45
       }
     },
     {
@@ -50049,11 +50049,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 108.44,
-      "returnYtdPct": 6.88,
-      "return1yPct": 17.96,
-      "return3yAnnPct": 26.36,
-      "return5yAnnPct": 20.99,
+      "lastClose": 108.565,
+      "returnYtdPct": 7.0,
+      "return1yPct": 18.1,
+      "return3yAnnPct": 26.41,
+      "return5yAnnPct": 21.01,
       "vol1yAnnPct": 28.34,
       "maxDrawdown1yPct": -20.42,
       "performanceChart": {
@@ -50390,7 +50390,7 @@
           {
             "date": "2024-10-04",
             "etf": 138.2,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -50959,19 +50959,19 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 201.75,
-            "sp500": 177.78
+            "etf": 201.98,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 1.59,
       "correlation1yVsSp500": 0.72,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": -6.35,
-        "return1yVsBenchmarkPct": -1.89,
-        "return3yAnnVsBenchmarkPct": 5.22,
-        "return5yAnnVsBenchmarkPct": 8.21,
-        "vol1yAnnVsBenchmarkPct": 15.55
+        "returnYtdVsBenchmarkPct": -6.48,
+        "return1yVsBenchmarkPct": -2.01,
+        "return3yAnnVsBenchmarkPct": 5.18,
+        "return5yAnnVsBenchmarkPct": 8.18,
+        "vol1yAnnVsBenchmarkPct": 15.56
       }
     },
     {
@@ -50993,11 +50993,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 147.39,
-      "returnYtdPct": 31.64,
-      "return1yPct": 58.08,
-      "return3yAnnPct": 43.45,
-      "return5yAnnPct": 24.31,
+      "lastClose": 147.66,
+      "returnYtdPct": 31.88,
+      "return1yPct": 58.37,
+      "return3yAnnPct": 43.54,
+      "return5yAnnPct": 24.35,
       "vol1yAnnPct": 32.54,
       "maxDrawdown1yPct": -21.51,
       "performanceChart": {
@@ -51334,7 +51334,7 @@
           {
             "date": "2024-10-04",
             "etf": 123.31,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -51568,7 +51568,7 @@
           },
           {
             "date": "2025-07-23",
-            "etf": 188.02,
+            "etf": 188.03,
             "sp500": 144.93
           },
           {
@@ -51903,19 +51903,19 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 295.22,
-            "sp500": 177.78
+            "etf": 295.76,
+            "sp500": 178.17
           }
         ]
       },
-      "beta1yVsSp500": 2.09,
+      "beta1yVsSp500": 2.1,
       "correlation1yVsSp500": 0.82,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": 18.41,
-        "return1yVsBenchmarkPct": 38.23,
+        "returnYtdVsBenchmarkPct": 18.4,
+        "return1yVsBenchmarkPct": 38.26,
         "return3yAnnVsBenchmarkPct": 22.31,
-        "return5yAnnVsBenchmarkPct": 11.53,
-        "vol1yAnnVsBenchmarkPct": 19.75
+        "return5yAnnVsBenchmarkPct": 11.52,
+        "vol1yAnnVsBenchmarkPct": 19.76
       }
     },
     {
@@ -51937,10 +51937,10 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 196.17,
-      "returnYtdPct": -9.54,
-      "return1yPct": -5.71,
-      "return3yAnnPct": -1.43,
+      "lastClose": 196.14,
+      "returnYtdPct": -9.56,
+      "return1yPct": -5.72,
+      "return3yAnnPct": -1.44,
       "return5yAnnPct": -0.36,
       "vol1yAnnPct": 19.54,
       "maxDrawdown1yPct": -15.74,
@@ -52278,7 +52278,7 @@
           {
             "date": "2024-10-04",
             "etf": 97.34,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-10",
@@ -52847,8 +52847,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 95.77,
-            "sp500": 177.78
+            "etf": 95.75,
+            "sp500": 178.17
           }
         ]
       },
@@ -52874,12 +52874,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 113.48,
-      "returnYtdPct": 1.25,
-      "return1yPct": 8.53,
-      "return3yAnnPct": 3.35,
-      "return5yAnnPct": 3.2,
-      "vol1yAnnPct": 16.88,
+      "lastClose": 113.3,
+      "returnYtdPct": 1.09,
+      "return1yPct": 8.35,
+      "return3yAnnPct": 3.3,
+      "return5yAnnPct": 3.16,
+      "vol1yAnnPct": 16.89,
       "maxDrawdown1yPct": -12.57,
       "performanceChart": {
         "base": 100,
@@ -53784,8 +53784,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 110.39,
-            "sp500": 177.78
+            "etf": 110.21,
+            "sp500": 178.17
           }
         ]
       },
@@ -53811,12 +53811,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 54.28,
-      "returnYtdPct": 8.79,
-      "return1yPct": 20.14,
-      "return3yAnnPct": 5.8,
-      "return5yAnnPct": 4.7,
-      "vol1yAnnPct": 14.47,
+      "lastClose": 54.42,
+      "returnYtdPct": 9.07,
+      "return1yPct": 20.45,
+      "return3yAnnPct": 5.89,
+      "return5yAnnPct": 4.76,
+      "vol1yAnnPct": 14.45,
       "maxDrawdown1yPct": -10.32,
       "performanceChart": {
         "base": 100,
@@ -54721,8 +54721,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 118.42,
-            "sp500": 177.78
+            "etf": 118.73,
+            "sp500": 178.17
           }
         ]
       },
@@ -54748,12 +54748,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 54.79,
-      "returnYtdPct": -11.39,
-      "return1yPct": -7.42,
-      "return3yAnnPct": 9.27,
-      "return5yAnnPct": -3.66,
-      "vol1yAnnPct": 19.89,
+      "lastClose": 54.895,
+      "returnYtdPct": -11.22,
+      "return1yPct": -7.24,
+      "return3yAnnPct": 9.34,
+      "return5yAnnPct": -3.63,
+      "vol1yAnnPct": 19.9,
       "maxDrawdown1yPct": -23.22,
       "performanceChart": {
         "base": 100,
@@ -55089,7 +55089,7 @@
           {
             "date": "2024-10-04",
             "etf": 129.43,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -55658,8 +55658,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 130.47,
-            "sp500": 177.78
+            "etf": 130.72,
+            "sp500": 178.17
           }
         ]
       },
@@ -55685,12 +55685,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 35.795,
-      "returnYtdPct": -9.43,
-      "return1yPct": -4.89,
-      "return3yAnnPct": 11.8,
-      "return5yAnnPct": -1.05,
-      "vol1yAnnPct": 19.71,
+      "lastClose": 35.845,
+      "returnYtdPct": -9.31,
+      "return1yPct": -4.76,
+      "return3yAnnPct": 11.85,
+      "return5yAnnPct": -1.02,
+      "vol1yAnnPct": 19.72,
       "maxDrawdown1yPct": -22.94,
       "performanceChart": {
         "base": 100,
@@ -56026,7 +56026,7 @@
           {
             "date": "2024-10-04",
             "etf": 132.99,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -56595,13 +56595,13 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 139.74,
-            "sp500": 177.78
+            "etf": 139.94,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 0.76,
-      "correlation1yVsSp500": 0.49
+      "correlation1yVsSp500": 0.5
     },
     {
       "ticker": "KWEB",
@@ -56622,12 +56622,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 25.98,
-      "returnYtdPct": -27.08,
-      "return1yPct": -27.35,
-      "return3yAnnPct": 0.11,
-      "return5yAnnPct": -10.72,
-      "vol1yAnnPct": 27.47,
+      "lastClose": 26.055,
+      "returnYtdPct": -26.87,
+      "return1yPct": -27.14,
+      "return3yAnnPct": 0.21,
+      "return5yAnnPct": -10.67,
+      "vol1yAnnPct": 27.49,
       "maxDrawdown1yPct": -41.62,
       "performanceChart": {
         "base": 100,
@@ -56963,7 +56963,7 @@
           {
             "date": "2024-10-04",
             "etf": 135.19,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -57532,12 +57532,12 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 100.34,
-            "sp500": 177.78
+            "etf": 100.63,
+            "sp500": 178.17
           }
         ]
       },
-      "beta1yVsSp500": 1.1,
+      "beta1yVsSp500": 1.11,
       "correlation1yVsSp500": 0.51
     },
     {
@@ -57559,11 +57559,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 34.145,
-      "returnYtdPct": 2.48,
-      "return1yPct": 13.21,
-      "return3yAnnPct": 10.77,
-      "return5yAnnPct": -1.26,
+      "lastClose": 34.215,
+      "returnYtdPct": 2.69,
+      "return1yPct": 13.44,
+      "return3yAnnPct": 10.84,
+      "return5yAnnPct": -1.21,
       "vol1yAnnPct": 19.13,
       "maxDrawdown1yPct": -9.84,
       "performanceChart": {
@@ -57900,7 +57900,7 @@
           {
             "date": "2024-10-04",
             "etf": 126.21,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -58469,8 +58469,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 135.91,
-            "sp500": 177.78
+            "etf": 136.18,
+            "sp500": 178.17
           }
         ]
       },
@@ -58496,12 +58496,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 32.8,
-      "returnYtdPct": 4.63,
-      "return1yPct": 18.21,
-      "return3yAnnPct": 13.98,
-      "return5yAnnPct": 5.96,
-      "vol1yAnnPct": 20.21,
+      "lastClose": 32.8551,
+      "returnYtdPct": 4.8,
+      "return1yPct": 18.41,
+      "return3yAnnPct": 14.05,
+      "return5yAnnPct": 6.0,
+      "vol1yAnnPct": 20.22,
       "maxDrawdown1yPct": -8.33,
       "performanceChart": {
         "base": 100,
@@ -58596,7 +58596,7 @@
           },
           {
             "date": "2023-12-15",
-            "etf": 86.55,
+            "etf": 86.54,
             "sp500": 105.27
           },
           {
@@ -58837,7 +58837,7 @@
           {
             "date": "2024-10-04",
             "etf": 128.22,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -59086,7 +59086,7 @@
           },
           {
             "date": "2025-08-11",
-            "etf": 113.86,
+            "etf": 113.85,
             "sp500": 145.32
           },
           {
@@ -59406,12 +59406,12 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 148.09,
-            "sp500": 177.78
+            "etf": 148.34,
+            "sp500": 178.17
           }
         ]
       },
-      "beta1yVsSp500": 0.82,
+      "beta1yVsSp500": 0.83,
       "correlation1yVsSp500": 0.52
     },
     {
@@ -59433,11 +59433,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 90.79,
-      "returnYtdPct": 24.69,
-      "return1yPct": 85.95,
-      "return3yAnnPct": 36.46,
-      "return5yAnnPct": 22.26,
+      "lastClose": 90.99,
+      "returnYtdPct": 24.96,
+      "return1yPct": 86.36,
+      "return3yAnnPct": 36.56,
+      "return5yAnnPct": 22.32,
       "vol1yAnnPct": 46.71,
       "maxDrawdown1yPct": -27.82,
       "performanceChart": {
@@ -59774,7 +59774,7 @@
           {
             "date": "2024-10-04",
             "etf": 127.71,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -60343,8 +60343,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 254.11,
-            "sp500": 177.78
+            "etf": 254.67,
+            "sp500": 178.17
           }
         ]
       },
@@ -60370,11 +60370,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 65.1,
-      "returnYtdPct": 25.38,
-      "return1yPct": 61.67,
-      "return3yAnnPct": 20.78,
-      "return5yAnnPct": 12.29,
+      "lastClose": 65.22,
+      "returnYtdPct": 25.61,
+      "return1yPct": 61.96,
+      "return3yAnnPct": 20.85,
+      "return5yAnnPct": 12.33,
       "vol1yAnnPct": 31.05,
       "maxDrawdown1yPct": -19.54,
       "performanceChart": {
@@ -60711,7 +60711,7 @@
           {
             "date": "2024-10-04",
             "etf": 110.24,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -61070,7 +61070,7 @@
           },
           {
             "date": "2025-12-19",
-            "etf": 133.96,
+            "etf": 133.95,
             "sp500": 156.42
           },
           {
@@ -61280,8 +61280,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 176.19,
-            "sp500": 177.78
+            "etf": 176.52,
+            "sp500": 178.17
           }
         ]
       },
@@ -61307,11 +61307,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 49.905,
-      "returnYtdPct": -8.53,
-      "return1yPct": -5.11,
-      "return3yAnnPct": 4.26,
-      "return5yAnnPct": 1.64,
+      "lastClose": 49.93,
+      "returnYtdPct": -8.49,
+      "return1yPct": -5.06,
+      "return3yAnnPct": 4.28,
+      "return5yAnnPct": 1.65,
       "vol1yAnnPct": 15.07,
       "maxDrawdown1yPct": -17.85,
       "performanceChart": {
@@ -61648,7 +61648,7 @@
           {
             "date": "2024-10-04",
             "etf": 128.75,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -62217,13 +62217,13 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 113.34,
-            "sp500": 177.78
+            "etf": 113.4,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 0.65,
-      "correlation1yVsSp500": 0.55
+      "correlation1yVsSp500": 0.56
     },
     {
       "ticker": "FLIN",
@@ -62244,11 +62244,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 35.815,
-      "returnYtdPct": -8.17,
-      "return1yPct": -4.87,
-      "return3yAnnPct": 4.98,
-      "return5yAnnPct": 2.78,
+      "lastClose": 35.88,
+      "returnYtdPct": -8.0,
+      "return1yPct": -4.7,
+      "return3yAnnPct": 5.05,
+      "return5yAnnPct": 2.82,
       "vol1yAnnPct": 15.25,
       "maxDrawdown1yPct": -18.25,
       "performanceChart": {
@@ -62585,7 +62585,7 @@
           {
             "date": "2024-10-04",
             "etf": 130.67,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -63154,8 +63154,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 115.71,
-            "sp500": 177.78
+            "etf": 115.92,
+            "sp500": 178.17
           }
         ]
       },
@@ -63181,12 +63181,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 77.07,
-      "returnYtdPct": 12.27,
-      "return1yPct": 26.38,
-      "return3yAnnPct": 12.58,
-      "return5yAnnPct": 12.46,
-      "vol1yAnnPct": 21.93,
+      "lastClose": 77.27,
+      "returnYtdPct": 12.56,
+      "return1yPct": 26.7,
+      "return3yAnnPct": 12.67,
+      "return5yAnnPct": 12.52,
+      "vol1yAnnPct": 21.94,
       "maxDrawdown1yPct": -13.98,
       "performanceChart": {
         "base": 100,
@@ -63522,7 +63522,7 @@
           {
             "date": "2024-10-04",
             "etf": 94.53,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -64091,8 +64091,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 142.67,
-            "sp500": 177.78
+            "etf": 143.04,
+            "sp500": 178.17
           }
         ]
       },
@@ -64118,11 +64118,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 18.14,
-      "returnYtdPct": -5.08,
-      "return1yPct": -1.37,
-      "return3yAnnPct": 7.93,
-      "return5yAnnPct": -0.6,
+      "lastClose": 18.155,
+      "returnYtdPct": -5.0,
+      "return1yPct": -1.29,
+      "return3yAnnPct": 7.96,
+      "return5yAnnPct": -0.59,
       "vol1yAnnPct": 26.3,
       "maxDrawdown1yPct": -17.47,
       "performanceChart": {
@@ -64459,7 +64459,7 @@
           {
             "date": "2024-10-04",
             "etf": 86.31,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -65028,8 +65028,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 125.72,
-            "sp500": 177.78
+            "etf": 125.82,
+            "sp500": 178.17
           }
         ]
       },
@@ -65055,12 +65055,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 111.73,
-      "returnYtdPct": 72.5,
-      "return1yPct": 97.07,
-      "return3yAnnPct": 43.55,
-      "return5yAnnPct": 20.33,
-      "vol1yAnnPct": 31.18,
+      "lastClose": 112.13,
+      "returnYtdPct": 73.12,
+      "return1yPct": 97.78,
+      "return3yAnnPct": 43.72,
+      "return5yAnnPct": 20.41,
+      "vol1yAnnPct": 31.2,
       "maxDrawdown1yPct": -19.83,
       "performanceChart": {
         "base": 100,
@@ -65396,7 +65396,7 @@
           {
             "date": "2024-10-04",
             "etf": 131.84,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -65910,7 +65910,7 @@
           },
           {
             "date": "2026-07-01",
-            "etf": 279.82,
+            "etf": 279.83,
             "sp500": 172.31
           },
           {
@@ -65965,8 +65965,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 295.82,
-            "sp500": 177.78
+            "etf": 296.88,
+            "sp500": 178.17
           }
         ]
       },
@@ -65992,12 +65992,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 185.05,
-      "returnYtdPct": 81.03,
-      "return1yPct": 158.94,
-      "return3yAnnPct": 46.86,
-      "return5yAnnPct": 18.93,
-      "vol1yAnnPct": 55.84,
+      "lastClose": 186.61,
+      "returnYtdPct": 82.56,
+      "return1yPct": 161.12,
+      "return3yAnnPct": 47.27,
+      "return5yAnnPct": 19.13,
+      "vol1yAnnPct": 55.87,
       "maxDrawdown1yPct": -34.21,
       "performanceChart": {
         "base": 100,
@@ -66333,7 +66333,7 @@
           {
             "date": "2024-10-04",
             "etf": 102.51,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -66902,8 +66902,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 316.74,
-            "sp500": 177.78
+            "etf": 319.41,
+            "sp500": 178.17
           }
         ]
       },
@@ -66929,12 +66929,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 57.215,
-      "returnYtdPct": 5.33,
-      "return1yPct": 9.2,
-      "return3yAnnPct": 9.66,
-      "return5yAnnPct": 7.33,
-      "vol1yAnnPct": 7.96,
+      "lastClose": 57.2783,
+      "returnYtdPct": 5.45,
+      "return1yPct": 9.32,
+      "return3yAnnPct": 9.7,
+      "return5yAnnPct": 7.35,
+      "vol1yAnnPct": 7.95,
       "maxDrawdown1yPct": -6.68,
       "performanceChart": {
         "base": 100,
@@ -67270,7 +67270,7 @@
           {
             "date": "2024-10-04",
             "etf": 116.58,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -67839,18 +67839,18 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 131.87,
-            "sp500": 177.78
+            "etf": 132.02,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 0.42,
       "correlation1yVsSp500": 0.68,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": -7.9,
-        "return1yVsBenchmarkPct": -10.65,
-        "return3yAnnVsBenchmarkPct": -11.48,
-        "return5yAnnVsBenchmarkPct": -5.45,
+        "returnYtdVsBenchmarkPct": -8.03,
+        "return1yVsBenchmarkPct": -10.79,
+        "return3yAnnVsBenchmarkPct": -11.53,
+        "return5yAnnVsBenchmarkPct": -5.48,
         "vol1yAnnVsBenchmarkPct": -4.83
       }
     },
@@ -67873,11 +67873,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 59.735,
-      "returnYtdPct": 11.41,
-      "return1yPct": 20.43,
-      "return3yAnnPct": 19.41,
-      "return5yAnnPct": 15.95,
+      "lastClose": 59.825,
+      "returnYtdPct": 11.57,
+      "return1yPct": 20.61,
+      "return3yAnnPct": 19.47,
+      "return5yAnnPct": 15.99,
       "vol1yAnnPct": 14.63,
       "maxDrawdown1yPct": -8.82,
       "performanceChart": {
@@ -68713,7 +68713,7 @@
           },
           {
             "date": "2026-06-11",
-            "etf": 163.89,
+            "etf": 163.9,
             "qqq": 192.78
           },
           {
@@ -68783,17 +68783,17 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 170.26,
-            "qqq": 193.1
+            "etf": 170.52,
+            "qqq": 193.48
           }
         ]
       },
       "beta1yVsSp500": 0.71,
       "correlation1yVsSp500": 0.95,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": -5.89,
-        "return1yVsBenchmarkPct": -4.91,
-        "return3yAnnVsBenchmarkPct": -5.12,
+        "returnYtdVsBenchmarkPct": -5.97,
+        "return1yVsBenchmarkPct": -4.98,
+        "return3yAnnVsBenchmarkPct": -5.14,
         "return5yAnnVsBenchmarkPct": 1.82,
         "vol1yAnnVsBenchmarkPct": -4.95
       }
@@ -68817,11 +68817,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 41.615,
-      "returnYtdPct": 9.8,
-      "return1yPct": 18.51,
-      "return3yAnnPct": 12.82,
-      "return5yAnnPct": 7.72,
+      "lastClose": 41.665,
+      "returnYtdPct": 9.93,
+      "return1yPct": 18.65,
+      "return3yAnnPct": 12.87,
+      "return5yAnnPct": 7.75,
       "vol1yAnnPct": 6.94,
       "maxDrawdown1yPct": -5.29,
       "performanceChart": {
@@ -69158,7 +69158,7 @@
           {
             "date": "2024-10-04",
             "etf": 114.42,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -69727,19 +69727,19 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 143.6,
-            "sp500": 177.78
+            "etf": 143.78,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 0.48,
       "correlation1yVsSp500": 0.88,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": -3.43,
-        "return1yVsBenchmarkPct": -1.34,
-        "return3yAnnVsBenchmarkPct": -8.32,
-        "return5yAnnVsBenchmarkPct": -5.06,
-        "vol1yAnnVsBenchmarkPct": -5.85
+        "returnYtdVsBenchmarkPct": -3.55,
+        "return1yVsBenchmarkPct": -1.46,
+        "return3yAnnVsBenchmarkPct": -8.36,
+        "return5yAnnVsBenchmarkPct": -5.08,
+        "vol1yAnnVsBenchmarkPct": -5.84
       }
     },
     {
@@ -69761,11 +69761,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 18.3301,
-      "returnYtdPct": 12.35,
-      "return1yPct": 23.31,
-      "return3yAnnPct": 14.81,
-      "return5yAnnPct": 8.06,
+      "lastClose": 18.35,
+      "returnYtdPct": 12.48,
+      "return1yPct": 23.44,
+      "return3yAnnPct": 14.85,
+      "return5yAnnPct": 8.08,
       "vol1yAnnPct": 11.1,
       "maxDrawdown1yPct": -5.78,
       "performanceChart": {
@@ -70671,18 +70671,18 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 151.34,
-            "qqq": 193.1
+            "etf": 151.5,
+            "qqq": 193.48
           }
         ]
       },
       "beta1yVsSp500": 0.5,
       "correlation1yVsSp500": 0.88,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": -4.95,
-        "return1yVsBenchmarkPct": -2.03,
-        "return3yAnnVsBenchmarkPct": -9.72,
-        "return5yAnnVsBenchmarkPct": -6.07,
+        "returnYtdVsBenchmarkPct": -5.06,
+        "return1yVsBenchmarkPct": -2.15,
+        "return3yAnnVsBenchmarkPct": -9.76,
+        "return5yAnnVsBenchmarkPct": -6.09,
         "vol1yAnnVsBenchmarkPct": -8.48
       }
     },
@@ -70705,11 +70705,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 101.1,
-      "returnYtdPct": 8.74,
-      "return1yPct": 8.96,
+      "lastClose": 101.0899,
+      "returnYtdPct": 8.73,
+      "return1yPct": 8.95,
       "return3yAnnPct": 12.57,
-      "return5yAnnPct": 7.23,
+      "return5yAnnPct": 7.22,
       "vol1yAnnPct": 8.58,
       "maxDrawdown1yPct": -6.46,
       "performanceChart": {
@@ -71046,7 +71046,7 @@
           {
             "date": "2024-10-04",
             "etf": 125.15,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -71615,19 +71615,19 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 142.66,
-            "sp500": 177.78
+            "etf": 142.65,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 0.34,
       "correlation1yVsSp500": 0.5,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": -4.49,
-        "return1yVsBenchmarkPct": -10.89,
-        "return3yAnnVsBenchmarkPct": -8.57,
-        "return5yAnnVsBenchmarkPct": -5.55,
-        "vol1yAnnVsBenchmarkPct": -4.21
+        "returnYtdVsBenchmarkPct": -4.75,
+        "return1yVsBenchmarkPct": -11.16,
+        "return3yAnnVsBenchmarkPct": -8.66,
+        "return5yAnnVsBenchmarkPct": -5.61,
+        "vol1yAnnVsBenchmarkPct": -4.2
       }
     },
     {
@@ -71649,12 +71649,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 75.1,
-      "returnYtdPct": 7.04,
-      "return1yPct": 4.59,
-      "return3yAnnPct": 9.85,
-      "return5yAnnPct": 5.54,
-      "vol1yAnnPct": 10.59,
+      "lastClose": 74.975,
+      "returnYtdPct": 6.86,
+      "return1yPct": 4.41,
+      "return3yAnnPct": 9.79,
+      "return5yAnnPct": 5.51,
+      "vol1yAnnPct": 10.6,
       "maxDrawdown1yPct": -7.41,
       "performanceChart": {
         "base": 100,
@@ -71990,7 +71990,7 @@
           {
             "date": "2024-10-04",
             "etf": 121.4,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -72559,19 +72559,19 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 132.55,
-            "sp500": 177.78
+            "etf": 132.33,
+            "sp500": 178.17
           }
         ]
       },
       "beta1yVsSp500": 0.01,
       "correlation1yVsSp500": 0.02,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": -6.19,
-        "return1yVsBenchmarkPct": -15.26,
-        "return3yAnnVsBenchmarkPct": -11.29,
-        "return5yAnnVsBenchmarkPct": -7.24,
-        "vol1yAnnVsBenchmarkPct": -2.2
+        "returnYtdVsBenchmarkPct": -6.62,
+        "return1yVsBenchmarkPct": -15.7,
+        "return3yAnnVsBenchmarkPct": -11.44,
+        "return5yAnnVsBenchmarkPct": -7.32,
+        "vol1yAnnVsBenchmarkPct": -2.18
       }
     },
     {
@@ -72593,13 +72593,13 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 16.7905,
-      "returnYtdPct": -33.4,
-      "return1yPct": -51.28,
-      "return3yAnnPct": -41.93,
+      "lastClose": 16.785,
+      "returnYtdPct": -33.42,
+      "return1yPct": -51.29,
+      "return3yAnnPct": -41.94,
       "return5yAnnPct": -47.47,
       "vol1yAnnPct": 55.95,
-      "maxDrawdown1yPct": -56.89,
+      "maxDrawdown1yPct": -56.91,
       "performanceChart": {
         "base": 100,
         "period": "3y_or_available",
@@ -72934,7 +72934,7 @@
           {
             "date": "2024-10-04",
             "etf": 61.05,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -73503,12 +73503,12 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 19.58,
-            "sp500": 177.78
+            "etf": 19.57,
+            "sp500": 178.17
           }
         ]
       },
-      "beta1yVsSp500": -3.5,
+      "beta1yVsSp500": -3.51,
       "correlation1yVsSp500": -0.8
     },
     {
@@ -73530,13 +73530,13 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 17.49,
-      "returnYtdPct": -32.99,
-      "return1yPct": -50.57,
+      "lastClose": 17.485,
+      "returnYtdPct": -33.01,
+      "return1yPct": -50.58,
       "return3yAnnPct": -41.06,
-      "return5yAnnPct": -46.79,
+      "return5yAnnPct": -46.8,
       "vol1yAnnPct": 55.72,
-      "maxDrawdown1yPct": -56.24,
+      "maxDrawdown1yPct": -56.25,
       "performanceChart": {
         "base": 100,
         "period": "3y_or_available",
@@ -73871,7 +73871,7 @@
           {
             "date": "2024-10-04",
             "etf": 62.06,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -74440,8 +74440,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 20.48,
-            "sp500": 177.78
+            "etf": 20.47,
+            "sp500": 178.17
           }
         ]
       },
@@ -74467,13 +74467,13 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 17.185,
-      "returnYtdPct": -50.86,
-      "return1yPct": -70.37,
-      "return3yAnnPct": -63.63,
+      "lastClose": 17.1681,
+      "returnYtdPct": -50.91,
+      "return1yPct": -70.4,
+      "return3yAnnPct": -63.64,
       "return5yAnnPct": -68.46,
       "vol1yAnnPct": 84.71,
-      "maxDrawdown1yPct": -75.0,
+      "maxDrawdown1yPct": -75.03,
       "performanceChart": {
         "base": 100,
         "period": "3y_or_available",
@@ -74808,7 +74808,7 @@
           {
             "date": "2024-10-04",
             "etf": 38.43,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -75378,11 +75378,11 @@
           {
             "date": "2026-09-04",
             "etf": 4.81,
-            "sp500": 177.78
+            "sp500": 178.17
           }
         ]
       },
-      "beta1yVsSp500": -5.29,
+      "beta1yVsSp500": -5.3,
       "correlation1yVsSp500": -0.8
     },
     {
@@ -75404,11 +75404,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 32.37,
-      "returnYtdPct": -8.77,
-      "return1yPct": -12.09,
-      "return3yAnnPct": -12.38,
-      "return5yAnnPct": -7.9,
+      "lastClose": 32.315,
+      "returnYtdPct": -8.92,
+      "return1yPct": -12.24,
+      "return3yAnnPct": -12.43,
+      "return5yAnnPct": -7.93,
       "vol1yAnnPct": 12.71,
       "maxDrawdown1yPct": -17.49,
       "performanceChart": {
@@ -75745,7 +75745,7 @@
           {
             "date": "2024-10-04",
             "etf": 84.09,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -76314,8 +76314,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 67.26,
-            "sp500": 177.78
+            "etf": 67.15,
+            "sp500": 178.17
           }
         ]
       },
@@ -76341,11 +76341,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 25.8198,
-      "returnYtdPct": -13.53,
-      "return1yPct": -17.82,
-      "return3yAnnPct": -16.62,
-      "return5yAnnPct": -11.55,
+      "lastClose": 25.7688,
+      "returnYtdPct": -13.7,
+      "return1yPct": -17.98,
+      "return3yAnnPct": -16.67,
+      "return5yAnnPct": -11.59,
       "vol1yAnnPct": 19.56,
       "maxDrawdown1yPct": -24.83,
       "performanceChart": {
@@ -77251,8 +77251,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 57.97,
-            "qqq": 193.1
+            "etf": 57.85,
+            "qqq": 193.48
           }
         ]
       },
@@ -77278,11 +77278,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 13.6303,
-      "returnYtdPct": -14.76,
-      "return1yPct": -18.5,
-      "return3yAnnPct": -12.31,
-      "return5yAnnPct": -5.41,
+      "lastClose": 13.615,
+      "returnYtdPct": -14.86,
+      "return1yPct": -18.59,
+      "return3yAnnPct": -12.34,
+      "return5yAnnPct": -5.43,
       "vol1yAnnPct": 18.69,
       "maxDrawdown1yPct": -24.08,
       "performanceChart": {
@@ -77619,7 +77619,7 @@
           {
             "date": "2024-10-04",
             "etf": 88.31,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -78188,8 +78188,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 67.44,
-            "sp500": 177.78
+            "etf": 67.36,
+            "sp500": 178.17
           }
         ]
       },
@@ -78215,12 +78215,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 15.525,
-      "returnYtdPct": -19.47,
-      "return1yPct": -28.58,
-      "return3yAnnPct": -16.27,
-      "return5yAnnPct": -5.75,
-      "vol1yAnnPct": 25.3,
+      "lastClose": 15.4283,
+      "returnYtdPct": -19.97,
+      "return1yPct": -29.02,
+      "return3yAnnPct": -16.44,
+      "return5yAnnPct": -5.87,
+      "vol1yAnnPct": 25.33,
       "maxDrawdown1yPct": -31.3,
       "performanceChart": {
         "base": 100,
@@ -78556,7 +78556,7 @@
           {
             "date": "2024-10-04",
             "etf": 86.51,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -79125,8 +79125,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 58.7,
-            "sp500": 177.78
+            "etf": 58.33,
+            "sp500": 178.17
           }
         ]
       },
@@ -79152,12 +79152,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 54.22,
-      "returnYtdPct": -19.34,
-      "return1yPct": -26.19,
-      "return3yAnnPct": -27.73,
-      "return5yAnnPct": -20.16,
-      "vol1yAnnPct": 25.43,
+      "lastClose": 54.035,
+      "returnYtdPct": -19.61,
+      "return1yPct": -26.44,
+      "return3yAnnPct": -27.81,
+      "return5yAnnPct": -20.22,
+      "vol1yAnnPct": 25.42,
       "maxDrawdown1yPct": -33.21,
       "performanceChart": {
         "base": 100,
@@ -79493,7 +79493,7 @@
           {
             "date": "2024-10-04",
             "etf": 66.17,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -80062,8 +80062,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 37.75,
-            "sp500": 177.78
+            "etf": 37.62,
+            "sp500": 178.17
           }
         ]
       },
@@ -80089,11 +80089,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 14.22,
-      "returnYtdPct": -28.7,
-      "return1yPct": -36.86,
-      "return3yAnnPct": -35.82,
-      "return5yAnnPct": -27.99,
+      "lastClose": 14.165,
+      "returnYtdPct": -28.98,
+      "return1yPct": -37.11,
+      "return3yAnnPct": -35.91,
+      "return5yAnnPct": -28.04,
       "vol1yAnnPct": 39.05,
       "maxDrawdown1yPct": -44.38,
       "performanceChart": {
@@ -80999,8 +80999,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 26.43,
-            "qqq": 193.1
+            "etf": 26.33,
+            "qqq": 193.48
           }
         ]
       },
@@ -81026,11 +81026,11 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 38.425,
-      "returnYtdPct": -42.94,
-      "return1yPct": -53.24,
-      "return3yAnnPct": -52.56,
-      "return5yAnnPct": -44.28,
+      "lastClose": 38.2,
+      "returnYtdPct": -43.27,
+      "return1yPct": -53.51,
+      "return3yAnnPct": -52.65,
+      "return5yAnnPct": -44.35,
       "vol1yAnnPct": 58.5,
       "maxDrawdown1yPct": -59.39,
       "performanceChart": {
@@ -81936,8 +81936,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 10.68,
-            "qqq": 193.1
+            "etf": 10.62,
+            "qqq": 193.48
           }
         ]
       },
@@ -81963,12 +81963,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 34.3501,
-      "returnYtdPct": -29.37,
-      "return1yPct": -38.9,
-      "return3yAnnPct": -41.71,
-      "return5yAnnPct": -32.69,
-      "vol1yAnnPct": 38.15,
+      "lastClose": 34.175,
+      "returnYtdPct": -29.73,
+      "return1yPct": -39.21,
+      "return3yAnnPct": -41.81,
+      "return5yAnnPct": -32.76,
+      "vol1yAnnPct": 38.12,
       "maxDrawdown1yPct": -46.26,
       "performanceChart": {
         "base": 100,
@@ -82304,7 +82304,7 @@
           {
             "date": "2024-10-04",
             "etf": 51.23,
-            "sp500": 129.72
+            "sp500": 129.73
           },
           {
             "date": "2024-10-11",
@@ -82873,8 +82873,8 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 19.8,
-            "sp500": 177.78
+            "etf": 19.7,
+            "sp500": 178.17
           }
         ]
       },
@@ -82900,12 +82900,12 @@
       },
       "status": "ok",
       "asOf": "2026-09-04",
-      "lastClose": 161.275,
-      "returnYtdPct": 14.12,
-      "return1yPct": 18.88,
-      "return3yAnnPct": 14.65,
-      "return5yAnnPct": 7.15,
-      "vol1yAnnPct": 18.76,
+      "lastClose": 161.47,
+      "returnYtdPct": 14.26,
+      "return1yPct": 19.03,
+      "return3yAnnPct": 14.7,
+      "return5yAnnPct": 7.18,
+      "vol1yAnnPct": 18.75,
       "maxDrawdown1yPct": -15.74,
       "performanceChart": {
         "base": 100,
@@ -83810,19 +83810,19 @@
           },
           {
             "date": "2026-09-04",
-            "etf": 150.72,
-            "qqq": 193.1
+            "etf": 150.9,
+            "qqq": 193.48
           }
         ]
       },
       "beta1yVsSp500": 0.81,
       "correlation1yVsSp500": 0.84,
       "activeVsBenchmark": {
-        "returnYtdVsBenchmarkPct": -3.18,
-        "return1yVsBenchmarkPct": -6.46,
-        "return3yAnnVsBenchmarkPct": -9.88,
-        "return5yAnnVsBenchmarkPct": -6.98,
-        "vol1yAnnVsBenchmarkPct": -0.82
+        "returnYtdVsBenchmarkPct": -3.28,
+        "return1yVsBenchmarkPct": -6.56,
+        "return3yAnnVsBenchmarkPct": -9.91,
+        "return5yAnnVsBenchmarkPct": -6.99,
+        "vol1yAnnVsBenchmarkPct": -0.83
       }
     }
   ]
